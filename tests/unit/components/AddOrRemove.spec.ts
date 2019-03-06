@@ -45,8 +45,8 @@ describe('components/AddOrRemove', () => {
       const addToText = 'My non default text on add button';
       const wrapper = mount(AddOrRemove, {
         propsData: {
-          addToText
-        }
+          addToText,
+        },
       });
       const button = findAddButton(wrapper);
       expect(button.attributes('title')).to.be.equal(addToText);
@@ -63,11 +63,34 @@ describe('components/AddOrRemove', () => {
       const removeFromText = 'My non default text on remove button';
       const wrapper = mount(AddOrRemove, {
         propsData: {
-          removeFromText
-        }
+          removeFromText,
+        },
       });
       const button = findRemoveButton(wrapper);
       expect(button.attributes('title')).to.be.equal(removeFromText);
+    });
+  });
+
+  describe('Layout', () => {
+    function verifyStyleColor(button: Wrapper<Vue>, color: string) {
+      const svg = button.find('svg');
+      const style = svg.attributes('style');
+      expect(style).to.be.equal('color: ' + color + ';');
+    }
+
+    it('Icons are colored as specified, separately.', () => {
+      const removeColor = 'red';
+      const addColor = 'blue';
+      const wrapper = mount(AddOrRemove, {
+        propsData: {
+          removeColor,
+          addColor,
+        },
+      });
+      const removeButton = findRemoveButton(wrapper);
+      verifyStyleColor(removeButton, removeColor);
+      const addButton = findAddButton(wrapper);
+      verifyStyleColor(addButton, addColor);
     });
   });
 });
