@@ -1,9 +1,13 @@
 <template>
   <td style="width: 70px;">
-    <button class="btn btn-xs btn-delete-minus" :title="removeFromText">
+    <button
+      class="btn btn-xs btn-delete-minus"
+      :title="removeFromText"
+      v-on:click="click('remove')"
+    >
       <font-awesome-icon icon="minus" :style="{ color: removeColor }"/>
     </button>
-    <button class="btn btn-xs" :title="addToText">
+    <button class="btn btn-xs" :title="addToText" v-on:click="click('add')">
       <font-awesome-icon icon="plus" :style="{ color: addColor }"/>
     </button>
   </td>
@@ -22,8 +26,12 @@ library.add(faPlus);
 export default class AddOrRemove extends Vue {
   @Prop({ default: 'Add' }) private addToText!: string;
   @Prop({ default: 'Remove' }) private removeFromText!: string;
-  @Prop({ default: 'black'}) private addColor!: string;
-  @Prop({ default: 'black'}) private removeColor!: string;
+  @Prop({ default: 'black' }) private addColor!: string;
+  @Prop({ default: 'black' }) private removeColor!: string;
+
+  private click(button: string): void {
+    this.$emit('clicked', button);
+  }
 }
 </script>
 
