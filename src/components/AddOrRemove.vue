@@ -30,7 +30,7 @@ export default class AddOrRemove extends Vue {
   @Prop({ default: 'black' }) private removeColor!: string;
 
   private click(button: string): void {
-    this.$emit('clicked', button);
+    this.$emit(button);
   }
 }
 </script>
