@@ -1,7 +1,11 @@
 <template>
   <div id="app">
     <!-- <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/> -->
-    <AddOrRemove remove-color="red"/>
+    <table>
+      <tbody>
+        <book-record id="a8f9ce0"  index="1" title="My book title" nr-of-chapters="5" nr-of-questions="32"/>
+      </tbody>
+    </table>
   </div>
 </template>
 
@@ -9,11 +13,13 @@
 import 'bootstrap';
 import { Component, Vue } from 'vue-property-decorator';
 import AddOrRemove from './components/AddOrRemove.vue';
+import BookRecord from './components/BookRecord.vue';
 import HelloWorld from './components/HelloWorld.vue';
 
 @Component({
   components: {
     AddOrRemove,
+    BookRecord,
     HelloWorld,
   },
 })

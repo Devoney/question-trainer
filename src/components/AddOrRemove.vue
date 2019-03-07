@@ -1,7 +1,7 @@
 <template>
-  <td style="width: 70px;">
+  <div style="width: 70px;">
     <button
-      class="btn btn-xs btn-delete-minus"
+      class="btn btn-xs"
       :title="removeFromText"
       v-on:click="click('remove')"
     >
@@ -10,7 +10,7 @@
     <button class="btn btn-xs" :title="addToText" v-on:click="click('add')">
       <font-awesome-icon icon="plus" :style="{ color: addColor }"/>
     </button>
-  </td>
+  </div>
 </template>
 
 <script lang="ts">
