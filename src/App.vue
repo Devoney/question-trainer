@@ -1,29 +1,54 @@
 <template>
   <div id="app">
-    <!-- <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/> -->
-    <table>
-      <tbody>
-        <book-record id="a8f9ce0"  index="1" title="My book title" nr-of-chapters="5" nr-of-questions="32"/>
-      </tbody>
-    </table>
+    <BookTable :books="books" />
   </div>
 </template>
 
 <script lang="ts">
 import 'bootstrap';
 import { Component, Vue } from 'vue-property-decorator';
-import AddOrRemove from './components/AddOrRemove.vue';
-import BookRecord from './components/BookRecord.vue';
-import HelloWorld from './components/HelloWorld.vue';
+
+import AddOrRemove from '@/components/AddOrRemove.vue';
+import BookTable from '@/components/BookTable.vue';
+import HelloWorld from '@/components/HelloWorld.vue';
+
+import Book from '@/models/Book';
+import Chapter from '@/models/Chapter';
+import Question from '@/models/Question';
 
 @Component({
   components: {
     AddOrRemove,
-    BookRecord,
+    BookTable,
     HelloWorld,
   },
 })
-export default class App extends Vue { }
+export default class App extends Vue {
+  private data() {
+    return {
+      books: [] as Book[],
+    };
+  }
+
+  private created() {
+    this.$data.books = [
+      new Book('72f0f2cc-3f9b-4da1-ae2e-b4ba7a1b3d3c', 'C# Programming', [
+        new Chapter('1', 'My first C# program', [
+          new Question('My first question', 'The ultimate answer', 99)
+        ]),
+        new Chapter('2', 'IL weaving')
+      ]),
+      new Book('4f642128-7918-4279-a015-6c668b54f550', 'C++ Programming', []),
+      new Book('a527d884-5d83-4719-a3cc-e0ee4e7b13e3', 'Atmel Chip Technology', []),
+    ];
+
+    setTimeout(() => {
+      let book = this.$data.books[0] as Book;
+      book.chapters[0].questions.push(new Question('Q', 'A', 1));
+      console.log('Question added');
+    }, 2000);
+  }
+}
 </script>
 
 <style>
