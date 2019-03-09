@@ -1,13 +1,14 @@
 <template>
   <div style="width: 70px;">
     <button
+      aria-label="remove"
       class="btn btn-xs"
       :title="removeFromText"
       v-on:click="click('remove')"
     >
       <font-awesome-icon icon="minus" :style="{ color: removeColor }"/>
     </button>
-    <button class="btn btn-xs" :title="addToText" v-on:click="click('add')">
+    <button aria-label="add" class="btn btn-xs" :title="addToText" v-on:click="click('add')">
       <font-awesome-icon icon="plus" :style="{ color: addColor }"/>
     </button>
   </div>

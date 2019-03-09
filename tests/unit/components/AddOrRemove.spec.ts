@@ -69,63 +69,63 @@ describe('components/AddOrRemove', () => {
       const addButton = findAddButton(wrapper);
       verifyStyleColor(addButton, addColor);
     });
+  });
 
-    describe('Title', () => {
-      it('Sets default title on add button.', () => {
-        // Given
-        const defaultTitle = 'Add';
+  describe('Data binding', () => {
+    it('Sets default title on add button.', () => {
+      // Given
+      const defaultTitle = 'Add';
 
-        // When
-        const wrapper = mount(AddOrRemove);
+      // When
+      const wrapper = mount(AddOrRemove);
 
-        // Then
-        const button = findAddButton(wrapper);
-        expect(button.attributes('title')).to.be.equal(defaultTitle);
+      // Then
+      const button = findAddButton(wrapper);
+      expect(button.attributes('title')).to.be.equal(defaultTitle);
+    });
+
+    it('Sets title on add button when specified.', () => {
+      // Given
+      const addToText = 'My non default text on add button';
+
+      // When
+      const wrapper = mount(AddOrRemove, {
+        propsData: {
+          addToText,
+        },
       });
 
-      it('Sets title on add button when specified.', () => {
-        // Given
-        const addToText = 'My non default text on add button';
+      // Then
+      const button = findAddButton(wrapper);
+      expect(button.attributes('title')).to.be.equal(addToText);
+    });
 
-        // When
-        const wrapper = mount(AddOrRemove, {
-          propsData: {
-            addToText,
-          },
-        });
+    it('Sets default title on remove button.', () => {
+      // Given
+      const defaultTitle = 'Remove';
 
-        // Then
-        const button = findAddButton(wrapper);
-        expect(button.attributes('title')).to.be.equal(addToText);
+      // When
+      const wrapper = mount(AddOrRemove);
+
+      // Then
+      const button = findRemoveButton(wrapper);
+      expect(button.attributes('title')).to.be.equal(defaultTitle);
+    });
+
+    it('Sets title on remove button when specified.', () => {
+      // Given
+      const removeFromText = 'My non default text on remove button';
+
+      // When
+      const wrapper = mount(AddOrRemove, {
+        propsData: {
+          removeFromText,
+        },
       });
 
-      it('Sets default title on remove button.', () => {
-        // Given
-        const defaultTitle = 'Remove';
-
-        // When
-        const wrapper = mount(AddOrRemove);
-
-        // Then
-        const button = findRemoveButton(wrapper);
-        expect(button.attributes('title')).to.be.equal(defaultTitle);
-      });
-
-      it('Sets title on remove button when specified.', () => {
-        // Given
-        const removeFromText = 'My non default text on remove button';
-
-        // When
-        const wrapper = mount(AddOrRemove, {
-          propsData: {
-            removeFromText,
-          },
-        });
-
-        // Then
-        const button = findRemoveButton(wrapper);
-        expect(button.attributes('title')).to.be.equal(removeFromText);
-      });
+      // Then
+      const button = findRemoveButton(wrapper);
+      expect(button.attributes('title')).to.be.equal(removeFromText);
     });
   });
 });

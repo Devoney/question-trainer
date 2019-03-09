@@ -4,17 +4,17 @@
       <add-or-remove remove-color="red" @add="raiseEvent('add')" @remove="raiseEvent('remove')"/>
     </td>
     <td class="text-right">
-      <span>{{ index }}</span>
+      <span aria-label="Index">{{ index }}</span>
     </td>
     <td class="text-left">
-      <span style="cursor: pointer;">{{ book.title }}</span>
+      <span style="cursor: pointer;" aria-label="Title of book">{{ book.title }}</span>
     </td>
     <td class="text-center">
-      <div>{{ nrOfChapters }}</div>
+      <div><span aria-label="Number of chapters">{{ nrOfChapters }}</span></div>
     </td>
-    <td class="text-center">{{ nrOfQuestions }}</td>
+    <td class="text-center"><span aria-label="Number of questions">{{ nrOfQuestions }}</span></td>
     <td class="text-center table-col-delete">
-      <button class="btn btn-xs" @click="raiseEvent('trash')">
+      <button class="btn btn-xs" aria-label="Trash book" @click="raiseEvent('trash')">
         <font-awesome-icon icon="trash-alt"/>
       </button>
     </td>

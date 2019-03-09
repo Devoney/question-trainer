@@ -103,7 +103,9 @@ describe('components/ConfirmationModal', () => {
       expect(cancelButton.text()).to.be.equal(cancelText);
       expect(okButton.text()).to.be.equal(okText);
     });
+  });
 
+  describe('Data binding', () => {
     it('Text for buttons can be set.', () => {
       // Given
       const okText = 'Yes';
