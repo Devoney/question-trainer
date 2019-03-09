@@ -21,13 +21,19 @@
           <div class="container">
             <div class="row" style="min-width:100%;">
               <div class="col text-left">
-                <button type="button" class="btn btn-secondary" @click="ok">{{ okText }}</button>
+                <button
+                  type="button"
+                  aria-label="ok"
+                  class="btn btn-secondary"
+                  @click="ok"
+                >{{ okText }}</button>
               </div>
               <div class="col text-right">
                 <button
                   type="button"
                   class="btn btn-secondary"
                   data-dismiss="modal"
+                  aria-label="cancel"
                   @click="cancel"
                 >{{ cancelText}}</button>
               </div>
@@ -40,29 +46,26 @@
 </template>
 
 <script lang="ts">
-import $ from 'jquery';
-
 import { Component, Prop, Vue } from 'vue-property-decorator';
-
 @Component
 export default class ConfirmationModal extends Vue {
   @Prop({
-    required: true
+    required: true,
   }) private id!: string;
 
   @Prop() private title!: string;
   @Prop({
-    default: 'OK'
+    default: 'OK',
   }) private okText!: string;
   @Prop({
-    default: 'cancel'
+    default: 'cancel',
   }) private cancelText!: string;
 
-  cancel() {
+  private cancel() {
     this.$emit('cancel');
   }
 
-  ok() {
+  private ok() {
     this.$emit('ok');
     $('#' + this.id).modal('hide');
   }

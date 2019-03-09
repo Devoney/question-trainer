@@ -9,30 +9,137 @@ type WrapperComplex = Wrapper<
 >;
 
 describe('components/ConfirmationModal', () => {
+  enum ButtonType {
+    close,
+    ok,
+    cancel,
+  }
+
+  function findButton(
+    wrapper: WrapperComplex,
+    buttonType: ButtonType,
+  ): Wrapper<Vue> {
+    return wrapper.findAll('button').at(buttonType);
+  }
+
   describe('User interaction', () => {
+    let lastModalAction: string;
+    let modalCount: number = 0;
+    $.fn.extend({
+      modal: (action: string) => {
+        // For some reason, modal is not known during test run.
+        // Hence we define it, so the test does not break.
+        lastModalAction = action;
+        modalCount++;
+      },
+    });
+
     it('Emits "ok" event when ok button is clicked.', () => {
-      assert(false,'TODO');
+      // Given
+      const wrapper = mount(ConfirmationModal, {
+        propsData: {
+          id: 'myId',
+        },
+      });
+      const button = findButton(wrapper, ButtonType.ok);
+
+      // When
+      button.trigger('click');
+
+      // Then
+      expect(wrapper.emitted().ok.length).to.equal(1);
     });
 
     it('Emits "cancel" event when cancel button is clicked.', () => {
-      assert(false,'TODO');
+      // Given
+      const wrapper = mount(ConfirmationModal, {
+        propsData: {
+          id: 'myId',
+        },
+      });
+      const button = findButton(wrapper, ButtonType.cancel);
+
+      // When
+      button.trigger('click');
+
+      // Then
+      expect(wrapper.emitted().cancel.length).to.equal(1);
     });
 
     it('Pressing ok closes the modal', () => {
-      assert(false,'TODO');
+      // Given
+      const cacheModalCount = modalCount;
+      const wrapper = mount(ConfirmationModal, {
+        propsData: {
+          id: 'myId',
+        },
+      });
+      const button = findButton(wrapper, ButtonType.ok);
+
+      // When
+      button.trigger('click');
+
+      // Then
+      expect(modalCount - cacheModalCount).to.be.equal(1);
     });
   });
+
   describe('User interface', () => {
     it('Text for buttons have default values.', () => {
-      assert(false,'TODO');
+      // Given
+      const okText = 'OK';
+      const cancelText = 'cancel';
+
+      // When
+      const wrapper = mount(ConfirmationModal, {
+        propsData: {
+          id: 'myId',
+        },
+      });
+
+      // Then
+      const cancelButton = findButton(wrapper, ButtonType.cancel);
+      const okButton = findButton(wrapper, ButtonType.ok);
+      expect(cancelButton.text()).to.be.equal(cancelText);
+      expect(okButton.text()).to.be.equal(okText);
     });
 
     it('Text for buttons can be set.', () => {
-      assert(false,'TODO');
+      // Given
+      const okText = 'Yes';
+      const cancelText = 'No';
+
+      // When
+      const wrapper = mount(ConfirmationModal, {
+        propsData: {
+          id: 'myId',
+          okText,
+          cancelText,
+        },
+      });
+
+      // Then
+      const cancelButton = findButton(wrapper, ButtonType.cancel);
+      const okButton = findButton(wrapper, ButtonType.ok);
+      expect(cancelButton.text()).to.be.equal(cancelText);
+      expect(okButton.text()).to.be.equal(okText);
     });
 
     it('Title for modal can be set.', () => {
-      assert(false,'TODO');
+      // Given
+      const title = 'My Title';
+
+      // When
+      const wrapper = mount(ConfirmationModal, {
+        propsData: {
+          id: 'myId',
+          title,
+        },
+      });
+
+      // Then
+      const titleElement = wrapper.find('.modal-title');
+      expect(titleElement.text()).to.be.equal(title);
     });
   });
 });

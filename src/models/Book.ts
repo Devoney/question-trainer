@@ -4,6 +4,6 @@ export default class Book {
   constructor(
     public id: string,
     public title: string,
-    public chapters: Chapter[] = new Array<Chapter>()
+    public chapters: Chapter[] = new Array<Chapter>(),
   ) {}
 }

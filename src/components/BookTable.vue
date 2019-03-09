@@ -56,26 +56,26 @@ import ConfirmationModal from '@/components/ConfirmationModal.vue';
 @Component({
   components: {
     BookRecord,
-    ConfirmationModal
+    ConfirmationModal,
   },
 })
 export default class BookTable extends Vue {
   @Prop() private books!: Book[];
 
-  data() {
+  private data() {
     return {
       modalId: 'confirmation-modal-81fa223c',
       bookIdUpForDelete: undefined,
     };
   }
 
-  trash(bookId: string): void {
+  private trash(bookId: string): void {
     this.$data.bookIdUpForDelete = bookId;
     $('#' + this.$data.modalId).modal();
   }
 
-  deleteConfirmed() {
-    let bookId: string = this.$data.bookIdUpForDelete as string;
+  private deleteConfirmed() {
+    const bookId: string = this.$data.bookIdUpForDelete as string;
 
     _.forEach(this.books, (book, index) => {
       if (book.id === bookId) {
@@ -85,7 +85,7 @@ export default class BookTable extends Vue {
     });
   }
 
-  deleteCanceled() {
+  private deleteCanceled() {
     this.$data.bookIdUpForDelete = undefined;
   }
 }
