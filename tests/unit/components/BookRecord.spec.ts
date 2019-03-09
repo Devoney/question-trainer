@@ -148,7 +148,7 @@ describe('components/BookRecord', () => {
 
       // When
       button.trigger('click');
-      
+
       // Then
       const event = wrapper.emitted().trash;
       expect(event.length).to.be.equal(1);
