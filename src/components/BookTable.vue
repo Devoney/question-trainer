@@ -29,13 +29,24 @@
       @cancel="deleteCanceled"
       okText="Yes"
       cancelText="No"
-    >Are you sure you want to delete this book?</confirmation-modal>
+    >
+      <div class="row">
+        <div class="col-3 text-center"><font-awesome-icon icon="exclamation-triangle" style="color:orange; font-size:30px;"/></div>
+        <div class="col text-left">Are you sure you want to delete this book?</div>
+      </div>
+    </confirmation-modal>
   </div>
 </template>
 
 <script lang="ts">
 import _ from 'lodash';
 import $ from 'jquery';
+
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+Vue.component('font-awesome-icon', FontAwesomeIcon);
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
+library.add(faExclamationTriangle);
 
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import BookRecord from '@/components/BookRecord.vue';
@@ -58,7 +69,7 @@ export default class BookTable extends Vue {
     };
   }
 
-  trash(bookId: string): void {    
+  trash(bookId: string): void {
     this.$data.bookIdUpForDelete = bookId;
     $('#' + this.$data.modalId).modal();
   }
@@ -67,7 +78,7 @@ export default class BookTable extends Vue {
     let bookId: string = this.$data.bookIdUpForDelete as string;
 
     _.forEach(this.books, (book, index) => {
-      if(book.id === bookId) {
+      if (book.id === bookId) {
         this.books.splice(index, 1);
         return false;
       }

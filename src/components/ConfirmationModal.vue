@@ -18,13 +18,21 @@
           <slot></slot>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" @click="ok">{{ okText }}</button>
-          <button
-            type="button"
-            class="btn btn-secondary"
-            data-dismiss="modal"
-            @click="cancel"
-          >{{ cancelText}}</button>
+          <div class="container">
+            <div class="row" style="min-width:100%;">
+              <div class="col text-left">
+                <button type="button" class="btn btn-secondary" @click="ok">{{ okText }}</button>
+              </div>
+              <div class="col text-right">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-dismiss="modal"
+                  @click="cancel"
+                >{{ cancelText}}</button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
