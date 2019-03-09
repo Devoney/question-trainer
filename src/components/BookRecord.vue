@@ -44,7 +44,7 @@ export default class BookRecord extends Vue {
   @Prop() private index!: number;
 
   get nrOfQuestions() {
-    if (this.nrOfChapters == 0) return 0;
+    if (this.nrOfChapters === 0) return 0;
     return _.sumBy(this.book.chapters, (c) => c.questions.length);
   }
 

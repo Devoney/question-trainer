@@ -10,7 +10,6 @@ import { Component, Vue } from 'vue-property-decorator';
 
 import AddOrRemove from '@/components/AddOrRemove.vue';
 import BookTable from '@/components/BookTable.vue';
-import HelloWorld from '@/components/HelloWorld.vue';
 
 import Book from '@/models/Book';
 import Chapter from '@/models/Chapter';
@@ -20,7 +19,6 @@ import Question from '@/models/Question';
   components: {
     AddOrRemove,
     BookTable,
-    HelloWorld,
   },
 })
 export default class App extends Vue {
