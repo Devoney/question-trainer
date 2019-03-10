@@ -6,6 +6,7 @@ import 'bootstrap';
 
 import Book from '@/models/Book';
 import BookTable from '@/components/BookTable.vue';
+import ConfirmationModal from '@/components/confirmationModal.vue';
 
 describe('component/BookTable', () => {
   describe('Data binding', () => {
@@ -76,11 +77,28 @@ describe('component/BookTable', () => {
       assert.isTrue(book !== undefined);
     });
 
-    // it('Book is deleted when action is confirmed.', () => {
-    //   // Given
-    //   // When
-    //   // Then
-    //   assert.isTrue(false, 'TODO');
-    // });
+    it('Book is deleted when action is confirmed.', () => {
+      // Given
+      const bookId: string = 'book-id';
+      const wrapper = mount(BookTable, {
+        propsData: {
+          books: [
+            new Book(bookId, 'Book title'),
+          ],
+        },
+      });
+      const trashButton = wrapper.find('button[aria-label="Trash book"]');
+      const confirmationModal = wrapper.vm.$children[1] as ConfirmationModal;
+
+      // When
+      trashButton.trigger('click');
+      confirmationModal.$emit('ok'); // Simulate that the user presses OK on the confirmation modal.
+
+      // Then
+      const books = wrapper.vm.$props.books as Book[];
+      const book = books.find((b) => b.id === bookId);
+      assert.isTrue(book === undefined, 'Book was still found in collection.');
+      assert.isTrue(books.length === 0, 'The book table should have no books at all anymore.');
+    });
   });
 });
