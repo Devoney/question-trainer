@@ -1,5 +1,8 @@
 import { assert, expect } from 'chai';
 import { mount, Wrapper } from '@vue/test-utils';
+import sinon from 'sinon';
+import $ from 'jquery';
+import 'bootstrap';
 
 import Book from '@/models/Book';
 import BookTable from '@/components/BookTable.vue';
@@ -33,6 +36,7 @@ describe('component/BookTable', () => {
   describe('User interaction', () => {
     it('Confirmation modal is shown when trash button of a book is clicked.', () => {
       // Given
+      sinon.spy($.fn, 'modal');
       const wrapper = mount(BookTable, {
         propsData: {
           books: [
@@ -46,7 +50,9 @@ describe('component/BookTable', () => {
       trashButton.trigger('click');
 
       // Then
-      assert.isTrue(false, 'NO ASSERTION.');
+      const spy = $.fn.modal as sinon.SinonSpy;
+      assert.isTrue(spy.calledOnce);
+      spy.restore();
     });
 
     // it('Book is not deleted when trash button of a book is clicked.', () => {

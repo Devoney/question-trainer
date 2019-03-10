@@ -3,6 +3,8 @@ import Vue from 'vue';
 import { mount, Wrapper } from '@vue/test-utils';
 import ConfirmationModal from '@/components/ConfirmationModal.vue';
 import { CombinedVueInstance } from 'vue/types/vue';
+import sinon from 'sinon';
+import $ from 'jquery';
 
 type WrapperComplex = Wrapper<
   CombinedVueInstance<Vue, object, object, object, Record<never, any>>
@@ -57,6 +59,7 @@ describe('components/ConfirmationModal', () => {
 
     it('Pressing ok closes the modal', () => {
       // Given
+      sinon.spy($.fn, 'modal');
       const wrapper = mount(ConfirmationModal, {
         propsData: {
           id: 'myId',
@@ -68,7 +71,9 @@ describe('components/ConfirmationModal', () => {
       button.trigger('click');
 
       // Then
-      assert.isTrue(false, 'NO ASSERTION.');
+      const spy = $.fn.modal as sinon.SinonSpy;
+      assert.isTrue(spy.calledOnceWith('hide'));
+      spy.restore();
     });
   });
 
