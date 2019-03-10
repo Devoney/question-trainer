@@ -55,12 +55,26 @@ describe('component/BookTable', () => {
       spy.restore();
     });
 
-    // it('Book is not deleted when trash button of a book is clicked.', () => {
-    //   // Given
-    //   // When
-    //   // Then
-    //   assert.isTrue(false, 'TODO');
-    // });
+    it('Book is not deleted when trash button of a book is clicked.', () => {
+      // Given
+      const bookId: string = 'book-id';
+      const wrapper = mount(BookTable, {
+        propsData: {
+          books: [
+            new Book(bookId, 'Book title'),
+          ],
+        },
+      });
+      const trashButton = wrapper.find('button[aria-label="Trash book"]');
+
+      // When
+      trashButton.trigger('click');
+
+      // Then
+      const books = wrapper.vm.$props.books as Book[];
+      const book = books.find((b) => b.id === bookId);
+      assert.isTrue(book !== undefined);
+    });
 
     // it('Book is deleted when action is confirmed.', () => {
     //   // Given
