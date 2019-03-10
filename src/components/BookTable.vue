@@ -41,6 +41,7 @@
 <script lang="ts">
 import _ from 'lodash';
 import $ from 'jquery';
+import 'bootstrap';
 
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 Vue.component('font-awesome-icon', FontAwesomeIcon);

@@ -5,7 +5,6 @@
 </template>
 
 <script lang="ts">
-import 'bootstrap';
 import { Component, Vue } from 'vue-property-decorator';
 
 import AddOrRemove from '@/components/AddOrRemove.vue';

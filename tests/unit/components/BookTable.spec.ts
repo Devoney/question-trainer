@@ -33,19 +33,6 @@ describe('component/BookTable', () => {
   describe('User interaction', () => {
     it('Confirmation modal is shown when trash button of a book is clicked.', () => {
       // Given
-      let lastModalAction: string;
-      let modalCount: number = 0;
-      delete $.fn.modal;
-      $.fn.extend({
-        modal: (action: string) => {
-          // For some reason, modal is not known during test run.
-          // Hence we define it, so the test does not break.
-          lastModalAction = action;
-          modalCount++;
-        },
-      });
-
-      const cacheModalCount: number = modalCount;
       const wrapper = mount(BookTable, {
         propsData: {
           books: [
@@ -59,7 +46,7 @@ describe('component/BookTable', () => {
       trashButton.trigger('click');
 
       // Then
-      expect(modalCount - cacheModalCount).to.be.equal(1);
+      assert.isTrue(false, 'NO ASSERTION.');
     });
 
     // it('Book is not deleted when trash button of a book is clicked.', () => {

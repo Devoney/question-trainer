@@ -47,6 +47,9 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
+import $ from 'jquery';
+import 'bootstrap';
+
 @Component
 export default class ConfirmationModal extends Vue {
   @Prop({
