@@ -29,4 +29,51 @@ describe('component/BookTable', () => {
       }
     });
   });
+
+  describe('User interaction', () => {
+    let lastModalAction: string;
+    let modalCount: number = 0;
+    $.fn.extend({
+      modal: (action: string) => {
+        // For some reason, modal is not known during test run.
+        // Hence we define it, so the test does not break.
+        lastModalAction = action;
+        modalCount++;
+      },
+    });
+
+    it('Confirmation modal is shown when trash button of a book is clicked.', () => {
+      // Given
+      debugger;
+      const cacheModalCount: number = modalCount;
+      const wrapper = mount(BookTable, {
+        propsData: {
+          books: [
+            new Book('book-id', 'Book title'),
+          ],
+        },
+      });
+      const trashButton = wrapper.find('button[aria-label="Trash book"]');
+
+      // When
+      trashButton.trigger('click');
+
+      // Then
+      expect(modalCount - cacheModalCount).to.be.equal(1);
+    });
+
+    // it('Book is not deleted when trash button of a book is clicked.', () => {
+    //   // Given
+    //   // When
+    //   // Then
+    //   assert.isTrue(false, 'TODO');
+    // });
+
+    // it('Book is deleted when action is confirmed.', () => {
+    //   // Given
+    //   // When
+    //   // Then
+    //   assert.isTrue(false, 'TODO');
+    // });
+  });
 });

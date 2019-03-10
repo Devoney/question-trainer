@@ -1,4 +1,4 @@
-import { assert, expect } from 'chai';
+import { expect } from 'chai';
 import Vue from 'vue';
 import { mount, Wrapper } from '@vue/test-utils';
 import ConfirmationModal from '@/components/ConfirmationModal.vue';

@@ -64,7 +64,7 @@ export default class BookTable extends Vue {
 
   private data() {
     return {
-      modalId: 'confirmation-modal-81fa223c',
+      modalId: 'confirmation-modal-book-table',
       bookIdUpForDelete: undefined,
     };
   }
