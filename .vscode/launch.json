@@ -5,9 +5,10 @@
   "version": "0.2.0",
   "configurations": [
     {
+      // Make sure to run 'npm run serve' first.
       "type": "chrome",
       "request": "launch",
-      "name": "vuejs: chrome",
+      "name": "Debug application",
       "url": "http://localhost:8080",
       "webRoot": "${workspaceFolder}/src",
       "breakOnLoad": true,
@@ -16,34 +17,11 @@
       }
     },
     {
+      // Make sure to run 'npm run test:unit:debug' first.
       "type": "node",
       "request": "attach",
       "name": "Debug unit tests",
       "port": 9229
-    },
-    {
-      "type": "node",
-      "request": "launch",
-      "name": "Mocha All",
-      "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
-      "args": [
-          "-r",
-          "ts-node/register",
-          "--timeout",
-          "999999",
-          "--colors",
-          "${workspaceFolder}/tests/unit/**/*.spec.ts",
-      ],
-      "console": "integratedTerminal",
-      "internalConsoleOptions": "neverOpen",
-      "protocol": "inspector"
-    },
-    {
-      "type": "node",
-      "request": "launch",
-      "name": "Launch Program",
-      "program": "${file}",
-      "outFiles": ["${workspaceFolder}/**/*.js"]
     }
   ]
 }

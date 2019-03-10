@@ -23,17 +23,6 @@ describe('components/ConfirmationModal', () => {
   }
 
   describe('User interaction', () => {
-    let lastModalAction: string;
-    let modalCount: number = 0;
-    $.fn.extend({
-      modal: (action: string) => {
-        // For some reason, modal is not known during test run.
-        // Hence we define it, so the test does not break.
-        lastModalAction = action;
-        modalCount++;
-      },
-    });
-
     it('Emits "ok" event when ok button is clicked.', () => {
       // Given
       const wrapper = mount(ConfirmationModal, {
@@ -68,6 +57,18 @@ describe('components/ConfirmationModal', () => {
 
     it('Pressing ok closes the modal', () => {
       // Given
+      let lastModalAction: string;
+      let modalCount: number = 0;
+      delete $.fn.modal;
+      $.fn.extend({
+        modal: (action: string) => {
+          // For some reason, modal is not known during test run.
+          // Hence we define it, so the test does not break.
+          lastModalAction = action;
+          modalCount++;
+        },
+      });
+
       const cacheModalCount = modalCount;
       const wrapper = mount(ConfirmationModal, {
         propsData: {
