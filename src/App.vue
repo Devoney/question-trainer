@@ -1,12 +1,14 @@
 <template>
   <div id="app">
-    <BookTable :books="books" />
+    <add-book />
+    <book-table :books="books" />
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 
+import AddBook from '@/components/AddBook.vue';
 import AddOrRemove from '@/components/AddOrRemove.vue';
 import BookTable from '@/components/BookTable.vue';
 
@@ -16,6 +18,7 @@ import Question from '@/models/Question';
 
 @Component({
   components: {
+    AddBook,
     AddOrRemove,
     BookTable,
   },
