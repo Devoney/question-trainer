@@ -15,13 +15,16 @@
       </thead>
       <tbody>
         <book-record
-          v-for="(book, index) in books"
+          v-for="(book, index) in booksSorted"
           v-bind:key="book.id"
           :book="book"
           :index="index+1"
           @trash="trash"
         />
       </tbody>
+      <tfoot v-if="!hasBooks">
+        <th colspan="6">No books</th>
+      </tfoot>
     </table>
     <confirmation-modal
       :id="modalId"
@@ -31,7 +34,9 @@
       cancelText="No"
     >
       <div class="row">
-        <div class="col-3 text-center"><font-awesome-icon icon="exclamation-triangle" style="color:orange; font-size:30px;"/></div>
+        <div class="col-3 text-center">
+          <font-awesome-icon icon="exclamation-triangle" style="color:orange; font-size:30px;"/>
+        </div>
         <div class="col text-left">Are you sure you want to delete this book?</div>
       </div>
     </confirmation-modal>
@@ -68,6 +73,16 @@ export default class BookTable extends Vue {
       modalId: 'confirmation-modal-book-table',
       bookIdUpForDelete: undefined,
     };
+  }
+
+  get hasBooks(): boolean {
+    return !_.isEmpty(this.books);
+  }
+
+  get booksSorted(): Book[] {
+    return _.orderBy(this.books, (b: Book) => {
+      return b.title.toLowerCase();
+    });
   }
 
   private trash(bookId: string): void {

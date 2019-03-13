@@ -12,7 +12,7 @@
     </div>
     <div class="row book-table">
       <div class="col">
-        <book-table :books="booksSorted"/>
+        <book-table :books="books"/>
       </div>
     </div>
   </div>
@@ -44,12 +44,6 @@ export default class BookManager extends Vue {
       titleIsNotValid: false,
       titleExists: false,
     };
-  }
-
-  get booksSorted(): Book[] {
-    return _.orderBy(this.books, (b: Book) => {
-      return b.title.toLowerCase();
-    });
   }
 
   private add(title: string): void {
