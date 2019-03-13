@@ -1,16 +1,13 @@
 <template>
-  <div id="app">
-    <add-book />
-    <book-table :books="books" />
+  <div id="app" class="container">
+    <book-manager :books="books"/>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 
-import AddBook from '@/components/AddBook.vue';
-import AddOrRemove from '@/components/AddOrRemove.vue';
-import BookTable from '@/components/BookTable.vue';
+import BookManager from '@/components/BookManager.vue';
 
 import Book from '@/models/Book';
 import Chapter from '@/models/Chapter';
@@ -18,9 +15,7 @@ import Question from '@/models/Question';
 
 @Component({
   components: {
-    AddBook,
-    AddOrRemove,
-    BookTable,
+    BookManager,
   },
 })
 export default class App extends Vue {

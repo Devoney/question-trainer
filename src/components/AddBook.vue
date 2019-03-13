@@ -2,13 +2,26 @@
   <div class="form-group">
     <div class="row">
       <div class="col text-left">
-      <label class="font-weight-bold" for="bookTitleText">Title:</label>
+        <label class="font-weight-bold" for="bookTitleText">Title:</label>
       </div>
     </div>
     <div class="input-group row no-gutters">
-      <input class="form-control" id="bookTitleText" type="text" v-model.trim="bookTitle">
+      <input
+        class="form-control"
+        :class="{ 'is-invalid': invalidTitle}"
+        id="bookTitleText"
+        type="text"
+        v-model.trim="bookTitle"
+        v-on:keydown.enter="add"
+      >
       <div class="input-group-append">
-        <button class="btn btn-primary input-group-append" id="btn-add-book" @click="add">Add</button>
+        <button
+          class="btn input-group-append"
+          :class="{ 'btn-primary': !invalidTitle, 'btn-secondary': invalidTitle }"
+          :disabled="invalidTitle"
+          id="btn-add-book"
+          @click="add"
+        >Add</button>
       </div>
     </div>
   </div>
@@ -16,15 +29,26 @@
 
 <script lang="ts">
 import _ from 'lodash';
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 
 @Component
 export default class AddBook extends Vue {
+  @Prop({ default: false }) private titleIsNotValid!: boolean;
 
   private data() {
     return {
       bookTitle: undefined,
     };
+  }
+
+  get invalidTitle() {
+    if (_.isEmpty(this.$data.bookTitle)) { return false; }
+    return this.titleIsNotValid;
+  }
+
+  @Watch('bookTitle')
+  private onBookTitleChanged(newTitle: string, oldTitle: string) {
+    this.$emit('title-changed', { old: oldTitle, new: newTitle });
   }
 
   private add(): void {
