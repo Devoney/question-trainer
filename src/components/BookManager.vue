@@ -2,12 +2,7 @@
   <div>
     <div class="row">
       <div class="col has-error">
-        <add-book @title-changed="titleChanged" :title-is-not-valid="titleIsNotValid" @add="add"/>
-      </div>
-    </div>
-    <div class="row err-message">
-      <div class="col text-left">
-        <span v-show="titleExists">This title already exists!</span>
+        <add-book @title-changed="titleChanged" :error-message="titleIsNotValidMessage" @add="add"/>
       </div>
     </div>
     <div class="row book-table">
@@ -41,8 +36,7 @@ export default class BookManager extends Vue {
 
   private data(): any {
     return {
-      titleIsNotValid: false,
-      titleExists: false,
+      titleIsNotValidMessage: undefined,
     };
   }
 
@@ -56,15 +50,16 @@ export default class BookManager extends Vue {
 
   private titleChanged(title: { new: string, old: string }): void {
     if (title.new === undefined) {
-      this.$data.titleExists = false;
+      this.$data.titleIsNotValidMessage = undefined;
       return;
     }
 
     const titleLowerCase = title.new.toLowerCase();
-    this.$data.titleExists = _.findIndex(this.books, (b) => {
+    const titleExists = _.findIndex(this.books, (b) => {
       return b.title.toLowerCase() === titleLowerCase;
     }) !== -1;
-    this.$data.titleIsNotValid = this.$data.titleExists;
+
+    this.$data.titleIsNotValidMessage = titleExists ? 'Title already exists.' : undefined;
   }
 
   private titleAlreadyInCollection(title: string): boolean {
@@ -79,11 +74,5 @@ export default class BookManager extends Vue {
 <style scoped>
 .book-table {
   margin-top: 20px;
-}
-
-.err-message {
-  margin-top: -10px;
-  color: red;
-  height: 24px;
 }
 </style>

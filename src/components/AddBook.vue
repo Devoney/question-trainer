@@ -24,6 +24,13 @@
         >Add</button>
       </div>
     </div>
+    <div class="row err-message">
+      <div class="col text-left">
+        <transition name="fade">
+          <span v-if="invalidTitle">{{ errorMessage }}</span>
+        </transition>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -33,7 +40,7 @@ import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 
 @Component
 export default class AddBook extends Vue {
-  @Prop({ default: false }) private titleIsNotValid!: boolean;
+  @Prop() private errorMessage!: string;
 
   private data() {
     return {
@@ -43,7 +50,7 @@ export default class AddBook extends Vue {
 
   get invalidTitle() {
     if (_.isEmpty(this.$data.bookTitle)) { return false; }
-    return this.titleIsNotValid;
+    return !_.isEmpty(this.errorMessage);
   }
 
   @Watch('bookTitle')
@@ -61,4 +68,15 @@ export default class AddBook extends Vue {
 </script>
 
 <style scoped>
+.err-message {
+  color: red;
+  height: 24px;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
 </style>

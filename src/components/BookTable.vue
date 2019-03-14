@@ -91,7 +91,6 @@ export default class BookTable extends Vue {
   }
 
   private deleteConfirmed() {
-    // TODO: Book is not deleted anymore since introduction of BookManager.
     const bookId: string = this.$data.bookIdUpForDelete as string;
 
     _.forEach(this.books, (book, index) => {

@@ -3,8 +3,8 @@ import { mount, Wrapper } from '@vue/test-utils';
 
 import AddBook from '@/components/AddBook.vue';
 
-describe('', () => {
-  describe('components/AddBook', () => {
+describe('components/AddBook', () => {
+  describe('User interaction', () => {
     it('When user presses add button, without title, no event is raised.', () => {
       // Given
       const wrapper = mount(AddBook);
@@ -50,6 +50,42 @@ describe('', () => {
       // Then
       assert.equal(wrapper.vm.$data.bookTitle, undefined);
       assert.isEmpty((input.element as HTMLInputElement).value);
+    });
+
+    it('When error message is set, but book title is not, then the error message is not shown.', () => {
+      // Given
+      const errorMessage: string = 'My custom error message';
+      const wrapper = mount(AddBook, {
+        propsData: {
+          errorMessage,
+        },
+      });
+
+      // When
+      wrapper.vm.$data.bookTitle = undefined;
+
+      // Then
+      const html = wrapper.html();
+      const hasErrorMessage: boolean = html.indexOf(errorMessage) !== -1;
+      assert.isFalse(hasErrorMessage, html);
+    });
+
+    it('When error message is set, and book title also, then the error message is shown.', () => {
+      // Given
+      const errorMessage: string = 'My custom error message';
+      const wrapper = mount(AddBook, {
+        propsData: {
+          errorMessage,
+        },
+      });
+
+      // When
+      wrapper.vm.$data.bookTitle = 'Some book title.';
+
+      // Then
+      const html = wrapper.html();
+      const hasErrorMessage: boolean = html.indexOf(errorMessage) !== -1;
+      assert.isTrue(hasErrorMessage, html);
     });
   });
 });
