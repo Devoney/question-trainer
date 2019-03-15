@@ -7,8 +7,7 @@
     </div>
     <div class="input-group row no-gutters">
       <input
-        class="form-control"
-        :class="{ 'is-invalid': invalidTitle}"
+        :class="['form-control', { 'is-invalid': invalidTitle }]"
         id="bookTitleText"
         type="text"
         v-model.trim="bookTitle"
@@ -16,8 +15,7 @@
       >
       <div class="input-group-append">
         <button
-          class="btn input-group-append"
-          :class="{ 'btn-primary': !invalidTitle, 'btn-secondary': invalidTitle }"
+          :class="['btn input-group-append', { 'btn-primary': !invalidTitle, 'btn-secondary': invalidTitle }]"
           :disabled="invalidTitle"
           id="btn-add-book"
           @click="add"
@@ -73,10 +71,12 @@ export default class AddBook extends Vue {
   height: 24px;
 }
 
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .5s;
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
 }
-.fade-enter, .fade-leave-to {
+.fade-enter,
+.fade-leave-to {
   opacity: 0;
 }
 </style>
