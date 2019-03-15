@@ -2,7 +2,12 @@
   <div>
     <div class="row">
       <div class="col has-error">
-        <add-book @title-changed="titleChanged" :error-message="titleIsNotValidMessage" @add="add"/>
+        <add-book
+          ref="addBook"
+          @title-changed="titleChanged"
+          :error-message="titleIsNotValidMessage"
+          @add="add"
+        />
       </div>
     </div>
     <div class="row book-table">
@@ -41,6 +46,7 @@ export default class BookManager extends Vue {
   }
 
   private add(title: string): void {
+    if (_.isEmpty(_.trim(title))) { return; }
     if (this.titleAlreadyInCollection(title)) { return; }
 
     const books = this.books;
