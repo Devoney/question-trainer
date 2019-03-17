@@ -20,10 +20,12 @@ import uuid from 'uuid/v1';
 @Component
 export default class TabPage extends Vue {
   @Prop({ required: true }) private title!: string;
-  @Prop({ default: false }) private active!: boolean;
 
-  get id() {
-    return this.title.split(' ').join('');
+  private data(): any {
+    return {
+      active: false,
+      id: 'tabPage_' + uuid(),
+    };
   }
 }
 </script>
