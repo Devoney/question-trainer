@@ -1,6 +1,16 @@
 <template>
   <div id="app" class="container">
-    <tabs :tabs="tabs" :props="{ books }"/>
+    <!-- <tabs :tabs="tabs"/> -->
+    <tabs>
+      <tab-page title="Le Books" active="true">
+        <book-manager :books="books"/>
+      </tab-page>
+      <tab-page title="Add or remove">
+        <add-or-remove />
+      </tab-page>
+      <tab-page title="No content">
+      </tab-page>
+    </tabs>
   </div>
 </template>
 
@@ -9,7 +19,9 @@ import { Component, Vue } from 'vue-property-decorator';
 
 import AddOrRemove from '@/components/AddOrRemove.vue';
 import BookManager from '@/components/BookManager.vue';
+
 import Tabs from '@/components/Tabs.vue';
+import TabPage from '@/components/TabPage.vue';
 
 import Book from '@/models/Book';
 import Chapter from '@/models/Chapter';
@@ -23,6 +35,7 @@ Vue.component('book-manager', BookManager);
 @Component({
   components: {
     Tabs,
+    TabPage,
   },
 })
 export default class App extends Vue {
@@ -45,14 +58,6 @@ export default class App extends Vue {
       new Book('a527d884-5d83-4719-a3cc-e0ee4e7b13e3', 'Atmel Chip Technology', []),
     ];
     this.$data.books = books;
-
-    this.$data.tabs.push(new Tab('Books', 'book-manager', { books }));
-    this.$data.tabs.push(new Tab('AddOrRemove', 'add-or-remove', { addColor: 'red'}));
-
-    setTimeout(() => {
-      const book = this.$data.books[0] as Book;
-      book.chapters[0].questions.push(new Question('Q', 'A', 1));
-    }, 2000);
   }
 }
 </script>

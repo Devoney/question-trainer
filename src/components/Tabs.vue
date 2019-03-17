@@ -1,28 +1,18 @@
 <template>
   <div>
     <ul class="nav nav-tabs" id="myTab" role="tablist">
-      <li v-for="(tab, index) in tabs" class="nav-item">
+      <li v-for="title in titles" class="nav-item" v-bind:key="title">
         <a
-          @click="setActiveTab(tab)"
-          :class="['nav-link', { 'active': tab === activeTab }]"
+          :class="['nav-link', {active: title === activeTitle}]"
           data-toggle="tab"
-          :href="'#'+ tab.title"
+          :href="'#'+ title.split(' ').join('')"
           role="tab"
-          :aria-controls="tab.title"
-          :aria-selected="tab === activeTab"
-        >{{ tab.title }}</a>
+          :aria-controls="title"
+        >{{ title }}</a>
       </li>
     </ul>
     <div class="tab-content">
-      <div v-for="(tab, index) in tabs" :class="['tab-pane', { 'active': tab === activeTab, 'show':  tab === activeTab}]" :id="tab.title" role="tabpanel">
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <div class="tab-content bordered">
-              <component :is="tabs[index].component" v-bind="tab.props"></component>
-            </div>
-          </div>
-        </div>
-      </div>
+      <slot>Add components or HTML to the slot of the tab component.</slot>
     </div>
   </div>
 </template>
@@ -30,37 +20,33 @@
 <script lang="ts">
 import Vue from 'vue';
 import { Component, Prop } from 'vue-property-decorator';
-import BookManager from '@/components/BookManager.vue';
 
-import Tab from '@/types/Tab';
+import TabPage from '@/components/TabPage.vue';
 
 @Component
 export default class Tabs extends Vue {
-  @Prop({ default: () => new Array<Tab>() }) private tabs!: Tab[];
-
   private data(): any {
     return {
-      activeTab: undefined,
+      activeTitle: undefined,
+      titles: new Array<string>(),
     };
   }
 
   private created(): void {
-    this.$data.activeTab = this.tabs[0];
-  }
-
-  private setActiveTab(tab: Tab): void {
-    this.$data.activeTab = tab;
+    const childComponents = this.$slots.default;
+    if (childComponents === undefined) { return; }
+    for (const child of childComponents) {
+      if (child.componentOptions === undefined) { continue; }
+      const componentType = child.componentOptions.tag;
+      if (componentType === 'tab-page') {
+        // @ts-ignore
+        const title = child.componentOptions.propsData.title;
+        if (this.$data.titles.length === 0) {
+          this.$data.activeTitle = title;
+        }
+        this.$data.titles.push(title);
+      }
+    }
   }
 }
 </script>
-
-<style scoped>
-.tab-content .bordered {
-  border:1px solid #DDD;
-  border-top:0px;
-  padding: 10px;
-  border-radius: 10px;
-  border-top-left-radius: 0px;
-  margin-right: -10px;
-}
-</style>
