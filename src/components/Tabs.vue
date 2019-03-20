@@ -20,6 +20,7 @@
 </template>
 
 <script lang="ts">
+import _ from 'lodash';
 import uuid from 'uuid/v1';
 import Vue from 'vue';
 import { Component, Prop } from 'vue-property-decorator';
@@ -36,12 +37,9 @@ export default class Tabs extends Vue {
 
   private mounted(): void {
     const tabPages = this.getTabPages();
-    if (tabPages.length !== 0) {
-      for (let i = 0; i < tabPages.length; i++) {
-        tabPages[i].$data.active = (i === 0);
-      }
-    }
+    this.setActiveTabPage(tabPages);
     this.$data.tabPages = tabPages;
+
   }
 
   private getTabPages(): TabPage[] {
@@ -58,12 +56,31 @@ export default class Tabs extends Vue {
 
       return tabPages;
     }
+
     // @ts-ignore
     tabPages = this.$slots.default
       .map((vnode) => vnode.componentInstance)
       // @ts-ignore
       .filter((cmp) => !!cmp && cmp.$vnode.componentOptions.tag === 'tab-page');
     return tabPages;
+  }
+
+  private hasActiveTabPage(tabPages: TabPage[]): boolean {
+    return _.findIndex(tabPages, (tabPage) => {
+      return tabPage.$data.active === true;
+    }) !== -1;
+  }
+
+  private setActiveTabPage(tabPages: TabPage[]): void {
+    if (tabPages.length === 0) { return; }
+
+    if (this.hasActiveTabPage(tabPages)) {
+      return;
+    }
+
+    for (let i = 0; i < tabPages.length; i++) {
+      tabPages[i].$data.active = (i === 0);
+    }
   }
 }
 </script>

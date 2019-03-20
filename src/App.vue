@@ -2,13 +2,17 @@
   <div id="app" class="container">
     <!-- <tabs :tabs="tabs"/> -->
     <tabs>
-      <tab-page title="Le Books" active="true">
+      <tab-page title="Library">
+
+      </tab-page>
+      <tab-page title="Books" :is-default="true">
         <book-manager :books="books"/>
       </tab-page>
-      <tab-page title="Add or remove">
-        <add-or-remove />
+      <tab-page title="Chapters">
+        
       </tab-page>
-      <tab-page title="No content">
+      <tab-page title="Questions">
+
       </tab-page>
     </tabs>
   </div>

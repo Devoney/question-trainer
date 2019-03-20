@@ -19,6 +19,7 @@ import uuid from 'uuid/v1';
 
 @Component
 export default class TabPage extends Vue {
+  @Prop({ default: false, type: Boolean }) public isDefault!: boolean;
   @Prop({ required: true }) private title!: string;
 
   private data(): any {
@@ -26,6 +27,10 @@ export default class TabPage extends Vue {
       active: false,
       id: 'tabPage_' + uuid(),
     };
+  }
+
+  private created(): void {
+    this.$data.active = this.isDefault;
   }
 }
 </script>
