@@ -48,6 +48,10 @@ import _ from 'lodash';
 import $ from 'jquery';
 import 'bootstrap';
 
+import { Store } from 'vuex';
+import IState from '@/state/IState';
+import MutationTypes from '@/state/MutationTypes';
+
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -66,13 +70,19 @@ import ConfirmationModal from '@/components/ConfirmationModal.vue';
   },
 })
 export default class BookTable extends Vue {
-  @Prop() private books!: Book[];
-
   private data() {
     return {
       modalId: 'confirmation-modal-book-table',
       bookIdUpForDelete: undefined,
     };
+  }
+
+  get store(): Store<IState> {
+    return this.$store;
+  }
+
+  get books(): Book[] {
+    return this.store.state.books;
   }
 
   get hasBooks(): boolean {
@@ -92,13 +102,7 @@ export default class BookTable extends Vue {
 
   private deleteConfirmed() {
     const bookId: string = this.$data.bookIdUpForDelete as string;
-
-    _.forEach(this.books, (book, index) => {
-      if (book.id === bookId) {
-        this.$delete(this.books, index);
-        return false;
-      }
-    });
+    this.store.commit(MutationTypes.removeBookById, bookId);
   }
 
   private deleteCanceled() {

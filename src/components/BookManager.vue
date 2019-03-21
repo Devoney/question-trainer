@@ -24,6 +24,9 @@ import $ from 'jquery';
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import 'bootstrap';
 import uuid from 'uuid/v1';
+import IState from '@/state/IState';
+import { Store } from 'vuex';
+import MutationTypes from '@/state/MutationTypes';
 
 import Book from '@/models/Book';
 
@@ -37,12 +40,18 @@ import BookTable from '@/components/BookTable.vue';
   },
 })
 export default class BookManager extends Vue {
-  @Prop({ required: true }) private books!: Book[];
-
   private data(): any {
     return {
       titleIsNotValidMessage: undefined,
     };
+  }
+
+  get store(): Store<IState> {
+    return this.$store;
+  }
+
+  get books(): Book[] {
+    return this.store.state.books;
   }
 
   private add(title: string): void {
@@ -51,7 +60,8 @@ export default class BookManager extends Vue {
 
     const books = this.books;
     const id = uuid();
-    books.push(new Book(id, title));
+    const book = new Book(id, title);
+    this.store.commit(MutationTypes.addBook, book);
   }
 
   private titleChanged(title: { new: string, old: string }): void {

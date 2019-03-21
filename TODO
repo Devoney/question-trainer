@@ -1,0 +1,2 @@
+General:
+  ☐ Check in newly created project with Vuex that the error _Uncaught TypeError: hook.flushStoreModules is not a function_ also occurs

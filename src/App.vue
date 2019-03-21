@@ -6,7 +6,7 @@
 
       </tab-page>
       <tab-page title="Books" :is-default="true">
-        <book-manager :books="books"/>
+        <book-manager />
       </tab-page>
       <tab-page title="Chapters">
         
@@ -19,6 +19,9 @@
 </template>
 
 <script lang="ts">
+import IState from '@/state/IState';
+import MutationTypes from '@/state/MutationTypes';
+import { Store } from 'vuex';
 import { Component, Vue } from 'vue-property-decorator';
 
 import AddOrRemove from '@/components/AddOrRemove.vue';
@@ -45,9 +48,16 @@ Vue.component('book-manager', BookManager);
 export default class App extends Vue {
   private data() {
     return {
-      books: [] as Book[],
       tabs: [] as Tab[],
     };
+  }
+
+  get books(): Book[] {
+    return this.store.state.books;
+  }
+
+  get store(): Store<IState> {
+    return this.$store;
   }
 
   private created() {
@@ -61,7 +71,7 @@ export default class App extends Vue {
       new Book('4f642128-7918-4279-a015-6c668b54f550', 'C++ Programming', []),
       new Book('a527d884-5d83-4719-a3cc-e0ee4e7b13e3', 'Atmel Chip Technology', []),
     ];
-    this.$data.books = books;
+    this.store.commit(MutationTypes.setBooks, books);
   }
 }
 </script>
