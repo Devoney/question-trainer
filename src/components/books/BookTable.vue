@@ -59,7 +59,7 @@ import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 library.add(faExclamationTriangle);
 
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import BookRecord from '@/components/BookRecord.vue';
+import BookRecord from '@/components/books/BookRecord.vue';
 import Book from '@/models/Book';
 import ConfirmationModal from '@/components/ConfirmationModal.vue';
 

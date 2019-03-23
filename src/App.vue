@@ -25,7 +25,7 @@ import { Store } from 'vuex';
 import { Component, Vue } from 'vue-property-decorator';
 
 import AddOrRemove from '@/components/AddOrRemove.vue';
-import BookManager from '@/components/BookManager.vue';
+import BookManager from '@/components/books/BookManager.vue';
 
 import Tabs from '@/components/Tabs.vue';
 import TabPage from '@/components/TabPage.vue';

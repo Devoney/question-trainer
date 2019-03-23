@@ -6,7 +6,7 @@ import $ from 'jquery';
 import 'bootstrap';
 
 import Book from '@/models/Book';
-import BookTable from '@/components/BookTable.vue';
+import BookTable from '@/components/books/BookTable.vue';
 import ConfirmationModal from '@/components/confirmationModal.vue';
 
 describe('component/BookTable', () => {

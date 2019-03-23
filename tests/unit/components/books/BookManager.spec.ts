@@ -5,8 +5,8 @@ import { mount, shallowMount, Wrapper } from '@vue/test-utils';
 import store from '@/state/store';
 import Book from '@/models/Book';
 
-import AddBook from '@/components/AddBook.vue';
-import BookManager from '@/components/BookManager.vue';
+import AddBook from '@/components/books/AddBook.vue';
+import BookManager from '@/components/books/BookManager.vue';
 
 describe('components/BookManager', () => {
   describe('User interaction', () => {

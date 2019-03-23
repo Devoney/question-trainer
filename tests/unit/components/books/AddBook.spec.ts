@@ -1,7 +1,7 @@
 import { assert } from 'chai';
 import { mount, Wrapper } from '@vue/test-utils';
 
-import AddBook from '@/components/AddBook.vue';
+import AddBook from '@/components/books/AddBook.vue';
 
 describe('components/AddBook', () => {
   describe('User interaction', () => {

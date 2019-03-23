@@ -1,2 +1,7 @@
 General:
   ☐ Check in newly created project with Vuex that the error _Uncaught TypeError: hook.flushStoreModules is not a function_ also occurs
+  Books:
+    ☐ Use store to validate book title, instead of event and property.
+
+Testing:
+  ☐ Unit test store mutations explicitly also, instead of only through components.

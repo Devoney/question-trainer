@@ -1,4 +1,4 @@
-import BookRecord from '@/components/BookRecord.vue';
+import BookRecord from '@/components/books/BookRecord.vue';
 import Book from '@/models/Book';
 import Chapter from '@/models/Chapter';
 import Question from '@/models/Question';

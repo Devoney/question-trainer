@@ -30,8 +30,8 @@ import MutationTypes from '@/state/MutationTypes';
 
 import Book from '@/models/Book';
 
-import AddBook from '@/components/AddBook.vue';
-import BookTable from '@/components/BookTable.vue';
+import AddBook from '@/components/books/AddBook.vue';
+import BookTable from '@/components/books/BookTable.vue';
 
 @Component({
   components: {
