@@ -3,8 +3,8 @@
     <table class="table table-striped table-bordered">
       <thead>
         <th></th>
-        <th>Nr</th>
-        <th>Title</th>
+        <th>Nr.</th>
+        <th class="text-left">Title</th>
         <th>Nr of
           <br>chapters
         </th>

@@ -9,7 +9,7 @@
         <book-manager />
       </tab-page>
       <tab-page title="Chapters">
-        
+        <chapter-manager />
       </tab-page>
       <tab-page title="Questions">
 
@@ -26,6 +26,7 @@ import { Component, Vue } from 'vue-property-decorator';
 
 import AddOrRemove from '@/components/AddOrRemove.vue';
 import BookManager from '@/components/books/BookManager.vue';
+import ChapterManager from '@/components/chapters/ChapterManager.vue';
 
 import Tabs from '@/components/Tabs.vue';
 import TabPage from '@/components/TabPage.vue';
@@ -36,11 +37,10 @@ import Question from '@/models/Question';
 
 import Tab from '@/types/Tab';
 
-Vue.component('add-or-remove', AddOrRemove);
-Vue.component('book-manager', BookManager);
-
 @Component({
   components: {
+    BookManager,
+    ChapterManager,
     Tabs,
     TabPage,
   },
@@ -63,10 +63,10 @@ export default class App extends Vue {
   private created() {
     const books: Book[] = [
       new Book('72f0f2cc-3f9b-4da1-ae2e-b4ba7a1b3d3c', 'C# Programming', [
-        new Chapter('1', 'My first C# program', [
+        new Chapter('62f0f2cc-3f9b-4da1-ae2e-b4ba7a1b3d3c', '1', 'My first C# program', [
           new Question('My first question', 'The ultimate answer', 99),
         ]),
-        new Chapter('2', 'IL weaving'),
+        new Chapter('72f0f2cc-3f9b-4da1-ae2e-b4ba7a1b3e3c', '2', 'IL weaving'),
       ]),
       new Book('4f642128-7918-4279-a015-6c668b54f550', 'C++ Programming', []),
       new Book('a527d884-5d83-4719-a3cc-e0ee4e7b13e3', 'Atmel Chip Technology', []),

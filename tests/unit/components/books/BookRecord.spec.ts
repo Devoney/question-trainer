@@ -14,11 +14,11 @@ type WrapperComplex = Wrapper<
 describe('components/BookRecord', () => {
   function getBook(): Book {
     return new Book('my-book-id', 'My book', [
-      new Chapter('Chapter #1', 'First chapter', [
+      new Chapter('72f0f2cc-3f9b-4da1-ae2e-b4ba7a1b3d3a', 'Chapter #1', 'First chapter', [
         new Question('First question', 'First answer', 1),
         new Question('Second question', 'Second answer', 1),
       ]),
-      new Chapter('Chapter #2', 'Second chapter', [
+      new Chapter('72f0f2cc-3f9b-4da1-ae2e-b4ba7a1b3d3b', 'Chapter #2', 'Second chapter', [
         new Question('Third question', 'Third answer', 1),
         new Question('Fourth question', 'Fourth answer', 1),
       ]),

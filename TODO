@@ -1,4 +1,6 @@
 General:
+  ☐ @high Get rid of all the data methods, and use direct properties instead.
+  ☐ Make properties public
   ☐ Check in newly created project with Vuex that the error _Uncaught TypeError: hook.flushStoreModules is not a function_ also occurs
   Books:
     ☐ Use store to validate book title, instead of event and property.

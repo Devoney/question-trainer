@@ -3,7 +3,7 @@
     <td class="text-center" style="width: 70px;">
       <add-or-remove remove-color="red" @add="raiseEvent('add')" @remove="raiseEvent('remove')"/>
     </td>
-    <td class="text-right">
+    <td class="text-right" style="width: 70px;">
       <span aria-label="Index">{{ index }}</span>
     </td>
     <td class="text-left">
