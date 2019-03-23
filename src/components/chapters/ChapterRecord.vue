@@ -1,13 +1,13 @@
 <template>
   <tr>
     <td class="text-center" style="width: 70px;">
-      <add-or-remove remove-color="red" @add="raiseEvent('add')" @remove="raiseEvent('remove')"/>
+      
     </td>
     <td class="text-right" style="width: 70px;">
       <span aria-label="Index">{{ chapter.nr }}</span>
     </td>
     <td class="text-left">{{ chapter.title }}</td>
-    <td class="text-center">{{ nrOfQuestions }}</td>
+    <td class="text-center" style="width: 120px;">{{ nrOfQuestions }}</td>
     <td></td>
   </tr>
 </template>
@@ -17,13 +17,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 
 import Chapter from '@/models/Chapter';
 
-import AddOrRemove from '@/components/AddOrRemove.vue';
-
-@Component({
-  components: {
-    AddOrRemove,
-  },
-})
+@Component
 export default class ChapterRecord extends Vue {
   @Prop() public chapter!: Chapter;
 
