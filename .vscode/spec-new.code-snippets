@@ -1,0 +1,15 @@
+{
+	"Add new pspec file": {
+		"scope": "javascript,typescript",
+		"prefix": "spec-new",
+		"body": [
+			"import { assert } from 'chai';",
+			"import { mount, Wrapper } from '@vue/test-utils';",
+			"",
+			"describe('$TM_FILENAME_BASE', () => {",
+			"  $0",
+			"});",
+		],
+		"description": "Adds new spec file used for unit testing"
+	}
+}

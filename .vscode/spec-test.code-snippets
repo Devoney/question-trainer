@@ -1,0 +1,16 @@
+{
+	"Print to console": {
+		"scope": "javascript,typescript",
+		"prefix": "spec-test",
+		"body": [
+			"it('$0', () => {",
+			"  // Given",
+			"  // When",
+			"  // Then",
+			"  assert.isTrue(false, 'TODO');",
+			"});",
+			""
+		],
+		"description": "Add new unit test"
+	}
+}
