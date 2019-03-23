@@ -1,0 +1,28 @@
+{
+	"vue-component-with-store": {
+		"scope": "vue",
+		"prefix": "vue-component-with-store",
+		"body": [
+			"<template>\n  <div></div>\n</template>",
+			"",
+			"<script lang=\"ts\">",
+			"import { Component, Prop, Vue } from 'vue-property-decorator';",
+			"",
+			"import IState from '@/state/IState';",
+			"import { Store } from 'vuex';",
+			"import MutationTypes from '@/state/MutationTypes';",
+			"",
+			"@Component",
+			"export default class $TM_FILENAME_BASE extends Vue {",
+			"  get store(): Store<IState> {",
+			"    return this.$$store;",
+			"  }",
+			"}",
+			"</script>",
+			"",
+			"<style scoped>",
+			"</style>"
+		],
+		"description": "Vue component with store"
+	}
+}
