@@ -6,6 +6,9 @@ General:
     ☐ Use store to validate book title, instead of event and property.
     ☐ Move logic for adding book into AddBook itself, out of BookManager to simply ping ponging of data.
     ☐ Use on hover title to show the error when title of book is invalid. (Thus remove error line below input).
+  State:
+    ☐ Move mutations in to modules based on models or components.
 
 Testing:
-  ☐ Unit test store mutations explicitly also, instead of only through components.
+  State:
+    ☐ Unit test store mutations explicitly also, instead of only through components.

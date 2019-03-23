@@ -9,7 +9,7 @@ import Book from '@/models/Book';
 import BookTable from '@/components/books/BookTable.vue';
 import ConfirmationModal from '@/components/confirmationModal.vue';
 
-describe('component/BookTable', () => {
+describe('component/books/BookTable', () => {
   describe('Data binding', () => {
     it('All books are shown in the table.', () => {
       // Given

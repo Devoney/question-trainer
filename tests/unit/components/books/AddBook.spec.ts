@@ -3,7 +3,7 @@ import { mount, Wrapper } from '@vue/test-utils';
 
 import AddBook from '@/components/books/AddBook.vue';
 
-describe('components/AddBook', () => {
+describe('components/books/AddBook', () => {
   describe('User interaction', () => {
     it('When user presses add button, without title, no event is raised.', () => {
       // Given

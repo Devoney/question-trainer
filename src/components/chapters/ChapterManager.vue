@@ -2,13 +2,13 @@
   <div>
     <div class="row form-group">
       <div class="col-3 text-left">
-        <book-selector @book-selected="bookSelected"/>
+        <book-selector />
       </div>
       <div class="col text-left">
-        <add-chapter v-if="hasBook" :chapters="selectedBook.chapters"/>
+        <add-chapter v-if="hasBook" />
       </div>
     </div>
-    <chapter-table v-if="hasBook" :book-selected="selectedBook"/>
+    <chapter-table v-if="hasBook" />
   </div>
 </template>
 
@@ -34,22 +34,12 @@ import ChapterTable from '@/components/chapters/ChapterTable.vue';
   },
 })
 export default class ChapterManager extends Vue {
-  private data(): any {
-    return {
-      selectedBook: undefined,
-    };
-  }
-
   get store(): Store<IState> {
     return this.$store;
   }
 
   get hasBook(): boolean {
-    return this.$data.selectedBook !== undefined;
-  }
-
-  private bookSelected(book: Book): void {
-    this.$data.selectedBook = book;
+    return this.store.state.bookSelected !== undefined;
   }
 }
 </script>

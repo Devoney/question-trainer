@@ -11,7 +11,7 @@ type WrapperComplex = Wrapper<
   CombinedVueInstance<Vue, object, object, object, Record<never, any>>
 >;
 
-describe('components/BookRecord', () => {
+describe('components/books/BookRecord', () => {
   function getBook(): Book {
     return new Book('my-book-id', 'My book', [
       new Chapter('72f0f2cc-3f9b-4da1-ae2e-b4ba7a1b3d3a', 'Chapter #1', 'First chapter', [

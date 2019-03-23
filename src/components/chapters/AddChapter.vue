@@ -41,10 +41,12 @@ import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 import uuid from 'uuid/v1';
 import Chapter from '@/models/Chapter';
 
+import { Store } from 'vuex';
+import IState from '@/state/IState';
+import MutationTypes from '@/state/MutationTypes';
+
 @Component
 export default class AddChapter extends Vue {
-  @Prop({ required: true }) public chapters!: Chapter[];
-
   private data(): any {
     return {
       chapter: {
@@ -58,8 +60,21 @@ export default class AddChapter extends Vue {
     };
   }
 
+  get store(): Store<IState> {
+    return this.$store;
+  }
+
+  get chapters(): Chapter[] {
+    if (this.store.state.bookSelected === undefined) { return []; }
+    return this.store.state.bookSelected.chapters;
+  }
+
   get canAdd() {
-    return !this.hasError && !_.isEmpty(this.$data.chapter.nr) && !_.isEmpty(this.$data.chapter.title);
+    return !this.hasError
+      && !_.isEmpty(this.$data.chapter.nr)
+      && !_.isEmpty(this.$data.chapter.title)
+      && !this.chapterNumberExists()
+      && !this.titleExists();
   }
 
   get hasError() {
@@ -72,18 +87,20 @@ export default class AddChapter extends Vue {
     const id = uuid();
     const chapter = new Chapter(id, this.$data.chapter.nr.toString(), this.$data.chapter.title);
 
-    this.chapters.push(chapter);
+    this.store.commit(MutationTypes.addChapter, chapter);
 
     this.$data.chapter.title = '';
     this.$data.chapter.nr = '';
   }
 
-  private numberChanged(): void {
-    const indexOfNr = _.findIndex(this.chapters, (chapter) => {
+  private chapterNumberExists(): boolean {
+    return _.findIndex(this.chapters, (chapter) => {
       return chapter.nr.toLowerCase() === this.$data.chapter.nr.toLowerCase();
-    });
+    }) !== -1;
+  }
 
-    if (indexOfNr !== -1) {
+  private numberChanged(): void {
+    if (this.chapterNumberExists()) {
       this.$data.error.nr = 'Chapter already exists for this book.';
       return;
     }
@@ -91,12 +108,14 @@ export default class AddChapter extends Vue {
     this.$data.error.nr = undefined;
   }
 
-  private titleChanged(): void {
-    const indexOfTitle = _.findIndex(this.chapters, (chapter) => {
+  private titleExists(): boolean {
+    return _.findIndex(this.chapters, (chapter) => {
       return chapter.title.toLowerCase() === this.$data.chapter.title.toLowerCase();
-    });
+    }) !== -1;
+  }
 
-    if (indexOfTitle !== -1) {
+  private titleChanged(): void {
+    if (this.titleExists()) {
       this.$data.error.title = 'Title already exists for this book.';
       return;
     }

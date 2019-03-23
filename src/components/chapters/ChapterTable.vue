@@ -44,11 +44,11 @@ import ChapterRecord from '@/components/chapters/ChapterRecord.vue';
   },
 })
 export default class ChapterTable extends Vue {
-  @Prop() public bookSelected!: Book;
 
   get chapters(): Chapter[] {
-    if (this.bookSelected === undefined || this.bookSelected.chapters === undefined) { return []; }
-    return this.bookSelected.chapters;
+    const bookSelected = this.store.state.bookSelected;
+    if (bookSelected === undefined || bookSelected.chapters === undefined) { return []; }
+    return bookSelected.chapters;
   }
 
   get hasChapters(): boolean {

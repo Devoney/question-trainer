@@ -8,7 +8,7 @@ import Book from '@/models/Book';
 import AddBook from '@/components/books/AddBook.vue';
 import BookManager from '@/components/books/BookManager.vue';
 
-describe('components/BookManager', () => {
+describe('components/books/BookManager', () => {
   describe('User interaction', () => {
     it('A book is added upon add event.', () => {
       // Given
