@@ -16,14 +16,6 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-Vue.component('font-awesome-icon', FontAwesomeIcon);
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faMinus } from '@fortawesome/free-solid-svg-icons';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
-
-library.add(faMinus);
-library.add(faPlus);
 
 @Component
 export default class AddOrRemove extends Vue {

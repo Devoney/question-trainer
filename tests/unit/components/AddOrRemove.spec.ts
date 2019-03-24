@@ -1,3 +1,4 @@
+import '@/font-awesome';
 import { expect } from 'chai';
 import Vue from 'vue';
 import { mount, Wrapper } from '@vue/test-utils';

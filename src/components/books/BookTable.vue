@@ -52,12 +52,6 @@ import { Store } from 'vuex';
 import IState from '@/state/IState';
 import MutationTypes from '@/state/MutationTypes';
 
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-Vue.component('font-awesome-icon', FontAwesomeIcon);
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
-library.add(faExclamationTriangle);
-
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import BookRecord from '@/components/books/BookRecord.vue';
 import Book from '@/models/Book';

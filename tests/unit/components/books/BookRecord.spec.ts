@@ -6,6 +6,7 @@ import { assert, expect } from 'chai';
 import Vue from 'vue';
 import { CombinedVueInstance } from 'vue/types/vue';
 import { mount, Wrapper } from '@vue/test-utils';
+import '@/font-awesome';
 
 type WrapperComplex = Wrapper<
   CombinedVueInstance<Vue, object, object, object, Record<never, any>>

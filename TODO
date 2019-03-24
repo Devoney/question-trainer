@@ -1,7 +1,7 @@
 General:
   ✔ Get rid of all the data methods, and use direct properties instead. @done(19-03-24 19:17)
   ✔ Make properties public @done(19-03-24 19:19)
-  ☐ Globalize Vue.component('font-awesome-icon', FontAwesomeIcon);
+  ✔ Globalize Vue.component('font-awesome-icon', FontAwesomeIcon); @done(19-03-24 20:34)
   ☐ Use a Mixin for delete confirmation of Book and Chapter.
   ☐ Move store into mixin for reusability.
   Books:
@@ -11,6 +11,7 @@ General:
     book-selector:
       ✔ Sort books that are shown in select. @done(19-03-24 19:20)
   State:
+    ☐ Make getter types available.
     ☐ Move mutations in to modules based on models or components.
 
 Testing:
