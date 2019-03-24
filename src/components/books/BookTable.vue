@@ -90,9 +90,7 @@ export default class BookTable extends Vue {
   }
 
   get booksSorted(): Book[] {
-    return _.orderBy(this.books, (b: Book) => {
-      return b.title.toLowerCase();
-    });
+    return this.store.getters.booksSortedByTitle;
   }
 
   private trash(bookId: string): void {

@@ -11,6 +11,13 @@ const storeOptions: StoreOptions<IState> = {
     books: new Array<Book>(),
     bookSelected: undefined,
   },
+  getters: {
+    booksSortedByTitle: (state) => {
+      return _.orderBy(state.books, (book: Book) => {
+        return book.title.toLowerCase();
+      });
+    },
+  },
   mutations: {
     [MutationTypes.addBook]: (state, book: Book) => {
       state.books.push(book);
@@ -30,6 +37,9 @@ const storeOptions: StoreOptions<IState> = {
       if (index === -1) { return; }
 
       const book = state.books.splice(index, 1)[0];
+      if (state.bookSelected !== undefined && state.bookSelected.id === book.id) {
+        state.bookSelected = undefined;
+      }
       if (book.chapters !== undefined && book.chapters.length > 0) {
         book.chapters.splice(0, book.chapters.length);
       }

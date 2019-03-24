@@ -3,6 +3,7 @@ General:
   ☐ Make properties public
   ☐ Globalize Vue.component('font-awesome-icon', FontAwesomeIcon);
   ☐ Use a Mixin for delete confirmation of Book and Chapter.
+  ☐ Move store into mixin for reusability.
   Console-errors:
     hook.flushStoreModules:
       ☐ Check first in another browser, without Vue dev tools that error occurs to.
@@ -11,6 +12,8 @@ General:
     ☐ Use store to validate book title, instead of event and property.
     ☐ Move logic for adding book into AddBook itself, out of BookManager to simply ping ponging of data.
     ☐ Use on hover title to show the error when title of book is invalid. (Thus remove error line below input).
+    book-selector:
+      ☐ Sort books that are shown in select.
   State:
     ☐ Move mutations in to modules based on models or components.
 

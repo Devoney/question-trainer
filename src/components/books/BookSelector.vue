@@ -24,7 +24,7 @@ export default class BookSelector extends Vue {
   }
 
   get books(): Book[] {
-    return this.store.state.books;
+    return this.store.getters.booksSortedByTitle;
   }
 
   get bookSelected(): Book | undefined {
