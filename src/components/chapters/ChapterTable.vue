@@ -54,6 +54,8 @@ import MutationTypes from '@/state/MutationTypes';
 import AddOrRemove from '@/components/AddOrRemove.vue';
 import ChapterRecord from '@/components/chapters/ChapterRecord.vue';
 import ConfirmationModal from '@/components/ConfirmationModal.vue';
+import { mixins } from 'vue-class-component';
+import StoreMixin from '@/mixins/StoreMixin';
 
 @Component({
   components: {
@@ -62,7 +64,7 @@ import ConfirmationModal from '@/components/ConfirmationModal.vue';
     ConfirmationModal,
   },
 })
-export default class ChapterTable extends Vue {
+export default class ChapterTable extends mixins(StoreMixin) {
   private modalId: string = 'confirmation-modal-chapter-table';
   private chapterIdUpForDelete: string = '';
 
@@ -74,10 +76,6 @@ export default class ChapterTable extends Vue {
 
   get hasChapters(): boolean {
     return this.chapters.length > 0;
-  }
-
-  get store(): Store<IState> {
-    return this.$store;
   }
 
   private trash(chapterId: string): void {

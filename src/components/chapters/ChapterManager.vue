@@ -21,10 +21,11 @@ import Chapter from '@/models/Chapter';
 import IState from '@/state/IState';
 import { Store } from 'vuex';
 import MutationTypes from '@/state/MutationTypes';
-
+import { mixins } from 'vue-class-component';
 import AddChapter from '@/components/chapters/AddChapter.vue';
 import BookSelector from '@/components/books/BookSelector.vue';
 import ChapterTable from '@/components/chapters/ChapterTable.vue';
+import StoreMixin from '@/mixins/StoreMixin';
 
 @Component({
   components: {
@@ -33,11 +34,7 @@ import ChapterTable from '@/components/chapters/ChapterTable.vue';
     ChapterTable,
   },
 })
-export default class ChapterManager extends Vue {
-  get store(): Store<IState> {
-    return this.$store;
-  }
-
+export default class ChapterManager extends mixins(StoreMixin) {
   get hasBook(): boolean {
     return this.store.state.bookSelected !== undefined;
   }

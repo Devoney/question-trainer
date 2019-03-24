@@ -10,19 +10,15 @@
 <script lang="ts">
 import _ from 'lodash';
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
-
+import { mixins } from 'vue-class-component';
 import Book from '@/models/Book';
-
+import StoreMixin from '@/mixins/StoreMixin';
 import IState from '@/state/IState';
 import { Store } from 'vuex';
 import MutationTypes from '@/state/MutationTypes';
 
 @Component
-export default class BookSelector extends Vue {
-  get store(): Store<IState> {
-    return this.$store;
-  }
-
+export default class BookSelector extends mixins(StoreMixin) {
   get books(): Book[] {
     return this.store.getters.booksSortedByTitle;
   }

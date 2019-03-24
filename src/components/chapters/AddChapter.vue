@@ -40,13 +40,14 @@ import _ from 'lodash';
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 import uuid from 'uuid/v1';
 import Chapter from '@/models/Chapter';
-
+import { mixins } from 'vue-class-component';
 import { Store } from 'vuex';
 import IState from '@/state/IState';
 import MutationTypes from '@/state/MutationTypes';
+import StoreMixin from '@/mixins/StoreMixin';
 
 @Component
-export default class AddChapter extends Vue {
+export default class AddChapter extends mixins(StoreMixin) {
   private chapter: { nr: string, title: string } = {
     nr: '',
     title: '',
@@ -56,10 +57,6 @@ export default class AddChapter extends Vue {
     nr: '',
     title: '',
   };
-
-  get store(): Store<IState> {
-    return this.$store;
-  }
 
   get chapters(): Chapter[] {
     if (this.store.state.bookSelected === undefined) { return []; }

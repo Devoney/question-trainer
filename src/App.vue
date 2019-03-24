@@ -21,7 +21,7 @@
 <script lang="ts">
 import IState from '@/state/IState';
 import MutationTypes from '@/state/MutationTypes';
-import { Store } from 'vuex';
+import { mixins } from 'vue-class-component';
 import { Component, Vue } from 'vue-property-decorator';
 
 import AddOrRemove from '@/components/AddOrRemove.vue';
@@ -38,6 +38,7 @@ import Question from '@/models/Question';
 import Tab from '@/types/Tab';
 
 import '@/font-awesome';
+import StoreMixin from '@/mixins/StoreMixin';
 
 @Component({
   components: {
@@ -47,7 +48,7 @@ import '@/font-awesome';
     TabPage,
   },
 })
-export default class App extends Vue {
+export default class App extends mixins(StoreMixin) {
   private data() {
     return {
       tabs: [] as Tab[],
@@ -56,10 +57,6 @@ export default class App extends Vue {
 
   get books(): Book[] {
     return this.store.state.books;
-  }
-
-  get store(): Store<IState> {
-    return this.$store;
   }
 
   private created() {

@@ -47,12 +47,14 @@
 import _ from 'lodash';
 import $ from 'jquery';
 import 'bootstrap';
+import StoreMixin from '@/mixins/StoreMixin';
 
-import { Store } from 'vuex';
-import IState from '@/state/IState';
+// import { Store } from 'vuex';
+// import IState from '@/state/IState';
 import MutationTypes from '@/state/MutationTypes';
 
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Component, Prop, Vue, Mixins } from 'vue-property-decorator';
+import { mixins } from 'vue-class-component';
 import BookRecord from '@/components/books/BookRecord.vue';
 import Book from '@/models/Book';
 import ConfirmationModal from '@/components/ConfirmationModal.vue';
@@ -63,13 +65,9 @@ import ConfirmationModal from '@/components/ConfirmationModal.vue';
     ConfirmationModal,
   },
 })
-export default class BookTable extends Vue {
+export default class BookTable extends mixins(StoreMixin) {
   private bookIdUpForDelete: string = '';
   private modalId: string = 'confirmation-modal-book-table';
-
-  get store(): Store<IState> {
-    return this.$store;
-  }
 
   get books(): Book[] {
     return this.store.state.books;

@@ -6,6 +6,8 @@ import MutationTypes from '@/state/MutationTypes';
 import Vue from 'vue';
 import _ from 'lodash';
 
+Vue.use(Vuex);
+
 const storeOptions: StoreOptions<IState> = {
   state: {
     books: new Array<Book>(),
@@ -69,5 +71,4 @@ const storeOptions: StoreOptions<IState> = {
   },
 };
 
-Vue.use(Vuex);
 export default new Vuex.Store<IState>(storeOptions);

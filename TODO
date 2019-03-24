@@ -3,7 +3,7 @@ General:
   ✔ Make properties public @done(19-03-24 19:19)
   ✔ Globalize Vue.component('font-awesome-icon', FontAwesomeIcon); @done(19-03-24 20:34)
   ☐ Use a Mixin for delete confirmation of Book and Chapter.
-  ☐ Move store into mixin for reusability.
+  ✔ Move store into mixin for reusability. @done(19-03-24 21:08)
   Books:
     ☐ Use store to validate book title, instead of event and property.
     ☐ Move logic for adding book into AddBook itself, out of BookManager to simply ping ponging of data.

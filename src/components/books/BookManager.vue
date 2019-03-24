@@ -19,6 +19,7 @@
 </template>
 
 <script lang="ts">
+import { mixins } from 'vue-class-component';
 import _ from 'lodash';
 import $ from 'jquery';
 import { Component, Prop, Vue } from 'vue-property-decorator';
@@ -32,6 +33,7 @@ import Book from '@/models/Book';
 
 import AddBook from '@/components/books/AddBook.vue';
 import BookTable from '@/components/books/BookTable.vue';
+import StoreMixin from '@/mixins/StoreMixin';
 
 @Component({
   components: {
@@ -39,12 +41,8 @@ import BookTable from '@/components/books/BookTable.vue';
     BookTable,
   },
 })
-export default class BookManager extends Vue {
+export default class BookManager extends mixins(StoreMixin) {
   private titleIsNotValidMessage: string = '';
-
-  get store(): Store<IState> {
-    return this.$store;
-  }
 
   get books(): Book[] {
     return this.store.state.books;
