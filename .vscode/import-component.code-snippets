@@ -1,0 +1,10 @@
+{
+	"Import component": {
+		"scope": "javascript,typescript",
+		"prefix": "import-component",
+		"body": [
+			"import ${1:compononentName} from '@/components/$1.vue';",
+		],
+		"description": "Import a Vue component."
+	}
+}

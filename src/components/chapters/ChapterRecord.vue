@@ -8,20 +8,22 @@
     </td>
     <td class="text-left">{{ chapter.title }}</td>
     <td class="text-center" style="width: 120px;">{{ nrOfQuestions }}</td>
-    <td class="text-center table-col-delete">
-      <button class="btn btn-xs" aria-label="Trash book" @click="raiseEvent('trash')">
-        <font-awesome-icon icon="trash-alt"/>
-      </button>
+    <td class="text-center" style="width: 70px;">
+      <delete-button label="Trash chapter" @trash="trash" :argument="chapter"/>
     </td>
   </tr>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
-
 import Chapter from '@/models/Chapter';
+import DeleteButton from '@/components/DeleteButton.vue';
 
-@Component
+@Component({
+  components: {
+    DeleteButton,
+  },
+})
 export default class ChapterRecord extends Vue {
   @Prop() public chapter!: Chapter;
 
@@ -30,8 +32,8 @@ export default class ChapterRecord extends Vue {
     return this.chapter.questions.length;
   }
 
-  private raiseEvent(eventName: string) {
-    this.$emit(eventName, this.chapter.id);
+  private trash(chapter: Chapter) {
+    this.$emit('trash', chapter.id);
   }
 }
 </script>

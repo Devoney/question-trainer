@@ -14,9 +14,7 @@
     </td>
     <td class="text-center"><span aria-label="Number of questions">{{ nrOfQuestions }}</span></td>
     <td class="text-center table-col-delete">
-      <button class="btn btn-xs" aria-label="Trash book" @click="raiseEvent('trash')">
-        <font-awesome-icon icon="trash-alt"/>
-      </button>
+      <delete-button label="Trash book" :argument="book" @trash="trash"/>
     </td>
   </tr>
 </template>
@@ -25,12 +23,14 @@
 import _ from 'lodash';
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import AddOrRemove from '@/components/AddOrRemove.vue';
+import DeleteButton from '@/components/DeleteButton.vue';
 
 import Book from '@/models/Book';
 
 @Component({
   components: {
     AddOrRemove,
+    DeleteButton,
   },
 })
 export default class BookRecord extends Vue {
@@ -50,15 +50,9 @@ export default class BookRecord extends Vue {
   private raiseEvent(eventName: string) {
     this.$emit(eventName, this.book.id);
   }
+
+  private trash(book: Book): void {
+    this.$emit('trash', book.id);
+  }
 }
 </script>
-
-<style scoped>
-.btn-group-xs > .btn,
-.btn-xs {
-  padding: 0.25rem 0.4rem;
-  font-size: 0.875rem;
-  line-height: 0.5;
-  border-radius: 0.2rem;
-}
-</style>

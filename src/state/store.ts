@@ -36,7 +36,7 @@ const storeOptions: StoreOptions<IState> = {
     },
 
     [MutationTypes.removeChapterById]: (state, chapterId: string) => {
-      if (state.bookSelected === undefined) return;
+      if (state.bookSelected === undefined) { return; }
 
       const index = _.findIndex(state.bookSelected.chapters, (c) => {
         return c.id === chapterId;
