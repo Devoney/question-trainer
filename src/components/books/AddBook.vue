@@ -38,7 +38,7 @@ import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 
 @Component
 export default class AddBook extends Vue {
-  @Prop() private errorMessage!: string;
+  @Prop() public errorMessage!: string;
 
   private bookTitle: string = '';
 

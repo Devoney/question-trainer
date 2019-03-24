@@ -35,7 +35,6 @@ export default class Tabs extends Vue {
     const tabPages = this.getTabPages();
     this.setActiveTabPage(tabPages);
     this.tabPages = tabPages;
-
   }
 
   private getTabPages(): TabPage[] {

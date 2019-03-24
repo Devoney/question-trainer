@@ -54,15 +54,15 @@ import 'bootstrap';
 export default class ConfirmationModal extends Vue {
   @Prop({
     required: true,
-  }) private id!: string;
+  }) public id!: string;
 
-  @Prop() private title!: string;
+  @Prop() public title!: string;
   @Prop({
     default: 'OK',
-  }) private okText!: string;
+  }) public okText!: string;
   @Prop({
     default: 'cancel',
-  }) private cancelText!: string;
+  }) public cancelText!: string;
 
   private cancel() {
     this.$emit('cancel');

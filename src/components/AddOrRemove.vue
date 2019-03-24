@@ -27,10 +27,10 @@ library.add(faPlus);
 
 @Component
 export default class AddOrRemove extends Vue {
-  @Prop({ default: 'Add' }) private addToText!: string;
-  @Prop({ default: 'Remove' }) private removeFromText!: string;
-  @Prop({ default: 'black' }) private addColor!: string;
-  @Prop({ default: 'black' }) private removeColor!: string;
+  @Prop({ default: 'Add' }) public addToText!: string;
+  @Prop({ default: 'Remove' }) public removeFromText!: string;
+  @Prop({ default: 'black' }) public addColor!: string;
+  @Prop({ default: 'black' }) public removeColor!: string;
 
   private click(button: string): void {
     this.$emit(button);

@@ -34,8 +34,8 @@ import Book from '@/models/Book';
   },
 })
 export default class BookRecord extends Vue {
-  @Prop() private book!: Book;
-  @Prop() private index!: number;
+  @Prop() public book!: Book;
+  @Prop() public index!: number;
 
   get nrOfQuestions() {
     if (this.nrOfChapters === 0) { return 0; }
