@@ -28,12 +28,6 @@ import AddOrRemove from '@/components/AddOrRemove.vue';
 
 import Book from '@/models/Book';
 
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-Vue.component('font-awesome-icon', FontAwesomeIcon);
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faTrashAlt, faCarAlt } from '@fortawesome/free-solid-svg-icons';
-library.add(faTrashAlt);
-
 @Component({
   components: {
     AddOrRemove,

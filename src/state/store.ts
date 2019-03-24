@@ -35,6 +35,20 @@ const storeOptions: StoreOptions<IState> = {
       }
     },
 
+    [MutationTypes.removeChapterById]: (state, chapterId: string) => {
+      if (state.bookSelected === undefined) return;
+
+      const index = _.findIndex(state.bookSelected.chapters, (c) => {
+        return c.id === chapterId;
+      });
+      if (index === -1) { return; }
+
+      const chapter = state.bookSelected.chapters.splice(index, 1)[0];
+      if (chapter.questions !== undefined && chapter.questions.length > 0) {
+        chapter.questions.splice(0, chapter.questions.length);
+      }
+    },
+
     [MutationTypes.setBooks]: (state, books: Book[]) => {
       Vue.set(state, 'books', books);
     },

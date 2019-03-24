@@ -1,7 +1,12 @@
 General:
   ☐ @high Get rid of all the data methods, and use direct properties instead.
   ☐ Make properties public
-  ☐ Check in newly created project with Vuex that the error _Uncaught TypeError: hook.flushStoreModules is not a function_ also occurs
+  ☐ Globalize Vue.component('font-awesome-icon', FontAwesomeIcon);
+  ☐ Use a Mixin for delete confirmation of Book and Chapter.
+  Console-errors:
+    hook.flushStoreModules:
+      ☐ Check first in another browser, without Vue dev tools that error occurs to.
+      ☐ Check in newly created project with Vuex that the error _Uncaught TypeError: hook.flushStoreModules is not a function_ also occurs
   Books:
     ☐ Use store to validate book title, instead of event and property.
     ☐ Move logic for adding book into AddBook itself, out of BookManager to simply ping ponging of data.
