@@ -63,12 +63,8 @@ import ConfirmationModal from '@/components/ConfirmationModal.vue';
   },
 })
 export default class ChapterTable extends Vue {
-  private data() {
-    return {
-      modalId: 'confirmation-modal-chapter-table',
-      chapterIdUpForDelete: undefined,
-    };
-  }
+  private modalId: string = 'confirmation-modal-chapter-table';
+  private chapterIdUpForDelete: string = '';
 
   get chapters(): Chapter[] {
     const bookSelected = this.store.state.bookSelected;
@@ -85,17 +81,16 @@ export default class ChapterTable extends Vue {
   }
 
   private trash(chapterId: string): void {
-    this.$data.chapterIdUpForDelete = chapterId;
-    $('#' + this.$data.modalId).modal();
+    this.chapterIdUpForDelete = chapterId;
+    $('#' + this.modalId).modal();
   }
 
   private deleteConfirmed() {
-    const chapterId: string = this.$data.chapterIdUpForDelete as string;
-    this.store.commit(MutationTypes.removeChapterById, chapterId);
+    this.store.commit(MutationTypes.removeChapterById, this.chapterIdUpForDelete);
   }
 
   private deleteCanceled() {
-    this.$data.chapterIdUpForDelete = undefined;
+    this.chapterIdUpForDelete = '';
   }
 }
 </script>

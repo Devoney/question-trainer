@@ -29,16 +29,12 @@ import TabPage from '@/components/TabPage.vue';
 
 @Component
 export default class Tabs extends Vue {
-  private data(): any {
-    return {
-      tabPages: undefined,
-    };
-  }
+  private tabPages: TabPage[] = [];
 
   private mounted(): void {
     const tabPages = this.getTabPages();
     this.setActiveTabPage(tabPages);
-    this.$data.tabPages = tabPages;
+    this.tabPages = tabPages;
 
   }
 
@@ -67,7 +63,7 @@ export default class Tabs extends Vue {
 
   private hasActiveTabPage(tabPages: TabPage[]): boolean {
     return _.findIndex(tabPages, (tabPage) => {
-      return tabPage.$data.active === true;
+      return tabPage.active === true;
     }) !== -1;
   }
 
@@ -79,7 +75,7 @@ export default class Tabs extends Vue {
     }
 
     for (let i = 0; i < tabPages.length; i++) {
-      tabPages[i].$data.active = (i === 0);
+      tabPages[i].active = (i === 0);
     }
   }
 }

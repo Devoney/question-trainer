@@ -48,7 +48,7 @@ describe('components/books/AddBook', () => {
       addButton.trigger('click');
 
       // Then
-      assert.equal(wrapper.vm.$data.bookTitle, undefined);
+      assert.equal(wrapper.vm.$data.bookTitle, '');
       assert.isEmpty((input.element as HTMLInputElement).value);
     });
 

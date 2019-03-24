@@ -74,6 +74,3 @@ export default class ConfirmationModal extends Vue {
   }
 }
 </script>
-
-<style scoped>
-</style>

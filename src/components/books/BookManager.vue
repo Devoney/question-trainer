@@ -40,11 +40,7 @@ import BookTable from '@/components/books/BookTable.vue';
   },
 })
 export default class BookManager extends Vue {
-  private data(): any {
-    return {
-      titleIsNotValidMessage: undefined,
-    };
-  }
+  private titleIsNotValidMessage: string = '';
 
   get store(): Store<IState> {
     return this.$store;
@@ -65,8 +61,8 @@ export default class BookManager extends Vue {
   }
 
   private titleChanged(title: { new: string, old: string }): void {
-    if (title.new === undefined) {
-      this.$data.titleIsNotValidMessage = undefined;
+    if (title.new === undefined || title.new === '') {
+      this.titleIsNotValidMessage = '';
       return;
     }
 
@@ -75,7 +71,7 @@ export default class BookManager extends Vue {
       return b.title.toLowerCase() === titleLowerCase;
     }) !== -1;
 
-    this.$data.titleIsNotValidMessage = titleExists ? 'Title already exists.' : undefined;
+    this.titleIsNotValidMessage = titleExists ? 'Title already exists.' : '';
   }
 
   private titleAlreadyInCollection(title: string): boolean {

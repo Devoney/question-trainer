@@ -4,7 +4,7 @@
       <div class="col-2">
         <label class="font-weight-bold">Ch. Nr.:</label>
           <input
-            :class="['form-control', { 'is-invalid': error.nr !== undefined }]"
+            :class="['form-control', { 'is-invalid': error.nr !== '' }]"
             type="text"
             v-model.trim="chapter.nr"
             v-on:keyup="numberChanged"
@@ -15,7 +15,7 @@
         <label class="font-weight-bold">Title:</label>
         <div class="input-group row no-gutters">
           <input
-            :class="['form-control', { 'is-invalid': error.title !== undefined }]"
+            :class="['form-control', { 'is-invalid': error.title !== '' }]"
             type="text"
             v-model.trim="chapter.title"
             v-on:keyup="titleChanged"
@@ -47,18 +47,15 @@ import MutationTypes from '@/state/MutationTypes';
 
 @Component
 export default class AddChapter extends Vue {
-  private data(): any {
-    return {
-      chapter: {
-        nr: '',
-        title: '',
-      },
-      error: {
-        nr: undefined,
-        title: undefined,
-      },
-    };
-  }
+  private chapter: { nr: string, title: string } = {
+    nr: '',
+    title: '',
+  };
+
+  private error: { nr: string, title: string } = {
+    nr: '',
+    title: '',
+  };
 
   get store(): Store<IState> {
     return this.$store;
@@ -71,59 +68,56 @@ export default class AddChapter extends Vue {
 
   get canAdd() {
     return !this.hasError
-      && !_.isEmpty(this.$data.chapter.nr)
-      && !_.isEmpty(this.$data.chapter.title)
+      && !_.isEmpty(this.chapter.nr)
+      && !_.isEmpty(this.chapter.title)
       && !this.chapterNumberExists()
       && !this.titleExists();
   }
 
   get hasError() {
-    return !_.isEmpty(this.$data.error.title) || !_.isEmpty(this.$data.error.nr);
+    return !_.isEmpty(this.error.title) || !_.isEmpty(this.error.nr);
   }
 
   private add(): void {
     if (!this.canAdd) { return; }
 
     const id = uuid();
-    const chapter = new Chapter(id, this.$data.chapter.nr.toString(), this.$data.chapter.title);
+    const chapter = new Chapter(id, this.chapter.nr.toString(), this.chapter.title);
 
     this.store.commit(MutationTypes.addChapter, chapter);
 
-    this.$data.chapter.title = '';
-    this.$data.chapter.nr = '';
+    this.chapter.title = '';
+    this.chapter.nr = '';
   }
 
   private chapterNumberExists(): boolean {
     return _.findIndex(this.chapters, (chapter) => {
-      return chapter.nr.toLowerCase() === this.$data.chapter.nr.toLowerCase();
+      return chapter.nr.toLowerCase() === this.chapter.nr.toLowerCase();
     }) !== -1;
   }
 
   private numberChanged(): void {
     if (this.chapterNumberExists()) {
-      this.$data.error.nr = 'Chapter already exists for this book.';
+      this.error.nr = 'Chapter already exists for this book.';
       return;
     }
 
-    this.$data.error.nr = undefined;
+    this.error.nr = '';
   }
 
   private titleExists(): boolean {
     return _.findIndex(this.chapters, (chapter) => {
-      return chapter.title.toLowerCase() === this.$data.chapter.title.toLowerCase();
+      return chapter.title.toLowerCase() === this.chapter.title.toLowerCase();
     }) !== -1;
   }
 
   private titleChanged(): void {
     if (this.titleExists()) {
-      this.$data.error.title = 'Title already exists for this book.';
+      this.error.title = 'Title already exists for this book.';
       return;
     }
 
-    this.$data.error.title = undefined;
+    this.error.title = '';
   }
 }
 </script>
-
-<style scoped>
-</style>

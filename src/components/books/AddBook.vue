@@ -40,14 +40,10 @@ import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 export default class AddBook extends Vue {
   @Prop() private errorMessage!: string;
 
-  private data() {
-    return {
-      bookTitle: undefined,
-    };
-  }
+  private bookTitle: string = '';
 
   get invalidTitle() {
-    if (_.isEmpty(this.$data.bookTitle)) { return false; }
+    if (_.isEmpty(this.bookTitle)) { return false; }
     return !_.isEmpty(this.errorMessage);
   }
 
@@ -57,10 +53,10 @@ export default class AddBook extends Vue {
   }
 
   private add(): void {
-    const bookTitle = this.$data.bookTitle;
+    const bookTitle = this.bookTitle;
     if (_.isEmpty(bookTitle)) { return; }
     this.$emit('add', bookTitle);
-    this.$data.bookTitle = undefined;
+    this.bookTitle = '';
   }
 }
 </script>

@@ -1,7 +1,6 @@
 <template>
   <tr>
     <td class="text-center" style="width: 70px;">
-      
     </td>
     <td class="text-right" style="width: 70px;">
       <span aria-label="Index">{{ chapter.nr }}</span>

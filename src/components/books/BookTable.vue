@@ -70,12 +70,8 @@ import ConfirmationModal from '@/components/ConfirmationModal.vue';
   },
 })
 export default class BookTable extends Vue {
-  private data() {
-    return {
-      modalId: 'confirmation-modal-book-table',
-      bookIdUpForDelete: undefined,
-    };
-  }
+  private bookIdUpForDelete: string = '';
+  private modalId: string = 'confirmation-modal-book-table';
 
   get store(): Store<IState> {
     return this.$store;
@@ -94,17 +90,17 @@ export default class BookTable extends Vue {
   }
 
   private trash(bookId: string): void {
-    this.$data.bookIdUpForDelete = bookId;
-    $('#' + this.$data.modalId).modal();
+    this.bookIdUpForDelete = bookId;
+    $('#' + this.modalId).modal();
   }
 
   private deleteConfirmed() {
-    const bookId: string = this.$data.bookIdUpForDelete as string;
+    const bookId: string = this.bookIdUpForDelete as string;
     this.store.commit(MutationTypes.removeBookById, bookId);
   }
 
   private deleteCanceled() {
-    this.$data.bookIdUpForDelete = undefined;
+    this.bookIdUpForDelete = '';
   }
 }
 </script>
