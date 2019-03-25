@@ -1,7 +1,7 @@
 <template>
   <div>
-    <button class="btn btn-xs" :aria-label="label" @click="trash">
-      <font-awesome-icon icon="trash-alt"/>
+    <button class="btn btn-xs" :aria-label="label" @click="click">
+      <font-awesome-icon :icon="icon"/>
     </button>
   </div>
 </template>
@@ -13,9 +13,10 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 export default class DeleteButton extends Vue {
   @Prop({ default: '' }) public label!: string;
   @Prop({ required: true }) public argument!: any;
+  @Prop() public icon!: string;
 
-  private trash(): void {
-    this.$emit('trash', this.argument);
+  private click(): void {
+    this.$emit('click', this.argument);
   }
 }
 </script>

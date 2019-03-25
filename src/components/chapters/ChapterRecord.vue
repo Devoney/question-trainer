@@ -8,7 +8,7 @@
     <td class="text-left">{{ chapter.title }}</td>
     <td class="text-center" style="width: 120px;">{{ nrOfQuestions }}</td>
     <td class="text-center" style="width: 70px;">
-      <delete-button label="Trash chapter" @trash="trash" :argument="chapter"/>
+      <icon-button icon="trash-alt" label="Trash chapter" @click="trash" :argument="chapter"/>
     </td>
   </tr>
 </template>
@@ -16,11 +16,11 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import Chapter from '@/models/Chapter';
-import DeleteButton from '@/components/DeleteButton.vue';
+import IconButton from '@/components/IconButton.vue';
 
 @Component({
   components: {
-    DeleteButton,
+    IconButton,
   },
 })
 export default class ChapterRecord extends Vue {

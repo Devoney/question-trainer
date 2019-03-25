@@ -14,7 +14,7 @@
     </td>
     <td class="text-center"><span aria-label="Number of questions">{{ nrOfQuestions }}</span></td>
     <td class="text-center table-col-delete">
-      <delete-button label="Trash book" :argument="book" @trash="trash"/>
+      <icon-button icon="trash-alt" label="Trash book" :argument="book" @click="trash"/>
     </td>
   </tr>
 </template>
@@ -23,14 +23,14 @@
 import _ from 'lodash';
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import AddOrRemove from '@/components/AddOrRemove.vue';
-import DeleteButton from '@/components/DeleteButton.vue';
+import IconButton from '@/components/IconButton.vue';
 
 import Book from '@/models/Book';
 
 @Component({
   components: {
     AddOrRemove,
-    DeleteButton,
+    IconButton,
   },
 })
 export default class BookRecord extends Vue {
