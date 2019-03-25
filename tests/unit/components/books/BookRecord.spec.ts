@@ -6,6 +6,7 @@ import { assert, expect } from 'chai';
 import Vue from 'vue';
 import { CombinedVueInstance } from 'vue/types/vue';
 import { mount, Wrapper } from '@vue/test-utils';
+import store from '@/state/store';
 import '@/font-awesome';
 
 type WrapperComplex = Wrapper<
@@ -37,6 +38,7 @@ describe('components/books/BookRecord', () => {
           book: getBook(),
           index,
         },
+        store,
       });
 
       // Then
@@ -53,6 +55,7 @@ describe('components/books/BookRecord', () => {
         propsData: {
           book,
         },
+        store,
       });
 
       // Then
@@ -69,6 +72,7 @@ describe('components/books/BookRecord', () => {
         propsData: {
           book: getBook(),
         },
+        store,
       });
 
       // Then
@@ -85,6 +89,7 @@ describe('components/books/BookRecord', () => {
         propsData: {
           book: getBook(),
         },
+        store,
       });
 
       // Then
@@ -102,6 +107,7 @@ describe('components/books/BookRecord', () => {
         propsData: {
           book,
         },
+        store,
       });
       const addButton = wrapper.find('button[aria-label="add"]');
 
@@ -123,6 +129,7 @@ describe('components/books/BookRecord', () => {
         propsData: {
           book,
         },
+        store,
       });
       const removeButton = wrapper.find('button[aria-label="remove"]');
 
@@ -144,6 +151,7 @@ describe('components/books/BookRecord', () => {
         propsData: {
           book,
         },
+        store,
       });
       const button = wrapper.find('[aria-label="Trash book"]');
 

@@ -13,7 +13,7 @@
         v-model.trim="bookTitle"
         v-on:keydown.enter="add"
         v-on:keydown.esc="cancel"
-        :title="errorMessage"
+        :title="errorMessageToShow"
       >
       <div class="input-group-append">
         <button
@@ -36,6 +36,11 @@ export default class AddBook extends Vue {
   @Prop() public errorMessage!: string;
 
   private bookTitle: string = '';
+
+  get errorMessageToShow(): string {
+    if (_.isEmpty(this.bookTitle)) { return ''; }
+    return this.errorMessage;
+  }
 
   get invalidTitle() {
     if (_.isEmpty(this.bookTitle)) { return false; }
