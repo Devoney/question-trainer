@@ -10,11 +10,16 @@
       <span style="cursor: pointer;" aria-label="Title of book">{{ book.title }}</span>
     </td>
     <td class="text-center">
-      <div><span aria-label="Number of chapters">{{ nrOfChapters }}</span></div>
+      <div>
+        <span aria-label="Number of chapters">{{ nrOfChapters }}</span>
+      </div>
     </td>
-    <td class="text-center"><span aria-label="Number of questions">{{ nrOfQuestions }}</span></td>
+    <td class="text-center">
+      <span aria-label="Number of questions">{{ nrOfQuestions }}</span>
+    </td>
     <td class="text-center table-col-delete">
-      <icon-button icon="trash-alt" label="Trash book" :argument="book" @click="trash"/>
+      <icon-button icon="edit" label="Edit book" :argument="book" @click="edit" :disabled="bookInEditMode"/>
+      <icon-button icon="trash-alt" label="Trash book" :argument="book" @click="trash" :disabled="bookInEditMode"/>
     </td>
   </tr>
 </template>
@@ -22,9 +27,11 @@
 <script lang="ts">
 import _ from 'lodash';
 import { Component, Prop, Vue } from 'vue-property-decorator';
+import { mixins } from 'vue-class-component';
+import MutationTypes from '@/state/MutationTypes';
+import StoreMixin from '@/mixins/StoreMixin';
 import AddOrRemove from '@/components/AddOrRemove.vue';
 import IconButton from '@/components/IconButton.vue';
-
 import Book from '@/models/Book';
 
 @Component({
@@ -33,13 +40,18 @@ import Book from '@/models/Book';
     IconButton,
   },
 })
-export default class BookRecord extends Vue {
+export default class BookRecord extends mixins(StoreMixin) {
   @Prop() public book!: Book;
   @Prop() public index!: number;
 
   get nrOfQuestions() {
     if (this.nrOfChapters === 0) { return 0; }
     return _.sumBy(this.book.chapters, (c) => c.questions.length);
+  }
+
+  get bookInEditMode(): boolean {
+    if (this.store.state.bookEdited === undefined) { return false; }
+    return this.store.state.bookEdited.id === this.book.id;
   }
 
   get nrOfChapters() {
@@ -49,6 +61,10 @@ export default class BookRecord extends Vue {
 
   private raiseEvent(eventName: string) {
     this.$emit(eventName, this.book.id);
+  }
+
+  private edit(book: Book): void {
+    this.store.commit(MutationTypes.setEditedBook, book);
   }
 
   private trash(book: Book): void {

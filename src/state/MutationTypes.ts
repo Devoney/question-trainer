@@ -3,8 +3,9 @@ enum MutationTypes {
   addChapter = 'addChapter',
   removeBookById = 'removeBookById',
   removeChapterById = 'removeChapterById',
-  setSelectedBook = 'setSelectedBook',
+  setEditedBook = 'setEditedBook',
   setBooks = 'setBooks',
+  setSelectedBook = 'setSelectedBook',
 }
 
 export default MutationTypes;

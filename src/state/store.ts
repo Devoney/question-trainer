@@ -12,6 +12,7 @@ const storeOptions: StoreOptions<IState> = {
   state: {
     books: new Array<Book>(),
     bookSelected: undefined,
+    bookEdited: undefined,
   },
   getters: {
     booksSortedByTitle: (state) => {
@@ -63,6 +64,10 @@ const storeOptions: StoreOptions<IState> = {
 
     [MutationTypes.setBooks]: (state, books: Book[]) => {
       Vue.set(state, 'books', books);
+    },
+
+    [MutationTypes.setEditedBook]: (state, book: Book) => {
+      state.bookEdited = book;
     },
 
     [MutationTypes.setSelectedBook]: (state, book: Book) => {

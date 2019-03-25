@@ -12,6 +12,8 @@
         type="text"
         v-model.trim="bookTitle"
         v-on:keydown.enter="add"
+        v-on:keydown.esc="cancel"
+        :title="errorMessage"
       >
       <div class="input-group-append">
         <button
@@ -20,13 +22,6 @@
           id="btn-add-book"
           @click="add"
         >Add</button>
-      </div>
-    </div>
-    <div class="row err-message">
-      <div class="col text-left">
-        <transition name="fade">
-          <span v-if="invalidTitle">{{ errorMessage }}</span>
-        </transition>
       </div>
     </div>
   </div>
@@ -56,6 +51,10 @@ export default class AddBook extends Vue {
     const bookTitle = this.bookTitle;
     if (_.isEmpty(bookTitle)) { return; }
     this.$emit('add', bookTitle);
+    this.bookTitle = '';
+  }
+
+  private cancel(): void {
     this.bookTitle = '';
   }
 }

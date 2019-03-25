@@ -1,9 +1,7 @@
 <template>
-  <div>
-    <button class="btn btn-xs" :aria-label="label" @click="click">
+    <button :disabled="disabled" class="btn btn-xs" :title="label" :aria-label="label" @click="click">
       <font-awesome-icon :icon="icon"/>
     </button>
-  </div>
 </template>
 
 <script lang="ts">
@@ -14,6 +12,7 @@ export default class DeleteButton extends Vue {
   @Prop({ default: '' }) public label!: string;
   @Prop({ required: true }) public argument!: any;
   @Prop() public icon!: string;
+  @Prop() public disabled!: boolean;
 
   private click(): void {
     this.$emit('click', this.argument);

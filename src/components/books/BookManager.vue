@@ -2,12 +2,14 @@
   <div>
     <div class="row">
       <div class="col has-error">
+        <edit-book v-if="store.state.bookEdited !== undefined"/>
         <add-book
+          v-else 
           ref="addBook"
           @title-changed="titleChanged"
           :error-message="titleIsNotValidMessage"
           @add="add"
-        />
+        />        
       </div>
     </div>
     <div class="row book-table">
@@ -32,12 +34,14 @@ import MutationTypes from '@/state/MutationTypes';
 import Book from '@/models/Book';
 
 import AddBook from '@/components/books/AddBook.vue';
+import EditBook from '@/components/books/EditBook.vue';
 import BookTable from '@/components/books/BookTable.vue';
 import StoreMixin from '@/mixins/StoreMixin';
 
 @Component({
   components: {
     AddBook,
+    EditBook,
     BookTable,
   },
 })
