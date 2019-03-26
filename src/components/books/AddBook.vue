@@ -1,82 +1,38 @@
-<template>
-  <div class="form-group">
-    <div class="row">
-      <div class="col text-left">
-        <label class="font-weight-bold" for="bookTitleText">Title:</label>
-      </div>
-    </div>
-    <div class="input-group row no-gutters">
-      <input
-        :class="['form-control', { 'is-invalid': invalidTitle }]"
-        id="bookTitleText"
-        type="text"
-        v-model.trim="bookTitle"
-        v-on:keydown.enter="add"
-        v-on:keydown.esc="cancel"
-        :title="errorMessageToShow"
-      >
-      <div class="input-group-append">
-        <button
-          :class="['btn input-group-append', { 'btn-primary': !invalidTitle, 'btn-secondary': invalidTitle }]"
-          :disabled="invalidTitle"
-          id="btn-add-book"
-          @click="add"
-        >Add</button>
-      </div>
-    </div>
-  </div>
-</template>
-
 <script lang="ts">
 import _ from 'lodash';
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
+import BookBase from '@/components/books/BookBase.vue';
 
 @Component
-export default class AddBook extends Vue {
+export default class AddBook extends BookBase {
   @Prop() public errorMessage!: string;
 
-  private bookTitle: string = '';
+  protected buttonText: string = 'Add';
+
+  protected isInvalidTitle(): boolean {
+    if (_.isEmpty(this.bookTitle)) { return false; }
+    return !_.isEmpty(this.errorMessage);
+  }
 
   get errorMessageToShow(): string {
     if (_.isEmpty(this.bookTitle)) { return ''; }
     return this.errorMessage;
   }
 
-  get invalidTitle() {
-    if (_.isEmpty(this.bookTitle)) { return false; }
-    return !_.isEmpty(this.errorMessage);
-  }
-
-  @Watch('bookTitle')
-  private onBookTitleChanged(newTitle: string, oldTitle: string) {
-    this.$emit('title-changed', { old: oldTitle, new: newTitle });
-  }
-
-  private add(): void {
+  protected ok(): void {
     const bookTitle = this.bookTitle;
     if (_.isEmpty(bookTitle)) { return; }
     this.$emit('add', bookTitle);
     this.bookTitle = '';
   }
 
-  private cancel(): void {
+  protected cancel(): void {
     this.bookTitle = '';
+  }
+
+  @Watch('bookTitle')
+  private onBookTitleChanged(newTitle: string, oldTitle: string) {
+    this.$emit('title-changed', { old: oldTitle, new: newTitle });
   }
 }
 </script>
-
-<style scoped>
-.err-message {
-  color: red;
-  height: 24px;
-}
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s;
-}
-.fade-enter,
-.fade-leave-to {
-  opacity: 0;
-}
-</style>
