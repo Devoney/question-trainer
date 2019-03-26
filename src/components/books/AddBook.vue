@@ -5,18 +5,13 @@ import BookBase from '@/components/books/BookBase.vue';
 
 @Component
 export default class AddBook extends BookBase {
-  @Prop() public errorMessage!: string;
+  @Prop() public errMessage!: string;
 
   protected buttonText: string = 'Add';
 
   get invalidTitle(): boolean {
     if (_.isEmpty(this.bookTitle)) { return false; }
-    return !_.isEmpty(this.errorMessage);
-  }
-
-  get errorMessageToShow(): string {
-    if (_.isEmpty(this.bookTitle)) { return ''; }
-    return this.errorMessage;
+    return !_.isEmpty(this.errMessage);
   }
 
   protected ok(): void {
@@ -34,6 +29,11 @@ export default class AddBook extends BookBase {
   @Watch('bookTitle')
   private onBookTitleChanged(newTitle: string, oldTitle: string) {
     this.$emit('title-changed', { old: oldTitle, new: newTitle });
+  }
+
+  get errorMessageToShow(): string {
+    if (_.isEmpty(this.bookTitle)) { return ''; }
+    return this.errMessage;
   }
 }
 </script>

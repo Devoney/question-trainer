@@ -54,10 +54,10 @@ describe('components/books/AddBook', () => {
 
     it('When error message is set, but book title is not, then the error message is not shown.', () => {
       // Given
-      const errorMessage: string = 'My custom error message';
+      const errMessage: string = 'My custom error message';
       const wrapper = mount(AddBook, {
         propsData: {
-          errorMessage,
+          errMessage,
         },
       });
 
@@ -66,16 +66,16 @@ describe('components/books/AddBook', () => {
 
       // Then
       const html = wrapper.html();
-      const hasErrorMessage: boolean = html.indexOf(errorMessage) !== -1;
+      const hasErrorMessage: boolean = html.indexOf(errMessage) !== -1;
       assert.isFalse(hasErrorMessage, html);
     });
 
     it('When error message is set, and book title also, then the error message is shown.', () => {
       // Given
-      const errorMessage: string = 'My custom error message';
+      const errMessage: string = 'My custom error message';
       const wrapper = mount(AddBook, {
         propsData: {
-          errorMessage,
+          errMessage,
         },
       });
 
@@ -84,7 +84,7 @@ describe('components/books/AddBook', () => {
 
       // Then
       const html = wrapper.html();
-      const hasErrorMessage: boolean = html.indexOf(errorMessage) !== -1;
+      const hasErrorMessage: boolean = html.indexOf(errMessage) !== -1;
       assert.isTrue(hasErrorMessage, html);
     });
   });

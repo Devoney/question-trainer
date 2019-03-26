@@ -38,10 +38,5 @@ export default abstract class BookBase extends mixins(StoreMixin) {
   protected errorMessage: string = '';
   protected abstract buttonText: string;
   protected bookTitle: string = '';
-
-  get errorMessageToShow(): string {
-    if (_.isEmpty(this.bookTitle)) { return ''; }
-    return this.errorMessage;
-  }
 }
 </script>

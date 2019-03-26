@@ -23,6 +23,11 @@ export default class EditBook extends BookBase {
     return !this.invalidTitle && !_.isEmpty(this.bookTitle.trim());
   }
 
+  private get errorMessageToShow(): string {
+    if (_.isEmpty(this.bookTitle)) { return ''; }
+    return this.errorMessage;
+  }
+
   protected cancel(): void {
     this.store.commit(MutationTypes.setEditedBook, undefined);
   }
@@ -34,6 +39,15 @@ export default class EditBook extends BookBase {
     }
     this.store.state.bookEdited.title = this.bookTitle;
     this.cancel();
+  }
+
+  @Watch('bookTitle')
+  private onBookTitleChanged(newTitle: string, oldTitle: string) {
+    if (this.invalidTitle) {
+      this.errorMessage = 'Title already exists.';
+    } else {
+      this.errorMessage = '';
+    }
   }
 
   @Watch('store.state.bookEdited')

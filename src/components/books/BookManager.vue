@@ -7,7 +7,7 @@
           v-else 
           ref="addBook"
           @title-changed="titleChanged"
-          :error-message="titleIsNotValidMessage"
+          :err-message="titleIsNotValidMessage"
           @add="add"
         />        
       </div>
