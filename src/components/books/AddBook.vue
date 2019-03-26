@@ -9,7 +9,7 @@ export default class AddBook extends BookBase {
 
   protected buttonText: string = 'Add';
 
-  protected isInvalidTitle(): boolean {
+  get invalidTitle(): boolean {
     if (_.isEmpty(this.bookTitle)) { return false; }
     return !_.isEmpty(this.errorMessage);
   }
@@ -20,6 +20,7 @@ export default class AddBook extends BookBase {
   }
 
   protected ok(): void {
+    if (this.invalidTitle) { return; }
     const bookTitle = this.bookTitle;
     if (_.isEmpty(bookTitle)) { return; }
     this.$emit('add', bookTitle);

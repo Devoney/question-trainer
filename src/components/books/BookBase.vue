@@ -11,7 +11,7 @@
         id="bookTitleText"
         type="text"
         v-model.trim="bookTitle"
-        v-on:keydown.enter="onOk"
+        v-on:keydown.enter="ok"
         v-on:keydown.esc="cancel"
         :title="errorMessageToShow"
       >
@@ -20,7 +20,7 @@
           :class="['btn input-group-append', { 'btn-primary': !invalidTitle, 'btn-secondary': invalidTitle }]"
           :disabled="invalidTitle"
           id="btn-ok-book"
-          @click="onOk"
+          @click="ok"
         >{{ buttonText }}</button>
       </div>
     </div>
@@ -38,19 +38,6 @@ export default abstract class BookBase extends mixins(StoreMixin) {
   protected errorMessage: string = '';
   protected abstract buttonText: string;
   protected bookTitle: string = '';
-
-  get invalidTitle(): boolean {
-    if (_.isEmpty(this.bookTitle)) { return false; }
-    return !_.isEmpty(this.errorMessage);
-  }
-
-  protected abstract ok(): void;
-  protected abstract cancel(): void;
-
-  private onOk(): void {
-    if (this.invalidTitle) { return; }
-    this.ok();
-  }
 
   get errorMessageToShow(): string {
     if (_.isEmpty(this.bookTitle)) { return ''; }
