@@ -40,15 +40,15 @@ export default abstract class BookBase extends mixins(StoreMixin) {
   protected bookTitle: string = '';
 
   get invalidTitle(): boolean {
-    return this.isInvalidTitle();
+    if (_.isEmpty(this.bookTitle)) { return false; }
+    return !_.isEmpty(this.errorMessage);
   }
 
   protected abstract ok(): void;
   protected abstract cancel(): void;
-  protected abstract isInvalidTitle(): boolean;
 
   private onOk(): void {
-    if (this.isInvalidTitle()) { return; }
+    if (this.invalidTitle) { return; }
     this.ok();
   }
 
