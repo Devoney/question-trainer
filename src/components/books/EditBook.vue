@@ -52,16 +52,16 @@ export default class EditBook extends BookBase {
 
   @Watch('store.state.bookEdited')
   private bookEditedChanged() {
+    if (this.store.state.bookEdited === undefined) { return; }
     this.handleEdit();
     this.setFocus();
-  }
-
-  private created(): void {
-    this.handleEdit();
   }
 
   private mounted(): void {
-    this.setFocus();
+    this.handleEdit();
+    this.$nextTick(() => {
+      this.setFocus();
+    });
   }
 
   private handleEdit(): void {
@@ -73,8 +73,11 @@ export default class EditBook extends BookBase {
   }
 
   private setFocus(): void {
-    const inputElement = document.getElementById('bookTitleText') as HTMLInputElement;
-    inputElement.focus();
+    const inputElement = this.$refs.bookTitleText as HTMLInputElement;
+
+    if (inputElement !== undefined) {
+      inputElement.focus();
+    }
   }
 }
 </script>

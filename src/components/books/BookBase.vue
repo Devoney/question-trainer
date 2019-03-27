@@ -10,6 +10,7 @@
         :class="['form-control', { 'is-invalid': invalidTitle }]"
         id="bookTitleText"
         type="text"
+        ref="bookTitleText"
         v-model.trim="bookTitle"
         v-on:keydown.enter="ok"
         v-on:keydown.esc="cancel"
