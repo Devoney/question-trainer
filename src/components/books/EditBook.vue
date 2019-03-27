@@ -59,9 +59,7 @@ export default class EditBook extends BookBase {
 
   private mounted(): void {
     this.handleEdit();
-    this.$nextTick(() => {
-      this.setFocus();
-    });
+    this.setFocus();
   }
 
   private handleEdit(): void {
@@ -74,10 +72,9 @@ export default class EditBook extends BookBase {
 
   private setFocus(): void {
     const inputElement = this.$refs.bookTitleText as HTMLInputElement;
-
-    if (inputElement !== undefined) {
+    this.$nextTick(() => {
       inputElement.focus();
-    }
+    });
   }
 }
 </script>
