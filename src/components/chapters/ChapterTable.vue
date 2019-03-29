@@ -8,7 +8,7 @@
         <th>Nr of
           <br>questions
         </th>
-        <th></th>
+        <th width="90"></th>
       </thead>
       <tbody>
         <chapter-record

@@ -8,8 +8,8 @@ import MutationTypes from '@/state/MutationTypes';
 import ChapterBase from '@/components/chapters/ChapterBase.vue';
 
 @Component
-export default class AddChapter extends ChapterBase {
-  protected buttonText: string = 'Add';
+export default class EditChapter extends ChapterBase {
+  protected buttonText: string = 'Edit';
 
   get chapters(): Chapter[] {
     if (this.store.state.bookSelected === undefined) { return []; }
@@ -28,6 +28,15 @@ export default class AddChapter extends ChapterBase {
     return !_.isEmpty(this.error.title) || !_.isEmpty(this.error.nr);
   }
 
+  @Watch('store.state.chapterEdited')
+  private onChapterEdited() {
+    const chapterEdited = this.store.state.chapterEdited;
+    if (chapterEdited === undefined) { return; }
+    this.chapter.id = chapterEdited.id;
+    this.chapter.nr = chapterEdited.nr;
+    this.chapter.title = chapterEdited.title;
+  }
+
   @Watch('chapters')
   private chaptersChanged(): void {
     this.numberChanged();
@@ -37,18 +46,14 @@ export default class AddChapter extends ChapterBase {
   private ok(): void {
     if (!this.canExecute) { return; }
 
-    const id = uuid();
-    const chapter = new Chapter(id, this.chapter.nr.toString(), this.chapter.title);
+    this.store.commit(MutationTypes.editChapter, this.chapter);
 
-    this.store.commit(MutationTypes.addChapter, chapter);
-
-    this.chapter.title = '';
-    this.chapter.nr = '';
+    this.cancel();
   }
 
   private chapterNumberExists(): boolean {
     return _.findIndex(this.chapters, (chapter) => {
-      return chapter.nr.toLowerCase() === this.chapter.nr.toLowerCase();
+      return chapter.nr.toLowerCase() === this.chapter.nr.toLowerCase() && chapter.id !== this.chapter.id;
     }) !== -1;
   }
 
@@ -63,7 +68,7 @@ export default class AddChapter extends ChapterBase {
 
   private titleExists(): boolean {
     return _.findIndex(this.chapters, (chapter) => {
-      return chapter.title.toLowerCase() === this.chapter.title.toLowerCase();
+      return chapter.title.toLowerCase() === this.chapter.title.toLowerCase() && chapter.id !== this.chapter.id;;
     }) !== -1;
   }
 
@@ -78,6 +83,7 @@ export default class AddChapter extends ChapterBase {
 
   private cancel(): void {
     this.resetData();
+    this.store.commit(MutationTypes.setEditedChapter, undefined);
   }
 }
 </script>

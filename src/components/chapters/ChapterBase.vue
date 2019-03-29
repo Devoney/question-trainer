@@ -46,7 +46,8 @@ import MutationTypes from '@/state/MutationTypes';
 export default abstract class ChapterBase extends mixins(StoreMixin) {
   protected abstract buttonText: string;
 
-  protected chapter: { nr: string, title: string } = {
+  protected chapter: { id: string, nr: string, title: string } = {
+    id: '',
     nr: '',
     title: '',
   };
@@ -56,11 +57,19 @@ export default abstract class ChapterBase extends mixins(StoreMixin) {
     title: '',
   };
 
-  protected cancel(): void {
-    this.error.nr = '';
-    this.error.title = '';
+  protected resetError(): void {
     this.chapter.nr = '';
     this.chapter.title = '';
+  }
+
+  protected resetChapter(): void {
+    this.error.nr = '';
+    this.error.title = '';
+  }
+
+  protected resetData(): void {
+    this.resetChapter();
+    this.resetError();
   }
 }
 </script>
