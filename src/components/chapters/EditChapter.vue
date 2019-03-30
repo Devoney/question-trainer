@@ -68,7 +68,7 @@ export default class EditChapter extends ChapterBase {
 
   private titleExists(): boolean {
     return _.findIndex(this.chapters, (chapter) => {
-      return chapter.title.toLowerCase() === this.chapter.title.toLowerCase() && chapter.id !== this.chapter.id;;
+      return chapter.title.toLowerCase() === this.chapter.title.toLowerCase() && chapter.id !== this.chapter.id;
     }) !== -1;
   }
 
@@ -82,6 +82,7 @@ export default class EditChapter extends ChapterBase {
   }
 
   private cancel(): void {
+    debugger;
     this.resetData();
     this.store.commit(MutationTypes.setEditedChapter, undefined);
   }

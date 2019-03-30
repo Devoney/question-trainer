@@ -1,4 +1,5 @@
 General:
+  ☐ Ask on stack overflow why inheritance with abstract methods does not work for vue components. It results in 'this' being null.
   ✔ Get rid of all the data methods, and use direct properties instead. @done(19-03-24 19:17)
   ✔ Make properties public @done(19-03-24 19:19)
   ✔ Globalize Vue.component('font-awesome-icon', FontAwesomeIcon); @done(19-03-24 20:34)
@@ -16,5 +17,7 @@ General:
     ☐ Move mutations in to modules based on models or components.
 
 Testing:
+  Chapters:
+    ☐ Unit test ChapterRecord.
   State:
     ☐ Unit test store mutations explicitly also, instead of only through components.

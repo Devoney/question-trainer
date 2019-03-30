@@ -9,7 +9,7 @@
     <td class="text-center" style="width: 120px;">{{ nrOfQuestions }}</td>
     <td class="text-center">
       <icon-button icon="edit" label="Edit chapter" :argument="chapter" @click="edit" :disabled="chapterInEditMode"/>
-      <icon-button icon="trash-alt" label="Trash chapter" @click="trash" :argument="chapter"/>
+      <icon-button icon="trash-alt" label="Trash chapter" @click="trash" :argument="chapter" :disabled="chapterInEditMode"/>
     </td>
   </tr>
 </template>

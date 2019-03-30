@@ -10,6 +10,7 @@
             v-on:keyup="numberChanged"
             v-on:keydown.esc="cancel"
             :title="error.nr"
+            aria-label="Nr of chapter"
           >
       </div>
       <div class="col">
@@ -23,6 +24,7 @@
             v-on:keydown.enter="ok"
             v-on:keydown.esc="cancel"
             :title="error.title"
+            aria-label="Title of chapter"
           >
           <div class="input-group-append">
             <button
@@ -43,8 +45,9 @@ import { mixins } from 'vue-class-component';
 import StoreMixin from '@/mixins/StoreMixin';
 import MutationTypes from '@/state/MutationTypes';
 
-export default abstract class ChapterBase extends mixins(StoreMixin) {
-  protected abstract buttonText: string;
+@Component
+export default class ChapterBase extends mixins(StoreMixin) {
+  protected buttonText: string = 'Ok';
 
   protected chapter: { id: string, nr: string, title: string } = {
     id: '',

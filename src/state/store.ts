@@ -35,7 +35,7 @@ const storeOptions: StoreOptions<IState> = {
     },
 
     [MutationTypes.editChapter]: (state, chapter: { nr: string, title: string }) => {
-      if (state.chapterEdited === undefined) { 
+      if (state.chapterEdited === undefined) {
         throw new Error('Changes are attempted to be saved to chapter, but none is being edited currently.');
       }
       state.chapterEdited.nr = chapter.nr;
