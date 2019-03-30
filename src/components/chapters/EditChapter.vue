@@ -30,17 +30,25 @@ export default class EditChapter extends ChapterBase {
 
   @Watch('store.state.chapterEdited')
   private onChapterEdited() {
-    const chapterEdited = this.store.state.chapterEdited;
-    if (chapterEdited === undefined) { return; }
-    this.chapter.id = chapterEdited.id;
-    this.chapter.nr = chapterEdited.nr;
-    this.chapter.title = chapterEdited.title;
+    this.updateChapter();
   }
 
   @Watch('chapters')
   private chaptersChanged(): void {
     this.numberChanged();
     this.titleChanged();
+  }
+
+  private mounted(): void {
+    this.updateChapter();
+  }
+
+  private updateChapter(): void {
+    const chapterEdited = this.store.state.chapterEdited;
+    if (chapterEdited === undefined) { return; }
+    this.chapter.id = chapterEdited.id;
+    this.chapter.nr = chapterEdited.nr;
+    this.chapter.title = chapterEdited.title;
   }
 
   private ok(): void {
@@ -82,7 +90,6 @@ export default class EditChapter extends ChapterBase {
   }
 
   private cancel(): void {
-    debugger;
     this.resetData();
     this.store.commit(MutationTypes.setEditedChapter, undefined);
   }
