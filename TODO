@@ -14,3 +14,9 @@ Testing:
     ☐ Unit test ChapterRecord.
   State:
     ☐ Unit test store mutations explicitly also, instead of only through components.
+      ☐ removeBookById
+      ☐ removeChapterById
+      ☐ setEditedBook
+      ☐ setEditedChapter
+      ☐ setBooks
+      ☐ setSelectedBook 

@@ -11,18 +11,6 @@ import ChapterBase from '@/components/chapters/ChapterBase.vue';
 export default class AddChapter extends ChapterBase {
   protected buttonText: string = 'Add';
 
-  private ok(): void {
-    if (!this.canExecute) { return; }
-
-    const id = uuid();
-    const chapter = new Chapter(id, this.chapter.nr.toString(), this.chapter.title);
-
-    this.store.commit(MutationTypes.addChapter, chapter);
-
-    this.chapter.title = '';
-    this.chapter.nr = '';
-  }
-
   protected chapterNumberExists(): boolean {
     return _.findIndex(this.chapters, (chapter) => {
       return chapter.nr.toLowerCase() === this.chapter.nr.toLowerCase();
@@ -33,6 +21,18 @@ export default class AddChapter extends ChapterBase {
     return _.findIndex(this.chapters, (chapter) => {
       return chapter.title.toLowerCase() === this.chapter.title.toLowerCase();
     }) !== -1;
+  }
+
+  private ok(): void {
+    if (!this.canExecute) { return; }
+
+    const id = uuid();
+    const chapter = new Chapter(id, this.chapter.nr.toString(), this.chapter.title);
+
+    this.store.commit(MutationTypes.addChapter, chapter);
+
+    this.chapter.title = '';
+    this.chapter.nr = '';
   }
 
   private cancel(): void {

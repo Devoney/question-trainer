@@ -11,6 +11,18 @@ import ChapterBase from '@/components/chapters/ChapterBase.vue';
 export default class EditChapter extends ChapterBase {
   protected buttonText: string = 'Edit';
 
+  protected chapterNumberExists(): boolean {
+    return _.findIndex(this.chapters, (chapter) => {
+      return chapter.nr.toLowerCase() === this.chapter.nr.toLowerCase() && chapter.id !== this.chapter.id;
+    }) !== -1;
+  }
+
+  protected titleExists(): boolean {
+    return _.findIndex(this.chapters, (chapter) => {
+      return chapter.title.toLowerCase() === this.chapter.title.toLowerCase() && chapter.id !== this.chapter.id;
+    }) !== -1;
+  }
+
   @Watch('store.state.chapterEdited')
   private onChapterEdited() {
     this.updateChapter();
@@ -34,18 +46,6 @@ export default class EditChapter extends ChapterBase {
     this.store.commit(MutationTypes.editChapter, this.chapter);
 
     this.cancel();
-  }
-
-  protected chapterNumberExists(): boolean {
-    return _.findIndex(this.chapters, (chapter) => {
-      return chapter.nr.toLowerCase() === this.chapter.nr.toLowerCase() && chapter.id !== this.chapter.id;
-    }) !== -1;
-  }
-
-  protected titleExists(): boolean {
-    return _.findIndex(this.chapters, (chapter) => {
-      return chapter.title.toLowerCase() === this.chapter.title.toLowerCase() && chapter.id !== this.chapter.id;
-    }) !== -1;
   }
 
   private cancel(): void {
