@@ -31,9 +31,13 @@ export default class AddBook extends BookBase {
     this.$emit('title-changed', { old: oldTitle, new: newTitle });
   }
 
-  get errorMessageToShow(): string {
-    if (_.isEmpty(this.bookTitle)) { return ''; }
-    return this.errMessage;
+  @Watch('errMessage')
+  private errMessageChanged(): void {
+    this.errorMessage = this.errMessage;
+  }
+
+  private mounted(): void {
+    this.errorMessage = this.errMessage;
   }
 }
 </script>

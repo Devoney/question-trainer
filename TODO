@@ -1,20 +1,10 @@
 General:
-  ☐ Ask on stack overflow why inheritance with abstract methods does not work for vue components. It results in 'this' being null.
-  ✔ Get rid of all the data methods, and use direct properties instead. @done(19-03-24 19:17)
-  ✔ Make properties public @done(19-03-24 19:19)
-  ✔ Globalize Vue.component('font-awesome-icon', FontAwesomeIcon); @done(19-03-24 20:34)
   ☐ Use a Mixin for delete confirmation of Book and Chapter.
-  ✔ Move store into mixin for reusability. @done(19-03-24 21:08)
   Books:
-    ☐ Make more use of non abstract base class for [add/edit]-book.
     ☐ Commit edit of book title to store, instead of muting it directly on the book itself.
     ☐ Use store to validate book title, instead of event and property.
     ☐ Move logic for adding book into AddBook itself, out of BookManager to simply ping ponging of data.
     ☐ Use on hover title to show the error when title of book is invalid. (Thus remove error line below input).
-    book-selector:
-      ✔ Sort books that are shown in select. @done(19-03-24 19:20)
-  Chapter:
-    ☐ Make more use of non abstract base class for [add/edit]-book.
   State:
     ☐ Make getter types available.
     ☐ Move mutations in to modules based on models or components.

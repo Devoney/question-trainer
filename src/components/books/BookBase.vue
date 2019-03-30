@@ -35,9 +35,15 @@ import MutationTypes from '@/state/MutationTypes';
 import StoreMixin from '@/mixins/StoreMixin';
 import { mixins } from 'vue-class-component';
 
-export default abstract class BookBase extends mixins(StoreMixin) {
+@Component
+export default class BookBase extends mixins(StoreMixin) {
   protected errorMessage: string = '';
-  protected abstract buttonText: string;
+  protected buttonText: string = 'Ok';
   protected bookTitle: string = '';
+
+  protected get errorMessageToShow(): string {
+    if (_.isEmpty(this.bookTitle)) { return ''; }
+    return this.errorMessage;
+  }
 }
 </script>

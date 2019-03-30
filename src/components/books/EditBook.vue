@@ -23,11 +23,6 @@ export default class EditBook extends BookBase {
     return !this.invalidTitle && !_.isEmpty(this.bookTitle.trim());
   }
 
-  private get errorMessageToShow(): string {
-    if (_.isEmpty(this.bookTitle)) { return ''; }
-    return this.errorMessage;
-  }
-
   protected cancel(): void {
     this.store.commit(MutationTypes.setEditedBook, undefined);
   }
