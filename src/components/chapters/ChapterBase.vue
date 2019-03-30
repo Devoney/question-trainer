@@ -38,10 +38,12 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import _ from 'lodash';
+import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 import { mixins } from 'vue-class-component';
 import StoreMixin from '@/mixins/StoreMixin';
 import MutationTypes from '@/state/MutationTypes';
+import Chapter from '@/models/chapter';
 
 @Component
 export default class ChapterBase extends mixins(StoreMixin) {
@@ -58,6 +60,31 @@ export default class ChapterBase extends mixins(StoreMixin) {
     title: '',
   };
 
+  protected get chapters(): Chapter[] {
+    if (this.store.state.bookSelected === undefined) { return []; }
+    return this.store.state.bookSelected.chapters;
+  }
+
+  protected get canExecute() {
+    return !this.hasError
+      && !_.isEmpty(this.chapter.nr)
+      && !_.isEmpty(this.chapter.title)
+      && !this.chapterNumberExists()
+      && !this.titleExists();
+  }
+
+  protected get hasError() {
+    return !_.isEmpty(this.error.title) || !_.isEmpty(this.error.nr);
+  }
+
+  protected chapterNumberExists(): boolean {
+    throw new Error('Not implemented');
+  }
+
+  protected titleExists(): boolean {
+    throw new Error('Not implemented');
+  }
+
   protected resetError(): void {
     this.chapter.nr = '';
     this.chapter.title = '';
@@ -72,8 +99,31 @@ export default class ChapterBase extends mixins(StoreMixin) {
     this.resetChapter();
     this.resetError();
   }
+
+  @Watch('chapter.nr')
+  private numberChanged(): void {
+    if (this.chapterNumberExists()) {
+      this.error.nr = 'Chapter number already exists for this book.';
+      return;
+    }
+
+    this.error.nr = '';
+  }
+
+  @Watch('chapter.title')
+  private titleChanged(): void {
+    if (this.titleExists()) {
+      this.error.title = 'Title already exists for this book.';
+      return;
+    }
+
+    this.error.title = '';
+  }
+
+  @Watch('chapters')
+  private chaptersChanged(): void {
+    this.numberChanged();
+    this.titleChanged();
+  }
 }
 </script>
-
-<style scoped>
-</style>
