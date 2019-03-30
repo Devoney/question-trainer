@@ -52,6 +52,7 @@ export default class AddChapter extends ChapterBase {
     }) !== -1;
   }
 
+  @Watch('chapter.nr')
   private numberChanged(): void {
     if (this.chapterNumberExists()) {
       this.error.nr = 'Chapter already exists for this book.';
@@ -67,6 +68,7 @@ export default class AddChapter extends ChapterBase {
     }) !== -1;
   }
 
+  @Watch('chapter.title')
   private titleChanged(): void {
     if (this.titleExists()) {
       this.error.title = 'Title already exists for this book.';

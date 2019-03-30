@@ -1,9 +1,10 @@
 import { assert } from 'chai';
 import { mount, Wrapper } from '@vue/test-utils';
-import { Vue } from 'vue/types/vue';
+import { Vue, VueConstructor } from 'vue/types/vue';
 import EditChapter from '@/components/chapters/EditChapter.vue';
 import store from '@/state/store';
 import Chapter from '@/models/Chapter';
+import Book from '@/models/Book';
 
 describe('components/chapters/EditChapter', () => {
   function setup(): {
@@ -11,7 +12,6 @@ describe('components/chapters/EditChapter', () => {
     nrInput: Wrapper<Vue>,
     titleInput: Wrapper<Vue>,
     wrapper: Wrapper<Vue>,
-
   } {
     const wrapper = mount(EditChapter, {
       store,
@@ -56,5 +56,62 @@ describe('components/chapters/EditChapter', () => {
 
     // Then
     assert.equal(store.state.chapterEdited, undefined, 'The chapter being edited should have been set to undefined.');
+  });
+
+  it('Edited chapter is set to undefined when edit is cancelled.', () => {
+    // Given
+    const { nrInput, titleInput } = setup();
+    [nrInput, titleInput].forEach((input) => {
+      const chapter = new Chapter('some-id', '1', 'First chapter');
+      store.state.chapterEdited = chapter;
+
+      // When
+      input.trigger('keydown.esc');
+
+      // Then
+      assert.equal(store.state.chapterEdited, undefined, 'The chapter being edited should have been set to undefined.');
+    });
+  });
+
+  it('Error is shown for duplicate title.', () => {
+    // Given
+    const secondChapterTitle: string = 'Second chapter title.';
+    const chapter = new Chapter('some-id', '1', 'First chapter');
+    const book = new Book('Book-id', 'Book title', [
+      chapter,
+      new Chapter('2nd', '2', secondChapterTitle),
+    ]);
+    store.state.books = [book];
+    store.state.bookSelected = book;
+    store.state.chapterEdited = chapter;
+    const { titleInput } = setup();
+
+    // When
+    titleInput.setValue(secondChapterTitle);
+
+    // Then
+    const titleAttribute = titleInput.attributes('title');
+    assert.equal(titleAttribute, 'Title already exists for this book.');
+  });
+
+  it('Error is shown for duplicate number.', () => {
+    // Given
+    const secondChapterNumber: string = '2';
+    const chapter = new Chapter('some-id', '1', 'First chapter');
+    const book = new Book('Book-id', 'Book title', [
+      chapter,
+      new Chapter('2nd', '2', 'Second chapter title'),
+    ]);
+    store.state.books = [book];
+    store.state.bookSelected = book;
+    store.state.chapterEdited = chapter;
+    const { nrInput } = setup();
+
+    // When
+    nrInput.setValue(secondChapterNumber);
+
+    // Then
+    const titleAttribute = nrInput.attributes('title');
+    assert.equal(titleAttribute, 'Chapter number already exists for this book.');
   });
 });
