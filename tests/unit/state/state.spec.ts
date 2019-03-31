@@ -129,7 +129,7 @@ describe('state/store', () => {
   it('Correct book is set for editing.', () => {
     // Given
     const book = new Book('book-id', 'My title');
-    
+
     // When
     store.commit(MutationTypes.setEditedBook, book);
 
@@ -137,11 +137,11 @@ describe('state/store', () => {
     // @ts-ignore
     assert.equal(store.state.bookEdited.id, book.id, 'Wrong book is being edited.');
   });
-  
+
   it('Correct chapter is set for editing.', () => {
     // Given
     const chapter = new Chapter('chapter-id', 'nr', 'My chapter');
-    
+
     // When
     store.commit(MutationTypes.setEditedChapter, chapter);
 
@@ -149,14 +149,14 @@ describe('state/store', () => {
     // @ts-ignore
     assert.equal(store.state.chapterEdited.id, chapter.id, 'Wrong chapter is set for editing.');
   });
-  
+
   it('Correct book is set as selected.', () => {
     // Given
     const book = new Book('book-id', 'My title');
 
     // When
     store.commit(MutationTypes.setSelectedBook, book);
-    
+
     // Then
     // @ts-ignore
     assert.equal(store.state.bookSelected.id, book.id, 'Wrong book has been set as selected.');
