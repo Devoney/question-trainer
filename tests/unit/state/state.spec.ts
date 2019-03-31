@@ -110,4 +110,55 @@ describe('state/store', () => {
     const chapterKept = secondBook.chapters[0];
     assert.equal(chapterKept.id, chapterIdToKeep, 'The wrong chapter was deleted.');
   });
+
+  it('A collection of books is set on the store.', () => {
+    // Given
+    store.state.books = [];
+    const firstBook = new Book('book-1', 'First book');
+    const secondBook = new Book('book-2', 'Second book');
+
+    // When
+    store.commit(MutationTypes.setBooks, [firstBook, secondBook]);
+
+    // Then
+    assert.equal(store.state.books.length, 2, 'Incorrect number of books are set in the store.');
+    assert.equal(store.state.books[0].id, firstBook.id, 'The order of books is unexpected.');
+    assert.equal(store.state.books[1].id, secondBook.id, 'The order of books is unexpected.');
+  });
+
+  it('Correct book is set for editing.', () => {
+    // Given
+    const book = new Book('book-id', 'My title');
+    
+    // When
+    store.commit(MutationTypes.setEditedBook, book);
+
+    // Then
+    // @ts-ignore
+    assert.equal(store.state.bookEdited.id, book.id, 'Wrong book is being edited.');
+  });
+  
+  it('Correct chapter is set for editing.', () => {
+    // Given
+    const chapter = new Chapter('chapter-id', 'nr', 'My chapter');
+    
+    // When
+    store.commit(MutationTypes.setEditedChapter, chapter);
+
+    // Then
+    // @ts-ignore
+    assert.equal(store.state.chapterEdited.id, chapter.id, 'Wrong chapter is set for editing.');
+  });
+  
+  it('Correct book is set as selected.', () => {
+    // Given
+    const book = new Book('book-id', 'My title');
+
+    // When
+    store.commit(MutationTypes.setSelectedBook, book);
+    
+    // Then
+    // @ts-ignore
+    assert.equal(store.state.bookSelected.id, book.id, 'Wrong book has been set as selected.');
+  });
 });
