@@ -33,5 +33,22 @@ describe('/components/chapter/ChapterRecord', () => {
     assert.equal(nrOfQuestionsText, '2', 'Incorrect number of questions.');
   });
 
-  
+  it('Chapter is set to be edited when edit button is clicked.', () => {
+    // Given
+    store.state.chapterEdited = undefined;
+    const chapter = new Chapter('chapter-id', 'nr', 'title');
+    const wrapper = mount(ChapterRecord, {
+        propsData: {
+          chapter,
+        },
+        store,
+    });
+    const editButton = wrapper.find('button[aria-label="Edit chapter"]');
+    // When
+    editButton.trigger('click');
+
+    // Then
+    // @ts-ignore
+    assert.equal(store.state.chapterEdited.id, chapter.id, 'Chapter is not selected for editing.');
+  });
 });
