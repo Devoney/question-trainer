@@ -8,15 +8,3 @@ General:
   State:
     ☐ Make getter types available.
     ☐ Move mutations in to modules based on models or components.
-
-Testing:
-  Chapters:
-    ☐ Unit test ChapterRecord.
-  State:
-    ☐ Unit test store mutations explicitly also, instead of only through components.
-      ☐ removeBookById
-      ☐ removeChapterById
-      ☐ setEditedBook
-      ☐ setEditedChapter
-      ☐ setBooks
-      ☐ setSelectedBook 

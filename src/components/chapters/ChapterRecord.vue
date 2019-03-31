@@ -2,11 +2,11 @@
   <tr>
     <td class="text-center" style="width: 70px;">
     </td>
-    <td class="text-right" style="width: 70px;">
-      <span aria-label="Index">{{ chapter.nr }}</span>
+    <td class="text-right" aria-label="Chapter number" style="width: 70px;">
+      {{ chapter.nr }}
     </td>
-    <td class="text-left">{{ chapter.title }}</td>
-    <td class="text-center" style="width: 120px;">{{ nrOfQuestions }}</td>
+    <td class="text-left" aria-label="Title of chapter">{{ chapter.title }}</td>
+    <td class="text-center" style="width: 120px;" aria-label="Number of questions in this chapter">{{ nrOfQuestions }}</td>
     <td class="text-center">
       <icon-button icon="edit" label="Edit chapter" :argument="chapter" @click="edit" :disabled="chapterInEditMode"/>
       <icon-button icon="trash-alt" label="Trash chapter" @click="trash" :argument="chapter" :disabled="chapterInEditMode"/>
