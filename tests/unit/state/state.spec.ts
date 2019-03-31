@@ -60,4 +60,54 @@ describe('state/store', () => {
     assert.equal(updatedChapter.nr, newNr);
     assert.equal(updatedChapter.title, newTitle);
   });
+
+  it('Correct book is removed and the rest of the books are kept.', () => {
+    // Given
+    const bookIdToKeep: string = '1';
+    const bookIdToRemove: string = '2';
+    store.state.books = [
+      new Book(bookIdToKeep, 'First book'),
+      new Book(bookIdToRemove, 'Second book'),
+    ];
+
+    // When
+    store.commit(MutationTypes.removeBookById, bookIdToRemove);
+
+    // Then
+    assert.equal(store.state.books.length, 1, 'The book was not deletd.');
+    const singleBook = store.state.books[0];
+    assert.equal(singleBook.id, bookIdToKeep, 'The wrong book got deleted.');
+  });
+
+  it('Correct chapter of selected book is removed.', () => {
+    // Given
+    const chapterIdToKeep: string = 'CH 2.1';
+    const chapterIdToRemove: string = 'CH 2.2';
+
+    const firstBook = new Book('book-1', 'First Book', [
+      // Having chapters in store that have the same id should never happen, but it makes this test
+      // more strict. As it now also tests that the chapter is only removed of the book that was selected.
+      new Chapter(chapterIdToKeep, 'chapter-1.1', 'First chapter'),
+      new Chapter(chapterIdToRemove, 'chapter-1.2', 'Second chapter'),
+    ]);
+
+    const secondBook = new Book('book-2', 'Second Book', [
+      new Chapter(chapterIdToKeep, 'chapter-2.1', 'First chapter'),
+      new Chapter(chapterIdToRemove, 'chapter-2.2', 'Second chapter'),
+    ]);
+    store.state.books = [
+      firstBook,
+      secondBook,
+    ];
+    store.state.bookSelected = secondBook;
+
+    // When
+    store.commit(MutationTypes.removeChapterById, chapterIdToRemove);
+
+    // Then
+    assert.equal(firstBook.chapters.length, 2, 'Chapter got removed on the wrong book.');
+    assert.equal(secondBook.chapters.length, 1, 'Chapter was not deleted on selected book.');
+    const chapterKept = secondBook.chapters[0];
+    assert.equal(chapterKept.id, chapterIdToKeep, 'The wrong chapter was deleted.');
+  });
 });
