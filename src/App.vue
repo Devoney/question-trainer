@@ -56,7 +56,7 @@ export default class App extends mixins(StoreMixin) {
   }
 
   get books(): Book[] {
-    return this.store.state.books;
+    return this.store.book.books;
   }
 
   private created() {

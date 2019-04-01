@@ -55,6 +55,7 @@ import MutationTypes from '@/state/MutationTypes';
 
 import { Component, Prop, Vue, Mixins } from 'vue-property-decorator';
 import { mixins } from 'vue-class-component';
+import IBookModuleData from '@/state/modules/IBookModuleData';
 import BookRecord from '@/components/books/BookRecord.vue';
 import Book from '@/models/Book';
 import ConfirmationModal from '@/components/ConfirmationModal.vue';
@@ -70,7 +71,7 @@ export default class BookTable extends mixins(StoreMixin) {
   private modalId: string = 'confirmation-modal-book-table';
 
   get books(): Book[] {
-    return this.store.state.books;
+    return this.storeBook.books;
   }
 
   get hasBooks(): boolean {
@@ -78,7 +79,7 @@ export default class BookTable extends mixins(StoreMixin) {
   }
 
   get booksSorted(): Book[] {
-    return this.store.getters.booksSortedByTitle;
+    return this.store.getters['book/booksSortedByTitle'];
   }
 
   private trash(bookId: string): void {

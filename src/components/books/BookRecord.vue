@@ -50,8 +50,8 @@ export default class BookRecord extends mixins(StoreMixin) {
   }
 
   get bookInEditMode(): boolean {
-    if (this.store.state.bookEdited === undefined) { return false; }
-    return this.store.state.bookEdited.id === this.book.id;
+    if (this.storeBook.bookEdited === undefined) { return false; }
+    return this.storeBook.bookEdited.id === this.book.id;
   }
 
   get nrOfChapters() {

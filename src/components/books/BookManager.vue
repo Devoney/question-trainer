@@ -2,7 +2,7 @@
   <div>
     <div class="row">
       <div class="col has-error">
-        <edit-book v-if="store.state.bookEdited !== undefined"/>
+        <edit-book v-if="storeBook.bookEdited !== undefined"/>
         <add-book
           v-else 
           ref="addBook"
