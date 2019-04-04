@@ -8,6 +8,7 @@ enum MutationTypes {
   setEditedChapter = 'setEditedChapter',
   setBooks = 'setBooks',
   setSelectedBook = 'setSelectedBook',
+  setSelectedChapter = 'setSelectedChapter',
 }
 
 export default MutationTypes;

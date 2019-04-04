@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="row form-group">
-      <div class="col-3 text-left">
+      <div class="col-5 text-left">
         <book-selector />
       </div>
       <div class="col text-left">

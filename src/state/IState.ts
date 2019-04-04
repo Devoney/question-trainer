@@ -6,4 +6,5 @@ export default interface IState  {
   bookSelected: Book | undefined;
   bookEdited: Book | undefined;
   chapterEdited: Chapter | undefined;
+  chapterSelected: Chapter | undefined;
 }

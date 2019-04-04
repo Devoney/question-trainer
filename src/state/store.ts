@@ -14,11 +14,19 @@ const storeOptions: StoreOptions<IState> = {
     bookSelected: undefined,
     bookEdited: undefined,
     chapterEdited: undefined,
+    chapterSelected: undefined,
   },
   getters: {
     booksSortedByTitle: (state) => {
       return _.orderBy(state.books, (book: Book) => {
         return book.title.toLowerCase();
+      });
+    },
+
+    chaptersSortedByTitle: (state) => {
+      if (state.bookSelected === undefined) { return []; }
+      return _.orderBy(state.bookSelected.chapters, (chapter: Chapter) => {
+        return chapter.nr.toLowerCase();
       });
     },
   },
@@ -85,6 +93,10 @@ const storeOptions: StoreOptions<IState> = {
 
     [MutationTypes.setSelectedBook]: (state, book: Book) => {
       state.bookSelected = book;
+    },
+
+    [MutationTypes.setSelectedChapter]: (state, chapter: Chapter) => {
+      state.chapterSelected = chapter;
     },
   },
 };

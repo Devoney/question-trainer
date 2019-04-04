@@ -18,12 +18,12 @@ describe('/components/chapter/ChapterRecord', () => {
         },
         store,
     });
-    const number = wrapper.find('td[aria-label="Chapter number"]');
+    const nr = wrapper.find('td[aria-label="Chapter number"]');
     const title = wrapper.find('td[aria-label="Title of chapter"]');
     const nrOfQuestions = wrapper.find('td[aria-label="Number of questions in this chapter"]');
 
     // When
-    const numberText = number.text();
+    const numberText = nr.text();
     const titleText = title.text();
     const nrOfQuestionsText = nrOfQuestions.text();
 
