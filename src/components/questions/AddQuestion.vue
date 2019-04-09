@@ -28,6 +28,11 @@
         <ckeditor :disabled="!chapterIsSelected || !hasQuestion" :editor="editor" v-model="answer" :config="editorConfig"></ckeditor>
       </div>
     </div>
+    <div class="row button-row">
+      <div class="col text-right">
+        <button :class="['btn', {'btn-primary': chapterSelected, 'btn-secondary': !chapterSelected}]" @click="add" :disabled="!chapterSelected">Add</button>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -43,6 +48,8 @@ import ChapterSelector from '@/components/chapters/ChapterSelector.vue';
 import CKEditor from '@ckeditor/ckeditor5-vue';
 // @ts-ignore
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import Chapter from '@/models/Chapter';
+import Question from '@/models/Question';
 
 @Component({
   components: {
@@ -65,7 +72,11 @@ export default class AddQuestion extends mixins(StoreMixin) {
   }
 
   get chapterIsSelected(): boolean {
-    return this.store.state.chapterSelected !== undefined;
+    return this.chapterSelected !== undefined;
+  }
+
+  get chapterSelected(): Chapter | undefined {
+    return this.store.state.chapterSelected;
   }
 
   get hasQuestion() {
@@ -74,9 +85,17 @@ export default class AddQuestion extends mixins(StoreMixin) {
 
   @Watch('chapterIsSelected')
   private onChapterIsSelected() {
-    if (_.isEmpty(this.editorData)) {
-      this.editorData = 'Add your question here';
+    if (_.isEmpty(this.question)) {
+      this.question = 'Add your question here';
     }
+    if (_.isEmpty(this.answer)) {
+      this.answer = 'Add your answer here';
+    }
+  }
+
+  private add(): void {
+    const question = new Question(this.question, this.answer, this.pageNr);
+    this.store.commit(MutationTypes.Question.addQuestion, question);
   }
 }
 </script>
@@ -84,5 +103,9 @@ export default class AddQuestion extends mixins(StoreMixin) {
 <style scoped>
 .ckeditorrow {
   margin-top:20px;
+}
+
+.button-row {
+  margin-top:15px;
 }
 </style>

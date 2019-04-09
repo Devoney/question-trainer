@@ -3,6 +3,7 @@ import IState from '@/state/IState';
 import Book from '@/models/Book';
 import Chapter from '@/models/Chapter';
 import MutationTypes from '@/state/MutationTypes';
+import Question from '@/models/Question';
 import Vue from 'vue';
 import _ from 'lodash';
 
@@ -40,6 +41,14 @@ const storeOptions: StoreOptions<IState> = {
         throw new Error('No book was selected. So chapter could not be added.');
       }
       state.bookSelected.chapters.push(chapter);
+    },
+
+    [MutationTypes.Question.addQuestion]: (state, question: Question) => {
+      if (state.chapterSelected === undefined) {
+        throw new Error('No chapter has been selected to add a question to.');
+      }
+
+      state.chapterSelected.questions.push(question);
     },
 
     [MutationTypes.editChapter]: (state, chapter: { nr: string, title: string }) => {
