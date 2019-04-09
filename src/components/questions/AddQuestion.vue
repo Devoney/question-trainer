@@ -19,18 +19,33 @@
     <div class="row ckeditorrow">
       <div class="col text-left">
         <label class="font-weight-bold">Question:</label>
-        <ckeditor :disabled="!chapterIsSelected" :editor="editor" v-model="question" :config="editorConfig"></ckeditor>
+        <ckeditor
+          :disabled="!chapterIsSelected"
+          :editor="editor"
+          v-model="question"
+          :config="editorConfig"
+          ref="questionEditor"
+        ></ckeditor>
       </div>
     </div>
     <div class="row ckeditorrow">
       <div class="col text-left">
         <label class="font-weight-bold">Answer:</label>
-        <ckeditor :disabled="!chapterIsSelected || !hasQuestion" :editor="editor" v-model="answer" :config="editorConfig"></ckeditor>
+        <ckeditor
+          :disabled="!chapterIsSelected || !hasQuestion"
+          :editor="editor"
+          v-model="answer"
+          :config="editorConfig"
+        ></ckeditor>
       </div>
     </div>
     <div class="row button-row">
       <div class="col text-right">
-        <button :class="['btn', {'btn-primary': chapterSelected, 'btn-secondary': !chapterSelected}]" @click="add" :disabled="!chapterSelected">Add</button>
+        <button
+          :class="['btn', {'btn-primary': chapterSelected, 'btn-secondary': !chapterSelected}]"
+          @click="add"
+          :disabled="!chapterSelected"
+        >Add</button>
       </div>
     </div>
   </div>
@@ -50,6 +65,7 @@ import CKEditor from '@ckeditor/ckeditor5-vue';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import Chapter from '@/models/Chapter';
 import Question from '@/models/Question';
+import uuid from 'uuid/v1';
 
 @Component({
   components: {
@@ -83,29 +99,35 @@ export default class AddQuestion extends mixins(StoreMixin) {
     return !_.isEmpty(this.question);
   }
 
-  @Watch('chapterIsSelected')
-  private onChapterIsSelected() {
-    if (_.isEmpty(this.question)) {
-      this.question = 'Add your question here';
-    }
-    if (_.isEmpty(this.answer)) {
-      this.answer = 'Add your answer here';
-    }
+  private add(): void {
+    const id = uuid();
+    const question = new Question(
+      id,
+      this.question,
+      this.answer,
+      this.pageNr
+    );
+
+    this.store.commit(MutationTypes.Question.addQuestion, question);
+    this.clear();
   }
 
-  private add(): void {
-    const question = new Question(this.question, this.answer, this.pageNr);
-    this.store.commit(MutationTypes.Question.addQuestion, question);
+  private clear(): void {
+    this.question = '';
+    this.answer = '';
+    const questionEditor = this.$refs.questionEditor;
+    // @ts-ignore
+    questionEditor.instance.editing.view.focus();
   }
 }
 </script>
 
 <style scoped>
 .ckeditorrow {
-  margin-top:20px;
+  margin-top: 20px;
 }
 
 .button-row {
-  margin-top:15px;
+  margin-top: 15px;
 }
 </style>
