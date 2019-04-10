@@ -8,6 +8,7 @@ import { CombinedVueInstance } from 'vue/types/vue';
 import { mount, Wrapper } from '@vue/test-utils';
 import store from '@/state/store';
 import '@/font-awesome';
+import uuid from 'uuid/v1';
 
 type WrapperComplex = Wrapper<
   CombinedVueInstance<Vue, object, object, object, Record<never, any>>
@@ -17,12 +18,12 @@ describe('components/books/BookRecord', () => {
   function getBook(): Book {
     return new Book('my-book-id', 'My book', [
       new Chapter('72f0f2cc-3f9b-4da1-ae2e-b4ba7a1b3d3a', 'Chapter #1', 'First chapter', [
-        new Question('First question', 'First answer', 1),
-        new Question('Second question', 'Second answer', 1),
+        new Question(uuid(), 'First question', 'First answer', '1'),
+        new Question(uuid(), 'Second question', 'Second answer', '1'),
       ]),
       new Chapter('72f0f2cc-3f9b-4da1-ae2e-b4ba7a1b3d3b', 'Chapter #2', 'Second chapter', [
-        new Question('Third question', 'Third answer', 1),
-        new Question('Fourth question', 'Fourth answer', 1),
+        new Question(uuid(), 'Third question', 'Third answer', '1'),
+        new Question(uuid(), 'Fourth question', 'Fourth answer', '1'),
       ]),
     ]);
   }

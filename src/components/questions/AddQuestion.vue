@@ -105,7 +105,7 @@ export default class AddQuestion extends mixins(StoreMixin) {
       id,
       this.question,
       this.answer,
-      this.pageNr
+      this.pageNr,
     );
 
     this.store.commit(MutationTypes.Question.addQuestion, question);

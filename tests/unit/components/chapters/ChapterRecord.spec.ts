@@ -4,13 +4,14 @@ import Chapter from '@/models/Chapter';
 import ChapterRecord from '@/components/chapters/ChapterRecord.vue';
 import Question from '@/models/Question';
 import store from '@/state/store';
+import uuid from 'uuid/v1';
 
 describe('/components/chapter/ChapterRecord', () => {
   it('Data of chapter is correctly shown', () => {
     // Given
     const chapter = new Chapter('chapter-id', 'nr', 'title', [
-        new Question('How?', 'So', 1),
-        new Question('When?', 'Now', 2),
+        new Question(uuid(), 'How?', 'So', '1'),
+        new Question(uuid(), 'When?', 'Now', '2'),
     ]);
     const wrapper = mount(ChapterRecord, {
         propsData: {
