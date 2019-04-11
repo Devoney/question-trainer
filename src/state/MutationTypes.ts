@@ -3,6 +3,7 @@ import Question from '@/models/Question';
 export default class MutationTypes {
   public static Book = class {
     public static addBook: string = 'addBook';
+    public static editBook: string = 'editBook';
     public static removeBookById: string = 'removeBookById';
     public static setBooks: string = 'setBooks';
     public static setEditedBook: string = 'setEditedBook';

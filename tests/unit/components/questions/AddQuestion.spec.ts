@@ -18,6 +18,7 @@ describe('/components/questions/AddQuestion', () => {
     ]);
     store.state.chapterSelected = chapter;
     const wrapper = shallowMount(AddQuestion, {
+      localVue,
       store,
     });
 
@@ -42,6 +43,7 @@ describe('/components/questions/AddQuestion', () => {
     ]);
     store.state.chapterSelected = chapter;
     const wrapper = shallowMount(AddQuestion, {
+      localVue,
       store,
     });
 
@@ -66,6 +68,7 @@ describe('/components/questions/AddQuestion', () => {
     ]);
     store.state.chapterSelected = chapter;
     const wrapper = shallowMount(AddQuestion, {
+      localVue,
       store,
     });
 

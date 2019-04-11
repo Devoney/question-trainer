@@ -36,6 +36,13 @@ const storeOptions: StoreOptions<IState> = {
       state.books.push(book);
     },
 
+    [MutationTypes.Book.editBook]: (state, title: string) => {
+      if (state.bookEdited === undefined) {
+        throw new Error('No book is selected for editing, cannot set title.');
+      }
+      state.bookEdited.title = title;
+    },
+
     [MutationTypes.Chapter.addChapter]: (state, chapter: Chapter) => {
       if (state.bookSelected === undefined) {
         throw new Error('No book was selected. So chapter could not be added.');

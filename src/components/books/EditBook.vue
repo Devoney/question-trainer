@@ -32,7 +32,7 @@ export default class EditBook extends BookBase {
     if (this.store.state.bookEdited === undefined) {
       throw new Error('No book is being edited, but the edit is being saved.');
     }
-    this.store.state.bookEdited.title = this.bookTitle;
+    this.store.commit(MutationTypes.Book.editBook, this.bookTitle);
     this.cancel();
   }
 

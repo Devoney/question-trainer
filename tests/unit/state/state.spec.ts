@@ -161,4 +161,17 @@ describe('state/store', () => {
     // @ts-ignore
     assert.equal(store.state.bookSelected.id, book.id, 'Wrong book has been set as selected.');
   });
+
+  it('Book title is altered.', () => {
+    // Given
+    const book = new Book('book-id', 'My title');
+    store.state.bookEdited = book;
+    const title: string = 'Altered title';
+
+    // When
+    store.commit(MutationTypes.Book.editBook, title);
+
+    // Then
+    assert.equal(book.title, title, 'Title of book should have been altered.');
+  });
 });
