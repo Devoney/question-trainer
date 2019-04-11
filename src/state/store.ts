@@ -32,7 +32,7 @@ const storeOptions: StoreOptions<IState> = {
     },
   },
   mutations: {
-    [MutationTypes.addBook]: (state, book: Book) => {
+    [MutationTypes.Book.addBook]: (state, book: Book) => {
       state.books.push(book);
     },
 
@@ -59,7 +59,7 @@ const storeOptions: StoreOptions<IState> = {
       state.chapterEdited.title = chapter.title;
     },
 
-    [MutationTypes.removeBookById]: (state, bookId: string) => {
+    [MutationTypes.Book.removeBookById]: (state, bookId: string) => {
       const index = _.findIndex(state.books, (b) => {
         return b.id === bookId;
       });
@@ -88,11 +88,11 @@ const storeOptions: StoreOptions<IState> = {
       }
     },
 
-    [MutationTypes.setBooks]: (state, books: Book[]) => {
+    [MutationTypes.Book.setBooks]: (state, books: Book[]) => {
       Vue.set(state, 'books', books);
     },
 
-    [MutationTypes.setEditedBook]: (state, book: Book) => {
+    [MutationTypes.Book.setEditedBook]: (state, book: Book) => {
       state.bookEdited = book;
     },
 
@@ -100,7 +100,7 @@ const storeOptions: StoreOptions<IState> = {
       state.chapterEdited = chapter;
     },
 
-    [MutationTypes.setSelectedBook]: (state, book: Book) => {
+    [MutationTypes.Book.setSelectedBook]: (state, book: Book) => {
       state.bookSelected = book;
     },
 

@@ -83,7 +83,7 @@ export default class App extends mixins(StoreMixin) {
         ]),
       ]),
     ];
-    this.store.commit(MutationTypes.setBooks, books);
+    this.store.commit(MutationTypes.Book.setBooks, books);
   }
 }
 </script>

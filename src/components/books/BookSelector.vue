@@ -27,7 +27,7 @@ export default class BookSelector extends mixins(StoreMixin) {
     return this.store.state.bookSelected;
   }
   set bookSelected(book: Book | undefined) {
-    this.store.commit(MutationTypes.setSelectedBook, book);
+    this.store.commit(MutationTypes.Book.setSelectedBook, book);
   }
 }
 </script>

@@ -61,7 +61,7 @@ import MutationTypes from '@/state/MutationTypes';
 import BookSelector from '@/components/books/BookSelector.vue';
 import ChapterSelector from '@/components/chapters/ChapterSelector.vue';
 // @ts-ignore
-import ckeditor from '@ckeditor/ckeditor5-vue';
+import CKEditor from '@ckeditor/ckeditor5-vue';
 // @ts-ignore
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import Chapter from '@/models/Chapter';
@@ -72,7 +72,7 @@ import uuid from 'uuid/v1';
   components: {
     BookSelector,
     ChapterSelector,
-    ckeditor,
+    CKEditor,
   },
 })
 export default class AddQuestion extends mixins(StoreMixin) {

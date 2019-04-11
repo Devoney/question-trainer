@@ -24,7 +24,7 @@ export default class EditBook extends BookBase {
   }
 
   protected cancel(): void {
-    this.store.commit(MutationTypes.setEditedBook, undefined);
+    this.store.commit(MutationTypes.Book.setEditedBook, undefined);
   }
 
   protected ok(): void {

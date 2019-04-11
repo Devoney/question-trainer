@@ -64,7 +64,7 @@ export default class BookRecord extends mixins(StoreMixin) {
   }
 
   private edit(book: Book): void {
-    this.store.commit(MutationTypes.setEditedBook, book);
+    this.store.commit(MutationTypes.Book.setEditedBook, book);
   }
 
   private trash(book: Book): void {

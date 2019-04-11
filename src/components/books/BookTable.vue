@@ -88,7 +88,7 @@ export default class BookTable extends mixins(StoreMixin) {
 
   private deleteConfirmed() {
     const bookId: string = this.bookIdUpForDelete as string;
-    this.store.commit(MutationTypes.removeBookById, bookId);
+    this.store.commit(MutationTypes.Book.removeBookById, bookId);
   }
 
   private deleteCanceled() {

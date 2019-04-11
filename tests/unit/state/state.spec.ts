@@ -11,7 +11,7 @@ describe('state/store', () => {
     const book = new Book('book-ida', 'My title');
 
     // When
-    store.commit(MutationTypes.addBook, book);
+    store.commit(MutationTypes.Book.addBook, book);
 
     // Then
     assert.equal(store.state.books.length, 1, 'The book should have been added');
@@ -71,7 +71,7 @@ describe('state/store', () => {
     ];
 
     // When
-    store.commit(MutationTypes.removeBookById, bookIdToRemove);
+    store.commit(MutationTypes.Book.removeBookById, bookIdToRemove);
 
     // Then
     assert.equal(store.state.books.length, 1, 'The book was not deletd.');
@@ -118,7 +118,7 @@ describe('state/store', () => {
     const secondBook = new Book('book-2', 'Second book');
 
     // When
-    store.commit(MutationTypes.setBooks, [firstBook, secondBook]);
+    store.commit(MutationTypes.Book.setBooks, [firstBook, secondBook]);
 
     // Then
     assert.equal(store.state.books.length, 2, 'Incorrect number of books are set in the store.');
@@ -131,7 +131,7 @@ describe('state/store', () => {
     const book = new Book('book-id', 'My title');
 
     // When
-    store.commit(MutationTypes.setEditedBook, book);
+    store.commit(MutationTypes.Book.setEditedBook, book);
 
     // Then
     // @ts-ignore
@@ -155,7 +155,7 @@ describe('state/store', () => {
     const book = new Book('book-id', 'My title');
 
     // When
-    store.commit(MutationTypes.setSelectedBook, book);
+    store.commit(MutationTypes.Book.setSelectedBook, book);
 
     // Then
     // @ts-ignore

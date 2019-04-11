@@ -59,7 +59,7 @@ export default class BookManager extends mixins(StoreMixin) {
     const books = this.books;
     const id = uuid();
     const book = new Book(id, title);
-    this.store.commit(MutationTypes.addBook, book);
+    this.store.commit(MutationTypes.Book.addBook, book);
   }
 
   private titleChanged(title: { new: string, old: string }): void {
