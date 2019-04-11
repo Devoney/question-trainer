@@ -36,6 +36,7 @@
           :editor="editor"
           v-model="answer"
           :config="editorConfig"
+          ref="answerEditor"
         ></ckeditor>
       </div>
     </div>
@@ -60,7 +61,7 @@ import MutationTypes from '@/state/MutationTypes';
 import BookSelector from '@/components/books/BookSelector.vue';
 import ChapterSelector from '@/components/chapters/ChapterSelector.vue';
 // @ts-ignore
-import CKEditor from '@ckeditor/ckeditor5-vue';
+import ckeditor from '@ckeditor/ckeditor5-vue';
 // @ts-ignore
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import Chapter from '@/models/Chapter';
@@ -71,7 +72,7 @@ import uuid from 'uuid/v1';
   components: {
     BookSelector,
     ChapterSelector,
-    CKEditor,
+    ckeditor,
   },
 })
 export default class AddQuestion extends mixins(StoreMixin) {
@@ -100,6 +101,8 @@ export default class AddQuestion extends mixins(StoreMixin) {
   }
 
   private add(): void {
+    if (_.isEmpty(this.question) || _.isEmpty(this.answer)) { return; }
+
     const id = uuid();
     const question = new Question(
       id,
@@ -115,9 +118,17 @@ export default class AddQuestion extends mixins(StoreMixin) {
   private clear(): void {
     this.question = '';
     this.answer = '';
+    this.setFocusToQuestionEditor();
+  }
+
+  private setFocusToQuestionEditor(): void {
     const questionEditor = this.$refs.questionEditor;
+
     // @ts-ignore
-    questionEditor.instance.editing.view.focus();
+    if (questionEditor.instance !== undefined) {
+      // @ts-ignore
+      questionEditor.instance.editing.view.focus();
+    }
   }
 }
 </script>
