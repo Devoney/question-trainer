@@ -45,7 +45,7 @@ export default class ChapterRecord extends mixins(StoreMixin) {
   }
 
   private edit(chapter: Chapter): void {
-    this.store.commit(MutationTypes.setEditedChapter, chapter);
+    this.store.commit(MutationTypes.Chapter.setEditedChapter, chapter);
   }
 }
 </script>

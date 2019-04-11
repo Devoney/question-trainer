@@ -28,7 +28,7 @@ describe('state/store', () => {
     const chapter = new Chapter('chapter-ida', 'nr', 'chapter-title');
 
     // When
-    store.commit(MutationTypes.addChapter, chapter);
+    store.commit(MutationTypes.Chapter.addChapter, chapter);
 
     // Then
     assert.equal(secondBook.chapters.length, 1, 'The chapter should have been added to the selected book.');
@@ -51,7 +51,7 @@ describe('state/store', () => {
     };
 
     // When
-    store.commit(MutationTypes.editChapter, updateValue);
+    store.commit(MutationTypes.Chapter.editChapter, updateValue);
 
     // Then
     const updatedChapter = store.state.chapterEdited;
@@ -102,7 +102,7 @@ describe('state/store', () => {
     store.state.bookSelected = secondBook;
 
     // When
-    store.commit(MutationTypes.removeChapterById, chapterIdToRemove);
+    store.commit(MutationTypes.Chapter.removeChapterById, chapterIdToRemove);
 
     // Then
     assert.equal(firstBook.chapters.length, 2, 'Chapter got removed on the wrong book.');
@@ -143,7 +143,7 @@ describe('state/store', () => {
     const chapter = new Chapter('chapter-id', 'nr', 'My chapter');
 
     // When
-    store.commit(MutationTypes.setEditedChapter, chapter);
+    store.commit(MutationTypes.Chapter.setEditedChapter, chapter);
 
     // Then
     // @ts-ignore

@@ -28,7 +28,7 @@ export default class BookSelector extends mixins(StoreMixin) {
   }
 
   set chapterSelected(chapter: Chapter | undefined) {
-    this.store.commit(MutationTypes.setSelectedChapter, chapter);
+    this.store.commit(MutationTypes.Chapter.setSelectedChapter, chapter);
   }
 }
 </script>

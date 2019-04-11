@@ -29,7 +29,7 @@ export default class AddChapter extends ChapterBase {
     const id = uuid();
     const chapter = new Chapter(id, this.chapter.nr.toString(), this.chapter.title);
 
-    this.store.commit(MutationTypes.addChapter, chapter);
+    this.store.commit(MutationTypes.Chapter.addChapter, chapter);
 
     this.chapter.title = '';
     this.chapter.nr = '';

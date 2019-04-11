@@ -84,7 +84,7 @@ export default class ChapterTable extends mixins(StoreMixin) {
   }
 
   private deleteConfirmed() {
-    this.store.commit(MutationTypes.removeChapterById, this.chapterIdUpForDelete);
+    this.store.commit(MutationTypes.Chapter.removeChapterById, this.chapterIdUpForDelete);
   }
 
   private deleteCanceled() {

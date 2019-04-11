@@ -43,14 +43,14 @@ export default class EditChapter extends ChapterBase {
   private ok(): void {
     if (!this.canExecute) { return; }
 
-    this.store.commit(MutationTypes.editChapter, this.chapter);
+    this.store.commit(MutationTypes.Chapter.editChapter, this.chapter);
 
     this.cancel();
   }
 
   private cancel(): void {
     this.resetData();
-    this.store.commit(MutationTypes.setEditedChapter, undefined);
+    this.store.commit(MutationTypes.Chapter.setEditedChapter, undefined);
   }
 }
 </script>

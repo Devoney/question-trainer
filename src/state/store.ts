@@ -36,7 +36,7 @@ const storeOptions: StoreOptions<IState> = {
       state.books.push(book);
     },
 
-    [MutationTypes.addChapter]: (state, chapter: Chapter) => {
+    [MutationTypes.Chapter.addChapter]: (state, chapter: Chapter) => {
       if (state.bookSelected === undefined) {
         throw new Error('No book was selected. So chapter could not be added.');
       }
@@ -51,7 +51,7 @@ const storeOptions: StoreOptions<IState> = {
       state.chapterSelected.questions.push(question);
     },
 
-    [MutationTypes.editChapter]: (state, chapter: { nr: string, title: string }) => {
+    [MutationTypes.Chapter.editChapter]: (state, chapter: { nr: string, title: string }) => {
       if (state.chapterEdited === undefined) {
         throw new Error('Changes are attempted to be saved to chapter, but none is being edited currently.');
       }
@@ -74,7 +74,7 @@ const storeOptions: StoreOptions<IState> = {
       }
     },
 
-    [MutationTypes.removeChapterById]: (state, chapterId: string) => {
+    [MutationTypes.Chapter.removeChapterById]: (state, chapterId: string) => {
       if (state.bookSelected === undefined) { return; }
 
       const index = _.findIndex(state.bookSelected.chapters, (c) => {
@@ -96,7 +96,7 @@ const storeOptions: StoreOptions<IState> = {
       state.bookEdited = book;
     },
 
-    [MutationTypes.setEditedChapter]: (state, chapter: Chapter) => {
+    [MutationTypes.Chapter.setEditedChapter]: (state, chapter: Chapter) => {
       state.chapterEdited = chapter;
     },
 
@@ -104,7 +104,7 @@ const storeOptions: StoreOptions<IState> = {
       state.bookSelected = book;
     },
 
-    [MutationTypes.setSelectedChapter]: (state, chapter: Chapter) => {
+    [MutationTypes.Chapter.setSelectedChapter]: (state, chapter: Chapter) => {
       state.chapterSelected = chapter;
     },
   },
