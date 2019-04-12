@@ -114,6 +114,17 @@ const storeOptions: StoreOptions<IState> = {
     [MutationTypes.Chapter.setSelectedChapter]: (state, chapter: Chapter) => {
       state.chapterSelected = chapter;
     },
+
+    [MutationTypes.Question.removeQuestionById]: (state, questionId: string) => {
+      if (state.chapterSelected === undefined) {
+        throw new Error('Cannot delete question because there is no chapter selected.');
+      }
+
+      const index: number = _.findIndex(state.chapterSelected.questions, (q) => {
+        return q.id === questionId;
+      });
+      state.chapterSelected.questions.splice(index, 1);
+    },
   },
 };
 

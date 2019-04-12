@@ -1,0 +1,31 @@
+General:
+  ☐ Store current state to local storage
+  ☐ View mode: Both, Library, Question list
+  ☐ Toggle fullscreen
+Library:
+  Library Tab:
+    ☐ Give the library a name
+    ☐ Backup library
+    ☐ Import library
+    ☐ Show how much is used of local storage
+  Question Tab:
+    ✔ Show list of questions in table for selected Book + Chapter @done(19-04-12 20:03)
+    ✔ Remove a question @done(19-04-12 20:03)
+    ☐ Confirmation before removing a question
+    ☐ Show question/answer without HTML
+      ☐ Show only first line
+      ☐ Only show first 80 characters
+      ☐ Add dots to end of line if there was more text.
+    ☐ Ability to edit a question
+Questions:
+  Play List:
+    ☐ Add individual questions
+    ☐ Add all from Chapter
+    ☐ Add all from Book       
+    ☐ Clear the play list
+    ☐ Show number of questions in play in header
+  Questionaire:
+    ☐ Show a question and be able to answer good/wrong
+    ☐ Start the play list and show each question one by one
+    ☐ Checkbox to go back to questions that where answered incorrectly
+

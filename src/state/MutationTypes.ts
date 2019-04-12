@@ -20,5 +20,6 @@ export default class MutationTypes {
 
   public static Question = class {
     public static addQuestion: string = 'addQuestion';
+    public static removeQuestionById: string = 'removeQuestionById';
   };
 }

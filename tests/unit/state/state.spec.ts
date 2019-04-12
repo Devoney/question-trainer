@@ -3,6 +3,8 @@ import MutationTypes from '@/state/MutationTypes';
 import store from '@/state/store';
 import Book from '@/models/Book';
 import Chapter from '@/models/Chapter';
+import Question from '@/models/Question';
+import uuid from 'uuid/v1';
 
 describe('state/store', () => {
   it('Adding a book', () => {
@@ -173,5 +175,26 @@ describe('state/store', () => {
 
     // Then
     assert.equal(book.title, title, 'Title of book should have been altered.');
+  });
+
+  it('Question is removed', () => {
+    // Given
+    const idToRemove = uuid();
+    const idToKeep = uuid();
+    assert.notEqual(idToKeep, idToRemove, 'Test is flawed.');
+    const question = new Question(idToRemove, 'My question', 'My answer', '1');
+    const chapter = new Chapter(uuid(), 'Nr', 'Chapter title', [
+      question,
+      new Question(idToKeep, 'My other question', 'My other answer', '2'),
+    ]);
+    store.state.chapterSelected = chapter;
+
+    // When
+    store.commit(MutationTypes.Question.removeQuestionById, idToRemove);
+
+    // Then
+    assert.equal(chapter.questions.length, 1, 'The question should have been removed.');
+    const firstQuestion = chapter.questions[0];
+    assert.equal(firstQuestion.id, idToKeep, 'The wrong question has been deleted.');
   });
 });
