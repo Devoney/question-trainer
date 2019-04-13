@@ -81,10 +81,20 @@ export default class AddQuestion extends mixins(StoreMixin) {
   private question: string = '';
   private answer: string = '';
   private editorConfig: any = {
-
+    removePlugins: [
+      'EasyImage',
+      'Heading',
+      'ImageCaption',      
+      'ImageUpload',
+      'ImageToolbar',
+      'Link',
+      'MediaEmbed'
+    ],
   };
 
   get bookIsSelected(): boolean {
+    // @ts-ignore
+    console.log(ClassicEditor.builtinPlugins.map( plugin => plugin.pluginName ));
     return this.store.state.bookSelected !== undefined;
   }
 
@@ -125,9 +135,7 @@ export default class AddQuestion extends mixins(StoreMixin) {
       this.answer = question.answer;
       this.pageNr = question.pageNr;
     } else {
-      this.question = '';
-      this.answer = '';
-      this.pageNr = '';
+      this.clear();
     }
   }
 
@@ -153,6 +161,7 @@ export default class AddQuestion extends mixins(StoreMixin) {
   private clear(): void {
     this.question = '';
     this.answer = '';
+    this.pageNr = '1';
     this.setFocusToQuestionEditor();
   }
 

@@ -1,8 +1,8 @@
 <template>
   <tr>
     <td>{{ (index) }}</td>
-    <td class="text-left" aria-label="Question">{{ question.question }}</td>
-    <td class="text-left" aria-label="Answer">{{ question.answer }}</td>
+    <td class="text-left" aria-label="Question" v-html="questionStr()"></td>
+    <td class="text-left" aria-label="Answer" v-html="answerStr()"></td>
     <td aria-label="Page number">{{ question.pageNr }}</td>
     <td class="text-center">
       <icon-button icon="edit" label="Edit question" :argument="question" @click="edit" :disabled="questionInEditMode"/>
@@ -16,6 +16,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 import { mixins } from 'vue-class-component';
 import IconButton from '@/components/IconButton.vue';
 import MutationTypes from '@/state/MutationTypes';
+import { PToBr } from '@/utils/TextTransformers';
 import Question from '@/models/Question';
 import StoreMixin from '@/mixins/StoreMixin';
 
@@ -27,6 +28,14 @@ import StoreMixin from '@/mixins/StoreMixin';
 export default class QuestionRecord extends mixins(StoreMixin) {
   @Prop( { required: true }) public index !: number;
   @Prop( { required: true }) public question!: Question;
+
+  private answerStr(): string {
+    return PToBr(this.question.answer);
+  }
+
+  private questionStr(): string {
+    return PToBr(this.question.question);
+  }
 
   get questionInEditMode(): boolean {
     if (this.store.state.questionEdited === undefined) { return false; }
@@ -44,4 +53,10 @@ export default class QuestionRecord extends mixins(StoreMixin) {
 </script>
 
 <style scoped>
+td>p {
+  margin: 0px;
+  margin-bottom: 0px !important;
+  margin-top: 0px;
+  padding: 0px;
+}
 </style>
