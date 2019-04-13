@@ -9,9 +9,9 @@
         <th></th>
       </thead>
       <question-record
-        v-for="(question) in questions"
+        v-for="(question, index) in questions"
         v-bind:key="question.id"
-        :index="1"
+        :index="index + 1"
         :question="question"
         @trash="trash"
       />
@@ -66,7 +66,7 @@ export default class QuestionTable extends mixins(StoreMixin) {
     if (chapterSelected === undefined) { return []; }
     return chapterSelected.questions;
   }
-  
+
   private deleteCanceled(): void {
     this.questionIdUpForDelete = '';
   }

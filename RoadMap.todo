@@ -11,7 +11,7 @@ Library:
   Question Tab:
     ✔ Show list of questions in table for selected Book + Chapter @done(19-04-12 20:03)
     ✔ Remove a question @done(19-04-12 20:03)
-    ☐ Confirmation before removing a question
+    ✔ Confirmation before removing a question @done(19-04-13 07:33)
     ☐ Show question/answer without HTML
       ☐ Show only first line
       ☐ Only show first 80 characters

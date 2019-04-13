@@ -1,5 +1,6 @@
 import Book from '@/models/Book';
 import Chapter from '@/models/Chapter';
+import Question from '@/models/Question';
 
 export default interface IState  {
   books: Book[];
@@ -7,4 +8,5 @@ export default interface IState  {
   bookEdited: Book | undefined;
   chapterEdited: Chapter | undefined;
   chapterSelected: Chapter | undefined;
+  questionEdited: Question | undefined;
 }

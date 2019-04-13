@@ -1,9 +1,9 @@
 <template>
   <tr>
-    <td width="70"></td>
-    <td class="text-left">{{ question.question }}</td>
-    <td class="text-left">{{ question.answer }}</td>
-    <td width="70">{{ question.pageNr }}</td>
+    <td width="70">{{ (index) }}</td>
+    <td class="text-left" aria-label="Question">{{ question.question }}</td>
+    <td class="text-left" aria-label="Answer">{{ question.answer }}</td>
+    <td width="70" aria-label="Page number">{{ question.pageNr }}</td>
     <td class="text-center">
       <icon-button icon="trash-alt" label="Delete question" :argument="question" @click="trash"/>
     </td>
@@ -20,7 +20,7 @@ import StoreMixin from '@/mixins/StoreMixin';
 
 @Component({
   components: {
-  IconButton,
+    IconButton,
   },
 })
 export default class QuestionRecord extends mixins(StoreMixin) {

@@ -16,6 +16,7 @@ const storeOptions: StoreOptions<IState> = {
     bookEdited: undefined,
     chapterEdited: undefined,
     chapterSelected: undefined,
+    questionEdited: undefined,
   },
   getters: {
     booksSortedByTitle: (state) => {
@@ -124,6 +125,16 @@ const storeOptions: StoreOptions<IState> = {
         return q.id === questionId;
       });
       state.chapterSelected.questions.splice(index, 1);
+    },
+
+    [MutationTypes.Question.editQuestion]: (state, question: Question) => {
+      const q = state.questionEdited;
+      if (q === undefined) {
+        throw new Error('Cannot edit question as none has been selected for editing.');
+      }
+      q.answer = question.answer;
+      q.pageNr = question.pageNr;
+      q.question = question.question;
     },
   },
 };
