@@ -84,17 +84,28 @@ export default class AddQuestion extends mixins(StoreMixin) {
     removePlugins: [
       'EasyImage',
       'Heading',
-      'ImageCaption',      
+      'ImageCaption',
       'ImageUpload',
       'ImageToolbar',
-      'Link',
-      'MediaEmbed'
+      'MediaEmbed',
+    ],
+    toolbar: [
+      // 'heading',
+      'bold',
+      'italic',
+      'link',
+      'bulletedList',
+      'numberedList',
+      // 'imageUpload',
+      'blockQuote',
+      'insertTable',
+      // 'mediaEmbed',
+      'undo',
+      'redo',
     ],
   };
 
   get bookIsSelected(): boolean {
-    // @ts-ignore
-    console.log(ClassicEditor.builtinPlugins.map( plugin => plugin.pluginName ));
     return this.store.state.bookSelected !== undefined;
   }
 
