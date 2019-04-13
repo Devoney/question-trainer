@@ -177,6 +177,25 @@ describe('state/store', () => {
     assert.equal(book.title, title, 'Title of book should have been altered.');
   });
 
+  it('Question is added', () => {
+    // Given
+    const chapter = new Chapter('chapter-id', 'nr', 'My chapter', [
+      new Question(uuid(), 'My question', 'My answer', '1'),
+    ]);
+    store.state.chapterSelected = chapter;
+    const questionId = uuid();
+    const question = new Question(questionId, 'My second question', 'My second answer', '2');
+
+    // When
+    store.commit(MutationTypes.Question.addQuestion, question);
+
+    // Then
+    assert.equal(chapter.questions.length, 2, 'The question was not added.');
+    const secondQuestion = chapter.questions[1];
+    assert.equal(secondQuestion.id, questionId, 'The order of questions is unexpected or the question was added incorrectly.');
+  });
+
+
   it('Question is removed', () => {
     // Given
     const idToRemove = uuid();
@@ -197,4 +216,37 @@ describe('state/store', () => {
     const firstQuestion = chapter.questions[0];
     assert.equal(firstQuestion.id, idToKeep, 'The wrong question has been deleted.');
   });
+
+  it('Question is edited.', () => {
+    // Given
+    const id = uuid();
+    const question = new Question(id, 'My question', 'My answer', '1');
+    store.state.questionEdited = question;
+    const editedQuestion = new Question('1', 'A different question', 'A different answer', '2');
+
+    // When
+    store.commit(MutationTypes.Question.editQuestion, editedQuestion);
+
+    // Then
+    assert.equal(question.id, id, 'The id has changed. The id should not change.');
+    assert.equal(question.question, editedQuestion.question, 'The question was not updated.');
+    assert.equal(question.answer, editedQuestion.answer, 'The answer was not updated.');
+    assert.equal(question.pageNr, editedQuestion.pageNr, 'The pageNr was not updated.');
+  });
+
+  it('Question is set for editing', () => {
+    // Given
+    const id = uuid();
+    const question = new Question(id, 'My question', 'My answer', '1');
+    store.state.questionEdited = undefined;
+
+    // When
+    store.commit(MutationTypes.Question.setEditedQuestion, question);
+
+    // Then
+    assert.notEqual(store.state.questionEdited, undefined, 'The question was not set for editing.');
+    // @ts-ignore
+    assert.equal(store.state.questionEdited.id, id, 'The wrong question was set for editing or the question got malformed.');
+  });
+
 });

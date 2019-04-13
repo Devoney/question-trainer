@@ -2,11 +2,11 @@
   <div>
     <table class="table table-striped table-bordered">
       <thead>
-        <th>Nr.</th>
+        <th width="70">Nr.</th>
         <th class="text-left">Question</th>
         <th class="text-left">Answer</th>
-        <th>Page Nr.</th>
-        <th></th>
+        <th width="70">Page Nr.</th>
+        <th width="90"></th>
       </thead>
       <question-record
         v-for="(question, index) in questions"

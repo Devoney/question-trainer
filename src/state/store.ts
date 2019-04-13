@@ -136,6 +136,10 @@ const storeOptions: StoreOptions<IState> = {
       q.pageNr = question.pageNr;
       q.question = question.question;
     },
+
+    [MutationTypes.Question.setEditedQuestion]: (state, question: Question) => {
+      state.questionEdited = question;
+    },
   },
 };
 
