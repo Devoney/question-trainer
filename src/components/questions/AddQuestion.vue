@@ -44,9 +44,9 @@
       <div class="col text-right">
         <button
           :class="['btn', {'btn-primary': canSave, 'btn-secondary': !canSave}]"
-          @click="add"
+          @click="addOrEdit"
           :disabled="!chapterSelected"
-        >Add</button>
+        >{{ buttonText }}</button>
       </div>
     </div>
   </div>
@@ -88,6 +88,10 @@ export default class AddQuestion extends mixins(StoreMixin) {
     return this.store.state.bookSelected !== undefined;
   }
 
+  get buttonText(): string {
+    return (this.inEditMode) ? 'Edit' : 'Add';
+  }
+
   get canSave(): boolean {
     return (!_.isEmpty(this.question) && !_.isEmpty(this.answer));
   }
@@ -108,7 +112,26 @@ export default class AddQuestion extends mixins(StoreMixin) {
     return !_.isEmpty(this.question);
   }
 
-  private add(): void {
+  get inEditMode() {
+    return this.store.state.questionEdited !== undefined;
+  }
+
+  @Watch('inEditMode')
+  private onInEditMode(): void {
+    if (this.inEditMode) {
+      const question = this.store.state.questionEdited;
+      if (question === undefined) { return; }
+      this.question = question.question;
+      this.answer = question.answer;
+      this.pageNr = question.pageNr;
+    } else {
+      this.question = '';
+      this.answer = '';
+      this.pageNr = '';
+    }
+  }
+
+  private addOrEdit(): void {
     if (!this.canSave) { return; }
 
     const id = uuid();
@@ -119,7 +142,11 @@ export default class AddQuestion extends mixins(StoreMixin) {
       this.pageNr,
     );
 
-    this.store.commit(MutationTypes.Question.addQuestion, question);
+    const mutationType = (this.inEditMode) ? MutationTypes.Question.editQuestion : MutationTypes.Question.addQuestion;
+    this.store.commit(mutationType, question);
+    if (this.inEditMode) {
+      this.store.commit(MutationTypes.Question.setEditedQuestion, undefined);
+    }
     this.clear();
   }
 
