@@ -12,11 +12,11 @@ Library:
     ✔ Show list of questions in table for selected Book + Chapter @done(19-04-12 20:03)
     ✔ Remove a question @done(19-04-12 20:03)
     ✔ Confirmation before removing a question @done(19-04-13 07:33)
-    ☐ Show question/answer without HTML
-      ☐ Show only first line
-      ☐ Only show first 80 characters
-      ☐ Add dots to end of line if there was more text.
-    ☐ Ability to edit a question
+    ✔ Show question/answer without <p> @done(19-04-13 19:46)
+    ✔ Show only first line @done(19-04-13 19:45)
+    ✔ Only show first NN characters @done(19-04-13 19:46)
+    ✔ Add dots to end of line if there was more text. @done(19-04-13 19:46)
+    ✔ Ability to edit a question @done(19-04-13 19:46)
 Questions:
   Play List:
     ☐ Add individual questions

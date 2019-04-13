@@ -16,7 +16,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 import { mixins } from 'vue-class-component';
 import IconButton from '@/components/IconButton.vue';
 import MutationTypes from '@/state/MutationTypes';
-import { PToBr } from '@/utils/TextTransformers';
+import { truncateWithDots } from '@/utils/TextTransformers';
 import Question from '@/models/Question';
 import StoreMixin from '@/mixins/StoreMixin';
 
@@ -26,15 +26,17 @@ import StoreMixin from '@/mixins/StoreMixin';
   },
 })
 export default class QuestionRecord extends mixins(StoreMixin) {
+  private maxLengthText: number = 40;
+
   @Prop( { required: true }) public index !: number;
   @Prop( { required: true }) public question!: Question;
 
   private answerStr(): string {
-    return PToBr(this.question.answer);
+    return truncateWithDots(this.question.answer, this.maxLengthText);
   }
 
   private questionStr(): string {
-    return PToBr(this.question.question);
+    return truncateWithDots(this.question.question, this.maxLengthText);
   }
 
   get questionInEditMode(): boolean {
