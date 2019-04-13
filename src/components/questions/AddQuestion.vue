@@ -32,7 +32,7 @@
       <div class="col text-left">
         <label class="font-weight-bold">Answer:</label>
         <ckeditor
-          :disabled="!chapterIsSelected || !hasQuestion"
+          :disabled="(!chapterIsSelected || !hasQuestion) && !hasAnswer"
           :editor="editor"
           v-model="answer"
           :config="editorConfig"
@@ -43,7 +43,7 @@
     <div class="row button-row">
       <div class="col text-right">
         <button
-          :class="['btn', {'btn-primary': chapterSelected, 'btn-secondary': !chapterSelected}]"
+          :class="['btn', {'btn-primary': canSave, 'btn-secondary': !canSave}]"
           @click="add"
           :disabled="!chapterSelected"
         >Add</button>
@@ -88,6 +88,10 @@ export default class AddQuestion extends mixins(StoreMixin) {
     return this.store.state.bookSelected !== undefined;
   }
 
+  get canSave(): boolean {
+    return (!_.isEmpty(this.question) && !_.isEmpty(this.answer));
+  }
+
   get chapterIsSelected(): boolean {
     return this.chapterSelected !== undefined;
   }
@@ -96,12 +100,16 @@ export default class AddQuestion extends mixins(StoreMixin) {
     return this.store.state.chapterSelected;
   }
 
+  get hasAnswer() {
+    return !_.isEmpty(this.answer);
+  }
+
   get hasQuestion() {
     return !_.isEmpty(this.question);
   }
 
   private add(): void {
-    if (_.isEmpty(this.question) || _.isEmpty(this.answer)) { return; }
+    if (!this.canSave) { return; }
 
     const id = uuid();
     const question = new Question(
