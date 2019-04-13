@@ -28,7 +28,7 @@ export default class QuestionRecord extends mixins(StoreMixin) {
   @Prop( { required: true }) public question!: Question;
 
   private trash(question: Question): void {
-    this.store.commit(MutationTypes.Question.removeQuestionById, question.id);
+    this.$emit('trash', question.id);
   }
 }
 </script>
