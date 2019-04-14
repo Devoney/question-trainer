@@ -7,7 +7,7 @@ export function PToBr(text: string): string {
 }
 
 export function firstLineOnly(text: string) {
-  return PToBr(text).split("\n")[0].split('<br>')[0];
+  return PToBr(text).split('\n')[0].split('<br>')[0];
 }
 
 export function truncateWithDots(text: string, maxLength: number) {
@@ -18,7 +18,7 @@ export function truncateWithDots(text: string, maxLength: number) {
   } else {
     lineToShow = firstLine;
   }
-  if (text.replace('<br>', '').length-3 > lineToShow.length && text.length > maxLength) {
+  if (text.replace('<br>', '').length - 3 > lineToShow.length && text.length > maxLength) {
     lineToShow = lineToShow + '...';
   }
   return lineToShow;

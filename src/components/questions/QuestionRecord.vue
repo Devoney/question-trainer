@@ -26,10 +26,15 @@ import StoreMixin from '@/mixins/StoreMixin';
   },
 })
 export default class QuestionRecord extends mixins(StoreMixin) {
-  private maxLengthText: number = 40;
+
+  get questionInEditMode(): boolean {
+    if (this.store.state.questionEdited === undefined) { return false; }
+    return this.store.state.questionEdited.id === this.question.id;
+  }
 
   @Prop( { required: true }) public index !: number;
   @Prop( { required: true }) public question!: Question;
+  private maxLengthText: number = 40;
 
   private answerStr(): string {
     return truncateWithDots(this.question.answer, this.maxLengthText);
@@ -37,11 +42,6 @@ export default class QuestionRecord extends mixins(StoreMixin) {
 
   private questionStr(): string {
     return truncateWithDots(this.question.question, this.maxLengthText);
-  }
-
-  get questionInEditMode(): boolean {
-    if (this.store.state.questionEdited === undefined) { return false; }
-    return this.store.state.questionEdited.id === this.question.id;
   }
 
   private edit(question: Question): void {

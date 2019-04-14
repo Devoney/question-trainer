@@ -24,4 +24,9 @@ export default class MutationTypes {
     public static setEditedQuestion: string = 'setEditedQuestion';
     public static removeQuestionById: string = 'removeQuestionById';
   };
+
+  public static QuestionList = class {
+    public static addToList: string = 'addToList';
+    public static removeFromList: string = 'removeFromList';
+  };
 }

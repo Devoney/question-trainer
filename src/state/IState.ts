@@ -9,4 +9,5 @@ export default interface IState  {
   chapterEdited: Chapter | undefined;
   chapterSelected: Chapter | undefined;
   questionEdited: Question | undefined;
+  questionList: Question[];
 }

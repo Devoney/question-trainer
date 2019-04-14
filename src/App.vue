@@ -5,7 +5,7 @@
         <library />
       </div>
       <div class="col-6">
-        
+        <question-list />
       </div>
     </div>
   </div>
@@ -18,6 +18,7 @@ import { mixins } from 'vue-class-component';
 import { Component, Vue } from 'vue-property-decorator';
 import Library from '@/components/Library.vue';
 import '@/font-awesome';
+import QuestionList from '@/components/questionList/QuestionList.vue';
 import StoreMixin from '@/mixins/StoreMixin';
 // @ts-ignore
 import CKEditor from '@ckeditor/ckeditor5-vue';
@@ -26,10 +27,11 @@ Vue.use( CKEditor );
 @Component({
   components: {
     Library,
+    QuestionList,
   },
 })
 export default class App extends mixins(StoreMixin) {
-  
+
 }
 </script>
 

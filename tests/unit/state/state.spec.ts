@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import { assert } from 'chai';
 import MutationTypes from '@/state/MutationTypes';
 import store from '@/state/store';
@@ -249,4 +250,51 @@ describe('state/store', () => {
     assert.equal(store.state.questionEdited.id, id, 'The wrong question was set for editing or the question got malformed.');
   });
 
+  it('Question is removed from list', () => {
+    // Given
+    const firstQuestion = new Question(uuid(), 'First question', 'First answer', '1');
+    const secondQuestion = new Question(uuid(), 'Second question', 'Second answer', '2');
+    const thirdQuestion = new Question(uuid(), 'Third question', 'Third answer', '3');
+    store.state.questionList = [
+      firstQuestion,
+      secondQuestion,
+      thirdQuestion,
+    ];
+
+    // When
+    store.commit(MutationTypes.QuestionList.removeFromList, secondQuestion);
+
+    // Then
+    assert.equal(store.state.questionList.length, 2, 'The question has not been removed.');
+    const index = _.findIndex(store.state.questionList, (q) => {
+      return q.id === secondQuestion.id;
+    });
+    assert.equal(index, -1, 'The wrong question has been deleted.');
+  });
+
+  it('Question is added to the list.', () => {
+    // Given
+    store.state.questionList = [];
+    const question = new Question(uuid(), 'Question', 'Answer', '1');
+
+    // When
+    store.commit(MutationTypes.QuestionList.addToList, question);
+
+    // Then
+    assert.equal(store.state.questionList.length, 1, 'The question was not added to the list.');
+  });
+
+  it('Question is not added to the list twice.', () => {
+    // Given
+    const question = new Question(uuid(), 'Question', 'Answer', '1');
+    store.state.questionList = [
+      question,
+    ];
+
+    // When
+    store.commit(MutationTypes.QuestionList.addToList, question);
+
+    // Then
+    assert.equal(store.state.questionList.length, 1, 'The question should not be added to the list twice.');
+  });
 });

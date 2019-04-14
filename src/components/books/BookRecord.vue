@@ -1,7 +1,7 @@
 <template>
   <tr>
     <td class="text-center" style="width: 70px;">
-      <add-or-remove remove-color="red" @add="raiseEvent('add')" @remove="raiseEvent('remove')"/>
+      <add-or-remove remove-color="red" @add="addQuestionsToList" @remove="raiseEvent('remove')"/>
     </td>
     <td class="text-right" style="width: 70px;">
       <span aria-label="Index">{{ index }}</span>
@@ -57,6 +57,16 @@ export default class BookRecord extends mixins(StoreMixin) {
   get nrOfChapters() {
     if (this.book.chapters === undefined) { return 0; }
     return this.book.chapters.length;
+  }
+
+  private addQuestionsToList(): void {
+    const questionsArray = _.map(this.book.chapters, (chapter) => {
+      return chapter.questions;
+    });
+    const questions = _.flatten(questionsArray);
+    _.forEach(questions, (q) => {
+      this.store.commit(MutationTypes.QuestionList.addToList, q);
+    });
   }
 
   private raiseEvent(eventName: string) {

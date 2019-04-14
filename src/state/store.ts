@@ -17,6 +17,7 @@ const storeOptions: StoreOptions<IState> = {
     chapterEdited: undefined,
     chapterSelected: undefined,
     questionEdited: undefined,
+    questionList: new Array<Question>(),
   },
   getters: {
     booksSortedByTitle: (state) => {
@@ -139,6 +140,27 @@ const storeOptions: StoreOptions<IState> = {
 
     [MutationTypes.Question.setEditedQuestion]: (state, question: Question) => {
       state.questionEdited = question;
+    },
+
+    [MutationTypes.QuestionList.addToList]: (state, question: Question) => {
+      const index = _.findIndex(state.questionList, (q) => {
+        return q.id === question.id;
+      });
+      if (index !== -1) { return; }
+
+      state.questionList.push(question);
+    },
+
+    [MutationTypes.QuestionList.removeFromList]: (state, question: Question) => {
+      const index = _.findIndex(state.questionList, (q) => {
+        return q.id === question.id;
+      });
+
+      if (index === -1) {
+        throw new Error('Could not remove question from list as it appears not to be in the list.');
+      }
+
+      state.questionList.splice(index, 1);
     },
   },
 };
