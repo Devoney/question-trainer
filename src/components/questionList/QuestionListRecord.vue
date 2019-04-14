@@ -1,8 +1,8 @@
 <template>
   <tr>
-    <td><icon-button icon="minus" color="red" :argument="question" @click="removeFromQuestionList"/></td>
-    <td>{{ index }}</td>
-    <td>{{ questionText }}</td>
+    <td><icon-button icon="minus" color="red" label="Remove from question list" :argument="question" @click="removeFromQuestionList"/></td>
+    <td aria-label="Question number">{{ index }}</td>
+    <td aria-label="Question text">{{ questionText }}</td>
   </tr>
 </template>
 

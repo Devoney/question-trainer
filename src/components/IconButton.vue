@@ -1,6 +1,6 @@
 <template>
     <button :disabled="disabled" class="btn btn-xs" :title="label" :aria-label="label" @click="click">
-      <font-awesome-icon :icon="icon"/>
+      <font-awesome-icon :icon="icon" :style="{ color: color }"/>
     </button>
 </template>
 
@@ -13,6 +13,7 @@ export default class DeleteButton extends Vue {
   @Prop({ required: true }) public argument!: any;
   @Prop() public icon!: string;
   @Prop() public disabled!: boolean;
+  @Prop({ default: 'black' }) public color!: string;
 
   private click(): void {
     this.$emit('click', this.argument);

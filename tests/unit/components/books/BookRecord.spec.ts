@@ -100,10 +100,10 @@ describe('components/books/BookRecord', () => {
   });
 
   describe('User interaction', () => {
-    it('Add event is raised when add button is clicked, with id of book as argument.', () => {
+    it('All questions in book are added to question list when add button is clicked.', () => {
       // Given
+      store.state.questionList = [];
       const book = getBook();
-      const expectedEventArgs: string[] = [book.id];
       const wrapper = mount(BookRecord, {
         propsData: {
           book,
@@ -116,10 +116,7 @@ describe('components/books/BookRecord', () => {
       addButton.trigger('click');
 
       // Then
-      const event = wrapper.emitted().add;
-      expect(event.length).to.be.equal(1);
-      const actualEventArgs = event[0];
-      expect(actualEventArgs).to.be.deep.equal(expectedEventArgs);
+      assert.equal(store.state.questionList.length, 4, 'An equivalent number of questions in the book should have been added to the question list.');
     });
 
     it('Remove event is raised when remove button is clicked, with id of book as argument.', () => {

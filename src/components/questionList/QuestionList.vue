@@ -16,6 +16,9 @@
             :question="question"
           />
         </tbody>
+        <tfoot v-show="listHasNoQuestions">
+          <th colspan="3">Add question to this list by using the <icon-button icon="plus" argument=""/> button on books, chapters and individual questions.</th>
+        </tfoot>
       </table>
     </div>
   </div>
@@ -24,6 +27,7 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import { mixins } from 'vue-class-component';
+import IconButton from '@/components/IconButton.vue';
 import Question from '@/models/Question';
 import QuestionListRecord from '@/components/questionList/QuestionListRecord.vue';
 import StoreMixin from '@/mixins/StoreMixin';
@@ -31,10 +35,15 @@ import MutationTypes from '@/state/MutationTypes';
 
 @Component({
   components: {
+    IconButton,
     QuestionListRecord,
   },
 })
 export default class QuestionList extends mixins(StoreMixin) {
+  private get listHasNoQuestions(): boolean {
+    return this.questionsInList.length === 0;
+  }
+
   private get questionsInList(): Question[] {
     return this.store.state.questionList;
   }
