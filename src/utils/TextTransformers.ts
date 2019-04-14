@@ -18,7 +18,7 @@ export function truncateWithDots(text: string, maxLength: number) {
   } else {
     lineToShow = firstLine;
   }
-  if (text.replace('<br>', '').length-3 > lineToShow.length) {
+  if (text.replace('<br>', '').length-3 > lineToShow.length && text.length > maxLength) {
     lineToShow = lineToShow + '...';
   }
   return lineToShow;
