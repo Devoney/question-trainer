@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import BookRecord from '@/components/books/BookRecord.vue';
 import Book from '@/models/Book';
 import Chapter from '@/models/Chapter';
@@ -119,10 +120,14 @@ describe('components/books/BookRecord', () => {
       assert.equal(store.state.questionList.length, 4, 'An equivalent number of questions in the book should have been added to the question list.');
     });
 
-    it('Remove event is raised when remove button is clicked, with id of book as argument.', () => {
+    it('All questions in the book are removed from the question list.', () => {
       // Given
       const book = getBook();
-      const expectedEventArgs: string[] = [book.id];
+      const questionsFromBook = _.flatMap(_.map(book.chapters, (chapter) => {
+        return chapter.questions;
+      }));
+      const question = new Question(uuid(), 'My question', 'My answer', '6');
+      store.state.questionList = _.concat(questionsFromBook, [question]);
       const wrapper = mount(BookRecord, {
         propsData: {
           book,
@@ -135,10 +140,13 @@ describe('components/books/BookRecord', () => {
       removeButton.trigger('click');
 
       // Then
-      const event = wrapper.emitted().remove;
-      expect(event.length).to.be.equal(1);
-      const actualEventArgs = event[0];
-      expect(actualEventArgs).to.be.deep.equal(expectedEventArgs);
+      assert.equal(store.state.questionList.length, 1, 'The questions from the book have not been removed from the question list.');
+      const singleQuestion = store.state.questionList[0];
+      assert.equal(
+        singleQuestion.id,
+        question.id,
+        'The question that was not in the book, that should not have been removed, seems to have been removed.',
+      );
     });
 
     it('Trash event is raised when trash button is clicked, with id of book as argument.', () => {

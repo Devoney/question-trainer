@@ -1,7 +1,7 @@
 <template>
   <tr>
     <td class="text-center" style="width: 70px;">
-      <add-or-remove remove-color="red" @add="addQuestionsToList" @remove="raiseEvent('remove')"/>
+      <add-or-remove remove-color="red" @add="addQuestionsToList" @remove="removeQuestionsFromList"/>
     </td>
     <td class="text-right" style="width: 70px;">
       <span aria-label="Index">{{ index }}</span>
@@ -33,6 +33,7 @@ import StoreMixin from '@/mixins/StoreMixin';
 import AddOrRemove from '@/components/AddOrRemove.vue';
 import IconButton from '@/components/IconButton.vue';
 import Book from '@/models/Book';
+import Question from '@/models/Question';
 
 @Component({
   components: {
@@ -60,13 +61,24 @@ export default class BookRecord extends mixins(StoreMixin) {
   }
 
   private addQuestionsToList(): void {
-    const questionsArray = _.map(this.book.chapters, (chapter) => {
-      return chapter.questions;
-    });
-    const questions = _.flatten(questionsArray);
+    const questions = this.getAllQuestionsFromBook();
     _.forEach(questions, (q) => {
       this.store.commit(MutationTypes.QuestionList.addToList, q);
     });
+  }
+
+  private removeQuestionsFromList(): void {
+    const questions = this.getAllQuestionsFromBook();
+    _.forEach(questions, (q) => {
+      this.store.commit(MutationTypes.QuestionList.removeFromList, q);
+    });
+  }
+
+  private getAllQuestionsFromBook(): Question[] {
+    const questionsArray = _.map(this.book.chapters, (chapter) => {
+      return chapter.questions;
+    });
+    return _.flatten(questionsArray);
   }
 
   private raiseEvent(eventName: string) {
