@@ -1,6 +1,11 @@
 <template>
   <div class="card">
-    <div class="card-header">Question list</div>
+    <div class="card-header">
+      Question list
+      <span v-if="!listHasNoQuestions">
+        &nbsp;(<span aria-label="Number of questions in the list.">{{ questionsInList.length }}</span>)
+      </span>
+    </div>
     <div class="card-body">
       <table class="table table-striped table-bordered">
         <thead>
@@ -16,8 +21,11 @@
             :question="question"
           />
         </tbody>
-        <tfoot v-show="listHasNoQuestions">
-          <th colspan="3">Add question to this list by using the <icon-button icon="plus" argument=""/> button on books, chapters and individual questions.</th>
+        <tfoot v-if="listHasNoQuestions">
+          <th colspan="3" aria-label="Instructions on how to add a question to the list.">
+            Add questions to this list by using the
+            <icon-button icon="plus" argument/>button on books, chapters and individual questions.
+          </th>
         </tfoot>
       </table>
     </div>

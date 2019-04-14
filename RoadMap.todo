@@ -21,9 +21,9 @@ Questions:
   Play List:
     ☐ Add individual questions
     ☐ Add all from Chapter
-    ☐ Add all from Book       
+    ✔ Add all from Book       
     ☐ Clear the play list
-    ☐ Show number of questions in play in header
+    ✔ Show number of questions in play in header
   Questionaire:
     ☐ Show a question and be able to answer good/wrong
     ☐ Start the play list and show each question one by one

@@ -156,9 +156,7 @@ const storeOptions: StoreOptions<IState> = {
         return q.id === question.id;
       });
 
-      if (index === -1) {
-        throw new Error('Could not remove question from list as it appears not to be in the list.');
-      }
+      if (index === -1) { return; }
 
       state.questionList.splice(index, 1);
     },
