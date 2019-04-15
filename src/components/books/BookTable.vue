@@ -88,7 +88,25 @@ export default class BookTable extends mixins(StoreMixin) {
 
   private deleteConfirmed() {
     const bookId: string = this.bookIdUpForDelete as string;
+
+    this.removeAllQuestionsFromQuestionList(bookId);
+
     this.store.commit(MutationTypes.Book.removeBookById, bookId);
+  }
+
+  private removeAllQuestionsFromQuestionList(bookId: string): void {
+    const book = _.find(this.store.state.books, (b) => {
+      return b.id === bookId;
+    });
+    if (book !== undefined) {
+      const questionsArray = _.map(book.chapters, (chapter) => {
+        return chapter.questions;
+      });
+      const questions = _.flatten(questionsArray);
+      _.forEach(questions, (q) => {
+        this.store.commit(MutationTypes.QuestionList.removeFromList, q);
+      });
+    }
   }
 
   private deleteCanceled() {

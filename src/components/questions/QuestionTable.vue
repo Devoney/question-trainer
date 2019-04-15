@@ -2,6 +2,7 @@
   <div>
     <table class="table table-striped table-bordered">
       <thead>
+        <th width="40"></th>
         <th width="70">Nr.</th>
         <th class="text-left">Question</th>
         <th class="text-left">Answer</th>
