@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import { mount, Wrapper } from '@vue/test-utils';
+import { mount, shallowMount, Wrapper } from '@vue/test-utils';
 import Question from '@/models/Question';
 import QuestionRecord from '@/components/questions/QuestionRecord.vue';
 import store from '@/state/store';
@@ -12,7 +12,7 @@ describe('components/questions/QuestionRecord', () => {
     const strAnswer = 'My answer';
     const strPageNr = '1';
     const question = new Question(uuid(), strQuestion, strAnswer, strPageNr);
-    const wrapper = mount(QuestionRecord, {
+    const wrapper = shallowMount(QuestionRecord, {
       propsData: {
         index: 1,
         question,
@@ -58,7 +58,7 @@ describe('components/questions/QuestionRecord', () => {
     wrapper.destroy();
   });
 
-  it('Question is remove from the list.', () => {
+  it('Question is removed from the list.', () => {
     // Given
     const question = new Question(uuid(), 'Question', 'Answer', '1');
     const secondQuestion = new Question(uuid(), 'Question', 'Answer', '1');

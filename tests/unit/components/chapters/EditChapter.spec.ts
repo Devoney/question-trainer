@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import { mount, Wrapper } from '@vue/test-utils';
+import {shallowMount, Wrapper } from '@vue/test-utils';
 import { Vue, VueConstructor } from 'vue/types/vue';
 import EditChapter from '@/components/chapters/EditChapter.vue';
 import store from '@/state/store';
@@ -13,7 +13,7 @@ describe('components/chapters/EditChapter', () => {
     titleInput: Wrapper<Vue>,
     wrapper: Wrapper<Vue>,
   } {
-    const wrapper = mount(EditChapter, {
+    const wrapper = shallowMount(EditChapter, {
       store,
     });
     const nrInput = wrapper.find('input[aria-label="Nr of chapter"]');

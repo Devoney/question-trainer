@@ -1,7 +1,7 @@
 import { assert } from 'chai';
 import Vue from 'vue';
 import { CombinedVueInstance } from 'vue/types/vue';
-import { mount, Wrapper } from '@vue/test-utils';
+import {shallowMount, Wrapper } from '@vue/test-utils';
 import _ from 'lodash';
 import store from '@/state/store';
 import Chapter from '@/models/Chapter';
@@ -50,7 +50,7 @@ describe('components/chapters/AddChapter', () => {
     store.state.bookSelected = getBook();
     const nr = 'Ch. #1';
     const title = 'My chapter title';
-    const wrapper = mount(AddChapter, {
+    const wrapper = shallowMount(AddChapter, {
       store,
     });
     const inputs = findInputs(wrapper);
@@ -73,7 +73,7 @@ describe('components/chapters/AddChapter', () => {
     store.state.bookSelected = getBook();
     const nr = undefined;
     const title = 'My chapter title';
-    const wrapper = mount(AddChapter, {
+    const wrapper = shallowMount(AddChapter, {
       store,
     });
     const inputs = findInputs(wrapper);
@@ -92,7 +92,7 @@ describe('components/chapters/AddChapter', () => {
     store.state.bookSelected = getBook();
     const nr = 'Ch. #2';
     const title = undefined;
-    const wrapper = mount(AddChapter, {
+    const wrapper = shallowMount(AddChapter, {
       store,
     });
     const inputs = findInputs(wrapper);
@@ -111,7 +111,7 @@ describe('components/chapters/AddChapter', () => {
     store.state.bookSelected = getBook();
     const nr = 'Ch. #1';
     const title = 'My chapter title';
-    const wrapper = mount(AddChapter, {
+    const wrapper = shallowMount(AddChapter, {
       store,
     });
     const inputs = findInputs(wrapper);
@@ -141,7 +141,7 @@ describe('components/chapters/AddChapter', () => {
        1,
        'Test is flawed, book should have gotten one chapter already.');
 
-     const wrapper = mount(AddChapter, {
+     const wrapper = shallowMount(AddChapter, {
        store,
      });
      const inputs = findInputs(wrapper);
@@ -168,7 +168,7 @@ describe('components/chapters/AddChapter', () => {
       1,
       'Test is flawed, book should have gotten one chapter already.');
 
-    const wrapper = mount(AddChapter, {
+    const wrapper = shallowMount(AddChapter, {
       store,
     });
     const inputs = findInputs(wrapper);

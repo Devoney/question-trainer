@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import { mount, Wrapper } from '@vue/test-utils';
+import { mount, shallowMount, Wrapper } from '@vue/test-utils';
 import QuestionListRecord from '@/components/questionList/QuestionListRecord.vue';
 import store from '@/state/store';
 import Question from '@/models/Question';
@@ -11,7 +11,7 @@ describe('components/questionList/questionListRecord', () => {
     const index: number = 2;
     const questionTextStr = 'My question';
     const question = new Question(uuid(), questionTextStr, 'My answer', '34');
-    const wrapper = mount(QuestionListRecord, {
+    const wrapper = shallowMount(QuestionListRecord, {
       propsData: {
         index,
         question,

@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import { createLocalVue, mount } from '@vue/test-utils';
+import { createLocalVue, shallowMount } from '@vue/test-utils';
 
 import Tabs from '@/components/Tabs.vue';
 import TabPage from '@/components/TabPage.vue';
@@ -10,7 +10,7 @@ describe('components/Tabs', () => {
       // Given
       const localVue = createLocalVue();
       localVue.component('tab-page', TabPage);
-      const wrapper = mount(Tabs, {
+      const wrapper = shallowMount(Tabs, {
         localVue,
         slots: {
           default: [
@@ -40,7 +40,7 @@ describe('components/Tabs', () => {
       // Given
       const localVue = createLocalVue();
       localVue.component('tab-page', TabPage);
-      const wrapper = mount(Tabs, {
+      const wrapper = shallowMount(Tabs, {
         localVue,
         slots: {
           default: [
@@ -71,7 +71,7 @@ describe('components/Tabs', () => {
       const localVue = createLocalVue();
       const titles: string[] = ['Books', 'Chapters'];
       localVue.component('tab-page', TabPage);
-      const wrapper = mount(Tabs, {
+      const wrapper = shallowMount(Tabs, {
         localVue,
         slots: {
           default: [

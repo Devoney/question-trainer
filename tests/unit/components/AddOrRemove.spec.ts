@@ -1,7 +1,7 @@
 import '@/font-awesome';
 import { expect } from 'chai';
 import Vue from 'vue';
-import { mount, Wrapper } from '@vue/test-utils';
+import { mount, shallowMount, Wrapper } from '@vue/test-utils';
 import AddOrRemove from '@/components/AddOrRemove.vue';
 import { CombinedVueInstance } from 'vue/types/vue';
 
@@ -21,7 +21,7 @@ describe('components/AddOrRemove', () => {
   describe('User interaction', () => {
     it('Emits "remove" event when remove button is clicked.', () => {
       // Given
-      const wrapper = mount(AddOrRemove);
+      const wrapper = shallowMount(AddOrRemove);
       const button = findRemoveButton(wrapper);
 
       // When
@@ -34,7 +34,7 @@ describe('components/AddOrRemove', () => {
 
     it('Emits "add" event when add button is clicked.', () => {
       // Given
-      const wrapper = mount(AddOrRemove);
+      const wrapper = shallowMount(AddOrRemove);
       const button = findAddButton(wrapper);
 
       // When
@@ -80,7 +80,7 @@ describe('components/AddOrRemove', () => {
       const defaultTitle = 'Add';
 
       // When
-      const wrapper = mount(AddOrRemove);
+      const wrapper = shallowMount(AddOrRemove);
 
       // Then
       const button = findAddButton(wrapper);
@@ -92,7 +92,7 @@ describe('components/AddOrRemove', () => {
       const addToText = 'My non default text on add button';
 
       // When
-      const wrapper = mount(AddOrRemove, {
+      const wrapper = shallowMount(AddOrRemove, {
         propsData: {
           addToText,
         },
@@ -108,7 +108,7 @@ describe('components/AddOrRemove', () => {
       const defaultTitle = 'Remove';
 
       // When
-      const wrapper = mount(AddOrRemove);
+      const wrapper = shallowMount(AddOrRemove);
 
       // Then
       const button = findRemoveButton(wrapper);
@@ -120,7 +120,7 @@ describe('components/AddOrRemove', () => {
       const removeFromText = 'My non default text on remove button';
 
       // When
-      const wrapper = mount(AddOrRemove, {
+      const wrapper = shallowMount(AddOrRemove, {
         propsData: {
           removeFromText,
         },

@@ -1,6 +1,6 @@
 import { assert, expect } from 'chai';
 import Vue from 'vue';
-import { mount, Wrapper } from '@vue/test-utils';
+import { mount, shallowMount, Wrapper } from '@vue/test-utils';
 import ConfirmationModal from '@/components/ConfirmationModal.vue';
 import { CombinedVueInstance } from 'vue/types/vue';
 import sinon from 'sinon';
@@ -27,7 +27,7 @@ describe('components/ConfirmationModal', () => {
   describe('User interaction', () => {
     it('Emits "ok" event when ok button is clicked.', () => {
       // Given
-      const wrapper = mount(ConfirmationModal, {
+      const wrapper = shallowMount(ConfirmationModal, {
         propsData: {
           id: 'myId',
         },
@@ -44,7 +44,7 @@ describe('components/ConfirmationModal', () => {
 
     it('Emits "cancel" event when cancel button is clicked.', () => {
       // Given
-      const wrapper = mount(ConfirmationModal, {
+      const wrapper = shallowMount(ConfirmationModal, {
         propsData: {
           id: 'myId',
         },
@@ -87,7 +87,7 @@ describe('components/ConfirmationModal', () => {
       const cancelText = 'cancel';
 
       // When
-      const wrapper = mount(ConfirmationModal, {
+      const wrapper = shallowMount(ConfirmationModal, {
         propsData: {
           id: 'myId',
         },
@@ -108,7 +108,7 @@ describe('components/ConfirmationModal', () => {
       const cancelText = 'No';
 
       // When
-      const wrapper = mount(ConfirmationModal, {
+      const wrapper = shallowMount(ConfirmationModal, {
         propsData: {
           id: 'myId',
           okText,
@@ -128,7 +128,7 @@ describe('components/ConfirmationModal', () => {
       const title = 'My Title';
 
       // When
-      const wrapper = mount(ConfirmationModal, {
+      const wrapper = shallowMount(ConfirmationModal, {
         propsData: {
           id: 'myId',
           title,

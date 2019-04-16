@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import { mount, Wrapper } from '@vue/test-utils';
+import { mount, shallowMount, Wrapper } from '@vue/test-utils';
 import EditBook from '@/components/books/EditBook.vue';
 import store from '@/state/store';
 import Book from '@/models/Book';
@@ -32,7 +32,7 @@ describe('components/books/EditBook', () => {
     const newTitle = 'New title';
     const book = new Book('id', bookTitle);
     store.state.bookEdited = book;
-    const wrapper = mount(EditBook, {
+    const wrapper = shallowMount(EditBook, {
       store,
     });
     const titleInput = wrapper.find('input');
@@ -57,7 +57,7 @@ describe('components/books/EditBook', () => {
       book,
       new Book('Some other id', newTitle),
     ];
-    const wrapper = mount(EditBook, {
+    const wrapper = shallowMount(EditBook, {
       store,
     });
     const titleInput = wrapper.find('input');

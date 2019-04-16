@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import { mount, Wrapper } from '@vue/test-utils';
+import {shallowMount, Wrapper } from '@vue/test-utils';
 
 import AddBook from '@/components/books/AddBook.vue';
 
@@ -7,7 +7,7 @@ describe('components/books/AddBook', () => {
   describe('User interaction', () => {
     it('When user presses add button, without title, no event is raised.', () => {
       // Given
-      const wrapper = mount(AddBook);
+      const wrapper = shallowMount(AddBook);
       const addButton = wrapper.find('button');
 
       // When
@@ -21,7 +21,7 @@ describe('components/books/AddBook', () => {
 
     it('When user presses add button, with title, add event is raised with book title as argument.', () => {
       // Given
-      const wrapper = mount(AddBook);
+      const wrapper = shallowMount(AddBook);
       const addButton = wrapper.find('button');
       const input = wrapper.find('input');
       const bookTitle: string = 'My book title';
@@ -39,7 +39,7 @@ describe('components/books/AddBook', () => {
 
     it('When user adds book, the title is emptied.', () => {
       // Given
-      const wrapper = mount(AddBook);
+      const wrapper = shallowMount(AddBook);
       const addButton = wrapper.find('button');
       const input = wrapper.find('input');
       const bookTitle: string = 'My book title';
@@ -58,7 +58,7 @@ describe('components/books/AddBook', () => {
     it('When error message is set, but book title is not, then the error message is not shown.', () => {
       // Given
       const errMessage: string = 'My custom error message';
-      const wrapper = mount(AddBook, {
+      const wrapper = shallowMount(AddBook, {
         propsData: {
           errMessage,
         },
@@ -77,7 +77,7 @@ describe('components/books/AddBook', () => {
     it('When error message is set, and book title also, then the error message is shown.', () => {
       // Given
       const errMessage: string = 'My custom error message';
-      const wrapper = mount(AddBook, {
+      const wrapper = shallowMount(AddBook, {
         propsData: {
           errMessage,
         },

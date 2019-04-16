@@ -6,7 +6,7 @@ import Question from '@/models/Question';
 import { assert, expect } from 'chai';
 import Vue from 'vue';
 import { CombinedVueInstance } from 'vue/types/vue';
-import { mount, Wrapper } from '@vue/test-utils';
+import { mount, shallowMount, Wrapper } from '@vue/test-utils';
 import store from '@/state/store';
 import '@/font-awesome';
 import uuid from 'uuid/v1';
@@ -35,7 +35,7 @@ describe('components/books/BookRecord', () => {
       const index: number = 1;
 
       // When
-      const wrapper = mount(BookRecord, {
+      const wrapper = shallowMount(BookRecord, {
         propsData: {
           book: getBook(),
           index,
@@ -53,7 +53,7 @@ describe('components/books/BookRecord', () => {
       const book = getBook();
 
       // When
-      const wrapper = mount(BookRecord, {
+      const wrapper = shallowMount(BookRecord, {
         propsData: {
           book,
         },
@@ -70,7 +70,7 @@ describe('components/books/BookRecord', () => {
       const expectedNrOfChapters: number = 2;
 
       // When
-      const wrapper = mount(BookRecord, {
+      const wrapper = shallowMount(BookRecord, {
         propsData: {
           book: getBook(),
         },
@@ -87,7 +87,7 @@ describe('components/books/BookRecord', () => {
       const expectedNrOfQuestions: number = 4;
 
       // When
-      const wrapper = mount(BookRecord, {
+      const wrapper = shallowMount(BookRecord, {
         propsData: {
           book: getBook(),
         },

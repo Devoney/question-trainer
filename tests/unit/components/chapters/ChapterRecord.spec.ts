@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import { mount, Wrapper } from '@vue/test-utils';
+import { mount, shallowMount, Wrapper } from '@vue/test-utils';
 import Chapter from '@/models/Chapter';
 import ChapterRecord from '@/components/chapters/ChapterRecord.vue';
 import Question from '@/models/Question';
@@ -13,7 +13,7 @@ describe('/components/chapter/ChapterRecord', () => {
         new Question(uuid(), 'How?', 'So', '1'),
         new Question(uuid(), 'When?', 'Now', '2'),
     ]);
-    const wrapper = mount(ChapterRecord, {
+    const wrapper = shallowMount(ChapterRecord, {
         propsData: {
           chapter,
         },

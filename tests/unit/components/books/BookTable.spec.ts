@@ -1,5 +1,5 @@
 import { assert, expect } from 'chai';
-import { mount, Wrapper } from '@vue/test-utils';
+import { mount, shallowMount, Wrapper } from '@vue/test-utils';
 import store from '@/state/store';
 import sinon from 'sinon';
 import $ from 'jquery';
