@@ -1,6 +1,10 @@
 General:
   ☐ Use a Mixin for delete confirmation of Book and Chapter.
   Books:
+    ☐ When a book is removed, its questions need to go out of the question list.
+      Do this by using the pubsub event pattern. No book component should be concerned with the question list.
+      The question list, however, should be. Therefore the book component should raise an event that the the book was removed.
+      And the question list component should take care of removing the questions by itself.
     ☐ Use store to validate book title, instead of event and property.
     ☐ Move logic for adding book into AddBook itself, out of BookManager to simply ping ponging of data.
   State:
