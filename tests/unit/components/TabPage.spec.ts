@@ -20,5 +20,6 @@ describe('components/TabPage', () => {
     // Then
     assert.isFalse(_.isEmpty(id1), 'Id should have been generated');
     assert.equal(id1, id2, 'Id should only be generated once.');
+    wrapper.destroy();
   });
 });

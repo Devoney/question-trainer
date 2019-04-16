@@ -39,6 +39,7 @@ describe('components/ConfirmationModal', () => {
 
       // Then
       expect(wrapper.emitted().ok.length).to.equal(1);
+      wrapper.destroy();
     });
 
     it('Emits "cancel" event when cancel button is clicked.', () => {
@@ -55,6 +56,7 @@ describe('components/ConfirmationModal', () => {
 
       // Then
       expect(wrapper.emitted().cancel.length).to.equal(1);
+      wrapper.destroy();
     });
 
     it('Pressing ok closes the modal', () => {
@@ -74,6 +76,7 @@ describe('components/ConfirmationModal', () => {
       const spy = $.fn.modal as sinon.SinonSpy;
       assert.isTrue(spy.calledOnceWith('hide'));
       spy.restore();
+      wrapper.destroy();
     });
   });
 

@@ -23,6 +23,7 @@ describe('components/books/EditBook', () => {
 
     // Then
     assert.equal(book.title, newTitle, 'The title was not saved on the book.');
+    wrapper.destroy();
   });
 
   it('Book title is not changed when cancelled.', () => {
@@ -43,6 +44,7 @@ describe('components/books/EditBook', () => {
 
     // Then
     assert.equal(book.title, bookTitle, 'The title was not saved on the book.');
+    wrapper.destroy();
   });
 
   it('Book title is not changed when title is already in use for another book.', () => {
@@ -67,5 +69,6 @@ describe('components/books/EditBook', () => {
 
     // Then
     assert.equal(book.title, bookTitle, 'The title was not supposed to be saved.');
+    wrapper.destroy();
   });
 });

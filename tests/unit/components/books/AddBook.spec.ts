@@ -16,6 +16,7 @@ describe('components/books/AddBook', () => {
       // Then
       const addEvents = wrapper.emitted().add;
       assert.equal(addEvents, undefined);
+      wrapper.destroy();
     });
 
     it('When user presses add button, with title, add event is raised with book title as argument.', () => {
@@ -33,6 +34,7 @@ describe('components/books/AddBook', () => {
       assert.equal(addEvents.length, 1);
       const eventArg = addEvents[0][0] as string;
       assert.equal(eventArg, bookTitle);
+      wrapper.destroy();
     });
 
     it('When user adds book, the title is emptied.', () => {
@@ -50,6 +52,7 @@ describe('components/books/AddBook', () => {
       // Then
       assert.equal(wrapper.vm.$data.bookTitle, '');
       assert.isEmpty((input.element as HTMLInputElement).value);
+      wrapper.destroy();
     });
 
     it('When error message is set, but book title is not, then the error message is not shown.', () => {
@@ -68,6 +71,7 @@ describe('components/books/AddBook', () => {
       const html = wrapper.html();
       const hasErrorMessage: boolean = html.indexOf(errMessage) !== -1;
       assert.isFalse(hasErrorMessage, html);
+      wrapper.destroy();
     });
 
     it('When error message is set, and book title also, then the error message is shown.', () => {
@@ -86,6 +90,7 @@ describe('components/books/AddBook', () => {
       const html = wrapper.html();
       const hasErrorMessage: boolean = html.indexOf(errMessage) !== -1;
       assert.isTrue(hasErrorMessage, html);
+      wrapper.destroy();
     });
   });
 });

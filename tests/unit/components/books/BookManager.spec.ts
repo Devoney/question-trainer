@@ -26,6 +26,7 @@ describe('components/books/BookManager', () => {
       assert.equal(store.state.books.length, 1, 'The book should have been added, but was not.');
       const book = store.state.books[0];
       assert.isTrue(!_.isEmpty(book.id));
+      wrapper.destroy();
     });
 
     it('If title already exists, then book is not added.', () => {
@@ -46,6 +47,7 @@ describe('components/books/BookManager', () => {
       assert.equal(store.state.books.length, 1, 'The book should not have been added.');
       const book = store.state.books[0];
       assert.equal(book.id, guid);
+      wrapper.destroy();
     });
 
     it('A book without a title is not added.', () => {
@@ -63,6 +65,7 @@ describe('components/books/BookManager', () => {
 
         // Then
         assert.equal(store.state.books.length, 0, 'No book should have been added for title: `' + bookTitle + '`.');
+        wrapper.destroy();
       });
     });
   });

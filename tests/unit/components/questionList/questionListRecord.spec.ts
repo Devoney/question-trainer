@@ -26,34 +26,36 @@ describe('components/questionList/questionListRecord', () => {
     // Then
     assert.equal(questionText.text(), questionTextStr, 'Question text is not correctly shown.');
     assert.equal(questionNr.text(), index.toString(), 'Question number is not correctly shown.');
+    wrapper.destroy();
   });
 
   it('Question is removed from question list when remove button is clicked.', () => {
-        // Given
-        const firstQuestionId = uuid();
-        const secondQuestionId = uuid();
+    // Given
+    const firstQuestionId = uuid();
+    const secondQuestionId = uuid();
 
-        const firstQuestion = new Question(firstQuestionId, 'My first question', 'My first answer', '1');
-        const secondQuestion = new Question(firstQuestionId, 'My second question', 'My second answer', '2');
-        store.state.questionList = [
-          firstQuestion,
-          secondQuestion,
-        ];
-        const wrapper = mount(QuestionListRecord, {
-          propsData: {
-            index: 1,
-            question: secondQuestion,
-          },
-          store,
-        });
-        const removeButton = wrapper.find('button');
+    const firstQuestion = new Question(firstQuestionId, 'My first question', 'My first answer', '1');
+    const secondQuestion = new Question(firstQuestionId, 'My second question', 'My second answer', '2');
+    store.state.questionList = [
+      firstQuestion,
+      secondQuestion,
+    ];
+    const wrapper = mount(QuestionListRecord, {
+      propsData: {
+        index: 1,
+        question: secondQuestion,
+      },
+      store,
+    });
+    const removeButton = wrapper.find('button');
 
-        // When
-        removeButton.trigger('click');
+    // When
+    removeButton.trigger('click');
 
-        // Then
-        assert.equal(store.state.questionList.length, 1, 'No question was removed from the store.');
-        const onlyQuestionInList = store.state.questionList[0];
-        assert.equal(onlyQuestionInList.id, firstQuestion.id, 'The wrong question has been removed from the store.');
+    // Then
+    assert.equal(store.state.questionList.length, 1, 'No question was removed from the store.');
+    const onlyQuestionInList = store.state.questionList[0];
+    assert.equal(onlyQuestionInList.id, firstQuestion.id, 'The wrong question has been removed from the store.');
+    wrapper.destroy();
   });
 });

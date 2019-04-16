@@ -32,6 +32,7 @@ describe('components/questions/QuestionRecord', () => {
     assert.equal(questionText, strQuestion, 'The question is not shown.');
     assert.equal(answerText, strAnswer, 'The answer is not shown.');
     assert.equal(pageNrText, strPageNr, 'The page nr is not shown.');
+    wrapper.destroy();
   });
 
   it('Question is added to the list.', () => {
@@ -40,6 +41,7 @@ describe('components/questions/QuestionRecord', () => {
     store.state.questionList = [];
     const wrapper = mount(QuestionRecord, {
       propsData: {
+        index: 1,
         question,
       },
       store,
@@ -53,30 +55,33 @@ describe('components/questions/QuestionRecord', () => {
     assert.equal(store.state.questionList.length, 1, 'The question was not added to the question list.');
     const singleQuestion = store.state.questionList[0];
     assert.equal(singleQuestion.id, question.id, 'The wrong question was added to the question list.');
+    wrapper.destroy();
   });
 
   it('Question is remove from the list.', () => {
-        // Given
-        const question = new Question(uuid(), 'Question', 'Answer', '1');
-        const secondQuestion = new Question(uuid(), 'Question', 'Answer', '1');
-        store.state.questionList = [
-          question,
-          secondQuestion,
-        ];
-        const wrapper = mount(QuestionRecord, {
-          propsData: {
-            question,
-          },
-          store,
-        });
-        const removeButton = wrapper.find('button[aria-label="remove"]');
+    // Given
+    const question = new Question(uuid(), 'Question', 'Answer', '1');
+    const secondQuestion = new Question(uuid(), 'Question', 'Answer', '1');
+    store.state.questionList = [
+      question,
+      secondQuestion,
+    ];
+    const wrapper = mount(QuestionRecord, {
+      propsData: {
+        index: 1,
+        question,
+      },
+      store,
+    });
+    const removeButton = wrapper.find('button[aria-label="remove"]');
 
-        // When
-        removeButton.trigger('click');
+    // When
+    removeButton.trigger('click');
 
-        // Then
-        assert.equal(store.state.questionList.length, 1, 'The question was not removed from the question list.');
-        const singleQuestion = store.state.questionList[0];
-        assert.equal(singleQuestion.id, secondQuestion.id, 'The wrong question was removed from the question list.');
+    // Then
+    assert.equal(store.state.questionList.length, 1, 'The question was not removed from the question list.');
+    const singleQuestion = store.state.questionList[0];
+    assert.equal(singleQuestion.id, secondQuestion.id, 'The wrong question was removed from the question list.');
+    wrapper.destroy();
   });
 });

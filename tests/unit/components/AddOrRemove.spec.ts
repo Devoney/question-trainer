@@ -29,6 +29,7 @@ describe('components/AddOrRemove', () => {
 
       // Then
       expect(wrapper.emitted().remove.length).to.equal(1);
+      wrapper.destroy();
     });
 
     it('Emits "add" event when add button is clicked.', () => {
@@ -41,6 +42,7 @@ describe('components/AddOrRemove', () => {
 
       // Then
       expect(wrapper.emitted().add.length).to.equal(1);
+      wrapper.destroy();
     });
   });
 

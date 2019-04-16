@@ -65,6 +65,7 @@ describe('components/chapters/AddChapter', () => {
     assert.equal(addedChapter.title, title, 'Title of chapter was not set correctly.');
     assert.equal(addedChapter.nr, nr, 'Chapter number was not set correctly');
     assert.isFalse(_.isEmpty(addedChapter.id), 'Chapter should have gotten an id.');
+    wrapper.destroy();
   });
 
   it('Chapter cannot be added when chapter number is missing.', () => {
@@ -83,6 +84,7 @@ describe('components/chapters/AddChapter', () => {
 
     // Then
     assert.equal(store.state.bookSelected.chapters.length, 0, 'Chapter should not have been added to the book.');
+    wrapper.destroy();
   });
 
   it('Chapter cannot be added when title is missing.', () => {
@@ -101,6 +103,7 @@ describe('components/chapters/AddChapter', () => {
 
     // Then
     assert.equal(store.state.bookSelected.chapters.length, 0, 'Chapter should not have been added to the book.');
+    wrapper.destroy();
   });
 
   it('Number and title are emptied after adding a chapter.', () => {
@@ -122,6 +125,7 @@ describe('components/chapters/AddChapter', () => {
     assert.equal(chapterNrValue, '', 'Chapter number should have been cleared.');
     const chapterTitleValue = (inputs.chapterTitle.element as HTMLInputElement).value;
     assert.equal(chapterTitleValue, '', 'Chapter title should have been cleared.');
+    wrapper.destroy();
   });
 
   it('Chapter with duplicate title is not added.', () => {
@@ -148,6 +152,7 @@ describe('components/chapters/AddChapter', () => {
 
      // Then
      assert.equal(store.state.bookSelected.chapters.length, 1, 'Chapter should not have been added.');
+     wrapper.destroy();
   });
 
   it('Chapter with duplicate chapter number is not added.', () => {
@@ -174,5 +179,6 @@ describe('components/chapters/AddChapter', () => {
 
     // Then
     assert.equal(store.state.bookSelected.chapters.length, 1, 'Chapter should not have been added.');
+    wrapper.destroy();
   });
 });

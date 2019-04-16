@@ -31,6 +31,7 @@ describe('component/books/BookTable', () => {
         const book = books[i];
         expect(html).to.have.string(book.title);
       }
+      wrapper.destroy();
     });
   });
 
@@ -53,6 +54,7 @@ describe('component/books/BookTable', () => {
       const spy = $.fn.modal as sinon.SinonSpy;
       assert.isTrue(spy.calledOnce);
       spy.restore();
+      wrapper.destroy();
     });
 
     it('Book is not deleted when trash button of a book is clicked.', () => {
@@ -73,6 +75,7 @@ describe('component/books/BookTable', () => {
       const books = store.state.books as Book[];
       const book = books.find((b) => b.id === bookId);
       assert.isTrue(book !== undefined);
+      wrapper.destroy();
     });
 
     it('Book is deleted when action is confirmed.', () => {
@@ -96,6 +99,7 @@ describe('component/books/BookTable', () => {
       const book = books.find((b) => b.id === bookId);
       assert.isTrue(book === undefined, 'Book was still found in collection.');
       assert.isTrue(books.length === 0, 'The book table should have no books at all anymore.');
+      wrapper.destroy();
     });
   });
 });

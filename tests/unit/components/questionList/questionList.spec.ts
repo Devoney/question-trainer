@@ -19,6 +19,7 @@ describe('components/questionList/QuestionList', () => {
     // Then
     const index = html.indexOf('Add questions to this list by using');
     assert.notEqual(index, -1, 'No instructions seem to be shown.');
+    wrapper.destroy();
   });
 
   it('Instructions are not shown on how to add questions if there are questions in the list.', () => {
@@ -36,6 +37,7 @@ describe('components/questionList/QuestionList', () => {
     // Then
     const index = html.indexOf('Add questions to this list by using');
     assert.equal(index, -1, 'No instructions should be shown.');
+    wrapper.destroy();
   });
 
   it('Correct number of questions in the list is shown.', () => {
@@ -55,5 +57,6 @@ describe('components/questionList/QuestionList', () => {
 
     // Then
     assert.equal(nrOfQuestions, '3', 'Incorrect number of questions is shown.');
+    wrapper.destroy();
   });
 });

@@ -147,6 +147,7 @@ describe('components/books/BookRecord', () => {
         question.id,
         'The question that was not in the book, that should not have been removed, seems to have been removed.',
       );
+      wrapper.destroy();
     });
 
     it('Trash event is raised when trash button is clicked, with id of book as argument.', () => {
@@ -169,6 +170,7 @@ describe('components/books/BookRecord', () => {
       expect(event.length).to.be.equal(1);
       const actualEventArgs = event[0];
       expect(actualEventArgs).to.be.deep.equal(expectedEventArgs);
+      wrapper.destroy();
     });
   });
 });

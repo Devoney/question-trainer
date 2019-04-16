@@ -32,6 +32,7 @@ describe('/components/questions/AddQuestion', () => {
 
     // Then
     assert.equal(store.state.chapterSelected.questions.length, 2, 'Question was not added.');
+    wrapper.destroy();
   });
 
   it('Question is not added to current selected chapter when the question is empty.', () => {
@@ -57,6 +58,7 @@ describe('/components/questions/AddQuestion', () => {
 
     // Then
     assert.equal(store.state.chapterSelected.questions.length, 1, 'Question was not supposed to be added.');
+    wrapper.destroy();
   });
 
   it('Question is not added to current selected chapter when the answer is empty.', () => {
@@ -82,5 +84,6 @@ describe('/components/questions/AddQuestion', () => {
 
     // Then
     assert.equal(store.state.chapterSelected.questions.length, 1, 'Question was not supposed to be added');
+    wrapper.destroy();
   });
 });

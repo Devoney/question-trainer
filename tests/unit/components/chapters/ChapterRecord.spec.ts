@@ -32,6 +32,7 @@ describe('/components/chapter/ChapterRecord', () => {
     assert.equal(numberText, chapter.nr, 'Number of chapter is not correctly shown.');
     assert.equal(titleText, chapter.title, 'Title is not correctly shown.');
     assert.equal(nrOfQuestionsText, '2', 'Incorrect number of questions.');
+    wrapper.destroy();
   });
 
   it('Chapter is set to be edited when edit button is clicked.', () => {
@@ -51,5 +52,6 @@ describe('/components/chapter/ChapterRecord', () => {
     // Then
     // @ts-ignore
     assert.equal(store.state.chapterEdited.id, chapter.id, 'Chapter is not selected for editing.');
+    wrapper.destroy();
   });
 });

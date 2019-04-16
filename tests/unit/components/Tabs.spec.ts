@@ -33,6 +33,7 @@ describe('components/Tabs', () => {
       const secondTabPage = tabPages[1];
       assert.isTrue(firstTabPage.$data.active, 'The first tab page should have been set to active.');
       assert.isFalse(secondTabPage.$data.active, 'The second tab page should have been set to inactive.');
+      wrapper.destroy();
     });
 
     it('When second tab is set to active, no other tab is set to active.', () => {
@@ -62,6 +63,7 @@ describe('components/Tabs', () => {
       const secondTabPage = tabPages[1];
       assert.isFalse(firstTabPage.$data.active, 'The first tab page should have been set to inactive.');
       assert.isTrue(secondTabPage.$data.active, 'The second tab page should have been set to active.');
+      wrapper.destroy();
     });
 
     it('Titles are shown for tab-pages', () => {
@@ -86,6 +88,7 @@ describe('components/Tabs', () => {
       for (const title of titles) {
         assert.isTrue(html.indexOf(title) !== -1, 'Title \'' + title + '\ should have been in the HTML.');
       }
+      wrapper.destroy();
     });
   });
 });

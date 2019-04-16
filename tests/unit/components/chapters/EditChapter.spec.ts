@@ -43,24 +43,26 @@ describe('components/chapters/EditChapter', () => {
     // Then
     assert.equal(chapter.nr, newNr, 'Nr of chapter was not updated.');
     assert.equal(chapter.title, newTitle, 'Title of chapter was not updated.');
+    wrapper.destroy();
   });
 
   it('Edited chapter is set to undefined when accepting edit.', () => {
     // Given
     const chapter = new Chapter('some-id', '1', 'First chapter');
     store.state.chapterEdited = chapter;
-    const { okButton } = setup();
+    const { okButton, wrapper } = setup();
 
     // When
     okButton.trigger('click');
 
     // Then
     assert.equal(store.state.chapterEdited, undefined, 'The chapter being edited should have been set to undefined.');
+    wrapper.destroy();
   });
 
   it('Edited chapter is set to undefined when edit is cancelled.', () => {
     // Given
-    const { nrInput, titleInput } = setup();
+    const { nrInput, titleInput, wrapper } = setup();
     [nrInput, titleInput].forEach((input) => {
       const chapter = new Chapter('some-id', '1', 'First chapter');
       store.state.chapterEdited = chapter;
@@ -70,6 +72,7 @@ describe('components/chapters/EditChapter', () => {
 
       // Then
       assert.equal(store.state.chapterEdited, undefined, 'The chapter being edited should have been set to undefined.');
+      wrapper.destroy();
     });
   });
 
@@ -84,7 +87,7 @@ describe('components/chapters/EditChapter', () => {
     store.state.books = [book];
     store.state.bookSelected = book;
     store.state.chapterEdited = chapter;
-    const { titleInput } = setup();
+    const { titleInput, wrapper } = setup();
 
     // When
     titleInput.setValue(secondChapterTitle);
@@ -92,6 +95,7 @@ describe('components/chapters/EditChapter', () => {
     // Then
     const titleAttribute = titleInput.attributes('title');
     assert.equal(titleAttribute, 'Title already exists for this book.');
+    wrapper.destroy();
   });
 
   it('Error is shown for duplicate number.', () => {
@@ -105,7 +109,7 @@ describe('components/chapters/EditChapter', () => {
     store.state.books = [book];
     store.state.bookSelected = book;
     store.state.chapterEdited = chapter;
-    const { nrInput } = setup();
+    const { nrInput, wrapper } = setup();
 
     // When
     nrInput.setValue(secondChapterNumber);
@@ -113,5 +117,6 @@ describe('components/chapters/EditChapter', () => {
     // Then
     const titleAttribute = nrInput.attributes('title');
     assert.equal(titleAttribute, 'Chapter number already exists for this book.');
+    wrapper.destroy();
   });
 });
