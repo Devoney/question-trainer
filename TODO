@@ -11,3 +11,5 @@ General:
   State:
     ☐ Make getter types available.
     ☐ Move mutations in to modules based on models or components.
+Testing:
+    ☐ Mock the store when testing for book, chapter and question to be deleted.

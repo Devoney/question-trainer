@@ -15,7 +15,7 @@
         @click="edit"
         :disabled="questionInEditMode"
       />
-      <icon-button icon="trash-alt" label="Delete question" :argument="question" @click="trash"/>
+      <icon-button icon="trash-alt" label="Trash question" :argument="question" @click="trash"/>
     </td>
   </tr>
 </template>
@@ -23,11 +23,13 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import { mixins } from 'vue-class-component';
+import bus from '@/MessageBus';
 import AddOrRemove from '@/components/AddOrRemove.vue';
 import IconButton from '@/components/IconButton.vue';
 import MutationTypes from '@/state/MutationTypes';
 import { truncateWithDots } from '@/utils/TextTransformers';
 import Question from '@/models/Question';
+import QuestionModalArgs from '@/types/QuestionModalArgs';
 import StoreMixin from '@/mixins/StoreMixin';
 
 @Component({
@@ -60,7 +62,18 @@ export default class QuestionRecord extends mixins(StoreMixin) {
   }
 
   private trash(question: Question): void {
-    this.$emit('trash', question.id);
+    const args = new QuestionModalArgs(
+      'Delete question',
+      'Are you sure you want to delete this question?',
+      this.trashConfirmed,
+      'Yes',
+      'No',
+    );
+    bus.showQuestionModal(args);
+  }
+
+  private trashConfirmed(): void {
+    this.store.commit(MutationTypes.Question.removeQuestionById, this.question.id);
   }
 
   private addQuestionToList(): void {
