@@ -16,10 +16,12 @@
 
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
+import bus from '@/MessageBus';
 import Chapter from '@/models/Chapter';
 import IconButton from '@/components/IconButton.vue';
 import { mixins } from 'vue-class-component';
 import MutationTypes from '@/state/MutationTypes';
+import QuestionModalArgs from '@/types/QuestionModalArgs';
 import StoreMixin from '@/mixins/StoreMixin';
 
 @Component({
@@ -41,7 +43,18 @@ export default class ChapterRecord extends mixins(StoreMixin) {
   }
 
   private trash(chapter: Chapter) {
-    this.$emit('trash', chapter.id);
+    const args = new QuestionModalArgs(
+      'Delete chapter',
+      'Are you sure you want to delete this chapter?',
+      this.trashConfirmed,
+      'Yes',
+      'No',
+    );
+    bus.showQuestionModal(args);
+  }
+
+  private trashConfirmed(): void {
+    this.store.commit(MutationTypes.Chapter.removeChapterById, this.chapter.id);
   }
 
   private edit(chapter: Chapter): void {

@@ -30,8 +30,6 @@
 
 <script lang="ts">
 import _ from 'lodash';
-import $ from 'jquery';
-import 'bootstrap';
 import StoreMixin from '@/mixins/StoreMixin';
 
 // import { Store } from 'vuex';
@@ -42,12 +40,10 @@ import { Component, Prop, Vue, Mixins } from 'vue-property-decorator';
 import { mixins } from 'vue-class-component';
 import BookRecord from '@/components/books/BookRecord.vue';
 import Book from '@/models/Book';
-import ConfirmationModal from '@/components/ConfirmationModal.vue';
 
 @Component({
   components: {
     BookRecord,
-    ConfirmationModal,
   },
 })
 export default class BookTable extends mixins(StoreMixin) {

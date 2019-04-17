@@ -1,10 +1,13 @@
 import { assert } from 'chai';
 import { mount, shallowMount, Wrapper } from '@vue/test-utils';
+import bus from '@/MessageBus';
 import Chapter from '@/models/Chapter';
 import ChapterRecord from '@/components/chapters/ChapterRecord.vue';
 import Question from '@/models/Question';
 import store from '@/state/store';
 import uuid from 'uuid/v1';
+import QuestionModalArgs from '@/types/QuestionModalArgs';
+import Book from '@/models/Book';
 
 describe('/components/chapter/ChapterRecord', () => {
   it('Data of chapter is correctly shown', () => {
@@ -54,4 +57,64 @@ describe('/components/chapter/ChapterRecord', () => {
     assert.equal(store.state.chapterEdited.id, chapter.id, 'Chapter is not selected for editing.');
     wrapper.destroy();
   });
+
+  it('Confirmation modal is requested when chapter is deleted.', () => {
+    // Given
+    let questionModalArgs: QuestionModalArgs | undefined;
+    bus.onShowQuestionModal((args) => {
+      questionModalArgs = args;
+    });
+    const chapter = new Chapter(uuid(), 'Nr', 'Title');
+    const wrapper = mount(ChapterRecord, {
+      propsData: {
+        chapter,
+      },
+      store,
+    });
+    const deleteButton = wrapper.find('button[aria-label="Trash chapter"]');
+
+    // When
+    deleteButton.trigger('click');
+
+    // Then
+    assert.notEqual(questionModalArgs, undefined, 'It seems to confirmation modal was now requested.');
+    // @ts-ignore
+    assert.equal(questionModalArgs.text, 'Are you sure you want to delete this chapter?', 'The question text seems to be wrong.');
+  });
+
+  it('Chapter is deleted when confirmed.', () => {
+    // Given
+    const firstChapter = new Chapter(uuid(), 'Nr', 'Title');
+    const secondChapter = new Chapter(uuid(), 'Nr', 'Title');
+    const book = new Book(uuid(), 'Book', [
+      firstChapter,
+      secondChapter,
+    ]);
+    store.state.books = [
+      book,
+    ];
+    store.state.bookSelected = book;
+    let questionModalArgs: QuestionModalArgs | undefined;
+    bus.onShowQuestionModal((args) => {
+      questionModalArgs = args;
+    });
+
+    const wrapper = mount(ChapterRecord, {
+      propsData: {
+        chapter: secondChapter,
+      },
+      store,
+    });
+    const deleteButton = wrapper.find('button[aria-label="Trash chapter"]');
+
+    // When
+    deleteButton.trigger('click');
+    (questionModalArgs as QuestionModalArgs).okHandler();
+
+    // Then
+    assert.equal(book.chapters.length, 1, 'It seems the chapter was not deleted');
+    const singleChapter = book.chapters[0];
+    assert.equal(singleChapter.id, firstChapter.id, 'The wrong chapter was deleted.');
+  });
+
 });
