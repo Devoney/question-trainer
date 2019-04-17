@@ -1,13 +1,17 @@
 <template>
-  <div id="app" class="container">
-    <div class="row">
-      <div class="col-6">
-        <library />
-      </div>
-      <div class="col-6">
-        <question-list />
+  <div>
+    <div id="app" class="container">
+      <div class="row">
+        <div class="col-6">
+          <library/>
+        </div>
+        <div class="col-6">
+          <question-list/>
+        </div>
       </div>
     </div>
+    <question-modal />
+    <button @click="test">test knop</button>
   </div>
 </template>
 
@@ -20,18 +24,29 @@ import Library from '@/components/Library.vue';
 import '@/font-awesome';
 import QuestionList from '@/components/questionList/QuestionList.vue';
 import StoreMixin from '@/mixins/StoreMixin';
+import QuestionModal from '@/components/QuestionModal.vue';
 // @ts-ignore
 import CKEditor from '@ckeditor/ckeditor5-vue';
-Vue.use( CKEditor );
+import bus from '@/MessageBus';
+import QuestionModalArgs from './types/QuestionModalArgs';
+Vue.use(CKEditor);
 
 @Component({
   components: {
     Library,
     QuestionList,
+    QuestionModal,
   },
 })
 export default class App extends mixins(StoreMixin) {
-
+  private test(): void {
+    const args = new QuestionModalArgs('My title', 'Some text', () => {
+      console.log('ok');
+    }, 'Yes', 'No', () => {
+      console.log('Canceled');
+    });
+    bus.showQuestionModal(args);
+  }
 }
 </script>
 
@@ -46,7 +61,7 @@ export default class App extends mixins(StoreMixin) {
 }
 
 .container {
-    width: 100%;
-    min-width: 96%;
+  width: 100%;
+  min-width: 96%;
 }
 </style>
