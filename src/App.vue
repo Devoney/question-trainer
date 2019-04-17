@@ -11,7 +11,6 @@
       </div>
     </div>
     <question-modal />
-    <button @click="test">test knop</button>
   </div>
 </template>
 
@@ -39,14 +38,7 @@ Vue.use(CKEditor);
   },
 })
 export default class App extends mixins(StoreMixin) {
-  private test(): void {
-    const args = new QuestionModalArgs('My title', 'Some text', () => {
-      console.log('ok');
-    }, 'Yes', 'No', () => {
-      console.log('Canceled');
-    });
-    bus.showQuestionModal(args);
-  }
+
 }
 </script>
 

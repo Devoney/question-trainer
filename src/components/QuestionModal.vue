@@ -53,7 +53,7 @@ import QuestionModalArgs from '../types/QuestionModalArgs';
 @Component
 export default class QuestionModal extends Vue {
   private id: string = 'question-modal-id';
-  private _args!: QuestionModalArgs;
+  private args!: QuestionModalArgs;
   private cancelText: string = 'Cancel';
   private okText: string = 'Ok';
   private text: string = '';
@@ -64,7 +64,7 @@ export default class QuestionModal extends Vue {
   }
 
   private onShowQuestionModal(args: QuestionModalArgs) {
-    this._args = args;
+    this.args = args;
     this.cancelText = args.cancelButtonText;
     this.okText = args.okButtonText;
     this.text = args.text;
@@ -73,15 +73,15 @@ export default class QuestionModal extends Vue {
   }
 
   private cancel() {
-    const handler = this._args.cancelHandler;
-    if (handler === undefined) return;
+    const handler = this.args.cancelHandler;
+    if (handler === undefined) { return; }
     handler();
   }
 
   private ok() {
     $('#' + this.id).modal('hide');
-    const handler = this._args.okHandler;
-    if (handler === undefined) return;
+    const handler = this.args.okHandler;
+    if (handler === undefined) { return; }
     handler();
   }
 }

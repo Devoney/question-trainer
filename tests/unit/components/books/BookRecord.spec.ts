@@ -149,28 +149,5 @@ describe('components/books/BookRecord', () => {
       );
       wrapper.destroy();
     });
-
-    it('Trash event is raised when trash button is clicked, with id of book as argument.', () => {
-      // Given
-      const book = getBook();
-      const expectedEventArgs: string[] = [book.id];
-      const wrapper = mount(BookRecord, {
-        propsData: {
-          book,
-        },
-        store,
-      });
-      const button = wrapper.find('[aria-label="Trash book"]');
-
-      // When
-      button.trigger('click');
-
-      // Then
-      const event = wrapper.emitted().trash;
-      expect(event.length).to.be.equal(1);
-      const actualEventArgs = event[0];
-      expect(actualEventArgs).to.be.deep.equal(expectedEventArgs);
-      wrapper.destroy();
-    });
   });
 });

@@ -1,7 +1,11 @@
 <template>
   <tr>
     <td class="text-center" style="width: 70px;">
-      <add-or-remove remove-color="red" @add="addQuestionsToList" @remove="removeQuestionsFromList"/>
+      <add-or-remove
+        remove-color="red"
+        @add="addQuestionsToList"
+        @remove="removeQuestionsFromList"
+      />
     </td>
     <td class="text-right" style="width: 70px;">
       <span aria-label="Index">{{ index }}</span>
@@ -18,8 +22,20 @@
       <span aria-label="Number of questions">{{ nrOfQuestions }}</span>
     </td>
     <td class="text-center table-col-delete">
-      <icon-button icon="edit" label="Edit book" :argument="book" @click="edit" :disabled="bookInEditMode"/>
-      <icon-button icon="trash-alt" label="Trash book" :argument="book" @click="trash" :disabled="bookInEditMode"/>
+      <icon-button
+        icon="edit"
+        label="Edit book"
+        :argument="book"
+        @click="edit"
+        :disabled="bookInEditMode"
+      />
+      <icon-button
+        icon="trash-alt"
+        label="Trash book"
+        :argument="book"
+        @click="trash"
+        :disabled="bookInEditMode"
+      />
     </td>
   </tr>
 </template>
@@ -28,12 +44,14 @@
 import _ from 'lodash';
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import { mixins } from 'vue-class-component';
+import bus from '@/MessageBus';
 import MutationTypes from '@/state/MutationTypes';
 import StoreMixin from '@/mixins/StoreMixin';
 import AddOrRemove from '@/components/AddOrRemove.vue';
 import IconButton from '@/components/IconButton.vue';
 import Book from '@/models/Book';
 import Question from '@/models/Question';
+import QuestionModalArgs from '@/types/QuestionModalArgs';
 
 @Component({
   components: {
@@ -90,7 +108,19 @@ export default class BookRecord extends mixins(StoreMixin) {
   }
 
   private trash(book: Book): void {
-    this.$emit('trash', book.id);
+    const args = new QuestionModalArgs(
+      'Delete book',
+      'Are you sure you want to delete this book?',
+      this.trashConfirmed,
+      'Yes',
+      'No',
+    );
+    bus.showQuestionModal(args);
+  }
+
+  private trashConfirmed() {
+    this.removeQuestionsFromList();
+    this.store.commit(MutationTypes.Book.removeBookById, this.book.id);
   }
 }
 </script>

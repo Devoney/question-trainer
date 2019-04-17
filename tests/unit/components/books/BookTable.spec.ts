@@ -1,5 +1,6 @@
 import { assert, expect } from 'chai';
 import { mount, shallowMount, Wrapper } from '@vue/test-utils';
+import bus from '@/MessageBus';
 import store from '@/state/store';
 import sinon from 'sinon';
 import $ from 'jquery';
@@ -8,6 +9,7 @@ import 'bootstrap';
 import Book from '@/models/Book';
 import BookTable from '@/components/books/BookTable.vue';
 import ConfirmationModal from '@/components/confirmationModal.vue';
+import QuestionModalArgs from '@/types/QuestionModalArgs';
 
 describe('component/books/BookTable', () => {
   describe('Data binding', () => {
@@ -36,24 +38,27 @@ describe('component/books/BookTable', () => {
   });
 
   describe('User interaction', () => {
-    it('Confirmation modal is shown when trash button of a book is clicked.', () => {
+    it('Message to show confirmation modal is send when trash button of a book is clicked.', () => {
       // Given
       store.state.books = [
         new Book('book-id', 'Book title'),
       ];
-      sinon.spy($.fn, 'modal');
       const wrapper = mount(BookTable, {
         store,
       });
       const trashButton = wrapper.find('button[aria-label="Trash book"]');
+      let modalArgs: QuestionModalArgs | undefined;
+      bus.onShowQuestionModal((args) => {
+        modalArgs = args;
+      });
 
       // When
       trashButton.trigger('click');
 
       // Then
-      const spy = $.fn.modal as sinon.SinonSpy;
-      assert.isTrue(spy.calledOnce);
-      spy.restore();
+      assert.notEqual(modalArgs, undefined, 'It seems the modal message was never sent.');
+      // @ts-ignore
+      assert.equal('Are you sure you want to delete this book?', modalArgs.text);
       wrapper.destroy();
     });
 
@@ -87,12 +92,17 @@ describe('component/books/BookTable', () => {
       const wrapper = mount(BookTable, {
         store,
       });
+      let modalArgs: QuestionModalArgs | undefined;
+      bus.onShowQuestionModal((args) => {
+        modalArgs = args;
+      });
       const trashButton = wrapper.find('button[aria-label="Trash book"]');
-      const confirmationModal = wrapper.vm.$children[1] as ConfirmationModal;
 
       // When
       trashButton.trigger('click');
-      confirmationModal.$emit('ok'); // Simulate that the user presses OK on the confirmation modal.
+      if (modalArgs !== undefined) {
+        (modalArgs as QuestionModalArgs).okHandler();
+      }
 
       // Then
       const books = store.state.books as Book[];

@@ -7,15 +7,23 @@ describe('MessageBus', () => {
   it('ShowQuestionModal message works.', () => {
     // Given
     let questionModalArgsReceived: QuestionModalArgs | undefined;
-    let questionModalArgsGiven = new QuestionModalArgs(
+    const questionModalArgsGiven = new QuestionModalArgs(
       'My title',
       'Do you want this test to succeed?',
-      () => {},
+      /* tslint:disable */
+      () => {
+        
+      },
+      /* tslint:enable */
       'Yes',
       'No',
-      () => {}
+      /* tslint:disable */
+      () => {
+        
+      },
+      /* tslint:enable */
     );
-    bus.onShowQuestionModal(args => {
+    bus.onShowQuestionModal((args) => {
       questionModalArgsReceived = args;
     });
 

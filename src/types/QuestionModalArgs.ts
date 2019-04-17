@@ -5,7 +5,9 @@ export default class QuestionModalArgs {
     public okHandler: () => void,
     public okButtonText: string = 'Ok',
     public cancelButtonText: string = 'Cancel',
-    public cancelHandler: (() => void) | undefined = undefined
+    /* tslint:disable */
+    public cancelHandler: (() => void) | undefined = undefined,
+    /* tslint:enable */
   ) {
 
   }

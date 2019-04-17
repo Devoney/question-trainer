@@ -19,27 +19,12 @@
           v-bind:key="book.id"
           :book="book"
           :index="index+1"
-          @trash="trash"
         />
       </tbody>
       <tfoot v-if="!hasBooks">
         <th colspan="6">No books</th>
       </tfoot>
     </table>
-    <confirmation-modal
-      :id="modalId"
-      @ok="deleteConfirmed"
-      @cancel="deleteCanceled"
-      okText="Yes"
-      cancelText="No"
-    >
-      <div class="row">
-        <div class="col-3 text-center">
-          <font-awesome-icon icon="exclamation-triangle" style="color:orange; font-size:30px;"/>
-        </div>
-        <div class="col text-left">Are you sure you want to delete this book?</div>
-      </div>
-    </confirmation-modal>
   </div>
 </template>
 
@@ -66,9 +51,6 @@ import ConfirmationModal from '@/components/ConfirmationModal.vue';
   },
 })
 export default class BookTable extends mixins(StoreMixin) {
-  private bookIdUpForDelete: string = '';
-  private modalId: string = 'confirmation-modal-book-table';
-
   get books(): Book[] {
     return this.store.state.books;
   }
@@ -79,38 +61,6 @@ export default class BookTable extends mixins(StoreMixin) {
 
   get booksSorted(): Book[] {
     return this.store.getters.booksSortedByTitle;
-  }
-
-  private trash(bookId: string): void {
-    this.bookIdUpForDelete = bookId;
-    $('#' + this.modalId).modal();
-  }
-
-  private deleteConfirmed() {
-    const bookId: string = this.bookIdUpForDelete;
-
-    this.removeAllQuestionsFromQuestionList(bookId);
-
-    this.store.commit(MutationTypes.Book.removeBookById, bookId);
-  }
-
-  private removeAllQuestionsFromQuestionList(bookId: string): void {
-    const book = _.find(this.store.state.books, (b) => {
-      return b.id === bookId;
-    });
-    if (book !== undefined) {
-      const questionsArray = _.map(book.chapters, (chapter) => {
-        return chapter.questions;
-      });
-      const questions = _.flatten(questionsArray);
-      _.forEach(questions, (q) => {
-        this.store.commit(MutationTypes.QuestionList.removeFromList, q);
-      });
-    }
-  }
-
-  private deleteCanceled() {
-    this.bookIdUpForDelete = '';
   }
 }
 </script>
