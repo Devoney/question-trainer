@@ -1,13 +1,43 @@
 General:
   ✔ Use confirmation dialog as a service to the whole application, instead of having it in each table.
   Books:
-    ☐ Refactoring getting questions of a book to the Book model itself.
+    ✔ Refactoring getting questions of a book to the Book model itself.
     ✔ When a book is removed, its questions need to go out of the question list.
     ☐ Move logic for adding book into AddBook itself, out of BookManager to simply ping ponging of data.
   Chapters:
-    ☐ Add-or-remove all questions in a chapter to/from the question list.
+    ✔ Add-or-remove all questions in a chapter to/from the question list.
   State:
     ☐ Make getter types available.
     ☐ Move mutations in to modules based on models or components.
 Testing:
-    ☐ Mock the store when testing for book, chapter and question to be deleted.
+    ☐ Spy on the store's commit method, instead of testing the state. To make the tests less fragile and more focussed.
+      ✔ Index tests that should be refactored
+        BookManager.spec.ts:
+          - A book without a title is not added.
+          - If title already exists, then book is not added.
+          - A book is added upon add event.
+        BookRecord.spec.ts:
+          - All questions in book are added to question list when add button is clicked.
+          - All questions in the book are removed from the question list.
+        BookTable.spec.ts:
+          - Book is not deleted when trash button of a book is clicked.
+          - Book is deleted when action is confirmed.
+        AddChapter.spec.ts:
+          - Chapter can be added.
+          - Chapter cannot be added when chapter number is missing.
+          - Chapter cannot be added when title is missing.
+          - Chapter with duplicate title is not added.
+          - Chapter with duplicate chapter number is not added.
+        ChapterRecord.spec.ts:
+          - Chapter is set to be edited when edit button is clicked.
+        EditChapter.spec.ts:
+          - Edited chapter is set to undefined when accepting edit.
+          - Edited chapter is set to undefined when edit is cancelled.
+        QuestionListRecord.spec.ts:
+          - Question is removed from question list when remove button is clicked.
+        AddQuestion.spec.ts:
+          - Question is not added to current selected chapter when the question is empty.
+        QuestionRecord.spec.ts:
+          - Question is added to the list.
+          - Question is removed from the list.
+      ☐ Refactor all tests indexed.
