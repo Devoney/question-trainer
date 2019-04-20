@@ -151,6 +151,10 @@ const storeOptions: StoreOptions<IState> = {
       state.questionList.push(question);
     },
 
+    [MutationTypes.QuestionList.clear]: (state) => {
+      state.questionList = [];
+    },
+
     [MutationTypes.QuestionList.removeFromList]: (state, question: Question) => {
       const index = _.findIndex(state.questionList, (q) => {
         return q.id === question.id;

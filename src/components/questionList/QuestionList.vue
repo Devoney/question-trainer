@@ -7,6 +7,9 @@
       </span>
     </div>
     <div class="card-body">
+      <div class="text-left">
+        <clear-button class="clearButton" />
+      </div>
       <table class="table table-striped table-bordered">
         <thead>
           <th width="40"></th>
@@ -35,6 +38,7 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import { mixins } from 'vue-class-component';
+import ClearButton from '@/components/questionList/ClearButton.vue';
 import IconButton from '@/components/IconButton.vue';
 import Question from '@/models/Question';
 import QuestionListRecord from '@/components/questionList/QuestionListRecord.vue';
@@ -43,6 +47,7 @@ import MutationTypes from '@/state/MutationTypes';
 
 @Component({
   components: {
+    ClearButton,
     IconButton,
     QuestionListRecord,
   },
@@ -59,4 +64,7 @@ export default class QuestionList extends mixins(StoreMixin) {
 </script>
 
 <style scoped>
+.clearButton {
+  margin-bottom:15px;
+}
 </style>

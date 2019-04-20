@@ -297,4 +297,19 @@ describe('state/store', () => {
     // Then
     assert.equal(store.state.questionList.length, 1, 'The question should not be added to the list twice.');
   });
+
+  it('All questions are removed from question list when cleared.', () => {
+    // Given
+    store.state.questionList = [
+      new Question(uuid(), 'Question 1', 'Answer 1', '1'),
+      new Question(uuid(), 'Question 2', 'Answer 2', '2'),
+    ];
+
+    // When
+    store.commit(MutationTypes.QuestionList.clear);
+
+    // Then
+    assert.equal(store.state.questionList.length, 0, 'All questions should have been removed.');
+  });
+
 });

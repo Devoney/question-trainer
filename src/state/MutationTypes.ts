@@ -27,6 +27,7 @@ export default class MutationTypes {
 
   public static QuestionList = class {
     public static addToList: string = 'addToList';
+    public static clear: string = 'clear';
     public static removeFromList: string = 'removeFromList';
   };
 }

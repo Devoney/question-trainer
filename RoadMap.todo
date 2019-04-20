@@ -19,10 +19,10 @@ Library:
     ✔ Ability to edit a question @done(19-04-13 19:46)
 Questions:
   Play List:
-    ☐ Add individual questions
-    ☐ Add all from Chapter
+    ✔ Add individual questions
+    ✔ Add all from Chapter
     ✔ Add all from Book       
-    ☐ Clear the play list
+    ✔ Clear the play list
     ✔ Show number of questions in play in header
   Questionaire:
     ☐ Show a question and be able to answer good/wrong
