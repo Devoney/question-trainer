@@ -65,7 +65,7 @@ export default class BookRecord extends mixins(StoreMixin) {
 
   get nrOfQuestions() {
     if (this.nrOfChapters === 0) { return 0; }
-    return _.sumBy(this.book.chapters, (c) => c.questions.length);
+    return this.book.questions.length;
   }
 
   get bookInEditMode(): boolean {
@@ -79,24 +79,15 @@ export default class BookRecord extends mixins(StoreMixin) {
   }
 
   private addQuestionsToList(): void {
-    const questions = this.getAllQuestionsFromBook();
-    _.forEach(questions, (q) => {
+    _.forEach(this.book.questions, (q) => {
       this.store.commit(MutationTypes.QuestionList.addToList, q);
     });
   }
 
   private removeQuestionsFromList(): void {
-    const questions = this.getAllQuestionsFromBook();
-    _.forEach(questions, (q) => {
+    _.forEach(this.book.questions, (q) => {
       this.store.commit(MutationTypes.QuestionList.removeFromList, q);
     });
-  }
-
-  private getAllQuestionsFromBook(): Question[] {
-    const questionsArray = _.map(this.book.chapters, (chapter) => {
-      return chapter.questions;
-    });
-    return _.flatten(questionsArray);
   }
 
   private raiseEvent(eventName: string) {

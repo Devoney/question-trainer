@@ -123,11 +123,8 @@ describe('components/books/BookRecord', () => {
     it('All questions in the book are removed from the question list.', () => {
       // Given
       const book = getBook();
-      const questionsFromBook = _.flatMap(_.map(book.chapters, (chapter) => {
-        return chapter.questions;
-      }));
       const question = new Question(uuid(), 'My question', 'My answer', '6');
-      store.state.questionList = _.concat(questionsFromBook, [question]);
+      store.state.questionList = _.concat(book.questions, [question]);
       const wrapper = mount(BookRecord, {
         propsData: {
           book,
