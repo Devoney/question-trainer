@@ -8,6 +8,8 @@ General:
       And the question list component should take care of removing the questions by itself.
     ☐ Use store to validate book title, instead of event and property.
     ☐ Move logic for adding book into AddBook itself, out of BookManager to simply ping ponging of data.
+  Chapters:
+    ☐ Add-or-remove all questions in a chapter to/from the question list.
   State:
     ☐ Make getter types available.
     ☐ Move mutations in to modules based on models or components.

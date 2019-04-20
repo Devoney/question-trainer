@@ -97,6 +97,7 @@ describe('components/questions/QuestionRecord', () => {
     const question = new Question(uuid(), 'Question', 'Answer', '1');
     const wrapper = mount(QuestionRecord, {
       propsData: {
+        index: 1,
         question,
       },
       store,
@@ -128,6 +129,7 @@ describe('components/questions/QuestionRecord', () => {
 
     const wrapper = mount(QuestionRecord, {
       propsData: {
+        index: 1,
         question: secondQuestion,
       },
       store,
