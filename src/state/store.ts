@@ -27,13 +27,25 @@ const storeOptions: StoreOptions<IState> = {
     },
 
     chaptersSortedByTitle: (state) => {
-      if (state.bookSelected === undefined) { return []; }
+      if (state.bookSelected === undefined) {
+        return [];
+      }
       return _.orderBy(state.bookSelected.chapters, (chapter: Chapter) => {
         return chapter.nr.toLowerCase();
       });
     },
   },
   mutations: {
+    [MutationTypes.initialise]: (state) => {
+      if (localStorage.getItem('store')) {
+        // Replace the state object with the stored item
+        const storeInJson = localStorage.getItem('store');
+        if (storeInJson === null || storeInJson === undefined) { return; }
+        const storeObj = JSON.parse(storeInJson);
+        store.replaceState(Object.assign(state, storeObj));
+      }
+    },
+
     [MutationTypes.Book.addBook]: (state, book: Book) => {
       state.books.push(book);
     },
@@ -60,9 +72,14 @@ const storeOptions: StoreOptions<IState> = {
       state.chapterSelected.questions.push(question);
     },
 
-    [MutationTypes.Chapter.editChapter]: (state, chapter: { nr: string, title: string }) => {
+    [MutationTypes.Chapter.editChapter]: (
+      state,
+      chapter: { nr: string; title: string },
+    ) => {
       if (state.chapterEdited === undefined) {
-        throw new Error('Changes are attempted to be saved to chapter, but none is being edited currently.');
+        throw new Error(
+          'Changes are attempted to be saved to chapter, but none is being edited currently.',
+        );
       }
       state.chapterEdited.nr = chapter.nr;
       state.chapterEdited.title = chapter.title;
@@ -72,10 +89,15 @@ const storeOptions: StoreOptions<IState> = {
       const index = _.findIndex(state.books, (b) => {
         return b.id === bookId;
       });
-      if (index === -1) { return; }
+      if (index === -1) {
+        return;
+      }
 
       const book = state.books.splice(index, 1)[0];
-      if (state.bookSelected !== undefined && state.bookSelected.id === book.id) {
+      if (
+        state.bookSelected !== undefined &&
+        state.bookSelected.id === book.id
+      ) {
         state.bookSelected = undefined;
       }
       if (book.chapters !== undefined && book.chapters.length > 0) {
@@ -84,12 +106,16 @@ const storeOptions: StoreOptions<IState> = {
     },
 
     [MutationTypes.Chapter.removeChapterById]: (state, chapterId: string) => {
-      if (state.bookSelected === undefined) { return; }
+      if (state.bookSelected === undefined) {
+        return;
+      }
 
       const index = _.findIndex(state.bookSelected.chapters, (c) => {
         return c.id === chapterId;
       });
-      if (index === -1) { return; }
+      if (index === -1) {
+        return;
+      }
 
       const chapter = state.bookSelected.chapters.splice(index, 1)[0];
       if (chapter.questions !== undefined && chapter.questions.length > 0) {
@@ -117,9 +143,14 @@ const storeOptions: StoreOptions<IState> = {
       state.chapterSelected = chapter;
     },
 
-    [MutationTypes.Question.removeQuestionById]: (state, questionId: string) => {
+    [MutationTypes.Question.removeQuestionById]: (
+      state,
+      questionId: string,
+    ) => {
       if (state.chapterSelected === undefined) {
-        throw new Error('Cannot delete question because there is no chapter selected.');
+        throw new Error(
+          'Cannot delete question because there is no chapter selected.',
+        );
       }
 
       const index: number = _.findIndex(state.chapterSelected.questions, (q) => {
@@ -131,7 +162,9 @@ const storeOptions: StoreOptions<IState> = {
     [MutationTypes.Question.editQuestion]: (state, question: Question) => {
       const q = state.questionEdited;
       if (q === undefined) {
-        throw new Error('Cannot edit question as none has been selected for editing.');
+        throw new Error(
+          'Cannot edit question as none has been selected for editing.',
+        );
       }
       q.answer = question.answer;
       q.pageNr = question.pageNr;
@@ -146,7 +179,9 @@ const storeOptions: StoreOptions<IState> = {
       const index = _.findIndex(state.questionList, (q) => {
         return q.id === question.id;
       });
-      if (index !== -1) { return; }
+      if (index !== -1) {
+        return;
+      }
 
       state.questionList.push(question);
     },
@@ -155,16 +190,22 @@ const storeOptions: StoreOptions<IState> = {
       state.questionList = [];
     },
 
-    [MutationTypes.QuestionList.removeFromList]: (state, question: Question) => {
+    [MutationTypes.QuestionList.removeFromList]: (
+      state,
+      question: Question,
+    ) => {
       const index = _.findIndex(state.questionList, (q) => {
         return q.id === question.id;
       });
 
-      if (index === -1) { return; }
+      if (index === -1) {
+        return;
+      }
 
       state.questionList.splice(index, 1);
     },
   },
 };
 
-export default new Vuex.Store<IState>(storeOptions);
+const store = new Vuex.Store<IState>(storeOptions);
+export default store;

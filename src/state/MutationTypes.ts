@@ -1,6 +1,8 @@
 import Question from '@/models/Question';
 
 export default class MutationTypes {
+  public static initialise = 'initialise';
+
   public static Book = class {
     public static addBook: string = 'addBook';
     public static editBook: string = 'editBook';
@@ -27,7 +29,7 @@ export default class MutationTypes {
 
   public static QuestionList = class {
     public static addToList: string = 'addToList';
-    public static clear: string = 'clear';
+    public static clear: string = 'clearList';
     public static removeFromList: string = 'removeFromList';
   };
 }

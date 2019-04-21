@@ -38,7 +38,13 @@ Vue.use(CKEditor);
   },
 })
 export default class App extends mixins(StoreMixin) {
+  private created(): void {
+    this.store.subscribe((mutation, state) => {
+      localStorage.setItem('store', JSON.stringify(state));
+    });
 
+    this.store.commit(MutationTypes.initialise);
+  }
 }
 </script>
 

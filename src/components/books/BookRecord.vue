@@ -65,7 +65,7 @@ export default class BookRecord extends mixins(StoreMixin) {
 
   get nrOfQuestions() {
     if (this.nrOfChapters === 0) { return 0; }
-    return this.book.questions.length;
+    return Book.questions(this.book).length;
   }
 
   get bookInEditMode(): boolean {
@@ -79,13 +79,13 @@ export default class BookRecord extends mixins(StoreMixin) {
   }
 
   private addQuestionsToList(): void {
-    _.forEach(this.book.questions, (q) => {
+    _.forEach(Book.questions(this.book), (q) => {
       this.store.commit(MutationTypes.QuestionList.addToList, q);
     });
   }
 
   private removeQuestionsFromList(): void {
-    _.forEach(this.book.questions, (q) => {
+    _.forEach(Book.questions(this.book), (q) => {
       this.store.commit(MutationTypes.QuestionList.removeFromList, q);
     });
   }

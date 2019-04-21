@@ -124,7 +124,7 @@ describe('components/books/BookRecord', () => {
       // Given
       const book = getBook();
       const question = new Question(uuid(), 'My question', 'My answer', '6');
-      store.state.questionList = _.concat(book.questions, [question]);
+      store.state.questionList = _.concat(Book.questions(book), [question]);
       const wrapper = mount(BookRecord, {
         propsData: {
           book,

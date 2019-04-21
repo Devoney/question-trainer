@@ -38,4 +38,15 @@ describe('models/book', () => {
     assert.deepEqual(questionsFromBook, expectedQuestions, 'Not all questions from the book are obtained.');
   });
 
+  it('No chapter yields empty array of questions', () => {
+    // Given
+    const book = new Book(uuid(), 'My book title', undefined);
+
+    // When
+    const questions = book.questions;
+
+    // Then
+    assert.notEqual(questions, undefined);
+    assert.equal(questions.length, 0, 'Array should be empty.');
+  });
 });
