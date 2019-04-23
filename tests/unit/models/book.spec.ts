@@ -32,7 +32,7 @@ describe('models/book', () => {
     ];
 
     // When
-    const questionsFromBook = book.questions;
+    const questionsFromBook = Book.questions(book);
 
     // Then
     assert.deepEqual(questionsFromBook, expectedQuestions, 'Not all questions from the book are obtained.');
@@ -43,7 +43,7 @@ describe('models/book', () => {
     const book = new Book(uuid(), 'My book title', undefined);
 
     // When
-    const questions = book.questions;
+    const questions = Book.questions(book);
 
     // Then
     assert.notEqual(questions, undefined);
