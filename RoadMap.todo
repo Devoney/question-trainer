@@ -24,6 +24,7 @@ Questions:
     ✔ Add all from Book       
     ✔ Clear the play list
     ✔ Show number of questions in play in header
+    ☐ When hovering. Show the books title and chapter title and page nr.
   Questionaire:
     ☐ Show a question and be able to answer good/wrong
     ☐ Start the play list and show each question one by one

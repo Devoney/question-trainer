@@ -12,7 +12,7 @@ describe('App', () => {
     // Given
     const stubSubscribe = sinon.stub(store, 'subscribe');
     const stubCommit = sinon.stub(store, 'commit') as sinon.SinonStub;
-    
+
     // When
     const wrapper = shallowMount(App, {
       store,
@@ -29,7 +29,7 @@ describe('App', () => {
     // Given
     const stubSubscribe = sinon.stub(store, 'subscribe') as sinon.SinonStub;
     const stubCommit = sinon.stub(store, 'commit');
-    
+
     // When
     const wrapper = shallowMount(App, {
       store,

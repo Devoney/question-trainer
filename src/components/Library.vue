@@ -1,6 +1,5 @@
 <template>
   <tabs>
-    <tab-page title="Library"></tab-page>
     <tab-page title="Books" :is-default="true">
       <book-manager/>
     </tab-page>
