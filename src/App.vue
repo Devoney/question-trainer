@@ -6,7 +6,8 @@
           <library/>
         </div>
         <div class="col-6">
-          <question-list/>
+          <question-tester />
+          <question-list class="question-list"/>
         </div>
       </div>
     </div>
@@ -28,6 +29,7 @@ import QuestionModal from '@/components/QuestionModal.vue';
 import CKEditor from '@ckeditor/ckeditor5-vue';
 import bus from '@/MessageBus';
 import QuestionModalArgs from './types/QuestionModalArgs';
+import QuestionTester from '@/components/questionList/QuestionTester.vue';
 Vue.use(CKEditor);
 
 @Component({
@@ -35,6 +37,7 @@ Vue.use(CKEditor);
     Library,
     QuestionList,
     QuestionModal,
+    QuestionTester,
   },
 })
 export default class App extends mixins(StoreMixin) {
@@ -61,5 +64,9 @@ export default class App extends mixins(StoreMixin) {
 .container {
   width: 100%;
   min-width: 96%;
+}
+
+.question-list {
+  margin-top:15px;
 }
 </style>
