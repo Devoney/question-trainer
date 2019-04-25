@@ -12,6 +12,7 @@ export default class EditBook extends BookBase {
   private originalBookTitle: string = '';
 
   protected get invalidTitle(): boolean {
+    if (_.isEmpty(this.bookTitle)) { return true; }
     return _.findIndex(this.store.state.books, (book: Book) => {
       // @ts-ignore
       if (book.id === this.store.state.bookEdited.id) { return false; }

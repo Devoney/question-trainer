@@ -10,7 +10,7 @@ export default class AddBook extends BookBase {
   protected buttonText: string = 'Add';
 
   get invalidTitle(): boolean {
-    if (_.isEmpty(this.bookTitle)) { return false; }
+    if (_.isEmpty(this.bookTitle)) { return true; }
     return !_.isEmpty(this.errMessage);
   }
 

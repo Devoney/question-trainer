@@ -7,7 +7,7 @@
     </div>
     <div class="input-group row no-gutters">
       <input
-        :class="['form-control', { 'is-invalid': invalidTitle }]"
+        :class="['form-control', { 'is-invalid': invalidTitle && !bookTitleIsEmpty }]"
         id="bookTitleText"
         type="text"
         ref="bookTitleText"
@@ -40,6 +40,10 @@ export default class BookBase extends mixins(StoreMixin) {
   protected errorMessage: string = '';
   protected buttonText: string = 'Ok';
   protected bookTitle: string = '';
+
+  private get bookTitleIsEmpty(): boolean {
+    return _.isEmpty(this.bookTitle);
+  }
 
   protected get errorMessageToShow(): string {
     if (_.isEmpty(this.bookTitle)) { return ''; }
