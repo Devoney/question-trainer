@@ -98,7 +98,7 @@ export default class QuestionTester extends mixins(StoreMixin) {
   private showAnswer: boolean = false;
 
   private get answerHtml(): string {
-    if (this.question === undefined) return '';
+    if (this.question === undefined) { return ''; }
     return this.question.answer;
   }
 
@@ -115,7 +115,7 @@ export default class QuestionTester extends mixins(StoreMixin) {
   }
 
   private get questionHtml(): string {
-    if (this.question === undefined) return '';
+    if (this.question === undefined) { return ''; }
     return this.question.question;
   }
 

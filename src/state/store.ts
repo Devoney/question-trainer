@@ -214,10 +214,10 @@ const storeOptions: StoreOptions<IState> = {
 
     [MutationTypes.QuestionTester.setStatistics]: (state, statistics: { correctCount: number | undefined, wrongCount: number | undefined }) => {
       if (statistics.correctCount !== undefined) {
-        state.questionTestStatistics.correctCount = statistics.correctCount
+        state.questionTestStatistics.correctCount = statistics.correctCount;
       }
       if (statistics.wrongCount !== undefined) {
-        state.questionTestStatistics.wrongCount = statistics.wrongCount
+        state.questionTestStatistics.wrongCount = statistics.wrongCount;
       }
     },
   },

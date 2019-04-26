@@ -332,7 +332,7 @@ describe('state/store', () => {
     const correctCount: number = 3;
 
     // When
-    store.commit(MutationTypes.QuestionTester.setStatistics, { 
+    store.commit(MutationTypes.QuestionTester.setStatistics, {
       correctCount,
     });
 
@@ -344,14 +344,14 @@ describe('state/store', () => {
     // Given
     store.state.questionTestStatistics.wrongCount = 0;
     const wrongCount: number = 6;
-    
+
     // When
-    store.commit(MutationTypes.QuestionTester.setStatistics, { 
+    store.commit(MutationTypes.QuestionTester.setStatistics, {
       wrongCount,
     });
 
     // Then
     assert.equal(store.state.questionTestStatistics.wrongCount, wrongCount);
-  });  
+  });
 
 });
