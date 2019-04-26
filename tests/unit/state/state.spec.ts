@@ -312,4 +312,46 @@ describe('state/store', () => {
     assert.equal(store.state.questionList.length, 0, 'All questions should have been removed.');
   });
 
+  it('Current question for tester can be set.', () => {
+    // Given
+    const question = new Question(uuid(), 'Question 1', 'Answer 1', '1');
+    store.state.currentQuestion = undefined;
+
+    // When
+    store.commit(MutationTypes.QuestionTester.setCurrentQuestion, question);
+
+    // Then
+    assert.notEqual(store.state.currentQuestion, undefined);
+    // @ts-ignore
+    assert.equal(store.state.currentQuestion.id, question.id);
+  });
+
+  it('Question tester statistics correct count can be set.', () => {
+    // Given
+    store.state.questionTestStatistics.correctCount = 0;
+    const correctCount: number = 3;
+
+    // When
+    store.commit(MutationTypes.QuestionTester.setStatistics, { 
+      correctCount,
+    });
+
+    // Then
+    assert.equal(store.state.questionTestStatistics.correctCount, correctCount);
+  });
+
+  it('Question tester statistics wrong count can be set.', () => {
+    // Given
+    store.state.questionTestStatistics.wrongCount = 0;
+    const wrongCount: number = 6;
+    
+    // When
+    store.commit(MutationTypes.QuestionTester.setStatistics, { 
+      wrongCount,
+    });
+
+    // Then
+    assert.equal(store.state.questionTestStatistics.wrongCount, wrongCount);
+  });  
+
 });

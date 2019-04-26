@@ -32,4 +32,9 @@ export default class MutationTypes {
     public static clear: string = 'clearList';
     public static removeFromList: string = 'removeFromList';
   };
+
+  public static QuestionTester = class {
+    public static setCurrentQuestion = 'setCurrentQuestion';
+    public static setStatistics = 'setStatistics';
+  };
 }

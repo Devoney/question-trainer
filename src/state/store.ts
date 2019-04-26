@@ -4,6 +4,7 @@ import Book from '@/models/Book';
 import Chapter from '@/models/Chapter';
 import MutationTypes from '@/state/MutationTypes';
 import Question from '@/models/Question';
+import QuestionTestStatistics from '@/types/QuestionTestStatistics';
 import Vue from 'vue';
 import _ from 'lodash';
 
@@ -16,8 +17,10 @@ const storeOptions: StoreOptions<IState> = {
     bookEdited: undefined,
     chapterEdited: undefined,
     chapterSelected: undefined,
+    currentQuestion: undefined,
     questionEdited: undefined,
     questionList: new Array<Question>(),
+    questionTestStatistics: new QuestionTestStatistics(),
   },
   getters: {
     booksSortedByTitle: (state) => {
@@ -203,6 +206,19 @@ const storeOptions: StoreOptions<IState> = {
       }
 
       state.questionList.splice(index, 1);
+    },
+
+    [MutationTypes.QuestionTester.setCurrentQuestion]: (state, question) => {
+      state.currentQuestion = question;
+    },
+
+    [MutationTypes.QuestionTester.setStatistics]: (state, statistics: { correctCount: number | undefined, wrongCount: number | undefined }) => {
+      if (statistics.correctCount !== undefined) {
+        state.questionTestStatistics.correctCount = statistics.correctCount
+      }
+      if (statistics.wrongCount !== undefined) {
+        state.questionTestStatistics.wrongCount = statistics.wrongCount
+      }
     },
   },
 };

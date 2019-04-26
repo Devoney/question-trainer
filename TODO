@@ -2,6 +2,7 @@ General:
   ✔ Use confirmation dialog as a service to the whole application, instead of having it in each table.
   ☐ Remember tab page in the store
   Books:
+    ☐ Add all questions from all books
     ✔ Refactoring getting questions of a book to the Book model itself.
     ✔ When a book is removed, its questions need to go out of the question list.
     ☐ Move logic for adding book into AddBook itself, out of BookManager to simply ping ponging of data.

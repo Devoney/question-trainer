@@ -2,10 +2,10 @@
   <div>
     <div id="app" class="container">
       <div class="row">
-        <div class="col-6">
+        <div class="col-6 box-left">
           <library/>
         </div>
-        <div class="col-6">
+        <div class="col-6 box-right">
           <question-tester />
           <question-list class="question-list"/>
         </div>
@@ -59,6 +59,10 @@ export default class App extends mixins(StoreMixin) {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.box-right {
+  margin-top: 42px;
 }
 
 .container {

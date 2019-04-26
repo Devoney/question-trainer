@@ -1,6 +1,7 @@
 import Book from '@/models/Book';
 import Chapter from '@/models/Chapter';
 import Question from '@/models/Question';
+import QuestionTestStatistics from '@/types/QuestionTestStatistics';
 
 export default interface IState  {
   books: Book[];
@@ -8,6 +9,8 @@ export default interface IState  {
   bookEdited: Book | undefined;
   chapterEdited: Chapter | undefined;
   chapterSelected: Chapter | undefined;
+  currentQuestion: Question | undefined;
   questionEdited: Question | undefined;
   questionList: Question[];
+  questionTestStatistics: QuestionTestStatistics;
 }
