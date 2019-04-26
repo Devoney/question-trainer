@@ -318,7 +318,7 @@ describe('state/store', () => {
     store.state.currentQuestion = undefined;
 
     // When
-    store.commit(MutationTypes.QuestionTester.setCurrentQuestion, question);
+    store.commit(MutationTypes.QuestionTrainer.setCurrentQuestion, question);
 
     // Then
     assert.notEqual(store.state.currentQuestion, undefined);
@@ -332,7 +332,7 @@ describe('state/store', () => {
     const correctCount: number = 3;
 
     // When
-    store.commit(MutationTypes.QuestionTester.setStatistics, {
+    store.commit(MutationTypes.QuestionTrainer.setStatistics, {
       correctCount,
     });
 
@@ -346,7 +346,7 @@ describe('state/store', () => {
     const wrongCount: number = 6;
 
     // When
-    store.commit(MutationTypes.QuestionTester.setStatistics, {
+    store.commit(MutationTypes.QuestionTrainer.setStatistics, {
       wrongCount,
     });
 

@@ -208,11 +208,11 @@ const storeOptions: StoreOptions<IState> = {
       state.questionList.splice(index, 1);
     },
 
-    [MutationTypes.QuestionTester.setCurrentQuestion]: (state, question) => {
+    [MutationTypes.QuestionTrainer.setCurrentQuestion]: (state, question) => {
       state.currentQuestion = question;
     },
 
-    [MutationTypes.QuestionTester.setStatistics]: (state, statistics: { correctCount: number | undefined, wrongCount: number | undefined }) => {
+    [MutationTypes.QuestionTrainer.setStatistics]: (state, statistics: { correctCount: number | undefined, wrongCount: number | undefined }) => {
       if (statistics.correctCount !== undefined) {
         state.questionTestStatistics.correctCount = statistics.correctCount;
       }

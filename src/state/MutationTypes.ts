@@ -33,7 +33,7 @@ export default class MutationTypes {
     public static removeFromList: string = 'removeFromList';
   };
 
-  public static QuestionTester = class {
+  public static QuestionTrainer = class {
     public static setCurrentQuestion = 'setCurrentQuestion';
     public static setStatistics = 'setStatistics';
   };

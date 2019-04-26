@@ -14,8 +14,18 @@
       </div>
     </div>
     <div class="card-body text-left">
-      <div v-if="!hasQuestion && !hasQuestionsInList" class="text-center">Put together a list of questions below and then start training.</div>
-      <div v-else-if="!hasQuestion && hasQuestionsInList" class="text-center">Press Start to begin training!</div>
+      <div v-if="!hasQuestion && !hasQuestionsInList" class="text-center">
+        <p v-show="showStatistics">
+          You finished last training with
+          <span class="stats-wrong-count">{{ statistics.wrongCount }}</span> question(s) answered incorrectly and
+          <span class="stats-correct-count">{{ statistics.correctCount }}</span> correctly.
+        </p>
+        Put together a list of questions below and then start training.
+      </div>
+      <div
+        v-else-if="!hasQuestion && hasQuestionsInList"
+        class="text-center"
+      >Press Start to begin training!</div>
       <div v-else>
         <div class="font-weight-bold">Question:</div>
         <div v-html="questionHtml"></div>
@@ -45,7 +55,7 @@
             class="btn btn-danger"
             :disabled="!hasQuestion || !showAnswer"
             @click="answerIsWrong"
-          >Wrong ({{ statistics.wrongCount }})</button>
+          >Wrong <span v-show="hasQueston">({{ statistics.wrongCount }})</span></button>
         </div>
         <div class="col-8"></div>
         <div class="col-2 text-right">
@@ -53,7 +63,7 @@
             class="btn btn-success"
             :disabled="!hasQuestion || !showAnswer"
             @click="answerIsCorrect"
-          >Correct ({{ statistics.correctCount }})</button>
+          >Correct <span v-show="hasQueston">({{ statistics.correctCount }})</span></button>
         </div>
       </div>
     </div>
@@ -78,7 +88,7 @@ import QuestionTestStatistics from '@/types/QuestionTestStatistics';
     CKEditor,
   },
 })
-export default class QuestionTester extends mixins(StoreMixin) {
+export default class extends mixins(StoreMixin) {
   private answerGiven: string = '';
   private editor: any = ClassicEditor;
   private editorConfig: any = {
@@ -133,6 +143,10 @@ export default class QuestionTester extends mixins(StoreMixin) {
     return this.question.question;
   }
 
+  private get showStatistics(): boolean {
+    return (this.statistics.wrongCount > 0 || this.statistics.correctCount > 0);
+  }
+
   private get statistics(): QuestionTestStatistics {
     return this.store.state.questionTestStatistics;
   }
@@ -157,21 +171,21 @@ export default class QuestionTester extends mixins(StoreMixin) {
   private setNextQuestion(): void {
     this.showAnswer = false;
     const question = this.takeQuestion();
-    this.store.commit(MutationTypes.QuestionTester.setCurrentQuestion, question);
+    this.store.commit(MutationTypes.QuestionTrainer.setCurrentQuestion, question);
   }
 
   private incrementCorrectCount(): void {
     const correctCount = this.store.state.questionTestStatistics.correctCount + 1;
-    this.store.commit(MutationTypes.QuestionTester.setStatistics, { correctCount });
+    this.store.commit(MutationTypes.QuestionTrainer.setStatistics, { correctCount });
   }
 
   private incrementWrongCount(): void {
     const wrongCount = this.store.state.questionTestStatistics.wrongCount + 1;
-    this.store.commit(MutationTypes.QuestionTester.setStatistics, { wrongCount });
+    this.store.commit(MutationTypes.QuestionTrainer.setStatistics, { wrongCount });
   }
 
   private resetCount(): void {
-    this.store.commit(MutationTypes.QuestionTester.setStatistics, {
+    this.store.commit(MutationTypes.QuestionTrainer.setStatistics, {
       correctCount: 0,
       wrongCount: 0,
     });
@@ -197,5 +211,15 @@ export default class QuestionTester extends mixins(StoreMixin) {
 
 .show-answer-banner {
   cursor: pointer;
+}
+
+.stats-wrong-count {
+  color: red;
+  font-weight: bold;
+}
+
+.stats-correct-count {
+  color: green;
+  font-weight: bold;
 }
 </style>
