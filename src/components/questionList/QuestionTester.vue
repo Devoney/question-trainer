@@ -2,7 +2,8 @@
   <div class="card">
     <div class="card-header">
       <div class="row">
-        <div class="col-10">Question tester</div>
+        <div class="col-2"></div>
+        <div class="col-8 text-center h5">Question tester</div>
         <div class="col-2 text-right">
           <button
             :class="['btn', {'btn-primary': canStart, 'btn-secondary': !canStart}]"
@@ -163,7 +164,8 @@ export default class QuestionTester extends mixins(StoreMixin) {
     });
   }
 
-  private takeQuestion(): Question {
+  private takeQuestion(): Question | undefined {
+    if (this.store.state.questionList.length === 0) { return undefined; }
     const questionIndex = getRandomInt(0, this.store.state.questionList.length - 1);
     const question = this.store.state.questionList.splice(questionIndex, 1)[0];
     return question;

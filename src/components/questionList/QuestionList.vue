@@ -1,14 +1,24 @@
 <template>
   <div class="card">
     <div class="card-header">
-      Question list
-      <span v-if="!listHasNoQuestions">
-        &nbsp;(<span aria-label="Number of questions in the list.">{{ questionsInList.length }}</span>)
-      </span>
+      <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8">
+          <h5>
+            Question list
+            <span
+            class="h6"
+              v-show="!listHasNoQuestions"
+              aria-label="Number of questions in the list."
+            >({{ questionsInList.length }})</span>
+          </h5>
+        </div>
+        <div class="col-2"></div>
+      </div>
     </div>
     <div class="card-body">
       <div class="text-left">
-        <clear-button class="clearButton" />
+        <clear-button class="clearButton"/>
       </div>
       <table class="table table-striped table-bordered">
         <thead>
@@ -20,7 +30,7 @@
           <question-list-record
             v-for="(question, index) in questionsInList"
             v-bind:key="question.id"
-            :index="index"
+            :index="(index + 1)"
             :question="question"
           />
         </tbody>
@@ -65,6 +75,6 @@ export default class QuestionList extends mixins(StoreMixin) {
 
 <style scoped>
 .clearButton {
-  margin-bottom:15px;
+  margin-bottom: 15px;
 }
 </style>

@@ -53,7 +53,7 @@ describe('components/questionList/QuestionList', () => {
     const questionsInListElement = wrapper.find('[aria-label="Number of questions in the list."]');
 
     // When
-    const nrOfQuestions = questionsInListElement.text();
+    const nrOfQuestions = questionsInListElement.text().replace('(', '').replace(')', '');
 
     // Then
     assert.equal(nrOfQuestions, '3', 'Incorrect number of questions is shown.');
