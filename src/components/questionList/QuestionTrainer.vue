@@ -55,7 +55,7 @@
             class="btn btn-danger"
             :disabled="!hasQuestion || !showAnswer"
             @click="answerIsWrong"
-          >Wrong <span v-show="hasQueston">({{ statistics.wrongCount }})</span></button>
+          >Wrong <span v-show="hasQuestion">({{ statistics.wrongCount }})</span></button>
         </div>
         <div class="col-8"></div>
         <div class="col-2 text-right">
@@ -63,7 +63,7 @@
             class="btn btn-success"
             :disabled="!hasQuestion || !showAnswer"
             @click="answerIsCorrect"
-          >Correct <span v-show="hasQueston">({{ statistics.correctCount }})</span></button>
+          >Correct <span v-show="hasQuestion">({{ statistics.correctCount }})</span></button>
         </div>
       </div>
     </div>

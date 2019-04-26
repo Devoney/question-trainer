@@ -1,6 +1,6 @@
 <template>
   <button
-  class="btn btn-light"
+  class="btn btn-secondary"
     @click="clear"
     :disabled="listHasNoQuestions"
     aria-label="Clear question list"

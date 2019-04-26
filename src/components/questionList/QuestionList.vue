@@ -2,7 +2,7 @@
   <div class="card">
     <div class="card-header">
       <div class="row">
-        <div class="col-2"></div>
+        <div class="col-2 text-left"><clear-button /></div>
         <div class="col-8">
           <h5>
             Question list
@@ -17,9 +17,6 @@
       </div>
     </div>
     <div class="card-body">
-      <div class="text-left">
-        <clear-button class="clearButton"/>
-      </div>
       <table class="table table-striped table-bordered">
         <thead>
           <th width="40"></th>
@@ -74,7 +71,4 @@ export default class QuestionList extends mixins(StoreMixin) {
 </script>
 
 <style scoped>
-.clearButton {
-  margin-bottom: 15px;
-}
 </style>
