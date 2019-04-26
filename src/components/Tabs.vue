@@ -8,7 +8,7 @@
           :href="'#'+ tabPage.id"
           role="tab"
           :aria-controls="tabPage.title"
-        >{{ tabPage.title }}</a>
+        ><h5>{{ tabPage.title }}</h5></a>
       </li>
     </ul>
     <div class="tab-content">

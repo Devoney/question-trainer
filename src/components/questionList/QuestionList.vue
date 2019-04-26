@@ -35,7 +35,7 @@
           />
         </tbody>
         <tfoot v-if="listHasNoQuestions">
-          <th colspan="3" aria-label="Instructions on how to add a question to the list.">
+          <th colspan="3" aria-label="Instructions on how to add a question to the list." class="font-weight-normal">
             Add questions to this list by using the
             <icon-button icon="plus" argument/>button on books, chapters and individual questions.
           </th>

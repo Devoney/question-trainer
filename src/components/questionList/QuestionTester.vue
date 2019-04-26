@@ -14,20 +14,29 @@
       </div>
     </div>
     <div class="card-body text-left">
-      <div class="font-weight-bold">Question:</div>
-      <div v-html="questionHtml"></div>
-      <div class="font-weight-bold answer">Your answer:</div>
-      <div v-show="!showAnswer && hasQuestion">
-        <ckeditor :editor="editor" v-model="answerGiven" :config="editorConfig" :disabled="!hasQuestion"></ckeditor>
+      <div v-if="!hasQuestion && !hasQuestionsInList" class="text-center">Put together a list of questions below and then start training.</div>
+      <div v-else-if="!hasQuestion && hasQuestionsInList" class="text-center">Press Start to begin training!</div>
+      <div v-else>
+        <div class="font-weight-bold">Question:</div>
+        <div v-html="questionHtml"></div>
+        <div class="font-weight-bold answer">Your answer:</div>
+        <div v-show="!showAnswer && hasQuestion">
+          <ckeditor
+            :editor="editor"
+            v-model="answerGiven"
+            :config="editorConfig"
+            :disabled="!hasQuestion"
+          ></ckeditor>
+        </div>
+        <div v-show="showAnswer" v-html="answerGiven"></div>
+        <div class="font-weight-bold answer">Expected answer:</div>
+        <div
+          class="show-answer-banner"
+          v-show="!showAnswer && hasQuestion"
+          @click="showAnswer = true"
+        >Click here to show the answer</div>
+        <div v-show="showAnswer" v-html="answerHtml"></div>
       </div>
-      <div v-show="showAnswer" v-html="answerGiven"></div>
-      <div class="font-weight-bold answer">Expected answer:</div>
-      <div
-        class="show-answer-banner"
-        v-show="!showAnswer && hasQuestion"
-        @click="showAnswer = true"
-      >Click here to show the answer</div>
-      <div v-show="showAnswer" v-html="answerHtml"></div>
     </div>
     <div class="card-footer">
       <div class="row">
@@ -109,6 +118,10 @@ export default class QuestionTester extends mixins(StoreMixin) {
 
   private get hasQuestion(): boolean {
     return this.question !== undefined;
+  }
+
+  private get hasQuestionsInList(): boolean {
+    return this.store.state.questionList.length > 0;
   }
 
   private get question(): Question | undefined {
