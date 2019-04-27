@@ -8,7 +8,7 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
 
 @Component
-export default class DeleteButton extends Vue {
+export default class IconButton extends Vue {
   @Prop({ default: '' }) public label!: string;
   @Prop({ required: true }) public argument!: any;
   @Prop() public icon!: string;

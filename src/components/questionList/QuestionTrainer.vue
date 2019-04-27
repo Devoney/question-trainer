@@ -6,6 +6,7 @@
         <div class="col-8 text-center h5">Question tester</div>
         <div class="col-2 text-right">
           <button
+            aria-label="Start training"
             :class="['btn', {'btn-primary': canStart, 'btn-secondary': !canStart}]"
             @click="start"
             :disabled="!canStart"
@@ -52,6 +53,7 @@
       <div class="row">
         <div class="col-2 text-left">
           <button
+            aria-label="Correct answer"
             class="btn btn-danger"
             :disabled="!hasQuestion || !showAnswer"
             @click="answerIsWrong"
@@ -60,6 +62,7 @@
         <div class="col-8"></div>
         <div class="col-2 text-right">
           <button
+            aria-label="Wrong answer"
             class="btn btn-success"
             :disabled="!hasQuestion || !showAnswer"
             @click="answerIsCorrect"
