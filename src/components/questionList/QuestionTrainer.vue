@@ -16,7 +16,7 @@
     </div>
     <div class="card-body text-left">
       <div v-if="!hasQuestion && !hasQuestionsInList" class="text-center">
-        <p v-show="showStatistics">
+        <p v-show="showStatistics" aria-label="Recent statistics">
           You finished last training with
           <span class="stats-wrong-count">{{ statistics.wrongCount }}</span> question(s) answered incorrectly and
           <span class="stats-correct-count">{{ statistics.correctCount }}</span> correctly.
