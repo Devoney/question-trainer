@@ -46,7 +46,7 @@
           v-show="!showAnswer && hasQuestion"
           @click="showAnswer = true"
         >Click here to show the answer</div>
-        <div v-show="showAnswer" v-html="answerHtml"></div>
+        <div aria-label="Answer html" v-show="showAnswer" v-html="answerHtml"></div>
       </div>
     </div>
     <div class="card-footer">

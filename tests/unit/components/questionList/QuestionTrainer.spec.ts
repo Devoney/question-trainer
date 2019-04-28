@@ -145,4 +145,38 @@ describe('components/questionList/QuestionTrainer', () => {
     wrapper.destroy();
   });
 
+  it('Question is shown when loaded.', () => {
+    // Given
+    store.state.questionList = [];
+    const question = new Question(uuid(), 'My question', 'My answer', '4');
+    store.state.currentQuestion = question;
+    const wrapper = shallowMount(QuestionTrainer, {
+      store,
+    });
+
+    // When
+    const questionHtml = wrapper.find('[aria-label="Question html"]');
+
+    // Then
+    const indexOf = questionHtml.html().indexOf(question.question);
+    assert.notEqual(indexOf, -1, 'It seems the question text is not shown.');
+    wrapper.destroy();
+  });
+
+  it('Answer is hidden when question is loaded.', () => {
+    // Given
+    store.state.questionList = [];
+    const question = new Question(uuid(), 'My question', 'My answer', '4');
+    store.state.currentQuestion = question;
+    const wrapper = shallowMount(QuestionTrainer, {
+      store,
+    });
+
+    // When
+    const answerHtml = wrapper.find('[aria-label="Answer html"]');
+
+    // Then
+    assert.isFalse(answerHtml.isVisible());
+    wrapper.destroy();
+  });
 });
