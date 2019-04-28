@@ -7,6 +7,7 @@ import store from '@/state/store';
 import Question from '@/models/Question';
 import uuid from 'uuid/v1';
 import QuestionTestStatistics from '@/types/QuestionTestStatistics';
+import { faLessThanEqual } from '@fortawesome/free-solid-svg-icons';
 
 describe('components/questionList/QuestionTrainer', () => {
   it('Wrong + correct buttons are disabled when question is not loaded.', () => {
@@ -78,8 +79,8 @@ describe('components/questionList/QuestionTrainer', () => {
     startButton.trigger('click');
 
     // Then
-    stub.calledWith(MutationTypes.QuestionTrainer.setCurrentQuestion, question);
-    stub.calledWith(MutationTypes.Question.removeQuestionById, question.id);
+    assert.isTrue(stub.calledWith(MutationTypes.QuestionTrainer.setCurrentQuestion, question));
+    assert.isTrue(stub.calledWith(MutationTypes.Question.removeQuestionById, question.id));
     stub.restore();
     wrapper.destroy();
   });
@@ -178,5 +179,109 @@ describe('components/questionList/QuestionTrainer', () => {
     // Then
     assert.isFalse(answerHtml.isVisible());
     wrapper.destroy();
+  });
+
+  it('\'Click to showAnswer\' is shown when question is loaded.', () => {
+    // Given
+    store.state.questionList = [];
+    const question = new Question(uuid(), 'My question', 'My answer', '4');
+    store.state.currentQuestion = question;
+    const wrapper = shallowMount(QuestionTrainer, {
+      store,
+    });
+
+    // When
+    const clickToShow = wrapper.find('.show-answer-banner');
+
+    // Then
+    assert.notEqual(clickToShow, undefined);
+    assert.isTrue(clickToShow.isVisible());
+    wrapper.destroy();
+  });
+
+  it('Answer is shown when \'Click to showAnswer\' is clicked.', () => {
+    // Given
+    store.state.questionList = [];
+    const question = new Question(uuid(), 'My question', 'My answer', '4');
+    store.state.currentQuestion = question;
+    const wrapper = shallowMount(QuestionTrainer, {
+      store,
+    });
+    const clickToShow = wrapper.find('.show-answer-banner');
+    const answerHtml = wrapper.find('[aria-label="Answer html"]');
+
+    // When
+    clickToShow.trigger('click');
+
+    // Then
+    assert.isFalse(clickToShow.isVisible(), '\'Click to show\' should be hidden.');
+    assert.isTrue(answerHtml.isVisible(), 'The answer should be shown');
+    wrapper.destroy();
+  });
+
+  it('Counter for wrong questions is increased', () => {
+    // Given
+    store.state.questionList = [];
+    const question = new Question(uuid(), 'My question', 'My answer', '4');
+    store.state.currentQuestion = question;
+    const stats = new QuestionTestStatistics();
+    const initialWrongCount = 1;
+    stats.wrongCount = initialWrongCount;
+    const initialCorrectCount = 2;
+    stats.correctCount = initialCorrectCount;
+    store.state.questionTestStatistics = stats;
+    const wrapper = shallowMount(QuestionTrainer, {
+      store,
+    });
+    const stub = sinon.stub(store, 'commit') as sinon.SinonStub;
+    const clickToShow = wrapper.find('.show-answer-banner');
+    clickToShow.trigger('click');
+    const wrongButton = wrapper.find('button[aria-label="Wrong answer"]');
+
+    // When
+    wrongButton.trigger('click');
+
+    // Then
+    const expectedWrongCount = initialWrongCount + 1;
+    stub.restore();
+    wrapper.destroy();
+    sinon.assert.calledWith(
+      stub,
+      MutationTypes.QuestionTrainer.setStatistics,
+      sinon.match.has('wrongCount', expectedWrongCount),
+    );
+  });
+
+  it('Counter for correct questions is increased', () => {
+    // Given
+    store.state.questionList = [];
+    const question = new Question(uuid(), 'My question', 'My answer', '4');
+    store.state.currentQuestion = question;
+    const stats = new QuestionTestStatistics();
+    const initialWrongCount = 1;
+    stats.wrongCount = initialWrongCount;
+    const initialCorrectCount = 2;
+    stats.correctCount = initialCorrectCount;
+    store.state.questionTestStatistics = stats;
+    const wrapper = shallowMount(QuestionTrainer, {
+      store,
+    });
+    const stub = sinon.stub(store, 'commit') as sinon.SinonStub;
+    const clickToShow = wrapper.find('.show-answer-banner');
+    clickToShow.trigger('click');
+    const wrongButton = wrapper.find('button[aria-label="Correct answer"]');
+
+    // When
+    wrongButton.trigger('click');
+
+    // Then
+    const expectedCorrectCount = initialCorrectCount + 1;
+    stub.restore();
+    wrapper.destroy();
+    sinon.assert.calledWith(
+      stub,
+      MutationTypes.QuestionTrainer.setStatistics,
+      sinon.match.has('correctCount', expectedCorrectCount),
+    );
   });
 });

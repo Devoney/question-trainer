@@ -5,6 +5,10 @@ General:
     ☐ Add all questions from all books
     ☐ Move logic for adding book into AddBook itself, out of BookManager to simply ping ponging of data.
   State:
+    ☐ Store in state that the question is shown in question-trainer, instead of in question-trainer.
+       This would also make unit testing easier because now either that text should be clicked,
+       or a private member of question-trainer needs to be modified.
+       Neither of this is nice.
     ☐ Make getter types available.
     ☐ Move mutations in to modules based on models or components.
 Testing:
