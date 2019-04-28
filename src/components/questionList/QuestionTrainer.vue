@@ -21,7 +21,7 @@
           <span class="stats-wrong-count">{{ statistics.wrongCount }}</span> question(s) answered incorrectly and
           <span class="stats-correct-count">{{ statistics.correctCount }}</span> correctly.
         </p>
-        Put together a list of questions below and then start training.
+        <span aria-label="Instructions to create list">Put together a list of questions below and then start training.</span>
       </div>
       <div
         v-else-if="!hasQuestion && hasQuestionsInList"
@@ -29,7 +29,7 @@
       >Press Start to begin training!</div>
       <div v-else>
         <div class="font-weight-bold">Question:</div>
-        <div v-html="questionHtml"></div>
+        <div v-html="questionHtml" aria-label="Question html"></div>
         <div class="font-weight-bold answer">Your answer:</div>
         <div v-show="!showAnswer && hasQuestion">
           <ckeditor
