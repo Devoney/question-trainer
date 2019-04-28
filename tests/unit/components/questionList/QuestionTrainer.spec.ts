@@ -64,7 +64,7 @@ describe('components/questionList/QuestionTrainer', () => {
 
   it('Pressing start loads question from the list.', () => {
     // Given
-    const spy = sinon.spy(store, 'commit') as sinon.SinonSpy;
+    const stub = sinon.stub(store, 'commit') as sinon.SinonStub;
     const wrapper = shallowMount(QuestionTrainer, {
       store,
     });
@@ -78,8 +78,9 @@ describe('components/questionList/QuestionTrainer', () => {
     startButton.trigger('click');
 
     // Then
-    spy.calledWith(MutationTypes.QuestionTrainer.setCurrentQuestion, question);
-    spy.restore();
+    stub.calledWith(MutationTypes.QuestionTrainer.setCurrentQuestion, question);
+    stub.calledWith(MutationTypes.Question.removeQuestionById, question.id);
+    stub.restore();
     wrapper.destroy();
   });
 

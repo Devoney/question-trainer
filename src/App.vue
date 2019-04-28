@@ -62,7 +62,7 @@ export default class App extends mixins(StoreMixin) {
 }
 
 .box-right {
-  margin-top: 42px;
+  margin-top: 49px;
 }
 
 .container {

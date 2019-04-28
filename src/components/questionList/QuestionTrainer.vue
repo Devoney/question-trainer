@@ -175,6 +175,9 @@ export default class extends mixins(StoreMixin) {
     this.showAnswer = false;
     const question = this.takeQuestion();
     this.store.commit(MutationTypes.QuestionTrainer.setCurrentQuestion, question);
+    if (question !== undefined) {
+      this.store.commit(MutationTypes.Question.removeQuestionById, question.id);
+    }
   }
 
   private incrementCorrectCount(): void {
@@ -197,7 +200,7 @@ export default class extends mixins(StoreMixin) {
   private takeQuestion(): Question | undefined {
     if (this.store.state.questionList.length === 0) { return undefined; }
     const questionIndex = getRandomInt(0, this.store.state.questionList.length - 1);
-    const question = this.store.state.questionList.splice(questionIndex, 1)[0];
+    const question = this.store.state.questionList[questionIndex];
     return question;
   }
 }
