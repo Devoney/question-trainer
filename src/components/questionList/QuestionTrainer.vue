@@ -176,7 +176,7 @@ export default class extends mixins(StoreMixin) {
     const question = this.takeQuestion();
     this.store.commit(MutationTypes.QuestionTrainer.setCurrentQuestion, question);
     if (question !== undefined) {
-      this.store.commit(MutationTypes.Question.removeQuestionById, question.id);
+      this.store.commit(MutationTypes.QuestionList.removeFromList, question);
     }
   }
 

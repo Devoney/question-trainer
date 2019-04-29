@@ -79,10 +79,10 @@ describe('components/questionList/QuestionTrainer', () => {
     startButton.trigger('click');
 
     // Then
-    assert.isTrue(stub.calledWith(MutationTypes.QuestionTrainer.setCurrentQuestion, question));
-    assert.isTrue(stub.calledWith(MutationTypes.Question.removeQuestionById, question.id));
     stub.restore();
     wrapper.destroy();
+    assert.isTrue(stub.calledWith(MutationTypes.QuestionTrainer.setCurrentQuestion, question));
+    assert.isTrue(stub.calledWith(MutationTypes.QuestionList.removeFromList, question));
   });
 
   it('Instruction to start training is shown when there are questions in the question list and no question is shown.', () => {
