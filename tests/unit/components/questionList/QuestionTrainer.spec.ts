@@ -284,4 +284,29 @@ describe('components/questionList/QuestionTrainer', () => {
       sinon.match.has('correctCount', expectedCorrectCount),
     );
   });
+
+  it('Next question is loaded after answering.', () => {
+    // Given
+    const question1 = new Question(uuid(), 'My question', 'My answer', '4');
+    const question2 = new Question(uuid(), 'My question 2', 'My answer 2', '8');
+    store.state.questionList = [
+      question2,
+    ];
+    store.state.currentQuestion = question1;
+    const wrapper = shallowMount(QuestionTrainer, {
+      store,
+    });
+    const stub = sinon.stub(store, 'commit') as sinon.SinonStub;
+    const clickToShow = wrapper.find('.show-answer-banner');
+    clickToShow.trigger('click');
+    const wrongButton = wrapper.find('button[aria-label="Correct answer"]');
+
+    // When
+    wrongButton.trigger('click');
+
+    // Then
+    stub.restore();
+    wrapper.destroy();
+    sinon.assert.calledWith(stub, MutationTypes.QuestionTrainer.setCurrentQuestion, question2);
+  });
 });
