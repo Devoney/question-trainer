@@ -1,17 +1,39 @@
 <template>
   <div>
-    <div id="app" class="container">
-      <div class="row">
-        <div class="col-6 box-left">
-          <library/>
-        </div>
-        <div class="col-6 box-right">
-          <question-trainer />
-          <question-list class="question-list"/>
+    <main>
+      <div id="app" class="container">
+        <div class="row">
+          <div class="col-6 box-left">
+            <library/>
+          </div>
+          <div class="col-6 box-right">
+            <question-trainer/>
+            <question-list class="question-list"/>
+          </div>
         </div>
       </div>
-    </div>
-    <question-modal />
+      <question-modal/>
+    </main>
+    <footer class="footer">
+      <div class="container">
+        <div>
+          <a href="https://github.com/Devoney/study-trainer">Study Trainer</a> by <a href="mailto:mikedeklerk@gmail.com">Mike de Klerk</a>
+        </div>
+        <div class="favicon-credits">
+          Icons made by
+          <a
+            href="https://www.flaticon.com/authors/popcorns-arts"
+            title="Icon Pond"
+          >Icon Pond</a> from
+          <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by
+          <a
+            href="http://creativecommons.org/licenses/by/3.0/"
+            title="Creative Commons BY 3.0"
+            target="_blank"
+          >CC 3.0 BY</a>
+        </div>
+      </div>
+    </footer>
   </div>
 </template>
 
@@ -75,7 +97,21 @@ export default class App extends mixins(StoreMixin) {
   min-width: 96%;
 }
 
+.favicon-credits {
+  display: none;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #cccccc;
+  color: white;
+  text-align: center;
+}
+
 .question-list {
-  margin-top:15px;
+  margin-top: 15px;
 }
 </style>
