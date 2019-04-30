@@ -7,13 +7,16 @@ import {
   faExclamationTriangle,
   faMinus,
   faPlus,
+  faRedoAlt,
   faTrashAlt,
+  faRedo,
 } from '@fortawesome/free-solid-svg-icons';
 
 library.add(faEdit);
 library.add(faExclamationTriangle);
 library.add(faMinus);
 library.add(faPlus);
+library.add(faRedoAlt);
 library.add(faTrashAlt);
 
 Vue.component('font-awesome-icon', FontAwesomeIcon);

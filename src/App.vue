@@ -17,7 +17,7 @@
     <footer class="footer">
       <div class="container">
         <div>
-          <a href="https://github.com/Devoney/study-trainer">Study Trainer</a> by <a href="mailto:mikedeklerk@gmail.com">Mike de Klerk</a>
+          <a href="https://github.com/Devoney/question-trainer">Question Trainer v1.0</a> by <a href="mailto:mikedeklerk@gmail.com">Mike de Klerk</a> &copy; 2019
         </div>
         <div class="favicon-credits">
           Icons made by
@@ -80,7 +80,7 @@ export default class App extends mixins(StoreMixin) {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 30px;
 }
 
 .box-left {

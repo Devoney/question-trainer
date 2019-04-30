@@ -1,32 +1,3 @@
-General:
-  ✔ Store current state to local storage
-  ☐ View mode: Both, Library, Question list
-  ☐ Toggle fullscreen
-Library:
-  Library Tab:
-    ☐ Give the library a name
-    ☐ Backup library
-    ☐ Import library
-    ☐ Show how much is used of local storage
-  Question Tab:
-    ✔ Show list of questions in table for selected Book + Chapter @done(19-04-12 20:03)
-    ✔ Remove a question @done(19-04-12 20:03)
-    ✔ Confirmation before removing a question @done(19-04-13 07:33)
-    ✔ Show question/answer without <p> @done(19-04-13 19:46)
-    ✔ Show only first line @done(19-04-13 19:45)
-    ✔ Only show first NN characters @done(19-04-13 19:46)
-    ✔ Add dots to end of line if there was more text. @done(19-04-13 19:46)
-    ✔ Ability to edit a question @done(19-04-13 19:46)
-Questions:
-  Play List:
-    ✔ Add individual questions
-    ✔ Add all from Chapter
-    ✔ Add all from Book       
-    ✔ Clear the play list
-    ✔ Show number of questions in play in header
-    ☐ When hovering. Show the books title and chapter title and page nr.
-  Questionaire:
-    ✔ Show a question and be able to answer good/wrong
-    ✔ Start the play list and show each question one by one
-    ☐ Checkbox to go back to questions that where answered incorrectly
-
+☐ Repeat questions
+☐ View mode: Both, Library, Question list
+☐ Multi user with backend to save data

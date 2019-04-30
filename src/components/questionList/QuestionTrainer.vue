@@ -2,8 +2,17 @@
   <div class="card">
     <div class="card-header">
       <div class="row">
-        <div class="col-2"></div>
-        <div class="col-8 text-center h5">Question tester</div>
+        <div class="col-2 text-left">
+          <IconButton
+            icon="redo-alt"
+            @click="toggleRepeat"
+            argument
+            :color="repeat ? '#000000' : '#CCCCCC'"
+            label="Toggle mode to repeat questions you answered incorrectly."
+            size="m"
+          />
+        </div>
+        <div class="col-8 text-center h5">Question trainer</div>
         <div class="col-2 text-right">
           <button
             aria-label="Start training"
@@ -19,9 +28,13 @@
         <p v-show="showStatistics" aria-label="Recent statistics">
           You finished last training with
           <span class="stats-wrong-count">{{ statistics.wrongCount }}</span> question(s) answered incorrectly and
-          <span class="stats-correct-count">{{ statistics.correctCount }}</span> correctly.
+          <span
+            class="stats-correct-count"
+          >{{ statistics.correctCount }}</span> correctly.
         </p>
-        <span aria-label="Instructions to create list">Put together a list of questions below and then start training.</span>
+        <span
+          aria-label="Instructions to create list"
+        >Put together a list of questions below and then start training.</span>
       </div>
       <div
         v-else-if="!hasQuestion && hasQuestionsInList"
@@ -57,7 +70,10 @@
             class="btn btn-danger"
             :disabled="!hasQuestion || !showAnswer"
             @click="answerIsWrong"
-          >Wrong <span v-show="hasQuestion">({{ statistics.wrongCount }})</span></button>
+          >
+            Wrong
+            <span v-show="hasQuestion">({{ statistics.wrongCount }})</span>
+          </button>
         </div>
         <div class="col-8"></div>
         <div class="col-2 text-right">
@@ -66,7 +82,10 @@
             class="btn btn-success"
             :disabled="!hasQuestion || !showAnswer"
             @click="answerIsCorrect"
-          >Correct <span v-show="hasQuestion">({{ statistics.correctCount }})</span></button>
+          >
+            Correct
+            <span v-show="hasQuestion">({{ statistics.correctCount }})</span>
+          </button>
         </div>
       </div>
     </div>
@@ -75,12 +94,14 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
+import { getRandomInt } from '@/utils/Math';
 import { mixins } from 'vue-class-component';
+
 // @ts-ignore
 import CKEditor from '@ckeditor/ckeditor5-vue';
 // @ts-ignore
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import { getRandomInt } from '@/utils/Math';
+import IconButton from '@/components/IconButton.vue';
 import MutationTypes from '@/state/MutationTypes';
 import StoreMixin from '@/mixins/StoreMixin';
 import Question from '@/models/Question';
@@ -89,6 +110,7 @@ import QuestionTestStatistics from '@/types/QuestionTestStatistics';
 @Component({
   components: {
     CKEditor,
+    IconButton,
   },
 })
 export default class extends mixins(StoreMixin) {
@@ -118,6 +140,7 @@ export default class extends mixins(StoreMixin) {
       'redo',
     ],
   };
+  private repeat: boolean = true;
   private showAnswer: boolean = false;
 
   private get answerHtml(): string {
@@ -163,6 +186,7 @@ export default class extends mixins(StoreMixin) {
   private answerIsWrong(): void {
     this.answerGiven = '';
     this.incrementWrongCount();
+    this.store.commit(MutationTypes.QuestionList.addToList, this.question);
     this.setNextQuestion();
   }
 
@@ -178,6 +202,10 @@ export default class extends mixins(StoreMixin) {
     if (question !== undefined) {
       this.store.commit(MutationTypes.QuestionList.removeFromList, question);
     }
+  }
+
+  private toggleRepeat(): void {
+    this.repeat = !this.repeat;
   }
 
   private incrementCorrectCount(): void {

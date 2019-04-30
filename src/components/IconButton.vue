@@ -1,7 +1,13 @@
 <template>
-    <button :disabled="disabled" class="btn btn-xs" :title="label" :aria-label="label" @click="click">
-      <font-awesome-icon :icon="icon" :style="{ color: color }"/>
-    </button>
+  <button
+    :disabled="disabled"
+    :class="cssClass()"
+    :title="label"
+    :aria-label="label"
+    @click="click"
+  >
+    <font-awesome-icon :icon="icon" :style="{ color: color }"/>
+  </button>
 </template>
 
 <script lang="ts">
@@ -14,7 +20,17 @@ export default class IconButton extends Vue {
   @Prop() public icon!: string;
   @Prop() public disabled!: boolean;
   @Prop({ default: 'black' }) public color!: string;
+  @Prop({ default: 'xs' }) public size!: string;
+  @Prop({ default: false }) public outline!: boolean;
 
+private cssClass(): string {
+  let cls = 'btn ';
+  cls += 'btn-' + this.size + ' ';
+  if(this.outline) {
+    cls += 'btn-outline-secondary ';
+  }
+  return cls;
+}
   private click(): void {
     this.$emit('click', this.argument);
   }
@@ -27,5 +43,19 @@ export default class IconButton extends Vue {
   font-size: 0.875rem;
   line-height: 0.5;
   border-radius: 0.2rem;
+}
+
+.btn-m {
+  /* padding: 0.125rem 0.2rem; */
+  font-size: 1.25rem;
+  /* line-height: 0.8; */
+  border-radius: 0.4rem;
+}
+
+.btn-l {
+  padding: 0;
+  font-size: 2rem;
+  line-height: 2;
+  border-radius: 1rem;
 }
 </style>
