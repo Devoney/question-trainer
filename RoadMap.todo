@@ -1,5 +1,5 @@
 General:
-  ☐ Store current state to local storage
+  ✔ Store current state to local storage
   ☐ View mode: Both, Library, Question list
   ☐ Toggle fullscreen
 Library:
@@ -26,7 +26,7 @@ Questions:
     ✔ Show number of questions in play in header
     ☐ When hovering. Show the books title and chapter title and page nr.
   Questionaire:
-    ☐ Show a question and be able to answer good/wrong
-    ☐ Start the play list and show each question one by one
+    ✔ Show a question and be able to answer good/wrong
+    ✔ Start the play list and show each question one by one
     ☐ Checkbox to go back to questions that where answered incorrectly
 

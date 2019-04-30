@@ -61,8 +61,13 @@ export default class App extends mixins(StoreMixin) {
   margin-top: 60px;
 }
 
+.box-left {
+  min-width: 588px;
+}
+
 .box-right {
   margin-top: 49px;
+  min-width: 596px;
 }
 
 .container {
