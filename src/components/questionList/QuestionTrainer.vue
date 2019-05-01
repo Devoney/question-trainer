@@ -189,7 +189,9 @@ export default class extends mixins(StoreMixin) {
   private answerIsWrong(): void {
     this.answerGiven = '';
     this.incrementWrongCount();
-    this.store.commit(MutationTypes.QuestionList.addToList, this.question);
+    if (this.repeat) {
+      this.store.commit(MutationTypes.QuestionList.addToList, this.question);
+    }
     this.setNextQuestion();
   }
 

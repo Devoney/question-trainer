@@ -299,7 +299,7 @@ describe('components/questionList/QuestionTrainer', () => {
     const stub = sinon.stub(store, 'commit') as sinon.SinonStub;
     const clickToShow = wrapper.find('.show-answer-banner');
     clickToShow.trigger('click');
-    const wrongButton = wrapper.find('button[aria-label="Correct answer"]');
+    const wrongButton = wrapper.find('button[aria-label="Wrong answer"]');
 
     // When
     wrongButton.trigger('click');
@@ -308,5 +308,62 @@ describe('components/questionList/QuestionTrainer', () => {
     stub.restore();
     wrapper.destroy();
     sinon.assert.calledWith(stub, MutationTypes.QuestionTrainer.setCurrentQuestion, question2);
+  });
+
+  it('Question is added to question list when answered incorrectly.', () => {
+    // Given
+    const question1 = new Question(uuid(), 'My question', 'My answer', '4');
+    const question2 = new Question(uuid(), 'My question 2', 'My answer 2', '8');
+    const question3 = new Question(uuid(), 'My question 2', 'My answer 4', '16');
+    store.state.questionList = [
+      question2,
+      question3,
+    ];
+    store.state.currentQuestion = question1;
+    const wrapper = shallowMount(QuestionTrainer, {
+      store,
+    });
+    store.state.repeatWrongQuestions = true;
+    const stub = sinon.stub(store, 'commit') as sinon.SinonStub;
+    const clickToShow = wrapper.find('.show-answer-banner');
+    clickToShow.trigger('click');
+    const wrongButton = wrapper.find('button[aria-label="Wrong answer"]');
+
+    // When
+    wrongButton.trigger('click');
+
+    // Then
+    stub.restore();
+    wrapper.destroy();
+    sinon.assert.calledWith(stub, MutationTypes.QuestionList.addToList, question1); 
+  });
+
+  it('Question is not added to the question list when answered incorrectly and repeat is off.', () => {
+    // Given
+    const question1 = new Question(uuid(), 'My question 1', 'My answer', '4');
+    const question2 = new Question(uuid(), 'My question 2', 'My answer 2', '8');
+    const question3 = new Question(uuid(), 'My question 3', 'My answer 4', '16');
+    store.state.questionList = [
+      question2,
+      question3,
+    ];
+    store.state.currentQuestion = question1;
+    const wrapper = shallowMount(QuestionTrainer, {
+      store,
+    });
+    store.state.repeatWrongQuestions = false;
+    const stub = sinon.stub(store, 'commit') as sinon.SinonStub;
+    const clickToShow = wrapper.find('.show-answer-banner');
+    clickToShow.trigger('click');
+    const wrongButton = wrapper.find('button[aria-label="Wrong answer"]');
+
+    // When
+    debugger;
+    wrongButton.trigger('click');
+
+    // Then
+    stub.restore();
+    wrapper.destroy();
+    sinon.assert.neverCalledWith(stub, MutationTypes.QuestionList.addToList, question1);
   });
 });
