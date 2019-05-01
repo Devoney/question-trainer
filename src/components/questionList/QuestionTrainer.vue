@@ -140,7 +140,6 @@ export default class extends mixins(StoreMixin) {
       'redo',
     ],
   };
-  private repeat: boolean = true;
   private showAnswer: boolean = false;
 
   private get answerHtml(): string {
@@ -167,6 +166,10 @@ export default class extends mixins(StoreMixin) {
   private get questionHtml(): string {
     if (this.question === undefined) { return ''; }
     return this.question.question;
+  }
+
+  private get repeat(): boolean {
+    return this.store.state.repeatWrongQuestions;
   }
 
   private get showStatistics(): boolean {
@@ -205,7 +208,7 @@ export default class extends mixins(StoreMixin) {
   }
 
   private toggleRepeat(): void {
-    this.repeat = !this.repeat;
+    this.store.commit(MutationTypes.QuestionTrainer.toggleRepeat);
   }
 
   private incrementCorrectCount(): void {

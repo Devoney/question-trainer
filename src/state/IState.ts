@@ -13,4 +13,5 @@ export default interface IState  {
   questionEdited: Question | undefined;
   questionList: Question[];
   questionTestStatistics: QuestionTestStatistics;
+  repeatWrongQuestions: boolean;
 }

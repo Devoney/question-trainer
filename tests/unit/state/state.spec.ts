@@ -354,4 +354,15 @@ describe('state/store', () => {
     assert.equal(store.state.questionTestStatistics.wrongCount, wrongCount);
   });
 
+  it('Toggling repeat for wrong questions for the question trainer works.', () => {
+    // Given
+    const expected = !store.state.repeatWrongQuestions;
+
+    // When
+    store.commit(MutationTypes.QuestionTrainer.toggleRepeat);
+    const actual = store.state.repeatWrongQuestions;
+
+    // Then
+    assert.equal(actual, expected);
+  });
 });

@@ -36,5 +36,6 @@ export default class MutationTypes {
   public static QuestionTrainer = class {
     public static setCurrentQuestion = 'setCurrentQuestion';
     public static setStatistics = 'setStatistics';
+    public static toggleRepeat = 'toggleRepeat';
   };
 }

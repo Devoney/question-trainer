@@ -26,7 +26,7 @@ export default class IconButton extends Vue {
 private cssClass(): string {
   let cls = 'btn ';
   cls += 'btn-' + this.size + ' ';
-  if(this.outline) {
+  if (this.outline) {
     cls += 'btn-outline-secondary ';
   }
   return cls;

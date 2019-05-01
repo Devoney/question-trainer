@@ -21,6 +21,7 @@ const storeOptions: StoreOptions<IState> = {
     questionEdited: undefined,
     questionList: new Array<Question>(),
     questionTestStatistics: new QuestionTestStatistics(),
+    repeatWrongQuestions: true,
   },
   getters: {
     booksSortedByTitle: (state) => {
@@ -219,6 +220,10 @@ const storeOptions: StoreOptions<IState> = {
       if (statistics.wrongCount !== undefined) {
         state.questionTestStatistics.wrongCount = statistics.wrongCount;
       }
+    },
+
+    [MutationTypes.QuestionTrainer.toggleRepeat]: (state) => {
+      state.repeatWrongQuestions = !state.repeatWrongQuestions;
     },
   },
 };
