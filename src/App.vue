@@ -1,12 +1,12 @@
 <template>
   <div>
     <main>
-      <div id="app" class="container">
+      <div id="app" class="container-fluid">
         <div class="row">
-          <div class="col-6 box-left">
+          <div class="col-lg-12 col-xl-6 grow box-left">
             <library/>
           </div>
-          <div class="col-6 box-right">
+          <div class="col-lg-12 col-xl-6 box-right">
             <question-trainer/>
             <question-list class="question-list"/>
           </div>
