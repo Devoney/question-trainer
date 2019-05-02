@@ -11,20 +11,30 @@
     </tab-page>
     <tab-page title="Help">
       <div class="text-left">
-        <h3>What is this application for?</h3>
-        <p>The idea of this application is to help you study. You turn something that you study into questions. With that, you also provide the answers.
-          You then put the questions you want to study in a list and start training.
-        <br>By repeating the questions you are training your knowledge.
-        The moment you answered all questions correctly you could say you have no questions anymore about the material you are studying.
-        You could then say that you mastered it.
+        <h4>What is this app?</h4>
+        <p>
+          An effective way to learn new things is by starting with a question, find the answer, and repeat that.
+          So when you are studying from books for instance, you can turn everything you didn't know into questions.
+          You then find the answer for it. When you repeat the questions till you know them, you are effectively studying.
+          This app helps you doint that.
         </p>
-        <h3>This application is under development.</h3>
-        Future features that will follow:<br>
-        <ul>
-          <span class="checkmark">✔</span> Keep repeating questions you answered incorrectly.<br>
-          ☐ Different views. To focus on the library of questions you are building, training, or both. The current view is both.<br>
-          ☐ Translations. The first language will be Dutch.<br>
-        </ul>
+        <h4>How to use it?</h4>
+        <p>  
+          <ul>
+          <li>Start by adding books.</li>
+          <li>For each book you then add chapters.</li>
+          <li>For each chapter you then add questions.</li>
+          <li>Put questions you want to study in the list.</li>
+          <li>Press start to train the questions.</li>
+          </ul>
+        </p>
+        <h4>How do I know I am ready for the exam?</h4>
+        <p>
+          <ul>
+            <li>When you have been honest with yourself, and you have created a question for every little thing you did not know yet.</li>
+            <li>You have repeated the list of questions several times while answering all questions correctly.</li>
+          </ul>
+        </p>
       </div>
     </tab-page>
   </tabs>
@@ -33,6 +43,7 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import { mixins } from 'vue-class-component';
+import AddOrRemove from '@/components/AddOrRemove.vue';
 import Book from '@/models/Book';
 import BookManager from '@/components/books/BookManager.vue';
 import Chapter from '@/models/Chapter';
@@ -48,6 +59,7 @@ import TabPage from '@/components/TabPage.vue';
 
 @Component({
   components: {
+    AddOrRemove,
     BookManager,
     ChapterManager,
     QuestionManager,

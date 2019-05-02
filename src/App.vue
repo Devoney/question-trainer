@@ -17,7 +17,7 @@
     <footer class="footer">
       <div class="container">
         <div>
-          <a href="https://github.com/Devoney/question-trainer">Question Trainer v{{ applicationVersion }}</a> by <a href="mailto:mikedeklerk@gmail.com">Mike de Klerk</a> &copy; 2019
+          Question Trainer <a href="/changelog.txt" target="_blank">v{{ applicationVersion }}</a> by <a href="mailto:mikedeklerk@gmail.com">Mike de Klerk</a> &copy; 2019
         </div>
         <div class="favicon-credits">
           Icons made by
@@ -67,7 +67,7 @@ export default class App extends mixins(StoreMixin) {
   private get applicationVersion(): string {
     return version;
   }
-  
+
   private created(): void {
     this.store.subscribe((mutation, state) => {
       localStorage.setItem('store', JSON.stringify(state));

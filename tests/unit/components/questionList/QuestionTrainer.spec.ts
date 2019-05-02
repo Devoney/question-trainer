@@ -335,7 +335,7 @@ describe('components/questionList/QuestionTrainer', () => {
     // Then
     stub.restore();
     wrapper.destroy();
-    sinon.assert.calledWith(stub, MutationTypes.QuestionList.addToList, question1); 
+    sinon.assert.calledWith(stub, MutationTypes.QuestionList.addToList, question1);
   });
 
   it('Question is not added to the question list when answered incorrectly and repeat is off.', () => {
@@ -358,7 +358,6 @@ describe('components/questionList/QuestionTrainer', () => {
     const wrongButton = wrapper.find('button[aria-label="Wrong answer"]');
 
     // When
-    debugger;
     wrongButton.trigger('click');
 
     // Then

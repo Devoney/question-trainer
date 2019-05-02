@@ -1,0 +1,9 @@
+v1.0.2 - 2019-05-02
+  - A tad better view on mobile devices by using full screen width
+
+v1.0.1 - 2019-05-01
+  - Fixes bug that repeat of wrong questions could not be turned off.
+  - Add short descriptive text in help tab
+
+v1.0.0 - 2019-04-30
+  - Initial release
