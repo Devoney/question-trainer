@@ -17,7 +17,7 @@
     <footer class="footer">
       <div class="container">
         <div>
-          <a href="https://github.com/Devoney/question-trainer">Question Trainer v1.0</a> by <a href="mailto:mikedeklerk@gmail.com">Mike de Klerk</a> &copy; 2019
+          <a href="https://github.com/Devoney/question-trainer">Question Trainer v{{ applicationVersion }}</a> by <a href="mailto:mikedeklerk@gmail.com">Mike de Klerk</a> &copy; 2019
         </div>
         <div class="favicon-credits">
           Icons made by
@@ -42,6 +42,7 @@ import IState from '@/state/IState';
 import MutationTypes from '@/state/MutationTypes';
 import { mixins } from 'vue-class-component';
 import { Component, Vue } from 'vue-property-decorator';
+import { version } from '@/../package.json';
 import Library from '@/components/Library.vue';
 import '@/font-awesome';
 import QuestionList from '@/components/questionList/QuestionList.vue';
@@ -63,6 +64,10 @@ Vue.use(CKEditor);
   },
 })
 export default class App extends mixins(StoreMixin) {
+  private get applicationVersion(): string {
+    return version;
+  }
+  
   private created(): void {
     this.store.subscribe((mutation, state) => {
       localStorage.setItem('store', JSON.stringify(state));
