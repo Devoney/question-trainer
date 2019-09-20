@@ -47,6 +47,32 @@ const storeOptions: StoreOptions<IState> = {
         if (storeInJson === null || storeInJson === undefined) { return; }
         const storeObj = JSON.parse(storeInJson);
         store.replaceState(Object.assign(state, storeObj));
+
+        if(state.bookSelected !== undefined) {
+          let bookId = state.bookSelected.id;
+          state.bookSelected = _.find(state.books, (book: Book) => {
+            return book.id === bookId;
+          });
+
+          if(state.bookSelected !== undefined) {
+            if(state.chapterEdited !== undefined) {
+              let id = state.chapterEdited.id;
+              state.chapterEdited = _.find(state.bookSelected.chapters, (chapter: Chapter) => {
+                return chapter.id === id;
+              });
+            }
+
+            if(state.chapterSelected !== undefined) {
+              let id = state.chapterSelected.id;
+              state.chapterSelected = _.find(state.bookSelected.chapters, (chapter: Chapter) => {
+                return chapter.id === id;
+              });
+            }
+          }
+        }
+
+        state.bookEdited = undefined;
+        state.chapterEdited = undefined;
       }
     },
 
