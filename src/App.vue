@@ -3,6 +3,11 @@
     <main>
       <div id="app" class="container-fluid">
         <div class="row">
+          <div class="col text-left">
+            <view-mode />
+          </div>
+        </div>
+        <div class="row">
           <div class="col-lg-12 col-xl-6 grow box-left">
             <library/>
           </div>
@@ -53,6 +58,7 @@ import CKEditor from '@ckeditor/ckeditor5-vue';
 import bus from '@/MessageBus';
 import QuestionModalArgs from './types/QuestionModalArgs';
 import QuestionTrainer from '@/components/questionList/QuestionTrainer.vue';
+import ViewMode from '@/components/ViewMode.vue'
 Vue.use(CKEditor);
 
 @Component({
@@ -61,6 +67,7 @@ Vue.use(CKEditor);
     QuestionList,
     QuestionModal,
     QuestionTrainer,
+    ViewMode,
   },
 })
 export default class App extends mixins(StoreMixin) {

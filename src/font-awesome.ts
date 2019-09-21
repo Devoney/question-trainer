@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 
 import {
+  faColumns,
   faEdit,
   faExclamationTriangle,
   faMinus,
@@ -12,6 +13,7 @@ import {
   faRedo,
 } from '@fortawesome/free-solid-svg-icons';
 
+library.add(faColumns);
 library.add(faEdit);
 library.add(faExclamationTriangle);
 library.add(faMinus);
