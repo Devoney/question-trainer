@@ -2,7 +2,7 @@
   <div>
     <div class="dropdown">
       <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        View mode
+        <font-awesome-icon icon="eye" /><span class="view-mode-text">View mode</span>
       </button>
       <div class="dropdown-menu">
         <view-mode-item icon="columns" text="Both" view-mode="both"/>
@@ -29,4 +29,7 @@ export default class ViewMode extends mixins(StoreMixin) {
 </script>
 
 <style scoped>
+.view-mode-text {
+  margin-left: 10px;
+}
 </style>

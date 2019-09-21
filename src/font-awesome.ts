@@ -7,6 +7,7 @@ import {
   faColumns,
   faEdit,
   faExclamationTriangle,
+  faEye,
   faMinus,
   faPlus,
   faQuestionCircle,
@@ -19,6 +20,7 @@ library.add(faBook);
 library.add(faColumns);
 library.add(faEdit);
 library.add(faExclamationTriangle);
+library.add(faEye);
 library.add(faMinus);
 library.add(faPlus);
 library.add(faQuestionCircle);
