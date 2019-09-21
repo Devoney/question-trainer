@@ -65,6 +65,7 @@ describe('components/questionList/QuestionTrainer', () => {
 
   it('Pressing start loads question from the list.', () => {
     // Given
+    // @ts-ignore
     const stub = sinon.stub(store, 'commit') as sinon.SinonStub;
     const wrapper = shallowMount(QuestionTrainer, {
       store,
@@ -233,6 +234,7 @@ describe('components/questionList/QuestionTrainer', () => {
     const wrapper = shallowMount(QuestionTrainer, {
       store,
     });
+    // @ts-ignore
     const stub = sinon.stub(store, 'commit') as sinon.SinonStub;
     const clickToShow = wrapper.find('.show-answer-banner');
     clickToShow.trigger('click');
@@ -266,6 +268,7 @@ describe('components/questionList/QuestionTrainer', () => {
     const wrapper = shallowMount(QuestionTrainer, {
       store,
     });
+    // @ts-ignore
     const stub = sinon.stub(store, 'commit') as sinon.SinonStub;
     const clickToShow = wrapper.find('.show-answer-banner');
     clickToShow.trigger('click');
@@ -296,6 +299,7 @@ describe('components/questionList/QuestionTrainer', () => {
     const wrapper = shallowMount(QuestionTrainer, {
       store,
     });
+    // @ts-ignore
     const stub = sinon.stub(store, 'commit') as sinon.SinonStub;
     const clickToShow = wrapper.find('.show-answer-banner');
     clickToShow.trigger('click');
@@ -324,6 +328,7 @@ describe('components/questionList/QuestionTrainer', () => {
       store,
     });
     store.state.repeatWrongQuestions = true;
+    // @ts-ignore
     const stub = sinon.stub(store, 'commit') as sinon.SinonStub;
     const clickToShow = wrapper.find('.show-answer-banner');
     clickToShow.trigger('click');
@@ -352,6 +357,7 @@ describe('components/questionList/QuestionTrainer', () => {
       store,
     });
     store.state.repeatWrongQuestions = false;
+    // @ts-ignore
     const stub = sinon.stub(store, 'commit') as sinon.SinonStub;
     const clickToShow = wrapper.find('.show-answer-banner');
     clickToShow.trigger('click');

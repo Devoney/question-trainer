@@ -11,6 +11,7 @@ describe('App', () => {
   it('When App starts it initializes the store.', () => {
     // Given
     const stubSubscribe = sinon.stub(store, 'subscribe');
+    // @ts-ignore
     const stubCommit = sinon.stub(store, 'commit') as sinon.SinonStub;
 
     // When
@@ -27,6 +28,7 @@ describe('App', () => {
 
   it('When App starts it calls subscribe on the store.', () => {
     // Given
+    // @ts-ignore
     const stubSubscribe = sinon.stub(store, 'subscribe') as sinon.SinonStub;
     const stubCommit = sinon.stub(store, 'commit');
 
