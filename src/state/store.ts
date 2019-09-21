@@ -22,6 +22,7 @@ const storeOptions: StoreOptions<IState> = {
     questionList: new Array<Question>(),
     questionTestStatistics: new QuestionTestStatistics(),
     repeatWrongQuestions: true,
+    viewMode: 'both',
   },
   getters: {
     booksSortedByTitle: (state) => {

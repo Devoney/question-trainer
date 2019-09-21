@@ -8,10 +8,10 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-lg-12 col-xl-6 grow box-left">
+          <div :class="[{ 'col-xl-6': showBoth }, { 'col-xl-12': !showBoth && showLibrary }, 'col-lg-12', 'grow box-left']" v-if="showLibrary">
             <library/>
           </div>
-          <div class="col-lg-12 col-xl-6 box-right">
+          <div :class="[{ 'col-xl-6': showBoth }, { 'col-xl-12': !showBoth && showQuestions }, 'col-lg-12', 'box-right']" v-if="showQuestions">
             <question-trainer/>
             <question-list class="question-list"/>
           </div>
@@ -73,6 +73,18 @@ Vue.use(CKEditor);
 export default class App extends mixins(StoreMixin) {
   private get applicationVersion(): string {
     return version;
+  }
+
+  private get showBoth(): boolean {
+    return this.store.state.viewMode === 'both';
+  }
+
+  private get showLibrary(): boolean {
+    return this.showBoth || this.store.state.viewMode === 'library' ;
+  }
+
+  private get showQuestions(): boolean {
+    return this.showBoth || this.store.state.viewMode === 'questions';
   }
 
   private created(): void {

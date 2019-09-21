@@ -5,7 +5,7 @@
         View mode
       </button>
       <div class="dropdown-menu">
-        <a class="dropdown-item" href="#" :disabled="store.viewMode === 'both'" @click="setViewMode('both')">
+        <a :class="[{ disabled: viewModeIs('both')}, 'dropdown-item']" href="#" :disabled="store.viewMode === 'both'" @click="setViewMode('both')">
           <div class="row">
             <div class="col-3">
               <font-awesome-icon icon="columns" />
@@ -13,7 +13,7 @@
             <div class="col">Both</div>
           </div>
         </a>
-        <a class="dropdown-item" href="#" :disabled="store.viewMode === 'library'" @click="setViewMode('library')">
+        <a :class="[{ disabled: viewModeIs('library')}, 'dropdown-item']" href="#" :disabled="store.viewMode === 'library'" @click="setViewMode('library')">
           <div class="row">
             <div class="col-3">
               <font-awesome-icon icon="book" />
@@ -21,7 +21,7 @@
             <div class="col">Library only</div>
           </div>
         </a>
-        <a :class="[{ disabled: store.viewMode !== 'questions'}, 'dropdown-item']" href="#" @click="setViewMode('questions')">
+        <a :class="[{ disabled: viewModeIs('questions')}, 'dropdown-item']" href="#" @click="setViewMode('questions')">
           <div class="row">
             <div class="col-3">
               <font-awesome-icon icon="question-circle" />
@@ -45,6 +45,10 @@ import MutationTypes from '@/state/MutationTypes';
   },
 })
 export default class ViewMode extends mixins(StoreMixin) {
+  private viewModeIs(viewMode: string): boolean {
+    return this.store.state.viewMode === viewMode;
+  }
+
   private setViewMode(viewMode: string): void {
     this.store.commit(MutationTypes.viewMode, viewMode);
   }
