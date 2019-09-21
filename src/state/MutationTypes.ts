@@ -2,6 +2,7 @@ import Question from '@/models/Question';
 
 export default class MutationTypes {
   public static initialise = 'initialise';
+  public static viewMode = 'viewMode';
 
   public static Book = class {
     public static addBook: string = 'addBook';

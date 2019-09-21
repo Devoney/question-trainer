@@ -58,7 +58,7 @@ import CKEditor from '@ckeditor/ckeditor5-vue';
 import bus from '@/MessageBus';
 import QuestionModalArgs from './types/QuestionModalArgs';
 import QuestionTrainer from '@/components/questionList/QuestionTrainer.vue';
-import ViewMode from '@/components/ViewMode.vue'
+import ViewMode from '@/components/ViewMode.vue';
 Vue.use(CKEditor);
 
 @Component({

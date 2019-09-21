@@ -76,6 +76,10 @@ const storeOptions: StoreOptions<IState> = {
       }
     },
 
+    [MutationTypes.viewMode]: (state, viewMode: string) => {
+      state.viewMode = viewMode;
+    },
+
     [MutationTypes.Book.addBook]: (state, book: Book) => {
       state.books.push(book);
     },
