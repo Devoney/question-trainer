@@ -137,7 +137,7 @@ export default class AddQuestion extends mixins(StoreMixin) {
     return this.store.state.questionEdited !== undefined;
   }
 
-  @Watch('inEditMode')
+  @Watch('store.state.questionEdited')
   private onInEditMode(): void {
     if (this.inEditMode) {
       const question = this.store.state.questionEdited;

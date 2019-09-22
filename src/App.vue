@@ -5,11 +5,9 @@
         <div class="row">
           <div class="col text-left">
             <div class="row">
-              <div class="col-1">
-                <view-mode />
-              </div>
-              <div class="col-1">
-                <import-export />
+              <div class="flex-container">
+                <view-mode class="view-mode" />
+                <import-export class="import-export"/>
               </div>
             </div>
           </div>
@@ -18,7 +16,7 @@
           <div :class="[{ 'col-xl-6': showBoth }, { 'col-xl-12': !showBoth && showLibrary }, 'col-lg-12', 'grow box-left']" v-if="showLibrary">
             <library/>
           </div>
-          <div :class="[{ 'col-xl-6': showBoth }, { 'col-xl-12': !showBoth && showQuestions }, 'col-lg-12', 'box-right']" v-if="showQuestions">
+          <div :class="[{ 'col-xl-6': showBoth }, { 'col-xl-12': !showBoth && showQuestions }, 'col-lg-12', { 'box-right': showBoth}]" v-if="showQuestions">
             <question-trainer/>
             <question-list class="question-list"/>
           </div>
@@ -146,5 +144,17 @@ export default class App extends mixins(StoreMixin) {
 
 .question-list {
   margin-top: 15px;
+}
+
+.view-mode {
+  width: 220px;
+}
+
+.flex-container {
+  display: flex;
+}
+
+.import-export {
+  margin-left: -80px;
 }
 </style>
