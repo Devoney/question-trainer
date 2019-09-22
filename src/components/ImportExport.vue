@@ -19,6 +19,8 @@
             </button>
           </div>
           <div class="modal-body">
+            <p>This will overwrite your current library. It is advised to export your current library first.</p>
+            <p>Select the library you have exported earlier</p>
             <input type="file" @change="processFile($event)"/>
           </div>
           <div class="modal-footer">
@@ -84,7 +86,6 @@ export default class ImportExport extends mixins(StoreMixin) {
   }
 
   private importLib(): void {
-    console.log('Import');
     $('#' + this.importModalId).modal('show');
   }
 
@@ -93,21 +94,24 @@ export default class ImportExport extends mixins(StoreMixin) {
   }
 
   private executeImport(): void {
-    if(this.jsonToImport == null) return;
+    if (this.jsonToImport == null) {
+      return;
+    }
+
     localStorage.setItem('store', this.jsonToImport as string);
     window.location.reload();
   }
 
   private processFile(event: HTMLInputEvent): void {
     const target = event.target;
-    if (target == null || target.files == null) throw new Error('Could not process selected file because the target is null');
+    if (target == null || target.files == null) {
+      throw new Error('Could not process selected file because the target is null');
+    }
     const file = target.files[0];
-    
+
     const fileReader = new FileReader();
-    fileReader.onload = (event) => {
-      const trgt = event.target;
-      if(trgt == null) throw new Error('Something went wrong reading the file.');
-      this.jsonToImport = trgt.result as string;
+    fileReader.onload = () => {
+      this.jsonToImport = fileReader.result as string;
     };
     fileReader.readAsText(file);
   }
