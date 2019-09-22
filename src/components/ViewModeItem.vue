@@ -31,5 +31,8 @@ export default class ViewModeItem extends mixins(StoreMixin) {
 }
 </script>
 
-<style scoped>
+<style>
+.dropdown-toggle::after {
+    display:none;
+}
 </style>
