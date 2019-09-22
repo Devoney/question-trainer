@@ -6,8 +6,8 @@
           <div class="col text-left">
             <div class="row">
               <div class="flex-container">
-                <view-mode class="view-mode" />
-                <import-export class="import-export"/>
+                <import-export  />
+                <view-mode class="view-mode"/>
               </div>
             </div>
           </div>
@@ -152,9 +152,5 @@ export default class App extends mixins(StoreMixin) {
 
 .flex-container {
   display: flex;
-}
-
-.import-export {
-  margin-left: -80px;
 }
 </style>
