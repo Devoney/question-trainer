@@ -1,5 +1,6 @@
 <template>
   <div>
+    <a :id="exportLibLinkId" style="display:none"></a>
     <icon-button icon="file-download" label="Export library" argument @click="exportLib" :size="buttonSize"/>
     <icon-button icon="file-upload" label="Import library" argument @click="importLib" :size="buttonSize"/>
   </div>
@@ -19,9 +20,28 @@ import StoreMixin from '@/mixins/StoreMixin';
 })
 export default class ImportExport extends mixins(StoreMixin) {
   private buttonSize: string = 'm';
+  private exportLibLinkId = '38398hfdhf393f98-sfh83';
 
   private exportLib(): void {
-    console.log('export');
+    const downloadData = this.getDownloadData();
+    const downloadElement = this.configureDownloadElement(downloadData);
+    downloadElement.click();
+  }
+
+  private getDownloadData(): string {
+    const storeInJson = JSON.stringify(this.store.state);
+    return 'data:text/json;charset=utf-8,' + encodeURIComponent(storeInJson);
+  }
+
+  private configureDownloadElement(dataStr: string): HTMLElement {
+    const dlAnchorElem = document.getElementById(this.exportLibLinkId);
+    if (dlAnchorElem == null) {
+      throw new Error('Could not find download link element.');
+    }
+    dlAnchorElem.setAttribute('href', dataStr);
+    dlAnchorElem.setAttribute('download', 'library.json');
+
+    return dlAnchorElem;
   }
 
   private importLib(): void {
