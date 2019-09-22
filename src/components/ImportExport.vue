@@ -51,6 +51,7 @@ import MutationTypes from '@/state/MutationTypes';
 import StoreMixin from '@/mixins/StoreMixin';
 import $ from 'jquery';
 import HTMLInputEvent from '@/types/HTMLInputEvent';
+import DateString from '@/utils/DateString';
 
 @Component({
   components: {
@@ -80,9 +81,7 @@ export default class ImportExport extends mixins(StoreMixin) {
       throw new Error('Could not find download link element.');
     }
     dlAnchorElem.setAttribute('href', dataStr);
-
-    const curDate = new Date();
-    const dateStr = curDate.getFullYear() + '' + ('0' + (curDate.getMonth() + 1)).slice(-2) + '' + ('0' + curDate.getDate()).slice(-2);
+    const dateStr = DateString(new Date());
     dlAnchorElem.setAttribute('download', 'questiontrainer-library_' + dateStr + '.json');
 
     return dlAnchorElem;

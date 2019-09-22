@@ -7,6 +7,7 @@ import Question from '@/models/Question';
 import QuestionTestStatistics from '@/types/QuestionTestStatistics';
 import Vue from 'vue';
 import _ from 'lodash';
+import { version } from '@/../package.json';
 
 Vue.use(Vuex);
 
@@ -22,6 +23,7 @@ const storeOptions: StoreOptions<IState> = {
     questionList: new Array<Question>(),
     questionTestStatistics: new QuestionTestStatistics(),
     repeatWrongQuestions: true,
+    version,
     viewMode: 'both',
   },
   getters: {
