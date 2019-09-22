@@ -8,6 +8,8 @@ import {
   faEdit,
   faExclamationTriangle,
   faEye,
+  faFileDownload,
+  faFileUpload,
   faMinus,
   faPlus,
   faQuestionCircle,
@@ -21,6 +23,8 @@ library.add(faColumns);
 library.add(faEdit);
 library.add(faExclamationTriangle);
 library.add(faEye);
+library.add(faFileDownload);
+library.add(faFileUpload);
 library.add(faMinus);
 library.add(faPlus);
 library.add(faQuestionCircle);

@@ -4,7 +4,14 @@
       <div id="app" class="container-fluid">
         <div class="row">
           <div class="col text-left">
-            <view-mode />
+            <div class="row">
+              <div class="col-1">
+                <view-mode />
+              </div>
+              <div class="col-1">
+                <import-export />
+              </div>
+            </div>
           </div>
         </div>
         <div class="row">
@@ -59,10 +66,12 @@ import bus from '@/MessageBus';
 import QuestionModalArgs from './types/QuestionModalArgs';
 import QuestionTrainer from '@/components/questionList/QuestionTrainer.vue';
 import ViewMode from '@/components/ViewMode.vue';
+import ImportExport from '@/components/ImportExport.vue';
 Vue.use(CKEditor);
 
 @Component({
   components: {
+    ImportExport,
     Library,
     QuestionList,
     QuestionModal,

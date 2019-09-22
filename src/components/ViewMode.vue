@@ -1,14 +1,12 @@
 <template>
-  <div>
-    <div class="dropdown">
-      <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <font-awesome-icon icon="eye" /><span class="view-mode-text">View mode</span>
-      </button>
-      <div class="dropdown-menu">
-        <view-mode-item icon="columns" text="Both" view-mode="both"/>
-        <view-mode-item icon="book" text="Library only" view-mode="library"/>
-        <view-mode-item icon="question-circle" text="Questions only" view-mode="questions"/>
-      </div>
+  <div class="dropdown">
+    <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <font-awesome-icon icon="eye" /><span class="view-mode-text">View mode</span>
+    </button>
+    <div class="dropdown-menu">
+      <view-mode-item icon="columns" text="Both" view-mode="both"/>
+      <view-mode-item icon="book" text="Library only" view-mode="library"/>
+      <view-mode-item icon="question-circle" text="Questions only" view-mode="questions"/>
     </div>
   </div>
 </template>
