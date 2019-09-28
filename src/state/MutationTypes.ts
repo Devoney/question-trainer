@@ -21,6 +21,10 @@ export default class MutationTypes {
     public static setSelectedChapter: string = 'setSelectedChapter';
   };
 
+  public static Library = class {
+    public static setName: string = 'setLibraryName';
+  };
+
   public static Question = class {
     public static addQuestion: string = 'addQuestion';
     public static editQuestion: string = 'editQuestion';

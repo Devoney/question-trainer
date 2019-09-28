@@ -19,6 +19,7 @@ const storeOptions: StoreOptions<IState> = {
     chapterEdited: undefined,
     chapterSelected: undefined,
     currentQuestion: undefined,
+    libraryName: '',
     questionEdited: undefined,
     questionList: new Array<Question>(),
     questionTestStatistics: new QuestionTestStatistics(),
@@ -178,6 +179,10 @@ const storeOptions: StoreOptions<IState> = {
 
     [MutationTypes.Chapter.setSelectedChapter]: (state, chapter: Chapter) => {
       state.chapterSelected = chapter;
+    },
+
+    [MutationTypes.Library.setName]: (state, name: string) => {
+      state.libraryName = name;
     },
 
     [MutationTypes.Question.removeQuestionById]: (

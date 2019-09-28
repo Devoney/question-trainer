@@ -1,5 +1,8 @@
 <template>
   <tabs>
+    <tab-page title="Library">
+      <library-details />
+    </tab-page>
     <tab-page title="Books" :is-default="true">
       <book-manager/>
     </tab-page>
@@ -49,6 +52,7 @@ import BookManager from '@/components/books/BookManager.vue';
 import Chapter from '@/models/Chapter';
 import ChapterManager from '@/components/chapters/ChapterManager.vue';
 import IState from '@/state/IState';
+import LibraryDetails from '@/components/library/LibraryDetails.vue';
 import MutationTypes from '@/state/MutationTypes';
 import Question from '@/models/Question';
 import QuestionManager from '@/components/questions/QuestionManager.vue';
@@ -62,6 +66,7 @@ import TabPage from '@/components/TabPage.vue';
     AddOrRemove,
     BookManager,
     ChapterManager,
+    LibraryDetails,
     QuestionManager,
     Tabs,
     TabPage,
