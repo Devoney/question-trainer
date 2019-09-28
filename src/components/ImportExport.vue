@@ -82,7 +82,11 @@ export default class ImportExport extends mixins(StoreMixin) {
     }
     dlAnchorElem.setAttribute('href', dataStr);
     const dateStr = DateString(new Date());
-    dlAnchorElem.setAttribute('download', 'questiontrainer-library_' + dateStr + '.json');
+    let libraryName = this.store.state.libraryName;
+    if (libraryName === undefined || libraryName.trim() === '') {
+      libraryName = 'questiontrainer-library';
+    }
+    dlAnchorElem.setAttribute('download', libraryName + '_' + dateStr + '.json');
 
     return dlAnchorElem;
   }

@@ -39,13 +39,12 @@ export default class LibraryDetails extends mixins(StoreMixin) {
   }
 
   private cancel(): void {
-    this.libraryName = this.store.state.libraryName
+    this.libraryName = this.store.state.libraryName;
   }
 
   private mounted(): void {
-    console.log("LibraryDetails: mounted");
     this.libraryName = this.store.state.libraryName;
-  } 
+  }
 }
 </script>
 

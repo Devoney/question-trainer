@@ -1,8 +1,10 @@
 v1.1.1 - xxxx-xx-xx
-  - Fixes layout of view / import / export buttons
+  - Fixes layout of view / import / export buttons.
   - Fixes margin between view mode and question trainer when view is set to questions only
   - Fixes bug that switching between editing questions did not update the question being edited.
   - Adds date time string to exported file name.
+  - Adds tab for library management where the name of the library can be set.
+  - Uses library name for name of exported file to download.
 
 v1.1.0 - 2019-09-22
   - Adds buttons on the homepage to export/import the library.
