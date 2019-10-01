@@ -41,7 +41,7 @@ import MemoryUsage from '@/components/library/MemoryUsage.vue';
 @Component({
   components: {
     MemoryUsage,
-  }
+  },
 })
 export default class LibraryDetails extends mixins(StoreMixin) {
   private libraryName: string = '';

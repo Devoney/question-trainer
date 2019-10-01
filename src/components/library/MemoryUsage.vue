@@ -26,7 +26,7 @@ export default class MemoryUsage extends Vue {
   private maxStorageInBytes: number = 5 * 1024 * 1024;
 
   private usagePercentage(): number {
-    var onePercent = this.maxStorageInBytes / 100;
+    const onePercent = this.maxStorageInBytes / 100;
     return this.usageInBytes / onePercent;
   }
 
@@ -34,13 +34,12 @@ export default class MemoryUsage extends Vue {
     let lsTotal: number = 0;
     let xLen: number = 0;
     let x: any;
-    for (x in localStorage) { 
-      if (!localStorage.hasOwnProperty(x))
-      {
+    for (x in localStorage) {
+      if (!localStorage.hasOwnProperty(x)) {
         continue;
-      } 
+      }
       xLen = ((localStorage[x].length + x.length) * 2);
-      lsTotal += xLen; 
+      lsTotal += xLen;
     }
     this.usageInBytes = lsTotal;
   }
