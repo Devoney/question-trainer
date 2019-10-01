@@ -1,3 +1,6 @@
+vx.x.x - xxxx-xx-xx
+  - Adds indicator of much local memory is consumed
+
 v1.2.0 - 2019-09-29
   - Fixes layout of view / import / export buttons.
   - Fixes margin between view mode and question trainer when view is set to questions only

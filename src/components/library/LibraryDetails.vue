@@ -1,5 +1,6 @@
 <template>
-  <div class="form-group">
+  <div>
+    <div class="form-group">
     <div class="row">
       <div class="col text-left">
         <label class="font-weight-bold" for="bookTitleText">Library name:</label>
@@ -21,6 +22,12 @@
         >Save</button>
       </div>
     </div>
+    </div>
+    <div class="row">
+      <div class="col text-left">
+        <memory-usage class="memory-usage-comp" />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -29,8 +36,13 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 import { mixins } from 'vue-class-component';
 import StoreMixin from '@/mixins/StoreMixin';
 import MutationTypes from '@/state/MutationTypes';
+import MemoryUsage from '@/components/library/MemoryUsage.vue';
 
-@Component
+@Component({
+  components: {
+    MemoryUsage,
+  }
+})
 export default class LibraryDetails extends mixins(StoreMixin) {
   private libraryName: string = '';
 
@@ -49,4 +61,7 @@ export default class LibraryDetails extends mixins(StoreMixin) {
 </script>
 
 <style scoped>
+.memory-usage-comp {
+  margin-top: 20px;
+}
 </style>
