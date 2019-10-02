@@ -102,6 +102,7 @@ export default class AddQuestion extends mixins(StoreMixin) {
       // 'mediaEmbed',
       'undo',
       'redo',
+      'MathType',
     ],
   };
 
