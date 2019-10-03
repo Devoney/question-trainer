@@ -38,6 +38,7 @@
   ],
   "exclude": [
     "node_modules",
+    "ckeditor5-build-classic",
     "package.json"
   ]
 }

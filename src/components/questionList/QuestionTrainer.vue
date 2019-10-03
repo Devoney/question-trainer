@@ -42,7 +42,14 @@
       >Press Start to begin training!</div>
       <div v-else>
         <div class="font-weight-bold">Question:</div>
-        <div v-html="questionHtml" aria-label="Question html"></div>
+        <div aria-label="Question html">
+          <ckeditor
+            :editor="editor"
+            v-model="questionHtml"
+            :config="readOnlyEditorConfig"
+            disabled
+          ></ckeditor>
+        </div>
         <div class="font-weight-bold answer">Your answer:</div>
         <div v-show="!showAnswer && hasQuestion">
           <ckeditor
@@ -139,6 +146,18 @@ export default class extends mixins(StoreMixin) {
       'undo',
       'redo',
     ],
+  };
+  private readOnlyEditorConfig: any = {
+    removePlugins: [
+      'EasyImage',
+      'Heading',
+      'ImageCaption',
+      'ImageUpload',
+      'ImageToolbar',
+      'MediaEmbed',
+    ],
+    toolbar: [],
+    toolbarStartupExpanded : false,
   };
   private showAnswer: boolean = false;
 
