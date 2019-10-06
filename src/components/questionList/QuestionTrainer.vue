@@ -44,29 +44,35 @@
         <div class="font-weight-bold">Question:</div>
         <div aria-label="Question html">
           <ckeditor
-            :editor="editor"
+            :editor="editorQuestion"
             v-model="questionHtml"
             :config="readOnlyEditorConfig"
             disabled
           ></ckeditor>
         </div>
         <div class="font-weight-bold answer">Your answer:</div>
-        <div v-show="!showAnswer && hasQuestion">
+        <div>
           <ckeditor
-            :editor="editor"
+            :editor="editorAnswerGiven"
             v-model="answerGiven"
             :config="editorConfig"
-            :disabled="!hasQuestion"
+            :disabled="showAnswer"
           ></ckeditor>
         </div>
-        <div v-show="showAnswer" v-html="answerGiven"></div>
         <div class="font-weight-bold answer">Expected answer:</div>
         <div
           class="show-answer-banner"
           v-show="!showAnswer && hasQuestion"
           @click="showAnswer = true"
         >Click here to show the answer</div>
-        <div aria-label="Answer html" v-show="showAnswer" v-html="answerHtml"></div>
+        <div aria-label="Answer html" v-show="showAnswer">
+          <ckeditor
+            :editor="editorAnswerExpected"
+            v-model="answerHtml"
+            :config="readOnlyEditorConfig2"
+            disabled
+          ></ckeditor>
+        </div>
       </div>
     </div>
     <div class="card-footer">
@@ -122,7 +128,9 @@ import QuestionTestStatistics from '@/types/QuestionTestStatistics';
 })
 export default class extends mixins(StoreMixin) {
   private answerGiven: string = '';
-  private editor: any = ClassicEditor;
+  private editorQuestion: any = ClassicEditor;
+  private editorAnswerGiven: any = ClassicEditor;
+  private editorAnswerExpected: any = ClassicEditor;
   private editorConfig: any = {
     removePlugins: [
       'EasyImage',
@@ -145,9 +153,22 @@ export default class extends mixins(StoreMixin) {
       // 'mediaEmbed',
       'undo',
       'redo',
+      'MathType',
     ],
   };
   private readOnlyEditorConfig: any = {
+    removePlugins: [
+      'EasyImage',
+      'Heading',
+      'ImageCaption',
+      'ImageUpload',
+      'ImageToolbar',
+      'MediaEmbed',
+    ],
+    toolbar: [],
+    toolbarStartupExpanded : false,
+  };
+  private readOnlyEditorConfig2: any = {
     removePlugins: [
       'EasyImage',
       'Heading',

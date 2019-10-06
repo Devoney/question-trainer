@@ -1,5 +1,6 @@
-vx.x.x - xxxx-xx-xx
-  - Adds indicator of much local memory is consumed
+v1.3.0 - 2019-10-06
+  - Adds indicator of how much local memory is consumed
+  - Adds support for entering math formulas in questions and answers.
 
 v1.2.0 - 2019-09-29
   - Fixes layout of view / import / export buttons.
