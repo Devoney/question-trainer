@@ -1,6 +1,7 @@
 <template>
   <div>
     <main>
+      <firebase-authenticate />
       <div id="app" class="container-fluid">
         <div class="row">
           <div class="col text-left">
@@ -23,7 +24,6 @@
         </div>
       </div>
       <question-modal/>
-          <firebase-authenticate />
     </main>
     <footer class="footer">
       <div class="container">
