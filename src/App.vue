@@ -1,6 +1,5 @@
 <template>
   <div>
-    <firebase-authenticate />
     <main>
       <div id="app" class="container-fluid">
         <div class="row">
@@ -24,6 +23,7 @@
         </div>
       </div>
       <question-modal/>
+          <firebase-authenticate />
     </main>
     <footer class="footer">
       <div class="container">
@@ -71,6 +71,7 @@ Vue.use(CKEditor);
 
 @Component({
   components: {
+    FirebaseAuthenticate,
     ImportExport,
     Library,
     QuestionList,

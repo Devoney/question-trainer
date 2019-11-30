@@ -12,9 +12,10 @@ import firebaseui from 'firebaseui';
 
 @Component
 export default class FirebaseAuthenticate extends mixins(StoreMixin) {
-  private mounted(): void {
+  mounted(): void {
     // Initialize the FirebaseUI Widget using Firebase.
-    const ui = new firebaseui.auth.AuthUI(firebase.auth());
+    const auth = firebase.auth();
+    const ui = new firebaseui.auth.AuthUI(auth);
 
     ui.start('#firebaseui-auth-container', {
       signInOptions: [
