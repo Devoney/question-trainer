@@ -1,3 +1,9 @@
+Online storage:
+  Authentication:
+    ☐ Add firebase console javascript snippet
+    ☐ Use npm instead of html for firebaseui
+      https://firebase.google.com/docs/auth/web/firebaseui
+
 General:
   ☐ Remember tab page in the store
   ☐ Mobile first. Check that the page is shown nicely on portait mode and other resolutions.

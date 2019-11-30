@@ -1,5 +1,6 @@
 <template>
   <div>
+    <firebase-authenticate />
     <main>
       <div id="app" class="container-fluid">
         <div class="row">
@@ -65,6 +66,7 @@ import QuestionModalArgs from './types/QuestionModalArgs';
 import QuestionTrainer from '@/components/questionList/QuestionTrainer.vue';
 import ViewMode from '@/components/ViewMode.vue';
 import ImportExport from '@/components/ImportExport.vue';
+import FirebaseAuthenticate from '@/firebase/FirebaseAuthenticate.vue';
 Vue.use(CKEditor);
 
 @Component({
