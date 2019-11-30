@@ -1,5 +1,13 @@
 <template>
-  <div id="firebaseui-auth-container"></div>
+  <div>
+    <div v-if="!isLoggedIn" id="firebaseui-auth-container"></div>
+    <div v-if="isLoggedIn">
+      <span>
+        <img width="32" height="32" :src="imageSrc" />
+      </span>
+      <span>Logged in as {{displayName}} ({{email}}).</span>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
@@ -12,6 +20,14 @@ import * as firebaseui from 'firebaseui';
 
 @Component
 export default class FirebaseAuthenticate extends mixins(StoreMixin) {
+
+  private displayName: string = '';
+  private email: string = '';
+  private imageSrc: string = '';
+
+  private get isLoggedIn(): boolean {
+    return this.email !== '';
+  }
 
   created(): void {
     var firebaseConfig = {
@@ -31,6 +47,7 @@ export default class FirebaseAuthenticate extends mixins(StoreMixin) {
   mounted(): void {
     const auth = firebase.auth();
     const ui = new firebaseui.auth.AuthUI(auth);
+    const self = this;
 
     ui.start('#firebaseui-auth-container', {
       signInOptions: [
@@ -41,6 +58,9 @@ export default class FirebaseAuthenticate extends mixins(StoreMixin) {
       signInFlow: 'popup',
       callbacks: {
         signInSuccessWithAuthResult(authResult, redirectUrl) {
+          self.displayName = authResult.user.displayName;
+          self.email = authResult.user.email;
+          self.imageSrc = authResult.user.photoURL;
           return false;
         },
       },

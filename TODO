@@ -1,8 +1,9 @@
 Online storage:
   Authentication:
-    ☐ Add firebase console javascript snippet
-    ☐ Use npm instead of html for firebaseui
+    ✔ Add firebase console javascript snippet
+    ✔ Use npm instead of html for firebaseui
       https://firebase.google.com/docs/auth/web/firebaseui
+       ☐ Show logged in authResult.user.displayName and authResult.user.email
 
 General:
   ☐ Remember tab page in the store
