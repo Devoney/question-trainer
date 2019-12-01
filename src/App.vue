@@ -68,6 +68,9 @@ import ViewMode from '@/components/ViewMode.vue';
 import ImportExport from '@/components/ImportExport.vue';
 import FirebaseAuthenticate from '@/firebase/FirebaseAuthenticate.vue';
 import ObjectExt from '@/utils/ObjectExt';
+import * as firebase from 'firebase';
+import 'firebase/firestore';
+
 Vue.use(CKEditor);
 
 @Component({
@@ -103,7 +106,15 @@ export default class App extends mixins(StoreMixin) {
       const stateClone = ObjectExt.clone(state);
       stateClone.credential = undefined; // Never store credentials in the state
 
-      localStorage.setItem('store', JSON.stringify(stateClone));
+      //TODO: Extract to storage class
+      if(state.credential === undefined) {
+        localStorage.setItem('store', JSON.stringify(stateClone));
+      } else {
+        // TODO: Secure database write
+        // https://firebase.google.com/docs/firestore/quickstart#secure_your_data
+        const db = firebase.firestore();
+        db.collection("libraries").add(stateClone);
+      }
     });
 
     this.store.commit(MutationTypes.initialise);

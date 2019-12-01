@@ -40,7 +40,7 @@ export default class FirebaseAuthenticate extends mixins(StoreMixin) {
       appId: '1:1000408574113:web:9f757273752d73753068e0',
       measurementId: 'G-WRBFK0PL4X',
     };
-    
+
     firebase.initializeApp(firebaseConfig);
     firebase.analytics();
   }
