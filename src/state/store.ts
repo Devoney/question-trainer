@@ -18,6 +18,7 @@ const storeOptions: StoreOptions<IState> = {
     bookEdited: undefined,
     chapterEdited: undefined,
     chapterSelected: undefined,
+    credential: undefined,
     currentQuestion: undefined,
     libraryName: '',
     questionEdited: undefined,
@@ -77,6 +78,7 @@ const storeOptions: StoreOptions<IState> = {
 
         state.bookEdited = undefined;
         state.chapterEdited = undefined;
+        state.credential = undefined;
       }
     },
 

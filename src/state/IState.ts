@@ -10,6 +10,7 @@ export default interface IState  {
   chapterEdited: Chapter | undefined;
   chapterSelected: Chapter | undefined;
   currentQuestion: Question | undefined;
+  credential: any;
   libraryName: string;
   questionEdited: Question | undefined;
   questionList: Question[];

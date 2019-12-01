@@ -1,8 +1,8 @@
 <template>
   <div>
     <main>
-      <firebase-authenticate />
       <div id="app" class="container-fluid">
+        <firebase-authenticate />
         <div class="row">
           <div class="col text-left">
             <div class="row">
@@ -67,6 +67,7 @@ import QuestionTrainer from '@/components/questionList/QuestionTrainer.vue';
 import ViewMode from '@/components/ViewMode.vue';
 import ImportExport from '@/components/ImportExport.vue';
 import FirebaseAuthenticate from '@/firebase/FirebaseAuthenticate.vue';
+import ObjectExt from '@/utils/ObjectExt';
 Vue.use(CKEditor);
 
 @Component({
@@ -99,7 +100,10 @@ export default class App extends mixins(StoreMixin) {
 
   private created(): void {
     this.store.subscribe((mutation, state) => {
-      localStorage.setItem('store', JSON.stringify(state));
+      const stateClone = ObjectExt.clone(state);
+      stateClone.credential = undefined; // Never store credentials in the state
+
+      localStorage.setItem('store', JSON.stringify(stateClone));
     });
 
     this.store.commit(MutationTypes.initialise);

@@ -29,22 +29,23 @@ export default class FirebaseAuthenticate extends mixins(StoreMixin) {
     return this.email !== '';
   }
 
-  created(): void {
-    var firebaseConfig = {
-      apiKey: "AIzaSyCNIx6ApCaIH-BQlz09DmLSh8iTtWpgPMs",
-      authDomain: "question-trainer.firebaseapp.com",
-      databaseURL: "https://question-trainer.firebaseio.com",
-      projectId: "question-trainer",
-      storageBucket: "question-trainer.appspot.com",
-      messagingSenderId: "1000408574113",
-      appId: "1:1000408574113:web:9f757273752d73753068e0",
-      measurementId: "G-WRBFK0PL4X"
+  public created(): void {
+    const firebaseConfig = {
+      apiKey: 'AIzaSyCNIx6ApCaIH-BQlz09DmLSh8iTtWpgPMs',
+      authDomain: 'question-trainer.firebaseapp.com',
+      databaseURL: 'https://question-trainer.firebaseio.com',
+      projectId: 'question-trainer',
+      storageBucket: 'question-trainer.appspot.com',
+      messagingSenderId: '1000408574113',
+      appId: '1:1000408574113:web:9f757273752d73753068e0',
+      measurementId: 'G-WRBFK0PL4X',
     };
+    
     firebase.initializeApp(firebaseConfig);
     firebase.analytics();
   }
 
-  mounted(): void {
+  public mounted(): void {
     const auth = firebase.auth();
     const ui = new firebaseui.auth.AuthUI(auth);
     const self = this;
@@ -61,6 +62,7 @@ export default class FirebaseAuthenticate extends mixins(StoreMixin) {
           self.displayName = authResult.user.displayName;
           self.email = authResult.user.email;
           self.imageSrc = authResult.user.photoURL;
+          self.store.state.credential = authResult.credential;
           return false;
         },
       },
