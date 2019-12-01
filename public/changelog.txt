@@ -1,3 +1,6 @@
+v1.4.0 - 
+  - Adds support to store the library online, using a google account.
+
 v1.3.0 - 2019-10-06
   - Adds indicator of how much local memory is consumed
   - Adds support for entering math formulas in questions and answers.

@@ -84,7 +84,6 @@ const storeOptions: StoreOptions<IState> = {
       if (currentUser === null || currentUser.uid === null) {
         const storeInJson = localStorage.getItem('store');
         if (storeInJson === null || storeInJson === undefined) { return; }
-        console.log('Load local');
         setStore(storeInJson);
       } else {
         const db = firebase.firestore();
@@ -92,7 +91,6 @@ const storeOptions: StoreOptions<IState> = {
         libraries.doc(currentUser.uid).get().then((doc) => {
           const data = doc.data();
           if (data === undefined) { return; }
-          console.log('Load online');
           setStore(data.data);
         });
       }

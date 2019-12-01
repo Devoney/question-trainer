@@ -111,10 +111,8 @@ export default class App extends mixins(StoreMixin) {
       // TODO: Extract to storage class
       const currentUser = firebase.auth().currentUser;
       if (currentUser === null || currentUser.uid === null) {
-        console.log('Save local');
         localStorage.setItem('store', stateString);
       } else {
-        console.log('Save online');
         // TODO: Secure database write
         // https://firebase.google.com/docs/firestore/quickstart#secure_your_data
         const db = firebase.firestore();

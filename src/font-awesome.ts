@@ -14,6 +14,7 @@ import {
   faPlus,
   faQuestionCircle,
   faRedoAlt,
+  faSignOutAlt,
   faTrashAlt,
   faRedo,
 } from '@fortawesome/free-solid-svg-icons';
@@ -29,6 +30,7 @@ library.add(faMinus);
 library.add(faPlus);
 library.add(faQuestionCircle);
 library.add(faRedoAlt);
+library.add(faSignOutAlt);
 library.add(faTrashAlt);
 
 Vue.component('font-awesome-icon', FontAwesomeIcon);

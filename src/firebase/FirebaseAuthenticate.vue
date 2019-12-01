@@ -1,12 +1,21 @@
 <template>
-  <div>
-    <div id="firebaseui-auth-container"></div>
+  <div id="firebaseui-auth">
+    <div v-show="!isLoggedIn" id="firebaseui-auth-container"></div>
     <div v-if="isLoggedIn">
       <span>
-        <img width="32" height="32" :src="imageSrc" />
+        <a href="https://myaccount.google.com/" target="_blanc">
+          <img width="32" height="32" :src="imageSrc" />
+        </a>
       </span>
-      <span>Logged in as {{displayName}} ({{email}}).</span>
-      <span><a href="#" @click="logOut">Logout</a></span>
+      <span>
+        <icon-button 
+          id="sign-out-button" 
+          icon="sign-out-alt"
+          label="Sign out"
+          size="l"
+          @click="signOut" 
+          argument=""/>
+      </span>
     </div>
   </div>
 </template>
@@ -16,14 +25,16 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 import { mixins } from 'vue-class-component';
 import StoreMixin from '@/mixins/StoreMixin';
 import MutationTypes from '@/state/MutationTypes';
+import IconButton from '@/components/IconButton.vue';
 import * as firebase from 'firebase';
 import * as firebaseui from 'firebaseui';
 
-@Component
+@Component({
+  components: {
+    IconButton,
+  },
+})
 export default class FirebaseAuthenticate extends mixins(StoreMixin) {
-
-  private displayName: string = '';
-  private email: string = '';
   private imageSrc: string = '';
   private isLoggedIn: boolean = false;
   private firebaseUi: firebaseui.auth.AuthUI | undefined = undefined;
@@ -39,7 +50,7 @@ export default class FirebaseAuthenticate extends mixins(StoreMixin) {
     this.showUi(auth);
   }
 
-  onIdTokenChanged(user: any): void {
+  private onIdTokenChanged(user: any): void {
     if (user) {
         this.setUserData(user);
         this.isLoggedIn = true;
@@ -47,7 +58,7 @@ export default class FirebaseAuthenticate extends mixins(StoreMixin) {
         this.isLoggedIn = false;
       }
 
-      this.store.commit(MutationTypes.initialise);
+    this.store.commit(MutationTypes.initialise);
   }
 
   private showUi(auth: firebase.auth.Auth) {
@@ -73,12 +84,10 @@ export default class FirebaseAuthenticate extends mixins(StoreMixin) {
   }
 
   private setUserData(user: any): void {
-    this.displayName = user.displayName;
-    this.email = user.email;
     this.imageSrc = user.photoURL;
   }
 
-  private logOut(): void {
+  private signOut(): void {
     if (!this.isLoggedIn) { return; }
     const auth = firebase.auth();
     auth.signOut().then(() => {
@@ -91,4 +100,15 @@ export default class FirebaseAuthenticate extends mixins(StoreMixin) {
 </script>
 
 <style scoped>
+#firebaseui-auth {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  z-index: 1;
+}
+
+#sign-out-button {
+  margin-left:10px;
+  margin-right:5px;
+}
 </style>
