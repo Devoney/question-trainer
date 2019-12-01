@@ -1,11 +1,12 @@
 <template>
   <div>
-    <div v-if="!isLoggedIn" id="firebaseui-auth-container"></div>
+    <div id="firebaseui-auth-container"></div>
     <div v-if="isLoggedIn">
       <span>
         <img width="32" height="32" :src="imageSrc" />
       </span>
       <span>Logged in as {{displayName}} ({{email}}).</span>
+      <span><a href="#" @click="logOut">Logout</a></span>
     </div>
   </div>
 </template>
@@ -24,33 +25,38 @@ export default class FirebaseAuthenticate extends mixins(StoreMixin) {
   private displayName: string = '';
   private email: string = '';
   private imageSrc: string = '';
-
-  private get isLoggedIn(): boolean {
-    return this.email !== '';
-  }
-
-  public created(): void {
-    const firebaseConfig = {
-      apiKey: 'AIzaSyCNIx6ApCaIH-BQlz09DmLSh8iTtWpgPMs',
-      authDomain: 'question-trainer.firebaseapp.com',
-      databaseURL: 'https://question-trainer.firebaseio.com',
-      projectId: 'question-trainer',
-      storageBucket: 'question-trainer.appspot.com',
-      messagingSenderId: '1000408574113',
-      appId: '1:1000408574113:web:9f757273752d73753068e0',
-      measurementId: 'G-WRBFK0PL4X',
-    };
-
-    firebase.initializeApp(firebaseConfig);
-    firebase.analytics();
-  }
+  private isLoggedIn: boolean = false;
+  private firebaseUi: firebaseui.auth.AuthUI | undefined = undefined;
 
   public mounted(): void {
     const auth = firebase.auth();
-    const ui = new firebaseui.auth.AuthUI(auth);
     const self = this;
 
-    ui.start('#firebaseui-auth-container', {
+    firebase.auth().onIdTokenChanged((user: any) => {
+      this.onIdTokenChanged(user);
+    });
+
+    this.showUi(auth);
+  }
+
+  onIdTokenChanged(user: any): void {
+    if (user) {
+        this.setUserData(user);
+        this.isLoggedIn = true;
+      } else {
+        this.isLoggedIn = false;
+      }
+
+      this.store.commit(MutationTypes.initialise);
+  }
+
+  private showUi(auth: firebase.auth.Auth) {
+    const self = this;
+    if (this.firebaseUi === undefined) {
+      this.firebaseUi = new firebaseui.auth.AuthUI(auth);
+    }
+
+    this.firebaseUi.start('#firebaseui-auth-container', {
       signInOptions: [
         {
           provider: firebase.auth.GoogleAuthProvider.PROVIDER_ID,
@@ -59,13 +65,26 @@ export default class FirebaseAuthenticate extends mixins(StoreMixin) {
       signInFlow: 'popup',
       callbacks: {
         signInSuccessWithAuthResult(authResult, redirectUrl) {
-          self.displayName = authResult.user.displayName;
-          self.email = authResult.user.email;
-          self.imageSrc = authResult.user.photoURL;
-          self.store.state.credential = authResult.credential;
+          self.setUserData(authResult.user);
           return false;
         },
       },
+    });
+  }
+
+  private setUserData(user: any): void {
+    this.displayName = user.displayName;
+    this.email = user.email;
+    this.imageSrc = user.photoURL;
+  }
+
+  private logOut(): void {
+    if (!this.isLoggedIn) { return; }
+    const auth = firebase.auth();
+    auth.signOut().then(() => {
+      this.isLoggedIn = false;
+      this.showUi(auth);
+      this.store.commit(MutationTypes.initialise);
     });
   }
 }

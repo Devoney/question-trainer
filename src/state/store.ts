@@ -8,6 +8,7 @@ import QuestionTestStatistics from '@/types/QuestionTestStatistics';
 import Vue from 'vue';
 import _ from 'lodash';
 import { version } from '@/../package.json';
+import * as firebase from 'firebase';
 
 Vue.use(Vuex);
 
@@ -18,7 +19,6 @@ const storeOptions: StoreOptions<IState> = {
     bookEdited: undefined,
     chapterEdited: undefined,
     chapterSelected: undefined,
-    credential: undefined,
     currentQuestion: undefined,
     libraryName: '',
     questionEdited: undefined,
@@ -46,11 +46,11 @@ const storeOptions: StoreOptions<IState> = {
   },
   mutations: {
     [MutationTypes.initialise]: (state) => {
-      if (localStorage.getItem('store')) {
-        // Replace the state object with the stored item
-        const storeInJson = localStorage.getItem('store');
-        if (storeInJson === null || storeInJson === undefined) { return; }
+      const currentUser = firebase.auth().currentUser;
+
+      const setStore = (storeInJson: string) => {
         const storeObj = JSON.parse(storeInJson);
+
         store.replaceState(Object.assign(state, storeObj));
 
         if (state.bookSelected !== undefined) {
@@ -78,7 +78,23 @@ const storeOptions: StoreOptions<IState> = {
 
         state.bookEdited = undefined;
         state.chapterEdited = undefined;
-        state.credential = undefined;
+      };
+
+      // TODO: Put storage handling in separate class
+      if (currentUser === null || currentUser.uid === null) {
+        const storeInJson = localStorage.getItem('store');
+        if (storeInJson === null || storeInJson === undefined) { return; }
+        console.log('Load local');
+        setStore(storeInJson);
+      } else {
+        const db = firebase.firestore();
+        const libraries = db.collection('libraries');
+        libraries.doc(currentUser.uid).get().then((doc) => {
+          const data = doc.data();
+          if (data === undefined) { return; }
+          console.log('Load online');
+          setStore(data.data);
+        });
       }
     },
 

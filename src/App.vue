@@ -102,22 +102,45 @@ export default class App extends mixins(StoreMixin) {
   }
 
   private created(): void {
-    this.store.subscribe((mutation, state) => {
-      const stateClone = ObjectExt.clone(state);
-      stateClone.credential = undefined; // Never store credentials in the state
+    this.initialiseFirebase();
 
-      //TODO: Extract to storage class
-      if(state.credential === undefined) {
-        localStorage.setItem('store', JSON.stringify(stateClone));
+    this.store.subscribe((mutation, state) => {
+      if (mutation.type === MutationTypes.initialise) { return; }
+
+      const stateString = JSON.stringify(state);
+      // TODO: Extract to storage class
+      const currentUser = firebase.auth().currentUser;
+      if (currentUser === null || currentUser.uid === null) {
+        console.log('Save local');
+        localStorage.setItem('store', stateString);
       } else {
+        console.log('Save online');
         // TODO: Secure database write
         // https://firebase.google.com/docs/firestore/quickstart#secure_your_data
         const db = firebase.firestore();
-        db.collection("libraries").add(stateClone);
+        const libData: any = { data: stateString};
+        const libraries = db.collection('libraries');
+        libraries.doc(currentUser.uid).set(libData);
       }
     });
 
     this.store.commit(MutationTypes.initialise);
+  }
+
+  private initialiseFirebase(): void {
+    const firebaseConfig = {
+      apiKey: 'AIzaSyCNIx6ApCaIH-BQlz09DmLSh8iTtWpgPMs',
+      authDomain: 'question-trainer.firebaseapp.com',
+      databaseURL: 'https://question-trainer.firebaseio.com',
+      projectId: 'question-trainer',
+      storageBucket: 'question-trainer.appspot.com',
+      messagingSenderId: '1000408574113',
+      appId: '1:1000408574113:web:9f757273752d73753068e0',
+      measurementId: 'G-WRBFK0PL4X',
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
   }
 }
 </script>
