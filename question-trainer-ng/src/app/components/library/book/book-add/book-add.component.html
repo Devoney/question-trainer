@@ -19,7 +19,7 @@
       <div class="input-group-append">
         <button
           class="btn input-group-append"
-          [class.btn-primary]="!(invalidTitle$ | async)"
+          [class.btn-primary]="(invalidTitle$ | async) === false"
           [class.btn-secondary]="invalidTitle$ | async"
           [disabled]="(invalidTitle$ | async) || (bookTitleIsEmpty$ | async)"
           id="btn-ok-book"

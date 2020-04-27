@@ -1,17 +1,17 @@
-import { Component, EventEmitter, OnInit, Input, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, OnInit, Input, Output, SimpleChanges, OnChanges } from '@angular/core';
 import { LoggerService } from 'src/app/services/logger.service';
-import { ThrowStmt } from '@angular/compiler';
-import { FormBuilder, FormGroup } from '@angular/forms'
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { BehaviorSubject, combineLatest } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-book-add',
   templateUrl: './book-add.component.html',
   styleUrls: ['./book-add.component.css']
 })
-export class BookAddComponent implements OnInit {
+export class BookAddComponent implements OnInit, OnChanges {
 
-  @Input() errorMessage: string = '';
+  @Input() errorMessage = '';
   @Input('invalid-title') set invalidTitle(value: boolean) {
     this.invalidTitle$.next(value);
   }
@@ -20,13 +20,16 @@ export class BookAddComponent implements OnInit {
 
   invalidTitle$ = new BehaviorSubject<boolean>(false);
   bookTitleIsEmpty$ = new BehaviorSubject<boolean>(true);
-  bookTitleIsInvalidAndNotEmpty$ = combineLatest(
+  bookTitleIsInvalidAndNotEmpty$ = combineLatest([
     this.invalidTitle$,
     this.bookTitleIsEmpty$,
-    (invalidTitle, bookTitleIsEmpty) => (invalidTitle && !bookTitleIsEmpty)
+  ]).pipe(
+    map(([invalidTitle, bookTitleIsEmpty]) => {
+        return invalidTitle && !bookTitleIsEmpty;
+    })
   );
 
-  buttonText: string = 'Add';
+  buttonText = 'Add';
   addBookForm: FormGroup;
 
   get bookTitle(): string {

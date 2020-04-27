@@ -10,7 +10,7 @@ export class TabPageComponent implements OnInit {
 
   id: string;
   @Input() title: string;
-  @Input() active: boolean = false;
+  @Input() active = false;
 
   constructor() {
     this.id = 'tabPage_' + Guid.newGuid();

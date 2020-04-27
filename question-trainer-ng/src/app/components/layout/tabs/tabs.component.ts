@@ -8,8 +8,8 @@ import { TabPageComponent } from '../tab-page/tab-page.component';
 })
 export class TabsComponent implements AfterContentInit {
 
-  @ContentChildren(TabPageComponent) tabPageQueryList : QueryList<TabPageComponent>;
-  
+  @ContentChildren(TabPageComponent) tabPageQueryList: QueryList<TabPageComponent>;
+
   tabPages: Array<TabPageComponent>;
 
   constructor() { }
