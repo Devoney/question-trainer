@@ -1,0 +1,7 @@
+<div>
+  <app-book-add 
+    [invalid-title]="invalidTitle$ | async" (title-changed)="onTitleChanged($event)"
+    (add)="add($event)"
+  >
+</app-book-add>
+</div>

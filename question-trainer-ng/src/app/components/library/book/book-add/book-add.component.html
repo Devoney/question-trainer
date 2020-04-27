@@ -1,0 +1,31 @@
+<div class="form-group">
+  <form [formGroup]="addBookForm">
+    <div class="row">
+      <div class="col text-left">
+        <label class="font-weight-bold" for="bookTitle">Title:</label>
+      </div>
+    </div>
+    <div class="input-group row no-gutters">
+      <input
+        class="form-control"
+        [class.is-invalid]="bookTitleIsInvalidAndNotEmpty$ | async"
+        formControlName="bookTitle"
+        type="text"
+        (keydown.enter)="ok()"
+        (keydown.esc)="cancel()"
+        [title]="errorMessage"
+        (keyup)="onTitleChange()"
+      >
+      <div class="input-group-append">
+        <button
+          class="btn input-group-append"
+          [class.btn-primary]="!(invalidTitle$ | async)"
+          [class.btn-secondary]="invalidTitle$ | async"
+          [disabled]="(invalidTitle$ | async) || (bookTitleIsEmpty$ | async)"
+          id="btn-ok-book"
+          (click)="ok()"
+        >{{ buttonText }}</button>
+      </div>
+    </div>
+  </form>
+</div>
