@@ -21,7 +21,7 @@ export class BookManagerComponent implements OnInit {
   constructor(
     private logger: LoggerService,
     private store: Store<IAppState>,
-  ) { 
+  ) {
     this.books$ = this.store.pipe(select(selectBooks));
     this.books$.subscribe(books => {
       this.books = books;
@@ -49,7 +49,7 @@ export class BookManagerComponent implements OnInit {
     if (this.bookTitleExists(title)) {
       return;
     }
-    
+
     const book: Book = {
       title
     };

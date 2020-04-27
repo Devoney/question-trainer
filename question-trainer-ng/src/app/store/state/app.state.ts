@@ -1,7 +1,7 @@
 import { ILibraryState, initialLibraryState } from './library.state';
 
 export interface IAppState {
-  library: ILibraryState
+  library: ILibraryState;
 }
 
 export const initialAppState = {

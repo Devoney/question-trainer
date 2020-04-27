@@ -17,7 +17,7 @@ export class BooksOverviewComponent implements OnInit {
 
   constructor(
     private store: Store<IAppState>,
-  ) { 
+  ) {
     this.books$ = this.store.pipe(select(selectBooks));
     this.nrOfBooks$ = this.store.pipe(select(selectNrOfBooks));
   }

@@ -6,7 +6,7 @@ import { Book } from 'src/app/types/Book';
 
 const selectLibrary = (state: IAppState) => {
   return (state && state.library) ? state.library : initialLibraryState;
-}
+};
 
 export const selectBooks = createSelector(
   selectLibrary,

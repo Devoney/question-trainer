@@ -13,9 +13,7 @@
       <th width="90"></th>
     </thead>
     <tbody>
-      <tr app-book-row *ngFor="let book of (books$ | async); index as bookIndex;"
-        [book]="book" 
-        [index]="bookIndex+1">
+      <tr app-book-row *ngFor="let book of (books$ | async); index as bookIndex;" [book]="book" [index]="bookIndex+1">
       </tr>
     </tbody>
     <tfoot [hidden]="(nrOfBooks$ | async) > 0">

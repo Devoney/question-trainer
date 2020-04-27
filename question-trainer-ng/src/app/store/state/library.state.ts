@@ -1,7 +1,7 @@
 import { Book } from '../../types/Book';
 
 export interface ILibraryState {
-  books: Book[]
+  books: Book[];
 }
 
 export const initialLibraryState: ILibraryState = {
