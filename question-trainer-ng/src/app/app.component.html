@@ -1,5 +1,15 @@
-<app-top-bar></app-top-bar>
-<div>
-  <router-outlet></router-outlet>
-</div>
+<main>
+  <div id="app" class="container container-fluid">
+    <div class="row">
+      <div class="col text-left">
+        <div class="row">
+          <div class="flex-container">
+            <app-top-bar></app-top-bar>
+          </div>
+        </div>
+      </div>
+    </div>
+    <router-outlet></router-outlet>
+  </div>
+</main>
 <app-bottom-bar></app-bottom-bar>

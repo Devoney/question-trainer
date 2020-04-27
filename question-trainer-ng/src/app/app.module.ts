@@ -16,6 +16,7 @@ import { ViewModeComponent } from './components/layout/view-mode/view-mode.compo
 import { StoreModule } from '@ngrx/store';
 import { appReducers } from './store/reducers/app.reducer';
 import { getInitialAppState } from './store/state/app.state';
+import { BooksOverviewComponent } from './components/library/book/books-overview/books-overview.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { getInitialAppState } from './store/state/app.state';
     TabsComponent,
     TopBarComponent,
     ViewModeComponent,
+    BooksOverviewComponent,
   ],
   imports: [
     BrowserModule,
