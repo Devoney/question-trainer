@@ -22,7 +22,7 @@ describe('ViewModeComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ViewModeComponent);
     component = fixture.componentInstance;
-    activatedRoute = TestBed.get(ActivatedRoute);
+    activatedRoute = TestBed.inject(ActivatedRoute);
     fixture.detectChanges();
   });
 

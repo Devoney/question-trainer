@@ -14,7 +14,7 @@ describe('BookAddComponent', () => {
       imports: [
         ReactiveFormsModule
       ],
-      providers:[
+      providers: [
         FormBuilder,
       ]
     })
@@ -45,9 +45,15 @@ describe('BookAddComponent', () => {
     fixture.detectChanges();
   }
 
+  const buttonId = '#btn-ok-book';
+
+  function getAddButton(): HTMLButtonElement
+  {
+    return nativeElement.querySelector(buttonId) as HTMLButtonElement;
+  }
+
   function clickAddButton() {
-    const buttonId: string = '#btn-ok-book';
-    const addButton = nativeElement.querySelector(buttonId) as HTMLButtonElement;
+    const addButton = getAddButton();
     if (addButton.disabled) {
       console.log('WARNING: ' + buttonId + ' is disabled');
     }
@@ -70,7 +76,7 @@ describe('BookAddComponent', () => {
       // When
       clickAddButton();
 
-      //Then
+      // Then
       expect(addBookEvent).toBeFalse();
     });
 
@@ -88,21 +94,45 @@ describe('BookAddComponent', () => {
       // When
       clickAddButton();
 
-      //Then
+      // Then
       expect(addBookEvent).toBeTrue();
       expect(actualBookTitle).toBe(expectedBookTitle);
     });
 
     it('When user adds book, the title is emptied.', () => {
       // Given
-      setBookTitle('My big TOE');      
+      setBookTitle('My big TOE');
 
       // When
       clickAddButton();
       const actualBookTitle = getBookTitle();
 
-      //Then
+      // Then
       expect(actualBookTitle).toBeFalsy();
+    });
+
+    it('Without a title the add button is disabled.', () => {
+      // Given
+      const bookTitle = '';
+
+      // When
+      setBookTitle(bookTitle);
+
+      // Then
+      const addButton = getAddButton();
+      expect(addButton.disabled).toBeTrue();
+    });
+
+    it('With a title the add button is enabled.', () => {
+      // Given
+      const bookTitle = 'My title';
+
+      // When
+      setBookTitle(bookTitle);
+
+      // Then
+      const addButton = getAddButton();
+      expect(addButton.disabled).toBeFalse();
     });
   });
 });
