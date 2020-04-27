@@ -16,7 +16,7 @@ export class TabsComponent implements AfterContentInit {
 
   ngAfterContentInit(): void {
     this.tabPages = this.tabPageQueryList.toArray();
-    if (this.tabPages.every(tabPage => !tabPage.active)) {
+    if (this.tabPages.length > 0 && this.tabPages.every(tabPage => !tabPage.active)) {
       this.tabPages[0].active = true;
     }
   }

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { version } from '../../../../../package.json';
 
 @Component({
@@ -12,7 +11,6 @@ export class BottomBarComponent implements OnInit {
   applicationVersion: string = version;
 
   constructor(
-    private httpClient: HttpClient
   ) { }
 
   ngOnInit(): void {

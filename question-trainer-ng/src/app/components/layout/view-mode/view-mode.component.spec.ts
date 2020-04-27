@@ -1,14 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ViewModeComponent } from './view-mode.component';
+import { ActivatedRoute } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('ViewModeComponent', () => {
   let component: ViewModeComponent;
   let fixture: ComponentFixture<ViewModeComponent>;
+  let activatedRoute: ActivatedRoute;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ViewModeComponent ]
+      declarations: [ ViewModeComponent ],
+      imports: [
+        RouterTestingModule.withRoutes([])
+      ]
     })
     .compileComponents();
   }));
@@ -16,6 +22,7 @@ describe('ViewModeComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ViewModeComponent);
     component = fixture.componentInstance;
+    activatedRoute = TestBed.get(ActivatedRoute);
     fixture.detectChanges();
   });
 
