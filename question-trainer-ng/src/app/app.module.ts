@@ -17,6 +17,7 @@ import { StoreModule } from '@ngrx/store';
 import { appReducers } from './store/reducers/app.reducer';
 import { getInitialAppState } from './store/state/app.state';
 import { BooksOverviewComponent } from './components/library/book/books-overview/books-overview.component';
+import { BookRowComponent } from './components/library/book/book-row/book-row.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { BooksOverviewComponent } from './components/library/book/books-overview
     TopBarComponent,
     ViewModeComponent,
     BooksOverviewComponent,
+    BookRowComponent,
   ],
   imports: [
     BrowserModule,

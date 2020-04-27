@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { IAppState } from 'src/app/store/state/app.state';
+import { Store, select } from '@ngrx/store';
+import { Book } from 'src/app/types/Book';
+import { Observable } from 'rxjs';
+import { selectBooks, selectNrOfBooks } from 'src/app/store/selectors/library.selectors';
 
 @Component({
   selector: 'app-books-overview',
@@ -7,7 +12,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BooksOverviewComponent implements OnInit {
 
-  constructor() { }
+  books$: Observable<Book[]>;
+  nrOfBooks$: Observable<number>;
+
+  constructor(
+    private store: Store<IAppState>,
+  ) { 
+    this.books$ = this.store.pipe(select(selectBooks));
+    this.nrOfBooks$ = this.store.pipe(select(selectNrOfBooks));
+  }
 
   ngOnInit(): void {
   }
