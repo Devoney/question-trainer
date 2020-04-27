@@ -59,7 +59,8 @@ export class BookAddComponent implements OnInit, OnChanges {
 
   ok(): void {
     const bookTitle = this.bookTitle;
-    if (bookTitle && bookTitle.length > 0) {
+    const invalidTitle = this.invalidTitle$.getValue();
+    if (bookTitle && bookTitle.length > 0 && !invalidTitle) {
       this.addBook.emit(bookTitle);
       this.clear();
     }

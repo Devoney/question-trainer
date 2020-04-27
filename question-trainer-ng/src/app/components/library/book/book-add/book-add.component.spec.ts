@@ -54,9 +54,6 @@ describe('BookAddComponent', () => {
 
   function clickAddButton() {
     const addButton = getAddButton();
-    if (addButton.disabled) {
-      console.log('WARNING: ' + buttonId + ' is disabled');
-    }
     addButton.click();
   }
 

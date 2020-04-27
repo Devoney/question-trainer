@@ -13,6 +13,9 @@ import { TabPageComponent } from './components/layout/tab-page/tab-page.componen
 import { TabsComponent } from './components/layout/tabs/tabs.component';
 import { TopBarComponent } from './components/layout/top-bar/top-bar.component';
 import { ViewModeComponent } from './components/layout/view-mode/view-mode.component';
+import { StoreModule } from '@ngrx/store';
+import { appReducers } from './store/reducers/app.reducer';
+import { getInitialAppState } from './store/state/app.state';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,8 @@ import { ViewModeComponent } from './components/layout/view-mode/view-mode.compo
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    StoreModule.forRoot(appReducers, { initialState: getInitialAppState() })
   ],
   providers: [],
   bootstrap: [AppComponent]
