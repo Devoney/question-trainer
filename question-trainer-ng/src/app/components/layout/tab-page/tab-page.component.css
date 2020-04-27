@@ -1,0 +1,12 @@
+.tab-content.bordered {
+  border: 1px solid #ddd;
+  border-top: 0px;
+  padding: 10px;
+  border-radius: 10px;
+  border-top-left-radius: 0px;
+  margin-right: -10px;
+}
+
+.tab-pane.inactive{
+  display: none;
+}

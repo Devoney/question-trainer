@@ -8,6 +8,8 @@ import { ViewModeComponent } from './components/layout/view-mode/view-mode.compo
 import { TopBarComponent } from './components/layout/top-bar/top-bar.component';
 import { BottomBarComponent } from './components/layout/bottom-bar/bottom-bar.component';
 import { QuestionListComponent } from './components/question/question-list/question-list.component';
+import { TabsComponent } from './components/layout/tabs/tabs.component';
+import { TabPageComponent } from './components/layout/tab-page/tab-page.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { QuestionListComponent } from './components/question/question-list/quest
     ViewModeComponent,
     TopBarComponent,
     BottomBarComponent,
-    QuestionListComponent
+    QuestionListComponent,
+    TabsComponent,
+    TabPageComponent
   ],
   imports: [
     BrowserModule,

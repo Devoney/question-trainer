@@ -1,0 +1,17 @@
+<div>
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li *ngFor="let tabPage of tabPages; index as tabPageIndex" class="nav-item">
+      <a
+        class="nav-link"
+        [class.active]="tabPage.active"
+        data-toggle="tab"
+        [href]="'#'+ tabPage.id"
+        role="tab"
+        (click)="setActiveTab(tabPageIndex)"
+      ><h5>{{ tabPage.title }}</h5></a>
+    </li>
+  </ul>
+  <div class="tab-content">
+    <ng-content></ng-content>
+  </div>
+</div>
