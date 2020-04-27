@@ -76,11 +76,7 @@ export class BookAddComponent implements OnInit, OnChanges {
 
   onTitleChange(): void {
     const bookTitle = this.bookTitle;
-    if (!bookTitle) {
-      this.bookTitleIsEmpty$.next(true);
-    } else {
-      this.bookTitleIsEmpty$.next(false);
-    }
+    this.bookTitleIsEmpty$.next(!bookTitle);
     this.titleChanged.emit(this.bookTitle);
   }
 }
