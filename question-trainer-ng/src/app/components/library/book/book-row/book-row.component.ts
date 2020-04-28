@@ -29,7 +29,7 @@ export class BookRowComponent implements OnInit {
 
   onTrash(bookId: string): void {
     this.logger.logs('Trashing book with id: ', bookId);
-    var removeBookAction = new RemoveBook(bookId);
+    const removeBookAction = new RemoveBook(bookId);
     this.store.dispatch(removeBookAction);
   }
 }

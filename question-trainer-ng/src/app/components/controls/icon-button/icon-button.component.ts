@@ -15,7 +15,7 @@ export class IconButtonComponent implements OnInit {
   @Input() title: string;
   @Input() size: string;
 
-  class: string = 'btn-m';
+  class = 'btn-m';
 
   constructor(
     private logger: LoggerService,

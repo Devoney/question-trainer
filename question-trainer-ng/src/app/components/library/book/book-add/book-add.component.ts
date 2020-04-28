@@ -69,7 +69,7 @@ export class BookAddComponent implements OnInit, OnChanges {
   cancel(): void {
     this.clear();
   }
-  
+
   clear(): void {
     this.addBookForm.reset();
     this.bookTitleIsEmpty$.next(true); // TODO: Fix this in a reactive way using observables

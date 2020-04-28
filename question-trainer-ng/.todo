@@ -1,0 +1,18 @@
+Bugs:
+  ☐ // TODO: Fix this in a reactive way using observables
+
+Unit testing:
+  State:  
+    ☐ Add book 
+    ☐ Remove book
+  Components:
+    book-add:
+      ☐ Test book addition to store through ui.
+    book-row:
+      ☐ Test book removal from store through ui.
+
+Refactor:
+  ☐ Move responsibility of adding a book to book-add component to reduce bubbling up events.
+
+Feature:
+  ☐ Add confirmation dialog to prevent accidental deletion of a book.
