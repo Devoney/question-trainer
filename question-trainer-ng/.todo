@@ -1,10 +1,10 @@
-Bugs:
-  ☐ // TODO: Fix this in a reactive way using observables
-
 Unit testing:
+  ☐ Fix failing tests due to added store dependency.
   State:  
     ☐ Add book 
     ☐ Remove book
+    ☐ Select books
+    ☐ Select book count
   Components:
     book-add:
       ☐ Test book addition to store through ui.
@@ -12,6 +12,7 @@ Unit testing:
       ☐ Test book removal from store through ui.
 
 Refactor:
+  ☐ // TODO: Fix this in a reactive way using observables
   ☐ Move responsibility of adding a book to book-add component to reduce bubbling up events.
 
 Feature:
