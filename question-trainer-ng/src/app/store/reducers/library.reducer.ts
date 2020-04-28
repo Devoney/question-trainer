@@ -11,8 +11,10 @@ export const libraryReducers = (state = initialLibraryState, action: BooksAction
     }
 
     case BooksActionTypes.Remove: {
+      const books = state.books.filter(book => book.id !== action.bookId);
       return {
-        ...state
+        ...state,
+        books
       };
     }
   }

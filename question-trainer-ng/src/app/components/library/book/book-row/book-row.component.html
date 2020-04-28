@@ -3,4 +3,11 @@
 <td class="book-title">{{ book.title }}</td>
 <td></td>
 <td></td>
-<td></td>
+<td>
+  <app-icon-button 
+    [icon]="trashIcon" 
+    size="s"
+    (click)="onTrash(book.id)"
+    title="Trash"
+  ></app-icon-button>
+</td>

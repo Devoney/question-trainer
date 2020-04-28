@@ -16,6 +16,10 @@ export class AddBook implements Action {
 
 export class RemoveBook implements Action {
   public readonly type = BooksActionTypes.Remove;
+
+  constructor (
+    public bookId: string
+  ) {}
 }
 
 export type BooksAction = AddBook | RemoveBook;

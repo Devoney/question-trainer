@@ -18,6 +18,8 @@ import { appReducers } from './store/reducers/app.reducer';
 import { getInitialAppState } from './store/state/app.state';
 import { BooksOverviewComponent } from './components/library/book/books-overview/books-overview.component';
 import { BookRowComponent } from './components/library/book/book-row/book-row.component';
+import { IconButtonComponent } from './components/controls/icon-button/icon-button.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,7 @@ import { BookRowComponent } from './components/library/book/book-row/book-row.co
     ViewModeComponent,
     BooksOverviewComponent,
     BookRowComponent,
+    IconButtonComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,7 +42,8 @@ import { BookRowComponent } from './components/library/book/book-row/book-row.co
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    StoreModule.forRoot(appReducers, { initialState: getInitialAppState() })
+    StoreModule.forRoot(appReducers, { initialState: getInitialAppState() }),
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

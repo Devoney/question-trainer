@@ -69,14 +69,15 @@ export class BookAddComponent implements OnInit, OnChanges {
   cancel(): void {
     this.clear();
   }
-
+  
   clear(): void {
     this.addBookForm.reset();
+    this.bookTitleIsEmpty$.next(true); // TODO: Fix this in a reactive way using observables
   }
 
   onTitleChange(): void {
     const bookTitle = this.bookTitle;
-    this.bookTitleIsEmpty$.next(!bookTitle);
+    this.bookTitleIsEmpty$.next(!bookTitle); // TODO: Fix this in a reactive way using observables
     this.titleChanged.emit(this.bookTitle);
   }
 }

@@ -6,6 +6,7 @@ import { IAppState } from 'src/app/store/state/app.state';
 import { Book } from 'src/app/types/Book';
 import { selectBooks } from 'src/app/store/selectors/library.selectors';
 import { AddBook } from 'src/app/store/actions/books.actions';
+import { Guid } from 'src/tools/Guid';
 
 @Component({
   selector: 'app-book-manager',
@@ -51,6 +52,7 @@ export class BookManagerComponent implements OnInit {
     }
 
     const book: Book = {
+      id: Guid.newGuid(),
       title
     };
     this.store.dispatch(new AddBook(book));
