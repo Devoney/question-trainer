@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Input, Output, SimpleChanges, OnChanges } from '@angular/core';
 import { LoggerService } from 'src/app/services/logger.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { BehaviorSubject, combineLatest } from 'rxjs';
+import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Component({
@@ -19,7 +19,8 @@ export class BookAddComponent implements OnInit, OnChanges {
   @Output('add') addBook = new EventEmitter<string>();
 
   invalidTitle$ = new BehaviorSubject<boolean>(false);
-  bookTitleIsEmpty$ = new BehaviorSubject<boolean>(true);
+  bookTitleIsEmpty$: Observable<boolean>;
+
   bookTitleIsInvalidAndNotEmpty$ = combineLatest([
     this.invalidTitle$,
     this.bookTitleIsEmpty$,
@@ -47,6 +48,12 @@ export class BookAddComponent implements OnInit, OnChanges {
     this.addBookForm = this.formBuilder.group({
       bookTitle: ''
     });
+
+    this.bookTitleIsEmpty$ = this.addBookForm.valueChanges.pipe(
+      map(formValues => {
+        return !formValues.bookTitle;
+      })
+    );
   }
 
   ngOnInit(): void {
@@ -72,12 +79,9 @@ export class BookAddComponent implements OnInit, OnChanges {
 
   clear(): void {
     this.addBookForm.reset();
-    this.bookTitleIsEmpty$.next(true); // TODO: Fix this in a reactive way using observables
   }
 
   onTitleChange(): void {
-    const bookTitle = this.bookTitle;
-    this.bookTitleIsEmpty$.next(!bookTitle); // TODO: Fix this in a reactive way using observables
     this.titleChanged.emit(this.bookTitle);
   }
 }

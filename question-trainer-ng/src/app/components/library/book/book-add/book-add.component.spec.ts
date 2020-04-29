@@ -41,7 +41,6 @@ describe('BookAddComponent', () => {
     const bookTitleInput = bookTitleInputElement();
     bookTitleInput.value = value;
     bookTitleInput.dispatchEvent(new Event('input'));
-    component.bookTitleIsEmpty$.next(!value); // TODO: Would be nice not to manage this here.
     fixture.detectChanges();
   }
 
