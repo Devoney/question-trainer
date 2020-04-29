@@ -1,12 +1,21 @@
 import { async, ComponentFixture, TestBed, tick, fakeAsync } from '@angular/core/testing';
-
+import { provideMockStore, MockStore } from '@ngrx/store/testing';
 import { BookAddComponent } from './book-add.component';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { IAppState } from 'src/app/store/state/app.state';
+import { BooksAction, AddBook, BooksActionTypes } from 'src/app/store/actions/books.actions';
+import { Action } from '@ngrx/store';
 
 describe('BookAddComponent', () => {
   let component: BookAddComponent;
   let fixture: ComponentFixture<BookAddComponent>;
   let nativeElement: HTMLElement;
+  let store: MockStore;
+  let initialState: IAppState = {
+    library: {
+      books: []
+    }
+  };
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -16,9 +25,12 @@ describe('BookAddComponent', () => {
       ],
       providers: [
         FormBuilder,
+        provideMockStore({ initialState })
       ]
     })
     .compileComponents();
+
+    store = TestBed.inject(MockStore);
   }));
 
   beforeEach(() => {
@@ -64,16 +76,18 @@ describe('BookAddComponent', () => {
     it('When user presses add button, without title, no event is raised.', () => {
       // Given
       setBookTitle('');
-      let addBookEvent = false;
-      component.addBook.subscribe((bookTitle: string) => {
-        addBookEvent = true;
+      let action: Action;
+      store.scannedActions$.subscribe((act) => {
+        if (act.type === BooksActionTypes.Add) {
+          action = act as AddBook;
+        }
       });
 
       // When
       clickAddButton();
 
       // Then
-      expect(addBookEvent).toBeFalse();
+      expect(action).toBeUndefined();
     });
 
     it('When user presses add button, with title, add event is raised with book title as argument.', () => {
@@ -81,17 +95,19 @@ describe('BookAddComponent', () => {
       const expectedBookTitle = 'My big TOE';
       let actualBookTitle: string = null;
       setBookTitle(expectedBookTitle);
-      let addBookEvent = false;
-      component.addBook.subscribe((bookTitle: string) => {
-        addBookEvent = true;
-        actualBookTitle = bookTitle;
+      let action: AddBook;
+      store.scannedActions$.subscribe((act) => {
+        if (act.type === BooksActionTypes.Add) {
+          action = act as AddBook;
+          actualBookTitle = action.payload.title;
+        }
       });
 
       // When
       clickAddButton();
 
       // Then
-      expect(addBookEvent).toBeTrue();
+      expect(action).toBeDefined();
       expect(actualBookTitle).toBe(expectedBookTitle);
     });
 

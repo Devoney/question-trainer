@@ -13,8 +13,8 @@
         type="text"
         (keydown.enter)="ok()"
         (keydown.esc)="cancel()"
-        [title]="errorMessage"
-        (keyup)="onTitleChange()"
+        [title]="errorMessage$ | async"
+        (keyup)="onTitleChanged()"
       >
       <div class="input-group-append">
         <button

@@ -3,6 +3,12 @@ import { LoggerService } from 'src/app/services/logger.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Store, select } from '@ngrx/store';
+import { IAppState } from 'src/app/store/state/app.state';
+import { Book } from 'src/app/types/Book';
+import { selectBooks } from 'src/app/store/selectors/library.selectors';
+import { Guid } from 'src/tools/Guid';
+import { AddBook } from 'src/app/store/actions/books.actions';
 
 @Component({
   selector: 'app-book-add',
@@ -10,26 +16,12 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./book-add.component.css']
 })
 export class BookAddComponent implements OnInit, OnChanges {
-
-  @Input() errorMessage = '';
-  @Input('invalid-title') set invalidTitle(value: boolean) {
-    this.invalidTitle$.next(value);
-  }
-  @Output('title-changed') titleChanged = new EventEmitter<string>();
-  @Output('add') addBook = new EventEmitter<string>();
-
   invalidTitle$ = new BehaviorSubject<boolean>(false);
   bookTitleIsEmpty$: Observable<boolean>;
-
-  bookTitleIsInvalidAndNotEmpty$ = combineLatest([
-    this.invalidTitle$,
-    this.bookTitleIsEmpty$,
-  ]).pipe(
-    map(([invalidTitle, bookTitleIsEmpty]) => {
-        return invalidTitle && !bookTitleIsEmpty;
-    })
-  );
-
+  bookTitleIsInvalidAndNotEmpty$: Observable<boolean>;
+  books: Array<Book>;
+  books$: Observable<Array<Book>>;
+  errorMessage$ = new BehaviorSubject<string>(null);
   buttonText = 'Add';
   addBookForm: FormGroup;
 
@@ -44,6 +36,7 @@ export class BookAddComponent implements OnInit, OnChanges {
   constructor(
     private logger: LoggerService,
     private formBuilder: FormBuilder,
+    private store: Store<IAppState>,
   ) {
     this.addBookForm = this.formBuilder.group({
       bookTitle: ''
@@ -54,6 +47,21 @@ export class BookAddComponent implements OnInit, OnChanges {
         return !formValues.bookTitle;
       })
     );
+
+    this.bookTitleIsInvalidAndNotEmpty$ = combineLatest([
+      this.invalidTitle$,
+      this.bookTitleIsEmpty$,
+    ]).pipe(
+      map(([invalidTitle, bookTitleIsEmpty]) => {
+          return invalidTitle && !bookTitleIsEmpty;
+      })
+    );
+
+    this.books$ = this.store.pipe(select(selectBooks));
+    this.books$.subscribe(books => {
+      this.books = books;
+      this.logger.log(books);
+    });
   }
 
   ngOnInit(): void {
@@ -68,7 +76,7 @@ export class BookAddComponent implements OnInit, OnChanges {
     const bookTitle = this.bookTitle;
     const invalidTitle = this.invalidTitle$.getValue();
     if (bookTitle && bookTitle.length > 0 && !invalidTitle) {
-      this.addBook.emit(bookTitle);
+      this.add(bookTitle);
       this.clear();
     }
   }
@@ -81,7 +89,29 @@ export class BookAddComponent implements OnInit, OnChanges {
     this.addBookForm.reset();
   }
 
-  onTitleChange(): void {
-    this.titleChanged.emit(this.bookTitle);
+  onTitleChanged(): void {
+    const title = this.addBookForm.value.bookTitle;
+    if (!!title) {
+      const titleExists = this.bookTitleExists(title);
+      this.invalidTitle$.next(titleExists);
+    }
+  }
+
+  bookTitleExists(title: string): boolean {
+    return this.books
+      .filter(book => !!book)
+      .find(book => book.title.toLowerCase() === title.toLowerCase()) != null;
+  }
+
+  add(title: string) {
+    if (this.bookTitleExists(title)) {
+      return;
+    }
+
+    const book: Book = {
+      id: Guid.newGuid(),
+      title
+    };
+    this.store.dispatch(new AddBook(book));
   }
 }

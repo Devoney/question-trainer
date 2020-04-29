@@ -15,46 +15,12 @@ import { Guid } from 'src/tools/Guid';
 })
 export class BookManagerComponent implements OnInit {
 
-  books: Array<Book>;
-  books$: Observable<Array<Book>>;
-  invalidTitle$ = new BehaviorSubject<boolean>(false);
-
   constructor(
     private logger: LoggerService,
-    private store: Store<IAppState>,
+
   ) {
-    this.books$ = this.store.pipe(select(selectBooks));
-    this.books$.subscribe(books => {
-      this.books = books;
-      this.logger.log(books);
-    });
   }
 
   ngOnInit(): void {
-  }
-
-  onTitleChanged(title: string): void {
-    if (!!title) {
-      const titleExists = this.bookTitleExists(title);
-      this.invalidTitle$.next(titleExists);
-    }
-  }
-
-  bookTitleExists(title: string): boolean {
-    return this.books
-      .filter(book => !!book)
-      .find(book => book.title.toLowerCase() === title.toLowerCase()) != null;
-  }
-
-  add(title: string) {
-    if (this.bookTitleExists(title)) {
-      return;
-    }
-
-    const book: Book = {
-      id: Guid.newGuid(),
-      title
-    };
-    this.store.dispatch(new AddBook(book));
   }
 }

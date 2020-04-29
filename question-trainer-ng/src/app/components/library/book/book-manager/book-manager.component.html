@@ -1,11 +1,7 @@
 <div>
   <div class="row">
     <div class="col">
-      <app-book-add 
-        [invalid-title]="invalidTitle$ | async" (title-changed)="onTitleChanged($event)"
-        (add)="add($event)"
-      >
-      </app-book-add>
+      <app-book-add></app-book-add>
     </div>
   </div>
   <div class="row">
