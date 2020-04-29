@@ -1,4 +1,4 @@
-import { selectBooks, selectNrOfBooks } from './library.selectors'
+import { selectBooks, selectNrOfBooks } from './library.selectors';
 import { Book } from 'src/app/types/Book';
 import { IAppState } from '../state/app.state';
 
@@ -13,7 +13,7 @@ describe('LibrarySelectors', () => {
   ];
   const appState: IAppState = {
     library: {
-      books: books
+      books
     }
   };
 
@@ -28,7 +28,7 @@ describe('LibrarySelectors', () => {
     expect(actual).toBe(expected);
   });
 
-  it('Should select count of books', ()=> {
+  it('Should select count of books', () => {
     // Given
     const expected = appState.library.books.length;
 
