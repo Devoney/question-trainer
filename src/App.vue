@@ -27,7 +27,8 @@
     <footer class="footer">
       <div class="container">
         <div>
-          Question Trainer <a href="/changelog.txt" target="_blank">v{{ applicationVersion }}</a> by <a href="mailto:mikedeklerk@gmail.com">Mike de Klerk</a> &copy; 2019
+          Question Trainer <a href="/changelog.txt" target="_blank">v{{ applicationVersion }}</a> by <a href="mailto:mikedeklerk@gmail.com">Mike de Klerk</a> &copy; 2019<br/>
+          <a href="https://github.com/Devoney/question-trainer">Source code at Github</a> and <a href="https://www.youtube.com/watch?v=OExLkoSoytU">instruction video</a> at YouTube.
         </div>
         <div class="favicon-credits">
           Icons made by
