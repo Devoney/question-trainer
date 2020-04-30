@@ -11,7 +11,7 @@ describe('BookAddComponent', () => {
   let fixture: ComponentFixture<BookAddComponent>;
   let nativeElement: HTMLElement;
   let store: MockStore;
-  let initialState: IAppState = {
+  const initialState: IAppState = {
     library: {
       books: []
     }
