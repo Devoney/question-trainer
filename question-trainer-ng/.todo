@@ -1,4 +1,5 @@
 Unit testing:
+  ☐ Resolve warnings in browser when running unit tests.
   ✔ Fix failing tests due to added store dependency.
   State:  
     ✔ Add book 
@@ -7,13 +8,13 @@ Unit testing:
     ✔ Select book count
   Components:
     book-add:
-      ☐ Test book addition to store through ui.
+      ✔ Test book addition to store through ui.
     book-row:
-      ☐ Test book removal from store through ui.
+      ✔ Test book removal from store through ui.
 
 Refactor:
   ✔ // TODO: Fix this in a reactive way using observables
-  ☐ Move responsibility of adding a book to book-add component to reduce bubbling up events.
+  ✔ Move responsibility of adding a book to book-add component to reduce bubbling up events.
 
 Feature:
   ☐ Add confirmation dialog to prevent accidental deletion of a book.

@@ -73,7 +73,7 @@ describe('BookAddComponent', () => {
   });
 
   describe('User interaction', () => {
-    it('When user presses add button, without title, no event is raised.', () => {
+    it('When user presses add button, without title, no action is dispatched.', () => {
       // Given
       setBookTitle('');
       let action: Action;
@@ -90,7 +90,7 @@ describe('BookAddComponent', () => {
       expect(action).toBeUndefined();
     });
 
-    it('When user presses add button, with title, add event is raised with book title as argument.', () => {
+    it('When user presses add button, with title, and action is dispatched with the correct book title.', () => {
       // Given
       const expectedBookTitle = 'My big TOE';
       let actualBookTitle: string = null;
