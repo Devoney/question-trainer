@@ -3,7 +3,7 @@ import { provideMockStore, MockStore } from '@ngrx/store/testing';
 import { BookAddComponent } from './book-add.component';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { IAppState } from 'src/app/store/state/app.state';
-import { BooksAction, AddBook, BooksActionTypes } from 'src/app/store/actions/books.actions';
+import { AddBook, BooksActionTypes } from 'src/app/store/actions/books.actions';
 import { Action } from '@ngrx/store';
 
 describe('BookAddComponent', () => {

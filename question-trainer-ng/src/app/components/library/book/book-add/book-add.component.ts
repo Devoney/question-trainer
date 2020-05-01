@@ -1,14 +1,14 @@
-import { Component, EventEmitter, OnInit, Input, Output, SimpleChanges, OnChanges } from '@angular/core';
-import { LoggerService } from 'src/app/services/logger.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { Store, select } from '@ngrx/store';
-import { IAppState } from 'src/app/store/state/app.state';
-import { Book } from 'src/app/types/Book';
-import { selectBooks } from 'src/app/store/selectors/library.selectors';
-import { Guid } from 'src/tools/Guid';
 import { AddBook } from 'src/app/store/actions/books.actions';
+import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
+import { Book } from 'src/app/types/Book';
+import { Component, EventEmitter, OnInit, Input, Output, SimpleChanges, OnChanges } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Guid } from 'src/tools/Guid';
+import { IAppState } from 'src/app/store/state/app.state';
+import { LoggerService } from 'src/app/services/logger.service';
+import { map } from 'rxjs/operators';
+import { selectBooks } from 'src/app/store/selectors/library.selectors';
+import { Store, select } from '@ngrx/store';
 
 @Component({
   selector: 'app-book-add',

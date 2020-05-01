@@ -3,7 +3,7 @@ import { provideMockStore, MockStore } from '@ngrx/store/testing';
 import { BookManagerComponent } from './book-manager.component';
 import { IAppState } from 'src/app/store/state/app.state';
 import { BookAddComponent } from '../book-add/book-add.component';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { BooksOverviewComponent } from '../books-overview/books-overview.component';
 
 describe('BookManagerComponent', () => {
@@ -23,7 +23,10 @@ describe('BookManagerComponent', () => {
         BookAddComponent,
         BookManagerComponent,
         BooksOverviewComponent,
-       ],
+      ],
+      imports: [
+        ReactiveFormsModule,
+      ],
       providers: [
         FormBuilder,
         provideMockStore({ initialState })

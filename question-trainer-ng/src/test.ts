@@ -23,3 +23,12 @@ getTestBed().initTestEnvironment(
 const context = require.context('./', true, /\.spec\.ts$/);
 // And load the modules.
 context.keys().map(context);
+
+const breakOnWarn = false;
+if (breakOnWarn) {
+  var oldWarningFunction = console.warn;
+  console.warn = function () {
+      debugger;
+      oldWarningFunction.apply(console, arguments);
+  };
+}

@@ -9,7 +9,7 @@ import { BookManagerComponent } from '../../library/book/book-manager/book-manag
 import { BookAddComponent } from '../../library/book/book-add/book-add.component';
 import { IAppState } from 'src/app/store/state/app.state';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { BooksOverviewComponent } from '../../library/book/books-overview/books-overview.component';
 
 describe('ViewModeComponent', () => {
@@ -35,6 +35,7 @@ describe('ViewModeComponent', () => {
       ],
       imports: [
         RouterTestingModule.withRoutes([]),
+        ReactiveFormsModule,
       ],
       providers: [
         FormBuilder,
