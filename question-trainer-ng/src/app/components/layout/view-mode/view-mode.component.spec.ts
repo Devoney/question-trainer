@@ -3,17 +3,42 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ViewModeComponent } from './view-mode.component';
 import { ActivatedRoute } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
+import { TabsComponent } from '../tabs/tabs.component';
+import { TabPageComponent } from '../tab-page/tab-page.component';
+import { BookManagerComponent } from '../../library/book/book-manager/book-manager.component';
+import { BookAddComponent } from '../../library/book/book-add/book-add.component';
+import { IAppState } from 'src/app/store/state/app.state';
+import { MockStore, provideMockStore } from '@ngrx/store/testing';
+import { FormBuilder } from '@angular/forms';
+import { BooksOverviewComponent } from '../../library/book/books-overview/books-overview.component';
 
 describe('ViewModeComponent', () => {
   let component: ViewModeComponent;
   let fixture: ComponentFixture<ViewModeComponent>;
   let activatedRoute: ActivatedRoute;
+  let store: MockStore;
+  const initialState: IAppState = {
+    library: {
+      books: []
+    }
+  };
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ViewModeComponent ],
+      declarations: [
+        BookAddComponent,
+        BookManagerComponent,
+        BooksOverviewComponent,
+        TabPageComponent,
+        TabsComponent,
+        ViewModeComponent,
+      ],
       imports: [
-        RouterTestingModule.withRoutes([])
+        RouterTestingModule.withRoutes([]),
+      ],
+      providers: [
+        FormBuilder,
+        provideMockStore({ initialState }),
       ]
     })
     .compileComponents();

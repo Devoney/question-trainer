@@ -2,6 +2,9 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideMockStore, MockStore } from '@ngrx/store/testing';
 import { BookManagerComponent } from './book-manager.component';
 import { IAppState } from 'src/app/store/state/app.state';
+import { BookAddComponent } from '../book-add/book-add.component';
+import { FormBuilder } from '@angular/forms';
+import { BooksOverviewComponent } from '../books-overview/books-overview.component';
 
 describe('BookManagerComponent', () => {
   let component: BookManagerComponent;
@@ -16,8 +19,13 @@ describe('BookManagerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BookManagerComponent ],
+      declarations: [ 
+        BookAddComponent,
+        BookManagerComponent,
+        BooksOverviewComponent,
+       ],
       providers: [
+        FormBuilder,
         provideMockStore({ initialState })
       ]
     })

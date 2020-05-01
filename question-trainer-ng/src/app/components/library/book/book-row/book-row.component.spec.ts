@@ -5,6 +5,8 @@ import { IAppState } from 'src/app/store/state/app.state';
 import { Guid } from 'src/tools/Guid';
 import { Book } from 'src/app/types/Book';
 import { RemoveBook, BooksActionTypes, BooksAction } from 'src/app/store/actions/books.actions';
+import { IconButtonComponent } from 'src/app/components/controls/icon-button/icon-button.component';
+import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 
 describe('BookRowComponent', () => {
   let component: BookRowComponent;
@@ -27,7 +29,11 @@ describe('BookRowComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BookRowComponent ],
+      declarations: [ 
+        BookRowComponent,
+        FaIconComponent,
+        IconButtonComponent,
+     ],
       providers: [
         provideMockStore({ initialState })
       ]
