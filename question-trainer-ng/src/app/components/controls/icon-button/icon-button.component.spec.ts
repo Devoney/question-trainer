@@ -9,7 +9,7 @@ describe('IconButtonComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ 
+      declarations: [
         IconButtonComponent,
         FaIconComponent,
       ],

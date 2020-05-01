@@ -19,7 +19,7 @@ describe('BookManagerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ 
+      declarations: [
         BookAddComponent,
         BookManagerComponent,
         BooksOverviewComponent,

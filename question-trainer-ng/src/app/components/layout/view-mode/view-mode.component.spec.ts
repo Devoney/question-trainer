@@ -16,7 +16,6 @@ describe('ViewModeComponent', () => {
   let component: ViewModeComponent;
   let fixture: ComponentFixture<ViewModeComponent>;
   let activatedRoute: ActivatedRoute;
-  let store: MockStore;
   const initialState: IAppState = {
     library: {
       books: []

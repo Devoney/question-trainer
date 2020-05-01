@@ -29,7 +29,7 @@ describe('BookRowComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ 
+      declarations: [
         BookRowComponent,
         FaIconComponent,
         IconButtonComponent,

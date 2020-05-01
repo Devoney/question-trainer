@@ -26,9 +26,11 @@ context.keys().map(context);
 
 const breakOnWarn = false;
 if (breakOnWarn) {
-  var oldWarningFunction = console.warn;
-  console.warn = function () {
-      debugger;
-      oldWarningFunction.apply(console, arguments);
-  };
+  const oldWarningFunction = console.warn;
+  function breakOnWarning() {
+    // tslint:disable-next-line
+    debugger;
+    oldWarningFunction.apply(console, arguments);
+  }
+  console.warn = breakOnWarning;
 }
