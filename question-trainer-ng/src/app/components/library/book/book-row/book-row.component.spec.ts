@@ -7,6 +7,7 @@ import { Book } from 'src/app/types/Book';
 import { RemoveBook, BooksActionTypes, BooksAction } from 'src/app/store/actions/books.actions';
 import { IconButtonComponent } from 'src/app/components/controls/icon-button/icon-button.component';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
+import { ConfirmationDialogComponent } from 'src/app/components/dialogs/confirmation-dialog/confirmation-dialog.component';
 
 describe('BookRowComponent', () => {
   let component: BookRowComponent;
@@ -48,6 +49,7 @@ describe('BookRowComponent', () => {
     component = fixture.componentInstance;
     nativeElement = fixture.nativeElement as HTMLElement;
     component.book = book;
+    component.confirmationDialog = new ConfirmationDialogComponent(null);
     fixture.detectChanges();
   });
 

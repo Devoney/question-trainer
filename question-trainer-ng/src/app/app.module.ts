@@ -20,6 +20,8 @@ import { TabPageComponent } from './components/layout/tab-page/tab-page.componen
 import { TabsComponent } from './components/layout/tabs/tabs.component';
 import { TopBarComponent } from './components/layout/top-bar/top-bar.component';
 import { ViewModeComponent } from './components/layout/view-mode/view-mode.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ConfirmationDialogComponent } from './components/dialogs/confirmation-dialog/confirmation-dialog.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,7 @@ import { ViewModeComponent } from './components/layout/view-mode/view-mode.compo
     BooksOverviewComponent,
     BookRowComponent,
     IconButtonComponent,
+    ConfirmationDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,7 +46,8 @@ import { ViewModeComponent } from './components/layout/view-mode/view-mode.compo
     HttpClientModule,
     ReactiveFormsModule,
     StoreModule.forRoot(appReducers, { initialState: getInitialAppState() }),
-    FontAwesomeModule
+    FontAwesomeModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

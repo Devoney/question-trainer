@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { IAppState } from 'src/app/store/state/app.state';
 import { Store, select } from '@ngrx/store';
 import { Book } from 'src/app/types/Book';
 import { Observable } from 'rxjs';
 import { selectBooks, selectNrOfBooks } from 'src/app/store/selectors/library.selectors';
+import { ConfirmationDialogComponent } from 'src/app/components/dialogs/confirmation-dialog/confirmation-dialog.component';
 
 @Component({
   selector: 'app-books-overview',
@@ -11,6 +12,8 @@ import { selectBooks, selectNrOfBooks } from 'src/app/store/selectors/library.se
   styleUrls: ['./books-overview.component.css']
 })
 export class BooksOverviewComponent implements OnInit {
+
+  @ViewChild('confirmationDialog') confirmationDialog: ConfirmationDialogComponent;
 
   books$: Observable<Book[]>;
   nrOfBooks$: Observable<number>;
@@ -24,5 +27,4 @@ export class BooksOverviewComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }
