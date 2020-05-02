@@ -1,7 +1,7 @@
 import { initialLibraryState, ILibraryState } from '../state/library.state';
 import { BooksAction, BooksActionTypes } from '../actions/books.actions';
 
-export const libraryReducers = (state = initialLibraryState, action: BooksAction): ILibraryState => {
+export function libraryReducers(state = initialLibraryState, action: BooksAction): ILibraryState {
   switch (action.type) {
     case BooksActionTypes.Add: {
       return {
@@ -18,4 +18,4 @@ export const libraryReducers = (state = initialLibraryState, action: BooksAction
       };
     }
   }
-};
+}

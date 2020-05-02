@@ -1,3 +1,8 @@
+General:
+  ☐ Add i18n.
+    I have chosen https://angular.io/guide/i18n over ngrx-translate as the idea is to have i18n from angular itself evolve where ngrx-translate is to be deprecated
+    once i18n of ng covers everything that is need. And i18n contains more features if you do not necessarily need runtime changing of the language.
+
 Unit testing:
   ✔ Resolve warnings in browser when running unit tests.
   ✔ Fix failing tests due to added store dependency.
