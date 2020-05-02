@@ -11,9 +11,7 @@ import { ConfirmationDialogComponent } from 'src/app/components/dialogs/confirma
   templateUrl: './books-overview.component.html',
   styleUrls: ['./books-overview.component.css']
 })
-export class BooksOverviewComponent implements OnInit {
-
-  @ViewChild('confirmationDialog') confirmationDialog: ConfirmationDialogComponent;
+export class BooksOverviewComponent {
 
   books$: Observable<Book[]>;
   nrOfBooks$: Observable<number>;
@@ -23,8 +21,5 @@ export class BooksOverviewComponent implements OnInit {
   ) {
     this.books$ = this.store.pipe(select(selectBooks));
     this.nrOfBooks$ = this.store.pipe(select(selectNrOfBooks));
-  }
-
-  ngOnInit(): void {
   }
 }

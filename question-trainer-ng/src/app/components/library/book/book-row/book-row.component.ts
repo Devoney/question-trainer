@@ -7,6 +7,8 @@ import { Store } from '@ngrx/store';
 import { IAppState } from 'src/app/store/state/app.state';
 import { BooksActionTypes, RemoveBook } from 'src/app/store/actions/books.actions';
 import { ConfirmationDialogComponent } from 'src/app/components/dialogs/confirmation-dialog/confirmation-dialog.component';
+import { DialogService } from 'src/app/services/ui/dialog.service';
+import { ConfirmationDialogParams } from 'src/app/types/ui/confirmation-dialog-params';
 
 @Component({
   selector: '[app-book-row]',
@@ -17,27 +19,27 @@ export class BookRowComponent implements OnInit {
 
   @Input() book: Book;
   @Input() index: number;
-  @Input() confirmationDialog: ConfirmationDialogComponent;
 
   trashIcon: IconDefinition = faTrash;
 
   constructor(
     private logger: LoggerService,
-    private store: Store<IAppState>
+    private store: Store<IAppState>,
+    private dialogService: DialogService,
   ) { }
 
   ngOnInit(): void {
   }
 
   onTrash(bookId: string): void {
-    this.confirmationDialog.open(
+    const params = new ConfirmationDialogParams(
       'Delete book?',
       'Are you sure you want to delete this book?',
       () => {
         this.delete(bookId);
-      },
-      () => {}
+      }
     );
+    this.dialogService.requestConfirmationDialog(params);
   }
 
   delete(bookId: string): void {

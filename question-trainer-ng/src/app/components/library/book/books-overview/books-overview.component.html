@@ -1,7 +1,4 @@
 <div>
-  <div class="model-container">
-    <app-confirmation-dialog #confirmationDialog></app-confirmation-dialog>
-  </div>
   <table class="table table-striped table-bordered">
     <thead>
       <th></th>
@@ -16,7 +13,7 @@
       <th width="90"></th>
     </thead>
     <tbody>
-      <tr app-book-row *ngFor="let book of (books$ | async); index as bookIndex;" [book]="book" [index]="bookIndex+1" [confirmationDialog]="confirmationDialog">
+      <tr app-book-row *ngFor="let book of (books$ | async); index as bookIndex;" [book]="book" [index]="bookIndex+1">
       </tr>
     </tbody>
     <tfoot [hidden]="(nrOfBooks$ | async) > 0">
