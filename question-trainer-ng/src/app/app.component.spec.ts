@@ -3,6 +3,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { TopBarComponent } from './components/layout/top-bar/top-bar.component';
 import { BottomBarComponent } from './components/layout/bottom-bar/bottom-bar.component';
+import { ConfirmationDialogComponent } from './components/dialogs/confirmation-dialog/confirmation-dialog.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -12,6 +13,7 @@ describe('AppComponent', () => {
       ],
       declarations: [
         AppComponent,
+        ConfirmationDialogComponent,
         BottomBarComponent,
         TopBarComponent,
       ],

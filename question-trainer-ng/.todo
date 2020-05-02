@@ -1,5 +1,5 @@
 Unit testing:
-  ☐ Resolve warnings in browser when running unit tests.
+  ✔ Resolve warnings in browser when running unit tests.
   ✔ Fix failing tests due to added store dependency.
   State:  
     ✔ Add book 
@@ -17,4 +17,4 @@ Refactor:
   ✔ Move responsibility of adding a book to book-add component to reduce bubbling up events.
 
 Feature:
-  ☐ Add confirmation dialog to prevent accidental deletion of a book.
+  ✔ Add confirmation dialog to prevent accidental deletion of a book.
