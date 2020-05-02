@@ -123,6 +123,12 @@
             }
           }
         }
+      },
+      "i18n": {
+        "sourceLocale": "en-US",
+        "locales": {
+          "nl": "src/locale/messages.nl.xlf"
+        }
       }
     }
   },
