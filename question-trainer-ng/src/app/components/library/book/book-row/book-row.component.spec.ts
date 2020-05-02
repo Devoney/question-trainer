@@ -46,7 +46,7 @@ describe('BookRowComponent', () => {
 
     store = TestBed.inject(MockStore);
   }));
-  
+
   beforeEach(() => {
     fixture = TestBed.createComponent(BookRowComponent);
     dialogService = TestBed.inject(DialogService);
