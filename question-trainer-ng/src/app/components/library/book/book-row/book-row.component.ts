@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Book } from 'src/app/types/Book';
+import { Book } from 'src/app/types/book';
 import { IconDefinition } from '@fortawesome/fontawesome-common-types';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { LoggerService } from 'src/app/services/logger.service';

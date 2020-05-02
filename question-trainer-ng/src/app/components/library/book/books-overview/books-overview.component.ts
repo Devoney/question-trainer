@@ -1,10 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { IAppState } from 'src/app/store/state/app.state';
 import { Store, select } from '@ngrx/store';
-import { Book } from 'src/app/types/Book';
+import { Book } from 'src/app/types/book';
 import { Observable } from 'rxjs';
 import { selectBooks, selectNrOfBooks } from 'src/app/store/selectors/library.selectors';
-import { ConfirmationDialogComponent } from 'src/app/components/dialogs/confirmation-dialog/confirmation-dialog.component';
 
 @Component({
   selector: 'app-books-overview',

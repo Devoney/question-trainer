@@ -1,7 +1,7 @@
 import { createSelector } from '@ngrx/store';
 import { IAppState } from '../state/app.state';
 import { ILibraryState, initialLibraryState } from '../state/library.state';
-import { Book } from 'src/app/types/Book';
+import { Book } from 'src/app/types/book';
 
 
 const selectLibrary = (state: IAppState) => {

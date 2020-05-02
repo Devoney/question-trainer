@@ -1,6 +1,6 @@
 import { AddBook } from 'src/app/store/actions/books.actions';
 import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
-import { Book } from 'src/app/types/Book';
+import { Book } from 'src/app/types/book';
 import { Component, EventEmitter, OnInit, Input, Output, SimpleChanges, OnChanges } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Guid } from 'src/tools/Guid';

@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { Book } from 'src/app/types/Book';
+import { Book } from 'src/app/types/book';
 
 export enum BooksActionTypes {
   Add = '[Books] Add',
