@@ -1,4 +1,4 @@
-import { Book } from '../../types/Book';
+import { Book } from '../../types/book';
 
 export interface ILibraryState {
   books: Book[];

@@ -3,7 +3,7 @@ import { LoggerService } from 'src/app/services/logger.service';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Store, select } from '@ngrx/store';
 import { IAppState } from 'src/app/store/state/app.state';
-import { Book } from 'src/app/types/Book';
+import { Book } from 'src/app/types/book';
 import { selectBooks } from 'src/app/store/selectors/library.selectors';
 import { AddBook } from 'src/app/store/actions/books.actions';
 import { Guid } from 'src/tools/Guid';
