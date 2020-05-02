@@ -8,11 +8,13 @@ import { RemoveBook, BooksActionTypes, BooksAction } from 'src/app/store/actions
 import { IconButtonComponent } from 'src/app/components/controls/icon-button/icon-button.component';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { ConfirmationDialogComponent } from 'src/app/components/dialogs/confirmation-dialog/confirmation-dialog.component';
+import { DialogService } from 'src/app/services/ui/dialog.service';
 
 describe('BookRowComponent', () => {
   let component: BookRowComponent;
   let fixture: ComponentFixture<BookRowComponent>;
   let store: MockStore;
+  let dialogService: DialogService;
   let nativeElement: HTMLElement;
 
   const book: Book = {
@@ -34,22 +36,23 @@ describe('BookRowComponent', () => {
         BookRowComponent,
         FaIconComponent,
         IconButtonComponent,
-     ],
+      ],
       providers: [
-        provideMockStore({ initialState })
+        provideMockStore({ initialState }),
+        DialogService,
       ]
     })
     .compileComponents();
 
     store = TestBed.inject(MockStore);
   }));
-
+  
   beforeEach(() => {
     fixture = TestBed.createComponent(BookRowComponent);
+    dialogService = TestBed.inject(DialogService);
     component = fixture.componentInstance;
     nativeElement = fixture.nativeElement as HTMLElement;
     component.book = book;
-    component.confirmationDialog = new ConfirmationDialogComponent(null);
     fixture.detectChanges();
   });
 
@@ -62,8 +65,12 @@ describe('BookRowComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('Should remove book', () => {
+  it('Should remove book when confirmed.', () => {
     // Given
+    dialogService.dialogRequest.subscribe((params) => {
+      params.confirmed();
+    });
+
     let action: RemoveBook;
     store.scannedActions$.subscribe((act) => {
       if (act.type === BooksActionTypes.Remove) {
