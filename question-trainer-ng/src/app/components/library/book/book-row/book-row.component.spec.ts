@@ -85,4 +85,24 @@ describe('BookRowComponent', () => {
     expect(action).toBeDefined();
     expect(action.bookId).toBe(book.id);
   });
+
+  it('Should not remove book when cancelled.', () => {
+    // Given
+    dialogService.dialogRequest.subscribe((params) => {
+      params.canceled();
+    });
+
+    let action: RemoveBook;
+    store.scannedActions$.subscribe((act) => {
+      if (act.type === BooksActionTypes.Remove) {
+        action = act as RemoveBook;
+      }
+    });
+
+    // When
+    clickDeleteButton();
+
+    // Then
+    expect(action).toBeUndefined();
+  });
 });

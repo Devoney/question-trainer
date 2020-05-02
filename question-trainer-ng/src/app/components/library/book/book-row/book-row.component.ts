@@ -37,6 +37,9 @@ export class BookRowComponent implements OnInit {
       'Are you sure you want to delete this book?',
       () => {
         this.delete(bookId);
+      },
+      () => {
+        // Cancel book deletion
       }
     );
     this.dialogService.requestConfirmationDialog(params);
