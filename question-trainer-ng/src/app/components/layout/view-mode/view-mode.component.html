@@ -2,12 +2,12 @@
   <!-- <div :class="[{ 'col-xl-6': showBoth }, { 'col-xl-12': !showBoth && showLibrary }, 'col-lg-12', 'grow box-left']" v-if="showLibrary"> -->
   <div class="col-xl-6 grow box-left">
     <app-tabs>
-      <app-tab-page title="Library">Library</app-tab-page>
-      <app-tab-page title="Books" active="true">
+      <app-tab-page title="Library" i18n-title>Library</app-tab-page>
+      <app-tab-page title="Books" i18n-title active="true">
         <app-book-manager></app-book-manager>
       </app-tab-page>
-      <app-tab-page title="Chapters">Chapters</app-tab-page>
-      <app-tab-page title="Questions">Questions</app-tab-page>
+      <app-tab-page title="Chapters" i18n-title>Chapters</app-tab-page>
+      <app-tab-page title="Questions" i18n-title>Questions</app-tab-page>
     </app-tabs>
   </div>
   <!-- <div :class="[{ 'col-xl-6': showBoth }, { 'col-xl-12': !showBoth && showQuestions }, 'col-lg-12', { 'box-right': showBoth}]" v-if="showQuestions"> -->

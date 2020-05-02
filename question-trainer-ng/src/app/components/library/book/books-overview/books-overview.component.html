@@ -2,13 +2,13 @@
   <table class="table table-striped table-bordered">
     <thead>
       <th></th>
-      <th>Nr.</th>
-      <th class="text-left">Title</th>
-      <th>Nr of
-        <br>chapters
+      <th i18n="Number|As in index">Nr.</th>
+      <th class="text-left" i18n>Title</th>
+      <th><ng-container i18n="Number of|As in the number of items in a collection.">Nr of</ng-container>
+        <br><ng-container i18n>chapters</ng-container>
       </th>
-      <th>Nr of
-        <br>questions
+      <th><ng-container i18n="Number of|As in the number of items in a collection.">Nr of</ng-container>
+        <br><ng-container i18n>questions</ng-container>
       </th>
       <th width="90"></th>
     </thead>
@@ -17,7 +17,7 @@
       </tr>
     </tbody>
     <tfoot [hidden]="(nrOfBooks$ | async) > 0">
-      <th colspan="6">No books</th>
+      <th colspan="6" i18n>No books</th>
     </tfoot>
   </table>
 </div>

@@ -235,6 +235,127 @@
           <context context-type="linenumber">8</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="fdf7cbdc140d0aab0f0b6c06065a0fd448ed6a2e" datatype="html">
+        <source>Title</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/library/book/book-add/book-add.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/library/book/books-overview/books-overview.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="f6755cff4957d5c3c89bafce5651f1b6fa2b1fd9" datatype="html">
+        <source>Add</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/library/book/book-add/book-add.component.html</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7d0b12baa41ec7c064b64185b7deee6c9756d608" datatype="html">
+        <source>by</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/layout/bottom-bar/bottom-bar.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <note priority="1" from="description">Like question-trainer created by John Doe.</note>
+        <note priority="1" from="meaning">created by</note>
+      </trans-unit>
+      <trans-unit id="0b319c4dd6d4ddd74cd138b72ab8109ffcc28f36" datatype="html">
+        <source>Library</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/layout/view-mode/view-mode.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="d2bbf8c30d3d8b3f08a9d0b00d5045d6cbc12104" datatype="html">
+        <source>Books</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/layout/view-mode/view-mode.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="d904f74acb72356dd3547977ca3cf29d6da25946" datatype="html">
+        <source>Chapters</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/layout/view-mode/view-mode.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="c8706cd57d97eb04a61f99e848a9d47d1ccb7d53" datatype="html">
+        <source>Questions</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/layout/view-mode/view-mode.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="cc3bb1d40c19fcd73869dbd2511dacdf2a8baabd" datatype="html">
+        <source>Nr.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/library/book/books-overview/books-overview.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <note priority="1" from="description">As in index</note>
+        <note priority="1" from="meaning">Number</note>
+      </trans-unit>
+      <trans-unit id="a0b21d9d243d018d8967c503126792ad7f4fdaa4" datatype="html">
+        <source>Nr of</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/library/book/books-overview/books-overview.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/library/book/books-overview/books-overview.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+        <note priority="1" from="description">As in the number of items in a collection.</note>
+        <note priority="1" from="meaning">Number of</note>
+      </trans-unit>
+      <trans-unit id="3a702bd10cec973ddebcade0c29df9eaccceb160" datatype="html">
+        <source>chapters</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/library/book/books-overview/books-overview.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="0f1316b7c0dbfdae435c5b6b73297925d9c07d85" datatype="html">
+        <source>questions</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/library/book/books-overview/books-overview.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="b86b0b371d1e45c079b11e6dcd8886fee7b912ad" datatype="html">
+        <source>No books</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/library/book/books-overview/books-overview.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3d3ae7deebc5949b0c1c78b9847886a94321d9fd" datatype="html">
+        <source>No</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/dialogs/confirmation-dialog/confirmation-dialog.component.html</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4f20f2d5a6882190892e58b85f6ccbedfa737952" datatype="html">
+        <source>Yes</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/dialogs/confirmation-dialog/confirmation-dialog.component.html</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ff74402267d61c80546f3de1009ed15c3573a439" datatype="html">
+        <source>Trash</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/library/book/book-row/book-row.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+        <note priority="1" from="description">In order to delete</note>
+        <note priority="1" from="meaning">Trash</note>
+      </trans-unit>
     </body>
   </file>
 </xliff>

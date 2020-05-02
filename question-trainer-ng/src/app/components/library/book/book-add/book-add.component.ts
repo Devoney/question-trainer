@@ -22,7 +22,6 @@ export class BookAddComponent implements OnInit, OnChanges {
   books: Array<Book>;
   books$: Observable<Array<Book>>;
   errorMessage$ = new BehaviorSubject<string>(null);
-  buttonText = 'Add';
   addBookForm: FormGroup;
 
   get bookTitle(): string {

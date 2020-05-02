@@ -2,7 +2,7 @@
   <form [formGroup]="addBookForm">
     <div class="row">
       <div class="col text-left">
-        <label class="font-weight-bold" for="bookTitle">Title:</label>
+        <label class="font-weight-bold" for="bookTitle"><ng-container i18n>Title</ng-container>:</label>
       </div>
     </div>
     <div class="input-group row no-gutters">
@@ -24,7 +24,8 @@
           [disabled]="(invalidTitle$ | async) || (bookTitleIsEmpty$ | async)"
           id="btn-ok-book"
           (click)="ok()"
-        >{{ buttonText }}</button>
+          i18n
+        >Add</button>
       </div>
     </div>
   </form>
