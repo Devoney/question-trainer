@@ -359,6 +359,14 @@
         <source>Delete book?</source>
       </segment>
     </unit>
+    <unit id="7501340698502319262">
+      <notes>
+        <note category="location">src/app/components/i18n-container/i18n-container.component.html:3</note>
+      </notes>
+      <segment>
+        <source>Are you sure you want to delete this book?</source>
+      </segment>
+    </unit>
     <unit id="7385160636957089888">
       <notes>
         <note category="location">src/app/components/layout/view-mode/view-mode.component.html:5</note>

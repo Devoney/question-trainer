@@ -37,7 +37,7 @@ export class BookRowComponent implements OnInit {
     
     const params = new ConfirmationDialogParams(
       this.i18nService.getTranslationByName('delete-book'),
-      'Are you sure you want to delete this book?',
+      this.i18nService.getTranslationByName('are-you-sure-you-want-to-delete-this-book'),
       () => {
         this.delete(bookId);
       },
