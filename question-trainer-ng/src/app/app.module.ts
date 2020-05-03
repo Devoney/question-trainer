@@ -22,32 +22,35 @@ import { TopBarComponent } from './components/layout/top-bar/top-bar.component';
 import { ViewModeComponent } from './components/layout/view-mode/view-mode.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ConfirmationDialogComponent } from './components/dialogs/confirmation-dialog/confirmation-dialog.component';
+import { I18nContainerComponent } from './components/i18n-container/i18n-container.component';
+import { I18nService } from './services/i18n.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     BookAddComponent,
     BookManagerComponent,
+    BookRowComponent,
+    BooksOverviewComponent,
     BottomBarComponent,
+    ConfirmationDialogComponent,
+    I18nContainerComponent,
+    IconButtonComponent,
     QuestionListComponent,
     TabPageComponent,
     TabsComponent,
     TopBarComponent,
     ViewModeComponent,
-    BooksOverviewComponent,
-    BookRowComponent,
-    IconButtonComponent,
-    ConfirmationDialogComponent,
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
+    BrowserModule,
+    FontAwesomeModule,
     FormsModule,
     HttpClientModule,
+    NgbModule,
     ReactiveFormsModule,
     StoreModule.forRoot(appReducers, { initialState: getInitialAppState() }),
-    FontAwesomeModule,
-    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -9,6 +9,7 @@ import { BooksActionTypes, RemoveBook } from 'src/app/store/actions/books.action
 import { ConfirmationDialogComponent } from 'src/app/components/dialogs/confirmation-dialog/confirmation-dialog.component';
 import { DialogService } from 'src/app/services/ui/dialog.service';
 import { ConfirmationDialogParams } from 'src/app/types/ui/confirmation-dialog-params';
+import { I18nService } from 'src/app/services/i18n.service';
 
 @Component({
   selector: '[app-book-row]',
@@ -26,14 +27,16 @@ export class BookRowComponent implements OnInit {
     private logger: LoggerService,
     private store: Store<IAppState>,
     private dialogService: DialogService,
+    private i18nService: I18nService,
   ) { }
 
   ngOnInit(): void {
   }
 
   onTrash(bookId: string): void {
+    
     const params = new ConfirmationDialogParams(
-      'Delete book?',
+      this.i18nService.getTranslationByName('delete-book'),
       'Are you sure you want to delete this book?',
       () => {
         this.delete(bookId);
@@ -46,7 +49,7 @@ export class BookRowComponent implements OnInit {
   }
 
   delete(bookId: string): void {
-    this.logger.logs('Trashing book with id: ', bookId);
+    this.logger.log('Trashing book with id: ', bookId);
     const removeBookAction = new RemoveBook(bookId);
     this.store.dispatch(removeBookAction);
   }

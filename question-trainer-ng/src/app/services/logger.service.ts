@@ -7,12 +7,9 @@ export class LoggerService {
 
   constructor() { }
 
-  log(message: any): void {
-    console.log(message);
-  }
-
-  logs(message: any, arg1: any): void {
-    console.log(message);
-    console.log(arg1);
+  log(... messages : any[]): void {
+    messages.forEach((message) => {
+      console.log(message);
+    });
   }
 }

@@ -270,46 +270,30 @@
         <source>Add</source>
       </segment>
     </unit>
-    <unit id="377839002236014923">
+    <unit id="3542042671420335679">
       <notes>
-        <note category="description">Like question-trainer created by John Doe.</note>
-        <note category="meaning">created by</note>
-        <note category="location">src/app/components/layout/bottom-bar/bottom-bar.component.html:4</note>
+        <note category="location">src/app/components/dialogs/confirmation-dialog/confirmation-dialog.component.html:12</note>
       </notes>
       <segment>
-        <source>by</source>
+        <source>No</source>
       </segment>
     </unit>
-    <unit id="7385160636957089888">
+    <unit id="2807800733729323332">
       <notes>
-        <note category="location">src/app/components/layout/view-mode/view-mode.component.html:5</note>
+        <note category="location">src/app/components/dialogs/confirmation-dialog/confirmation-dialog.component.html:13</note>
       </notes>
       <segment>
-        <source>Library</source>
+        <source>Yes</source>
       </segment>
     </unit>
-    <unit id="5224604665222373201">
+    <unit id="1032660623087147663">
       <notes>
-        <note category="location">src/app/components/layout/view-mode/view-mode.component.html:6</note>
+        <note category="description">In order to delete</note>
+        <note category="meaning">Trash</note>
+        <note category="location">src/app/components/library/book/book-row/book-row.component.html:11</note>
       </notes>
       <segment>
-        <source>Books</source>
-      </segment>
-    </unit>
-    <unit id="5096495468612049743">
-      <notes>
-        <note category="location">src/app/components/layout/view-mode/view-mode.component.html:9</note>
-      </notes>
-      <segment>
-        <source>Chapters</source>
-      </segment>
-    </unit>
-    <unit id="907136822175606758">
-      <notes>
-        <note category="location">src/app/components/layout/view-mode/view-mode.component.html:10</note>
-      </notes>
-      <segment>
-        <source>Questions</source>
+        <source>Trash</source>
       </segment>
     </unit>
     <unit id="4274277352118416377">
@@ -357,30 +341,54 @@
         <source>No books</source>
       </segment>
     </unit>
-    <unit id="3542042671420335679">
+    <unit id="377839002236014923">
       <notes>
-        <note category="location">src/app/components/dialogs/confirmation-dialog/confirmation-dialog.component.html:12</note>
+        <note category="description">Like question-trainer created by John Doe.</note>
+        <note category="meaning">created by</note>
+        <note category="location">src/app/components/layout/bottom-bar/bottom-bar.component.html:4</note>
       </notes>
       <segment>
-        <source>No</source>
+        <source>by</source>
       </segment>
     </unit>
-    <unit id="2807800733729323332">
+    <unit id="6668537118340417647">
       <notes>
-        <note category="location">src/app/components/dialogs/confirmation-dialog/confirmation-dialog.component.html:13</note>
+        <note category="location">src/app/components/i18n-container/i18n-container.component.html:2</note>
       </notes>
       <segment>
-        <source>Yes</source>
+        <source>Delete book?</source>
       </segment>
     </unit>
-    <unit id="1032660623087147663">
+    <unit id="7385160636957089888">
       <notes>
-        <note category="description">In order to delete</note>
-        <note category="meaning">Trash</note>
-        <note category="location">src/app/components/library/book/book-row/book-row.component.html:11</note>
+        <note category="location">src/app/components/layout/view-mode/view-mode.component.html:5</note>
       </notes>
       <segment>
-        <source>Trash</source>
+        <source>Library</source>
+      </segment>
+    </unit>
+    <unit id="5224604665222373201">
+      <notes>
+        <note category="location">src/app/components/layout/view-mode/view-mode.component.html:6</note>
+      </notes>
+      <segment>
+        <source>Books</source>
+      </segment>
+    </unit>
+    <unit id="5096495468612049743">
+      <notes>
+        <note category="location">src/app/components/layout/view-mode/view-mode.component.html:9</note>
+      </notes>
+      <segment>
+        <source>Chapters</source>
+      </segment>
+    </unit>
+    <unit id="907136822175606758">
+      <notes>
+        <note category="location">src/app/components/layout/view-mode/view-mode.component.html:10</note>
+      </notes>
+      <segment>
+        <source>Questions</source>
       </segment>
     </unit>
   </file>

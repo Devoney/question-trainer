@@ -330,6 +330,15 @@
         <target>Bibliotheek</target>
       </segment>
     </unit>
+    <unit id="6668537118340417647">
+      <notes>
+        <note category="location">src/app/components/i18n-container/i18n-container.component.html:2</note>
+      </notes>
+      <segment>
+        <source>Delete book?</source>
+        <target>Boek verwijderen?</target>
+      </segment>
+    </unit>
     <unit id="5224604665222373201">
       <notes>
         <note category="location">src/app/components/layout/view-mode/view-mode.component.html:6</note>
