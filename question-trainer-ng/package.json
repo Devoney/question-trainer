@@ -8,7 +8,8 @@
     "test": "ng test",
     "lint": "ng lint --fix=true",
     "e2e": "ng e2e",
-    "i18n": "ng xi18n --output-path=src/locale --format=xlf2"
+    "i18n": "ng xi18n --output-path=src/locale --format=xlf2",
+    "serve:nl": "ng serve --configuration=nl"
   },
   "private": true,
   "dependencies": {
