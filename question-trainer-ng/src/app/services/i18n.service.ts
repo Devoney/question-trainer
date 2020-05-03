@@ -1,5 +1,6 @@
 import { Injectable, ElementRef } from '@angular/core';
 import { LoggerService } from './logger.service';
+import { i18n } from '../enums/i18n';
 
 @Injectable({
   providedIn: 'root'
@@ -18,8 +19,8 @@ export class I18nService {
     this.i18nContainer = elementRef.nativeElement;
   }
 
-  getTranslationByName(name: string): string {
-    const htmlElment = this.i18nContainer.querySelector('span[name="' + name + '"]');
+  getTranslation(title: i18n): string {
+    const htmlElment = this.i18nContainer.querySelector('span[title="' + title + '"]');
     return htmlElment.innerHTML;
   }
 }

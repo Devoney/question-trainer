@@ -10,6 +10,7 @@ import { ConfirmationDialogComponent } from 'src/app/components/dialogs/confirma
 import { DialogService } from 'src/app/services/ui/dialog.service';
 import { ConfirmationDialogParams } from 'src/app/types/ui/confirmation-dialog-params';
 import { I18nService } from 'src/app/services/i18n.service';
+import { i18n } from 'src/app/enums/i18n';
 
 @Component({
   selector: '[app-book-row]',
@@ -36,8 +37,8 @@ export class BookRowComponent implements OnInit {
   onTrash(bookId: string): void {
     
     const params = new ConfirmationDialogParams(
-      this.i18nService.getTranslationByName('delete-book'),
-      this.i18nService.getTranslationByName('are-you-sure-you-want-to-delete-this-book'),
+      this.i18nService.getTranslation(i18n.DeleteBook),
+      this.i18nService.getTranslation(i18n.AreYouSureYouWantToDeleteThisBook),
       () => {
         this.delete(bookId);
       },
