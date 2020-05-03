@@ -8,6 +8,7 @@ import { i18n } from '../enums/i18n';
 export class I18nService {
 
   i18nContainer: HTMLElement;
+  cache: { [key: string]: string; } = { };
 
   constructor (
     private logger: LoggerService,
@@ -20,7 +21,15 @@ export class I18nService {
   }
 
   getTranslation(title: i18n): string {
+    const fromCache = this.cache[title];
+    if (!!fromCache) {
+      this.logger.log(title + ' from cache');
+      return fromCache;
+    }
+
     const htmlElment = this.i18nContainer.querySelector('span[title="' + title + '"]');
-    return htmlElment.innerHTML;
+    const value = htmlElment.innerHTML;
+    this.cache[title] = value;
+    return value;
   }
 }
