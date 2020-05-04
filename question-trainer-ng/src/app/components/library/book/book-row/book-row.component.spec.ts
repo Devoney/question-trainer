@@ -10,7 +10,7 @@ import { I18nService } from 'src/app/services/i18n.service';
 import { IconButtonComponent } from 'src/app/components/controls/icon-button/icon-button.component';
 import { LoggerService } from 'src/app/services/logger.service';
 import { provideMockStore, MockStore } from '@ngrx/store/testing';
-import { RemoveBook, BooksActionTypes, BooksAction } from 'src/app/store/actions/books.actions';
+import { RemoveBook, BooksActionTypes, BooksAction, SetBookIdToEdit } from 'src/app/store/actions/books.actions';
 
 describe('BookRowComponent', () => {
   let component: BookRowComponent;
@@ -60,8 +60,16 @@ describe('BookRowComponent', () => {
   });
 
   function clickDeleteButton(): void {
-    const deleteButton = nativeElement.querySelector('app-icon-button[title="Trash"]') as HTMLButtonElement;
-    deleteButton.click();
+    clickButton('app-icon-button[title="Trash"]');
+  }
+
+  function clickEditButton(): void {
+    clickButton('app-icon-button[title="Edit"]');
+  }
+
+  function clickButton(query: string): void {
+    const button = nativeElement.querySelector(query) as HTMLButtonElement;
+    button.click();
   }
 
   it('should create', () => {
@@ -107,5 +115,21 @@ describe('BookRowComponent', () => {
 
     // Then
     expect(action).toBeUndefined();
+  });
+
+  it('Should set book id to edit.', () => {
+    // Given
+    let action: SetBookIdToEdit;
+    store.scannedActions$.subscribe((act) => {
+      if (act.type === BooksActionTypes.SetBookIdToEdit) {
+        action = act as SetBookIdToEdit;
+      }
+    });
+
+    // When
+    clickEditButton();
+
+    // Then
+    expect(action).toBeDefined();
   });
 });
