@@ -10,7 +10,7 @@ export class I18nService {
   i18nContainer: HTMLElement;
   cache: { [key: string]: string; } = { };
 
-  constructor (
+  constructor(
     private logger: LoggerService,
   ) {
 

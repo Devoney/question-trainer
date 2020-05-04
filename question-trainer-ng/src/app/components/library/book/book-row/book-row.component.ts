@@ -5,8 +5,7 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { LoggerService } from 'src/app/services/logger.service';
 import { Store } from '@ngrx/store';
 import { IAppState } from 'src/app/store/state/app.state';
-import { BooksActionTypes, RemoveBook } from 'src/app/store/actions/books.actions';
-import { ConfirmationDialogComponent } from 'src/app/components/dialogs/confirmation-dialog/confirmation-dialog.component';
+import { RemoveBook } from 'src/app/store/actions/books.actions';
 import { DialogService } from 'src/app/services/ui/dialog.service';
 import { ConfirmationDialogParams } from 'src/app/types/ui/confirmation-dialog-params';
 import { I18nService } from 'src/app/services/i18n.service';
@@ -35,7 +34,6 @@ export class BookRowComponent implements OnInit {
   }
 
   onTrash(bookId: string): void {
-    
     const params = new ConfirmationDialogParams(
       this.i18nService.getTranslation(i18n.DeleteBook),
       this.i18nService.getTranslation(i18n.AreYouSureYouWantToDeleteThisBook),

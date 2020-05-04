@@ -9,6 +9,9 @@ import { IconButtonComponent } from 'src/app/components/controls/icon-button/ico
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { ConfirmationDialogComponent } from 'src/app/components/dialogs/confirmation-dialog/confirmation-dialog.component';
 import { DialogService } from 'src/app/services/ui/dialog.service';
+import { LoggerService } from 'src/app/services/logger.service';
+import { I18nService } from 'src/app/services/i18n.service';
+import { i18n } from 'src/app/enums/i18n';
 
 describe('BookRowComponent', () => {
   let component: BookRowComponent;
@@ -16,6 +19,11 @@ describe('BookRowComponent', () => {
   let store: MockStore;
   let dialogService: DialogService;
   let nativeElement: HTMLElement;
+  const mockI18nService: Partial<I18nService> = {
+    getTranslation: (title: i18n) => {
+      return '';
+    }
+  };
 
   const book: Book = {
     title: 'My title',
@@ -38,8 +46,10 @@ describe('BookRowComponent', () => {
         IconButtonComponent,
       ],
       providers: [
+        LoggerService,
         provideMockStore({ initialState }),
         DialogService,
+        { provide: I18nService, useValue: mockI18nService }
       ]
     })
     .compileComponents();
@@ -48,7 +58,7 @@ describe('BookRowComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BookRowComponent);
+    fixture = TestBed.createComponent(BookRowComponent);``
     dialogService = TestBed.inject(DialogService);
     component = fixture.componentInstance;
     nativeElement = fixture.nativeElement as HTMLElement;
