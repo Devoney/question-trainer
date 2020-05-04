@@ -4,7 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { Store, select } from '@ngrx/store';
 import { IAppState } from 'src/app/store/state/app.state';
 import { Book } from 'src/app/types/book';
-import { selectBooks } from 'src/app/store/selectors/library.selectors';
+import { selectBooks, selectBookIdToEdit } from 'src/app/store/selectors/library.selectors';
 import { AddBook } from 'src/app/store/actions/books.actions';
 import { Guid } from 'src/tools/Guid';
 
@@ -15,10 +15,13 @@ import { Guid } from 'src/tools/Guid';
 })
 export class BookManagerComponent implements OnInit {
 
+  bookIdToEdit$: Observable<string>;
+
   constructor(
     private logger: LoggerService,
-
+    private store: Store<IAppState>,
   ) {
+    this.bookIdToEdit$ = this.store.select(selectBookIdToEdit);
   }
 
   ngOnInit(): void {

@@ -1,0 +1,32 @@
+<div class="form-group">
+  <form [formGroup]="editBookForm">
+    <div class="row">
+      <div class="col text-left">
+        <label class="font-weight-bold" for="bookTitle"><ng-container i18n>Title</ng-container>:</label>
+      </div>
+    </div>
+    <div class="input-group row no-gutters">
+      <input
+        class="form-control"
+        [class.is-invalid]="bookTitleIsInvalidOrEmpty$ | async"
+        formControlName="bookTitle"
+        type="text"
+        (keydown.enter)="ok()"
+        (keydown.esc)="cancel()"
+        [title]="errorMessage$ | async"
+        (keyup)="onTitleChanged()"
+      >
+      <div class="input-group-append">
+        <button
+          class="btn input-group-append"
+          [class.btn-primary]="(invalidTitle$ | async) === false"
+          [class.btn-secondary]="invalidTitle$ | async"
+          [disabled]="(invalidTitle$ | async) || (bookTitleIsEmpty$ | async)"
+          id="btn-edit-book"
+          (click)="ok()"
+          i18n
+        >Edit</button>
+      </div>
+    </div>
+  </form>
+</div>
