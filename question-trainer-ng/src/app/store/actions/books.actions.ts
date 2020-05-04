@@ -4,6 +4,7 @@ import { Book } from 'src/app/types/book';
 export enum BooksActionTypes {
   Add = '[Books] Add',
   Remove = '[Books] Remove',
+  SetBookIdToEdit = '[Books] SetBookIdToEdit'
 }
 
 export class AddBook implements Action {
@@ -22,4 +23,14 @@ export class RemoveBook implements Action {
   ) {}
 }
 
-export type BooksAction = AddBook | RemoveBook;
+export class SetBookIdToEdit implements Action {
+  public readonly type = BooksActionTypes.SetBookIdToEdit;
+
+  constructor(
+    public bookId: string
+  ) {
+
+  }
+}
+
+export type BooksAction = AddBook | RemoveBook | SetBookIdToEdit;

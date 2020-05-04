@@ -26,3 +26,6 @@ Feature:
   ☐ Be able to choose your language in the app.
   ☐ Add edit button for book title.
   ☐ Adds error message that book title already exists.
+
+Git:
+  ☐ Cleanup unused branches.

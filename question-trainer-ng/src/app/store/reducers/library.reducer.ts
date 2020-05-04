@@ -17,5 +17,12 @@ export function libraryReducers(state = initialLibraryState, action: BooksAction
         books
       };
     }
+
+    case BooksActionTypes.SetBookIdToEdit: {
+      return {
+        ...state,
+        bookIdToEdit: action.bookId
+      };
+    }
   }
 }

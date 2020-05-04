@@ -5,17 +5,14 @@ import { IAppState } from 'src/app/store/state/app.state';
 import { BookAddComponent } from '../book-add/book-add.component';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { BooksOverviewComponent } from '../books-overview/books-overview.component';
+import { getEmptyState } from 'test/store';
 
 describe('BookManagerComponent', () => {
   let component: BookManagerComponent;
   let fixture: ComponentFixture<BookManagerComponent>;
   let store: MockStore;
 
-  const initialState: IAppState = {
-    library: {
-      books: []
-    }
-  };
+  const initialState = getEmptyState();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

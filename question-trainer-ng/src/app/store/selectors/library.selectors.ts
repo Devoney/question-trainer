@@ -24,3 +24,18 @@ export const selectNrOfBooks = createSelector(
     return books.length;
   }
 );
+
+export const selectBookIdToEdit = createSelector(
+  selectLibrary,
+  (libraryState: ILibraryState) => {
+    return libraryState.bookIdToEdit;
+  }
+);
+
+export const selectBookToEdit = createSelector(
+  selectBooks,
+  selectBookIdToEdit,
+  (books, bookId) => {
+    return books.find(b => b.id === bookId);
+  }
+);

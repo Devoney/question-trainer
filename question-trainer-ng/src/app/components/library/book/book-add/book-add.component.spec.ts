@@ -5,17 +5,14 @@ import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { IAppState } from 'src/app/store/state/app.state';
 import { AddBook, BooksActionTypes } from 'src/app/store/actions/books.actions';
 import { Action } from '@ngrx/store';
+import { getEmptyState } from 'test/store';
 
 describe('BookAddComponent', () => {
   let component: BookAddComponent;
   let fixture: ComponentFixture<BookAddComponent>;
   let nativeElement: HTMLElement;
   let store: MockStore;
-  const initialState: IAppState = {
-    library: {
-      books: []
-    }
-  };
+  const initialState = getEmptyState();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

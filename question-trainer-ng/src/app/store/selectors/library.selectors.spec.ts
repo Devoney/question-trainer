@@ -1,21 +1,16 @@
 import { selectBooks, selectNrOfBooks } from './library.selectors';
 import { Book } from 'src/app/types/Book';
 import { IAppState } from '../state/app.state';
+import { getStateWithBooks } from 'test/store';
 
 describe('LibrarySelectors', () => {
-  const books: Array<Book> = [
-    {
-      title: 'Book 1'
-    } as Book,
-    {
-      title: 'Book 2'
-    } as Book
-  ];
-  const appState: IAppState = {
-    library: {
-      books
-    }
-  };
+  const book1 = {
+    title: 'Book 1'
+  } as Book;
+  const book2 = {
+    title: 'Book 2'
+  } as Book;
+  const appState = getStateWithBooks(book1, book2);
 
   it('selectBooks should return books.', () => {
     // Given

@@ -1,11 +1,11 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Book } from 'src/app/types/book';
 import { IconDefinition } from '@fortawesome/fontawesome-common-types';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { LoggerService } from 'src/app/services/logger.service';
 import { Store } from '@ngrx/store';
 import { IAppState } from 'src/app/store/state/app.state';
-import { RemoveBook } from 'src/app/store/actions/books.actions';
+import { RemoveBook, SetBookIdToEdit } from 'src/app/store/actions/books.actions';
 import { DialogService } from 'src/app/services/ui/dialog.service';
 import { ConfirmationDialogParams } from 'src/app/types/ui/confirmation-dialog-params';
 import { I18nService } from 'src/app/services/i18n.service';
@@ -22,6 +22,7 @@ export class BookRowComponent implements OnInit {
   @Input() index: number;
 
   trashIcon: IconDefinition = faTrash;
+  editIcon: IconDefinition = faEdit;
 
   constructor(
     private logger: LoggerService,
@@ -31,6 +32,11 @@ export class BookRowComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+  }
+
+  onEdit(bookId: string): void {
+    const editBookAction = new SetBookIdToEdit(bookId);
+    this.store.dispatch(editBookAction);
   }
 
   onTrash(bookId: string): void {

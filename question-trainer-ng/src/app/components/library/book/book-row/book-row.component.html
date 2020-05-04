@@ -5,6 +5,13 @@
 <td></td>
 <td>
   <app-icon-button 
+    [icon]="editIcon" 
+    size="s"
+    (click)="onEdit(book.id)"
+    title="Edit"
+    i18n-title="Edit|In order to edit a record"
+  ></app-icon-button>
+  <app-icon-button 
     [icon]="trashIcon" 
     size="s"
     (click)="onTrash(book.id)"

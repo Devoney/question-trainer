@@ -1,17 +1,16 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { provideMockStore, MockStore } from '@ngrx/store/testing';
-import { BookRowComponent } from './book-row.component';
-import { IAppState } from 'src/app/store/state/app.state';
-import { Guid } from 'src/tools/Guid';
 import { Book } from 'src/app/types/Book';
-import { RemoveBook, BooksActionTypes, BooksAction } from 'src/app/store/actions/books.actions';
-import { IconButtonComponent } from 'src/app/components/controls/icon-button/icon-button.component';
-import { FaIconComponent } from '@fortawesome/angular-fontawesome';
-import { ConfirmationDialogComponent } from 'src/app/components/dialogs/confirmation-dialog/confirmation-dialog.component';
+import { BookRowComponent } from './book-row.component';
 import { DialogService } from 'src/app/services/ui/dialog.service';
-import { LoggerService } from 'src/app/services/logger.service';
-import { I18nService } from 'src/app/services/i18n.service';
+import { FaIconComponent } from '@fortawesome/angular-fontawesome';
+import { getStateWithBooks } from 'test/store';
+import { Guid } from 'src/tools/Guid';
 import { i18n } from 'src/app/enums/i18n';
+import { I18nService } from 'src/app/services/i18n.service';
+import { IconButtonComponent } from 'src/app/components/controls/icon-button/icon-button.component';
+import { LoggerService } from 'src/app/services/logger.service';
+import { provideMockStore, MockStore } from '@ngrx/store/testing';
+import { RemoveBook, BooksActionTypes, BooksAction } from 'src/app/store/actions/books.actions';
 
 describe('BookRowComponent', () => {
   let component: BookRowComponent;
@@ -30,13 +29,7 @@ describe('BookRowComponent', () => {
     id: Guid.newGuid()
   };
 
-  const initialState: IAppState = {
-    library: {
-      books: [
-        book
-      ]
-    }
-  };
+  const initialState = getStateWithBooks(book);
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -58,7 +51,7 @@ describe('BookRowComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BookRowComponent);``
+    fixture = TestBed.createComponent(BookRowComponent);
     dialogService = TestBed.inject(DialogService);
     component = fixture.componentInstance;
     nativeElement = fixture.nativeElement as HTMLElement;

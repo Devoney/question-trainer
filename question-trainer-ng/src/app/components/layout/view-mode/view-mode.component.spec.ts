@@ -11,16 +11,13 @@ import { IAppState } from 'src/app/store/state/app.state';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { BooksOverviewComponent } from '../../library/book/books-overview/books-overview.component';
+import { getEmptyState } from 'test/store';
 
 describe('ViewModeComponent', () => {
   let component: ViewModeComponent;
   let fixture: ComponentFixture<ViewModeComponent>;
   let activatedRoute: ActivatedRoute;
-  const initialState: IAppState = {
-    library: {
-      books: []
-    }
-  };
+  const initialState: IAppState = getEmptyState();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
