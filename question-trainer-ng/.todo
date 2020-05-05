@@ -27,6 +27,7 @@ Feature:
   ✔ Add edit button for book title.
   ✔ Display books on alphabet
   ✔ Block deleting books while in edit mode.
+  ✔ Disable edit of book that is already being edited.
   ☐ Adds error message that book title already exists.
 
 Git:

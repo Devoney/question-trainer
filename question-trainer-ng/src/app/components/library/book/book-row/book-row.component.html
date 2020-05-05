@@ -5,8 +5,10 @@
 <td></td>
 <td>
   <span>
-    <app-icon-button [icon]="editIcon" size="s" (click)="onEdit(book.id)" title="Edit"
-      i18n-title="Edit|In order to edit a record"></app-icon-button>
+    <button [disabled]="isBeingEdited$ | async" title="Edit" class="btn btn-s"
+      i18n-title="Edit|In order to edit a record" (click)="onEdit(book.id)">
+      <fa-icon [icon]="editIcon"></fa-icon>
+    </button>
   </span>
   <span>
     <button [disabled]="cannotDelete$ | async" title="Trash" class="btn btn-s" i18n-title="Trash|In order to delete"

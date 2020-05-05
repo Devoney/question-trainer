@@ -25,6 +25,7 @@ export class BookRowComponent implements OnInit {
   @Input() index: number;
 
   cannotDelete$: Observable<boolean>;
+  isBeingEdited$: Observable<boolean>;
 
   trashIcon: IconDefinition = faTrash;
   editIcon: IconDefinition = faEdit;
@@ -38,6 +39,11 @@ export class BookRowComponent implements OnInit {
     this.cannotDelete$ = this.store.pipe(
       select(selectBookIdToEdit), 
       map(bookIdToEdit => !!bookIdToEdit)
+    );
+
+    this.isBeingEdited$ = this.store.pipe(
+      select(selectBookIdToEdit),
+      map(bookIdToEdit => bookIdToEdit === this.book.id)
     );
   }
 
