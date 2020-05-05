@@ -24,8 +24,8 @@ const context = require.context('./', true, /\.spec\.ts$/);
 // And load the modules.
 context.keys().map(context);
 
-const breakOnWarn = false;
-if (breakOnWarn) {
+const breakOnWarning = false;
+if (breakOnWarning) {
   const oldWarningFunction = console.warn;
   function breakOnWarning() {
     // tslint:disable-next-line

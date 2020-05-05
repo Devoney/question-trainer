@@ -1,5 +1,5 @@
 <div class="form-group">
-  <form [formGroup]="addBookForm">
+  <form [formGroup]="addBookForm" name="add-book-form">
     <div class="row">
       <div class="col text-left">
         <label class="font-weight-bold" for="bookTitle"><ng-container i18n>Title</ng-container>:</label>
@@ -24,6 +24,7 @@
           [disabled]="(invalidTitle$ | async) || (bookTitleIsEmpty$ | async)"
           id="btn-ok-book"
           (click)="ok()"
+          type="button"
           i18n
         >Add</button>
       </div>

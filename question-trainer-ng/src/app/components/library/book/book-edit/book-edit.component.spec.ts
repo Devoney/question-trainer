@@ -1,22 +1,31 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { BookEditComponent } from './book-edit.component';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { IAppState } from 'src/app/store/state/app.state';
 import { provideMockStore, MockStore } from '@ngrx/store/testing';
-import { getEmptyState } from 'test/store';
+import { getEmptyState, getStateWithBooks } from 'test/store';
 import { BooksActionTypes, UpdateBook } from 'src/app/store/actions/books.actions';
+import { getRandomBook } from 'test/library';
 
 describe('BookEditComponent', () => {
   let component: BookEditComponent;
   let fixture: ComponentFixture<BookEditComponent>;
   let store: MockStore;
   let nativeElement: HTMLElement;
-  const initialState: IAppState = getEmptyState();
+  const book1 = getRandomBook();
+  const book2 = getRandomBook();
+  const initialState: IAppState = getStateWithBooks(book1, book2);
+  initialState.library.bookIdToEdit = book2.id;
 
   beforeEach(async(() => {
+
     TestBed.configureTestingModule({
       declarations: [ BookEditComponent ],
+      imports: [
+        FormsModule,
+        ReactiveFormsModule,
+      ],
       providers: [
         FormBuilder,
         provideMockStore({ initialState }),
@@ -70,9 +79,11 @@ describe('BookEditComponent', () => {
   
     // When
     setBookTitle(newTitle);
-    // clickEditButton();
+    clickEditButton();
   
     // Then
     expect(action).toBeDefined();
+    expect(action.book.id).toBe(book2.id);
+    expect(action.book.title).toBe(newTitle);
   });
 });
