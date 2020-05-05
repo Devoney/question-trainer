@@ -4,18 +4,14 @@
 <td></td>
 <td></td>
 <td>
-  <app-icon-button 
-    [icon]="editIcon" 
-    size="s"
-    (click)="onEdit(book.id)"
-    title="Edit"
-    i18n-title="Edit|In order to edit a record"
-  ></app-icon-button>
-  <app-icon-button 
-    [icon]="trashIcon" 
-    size="s"
-    (click)="onTrash(book.id)"
-    title="Trash"
-    i18n-title="Trash|In order to delete"
-  ></app-icon-button>
+  <span>
+    <app-icon-button [icon]="editIcon" size="s" (click)="onEdit(book.id)" title="Edit"
+      i18n-title="Edit|In order to edit a record"></app-icon-button>
+  </span>
+  <span>
+    <button [disabled]="cannotDelete$ | async" title="Trash" class="btn btn-s" i18n-title="Trash|In order to delete"
+      (click)="onTrash(book.id)">
+      <fa-icon [icon]="trashIcon"></fa-icon>
+    </button>
+  </span>
 </td>
