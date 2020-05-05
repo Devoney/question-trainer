@@ -7,6 +7,7 @@ import { Book } from 'src/app/types/book';
 import { selectBooks, selectBookIdToEdit } from 'src/app/store/selectors/library.selectors';
 import { AddBook } from 'src/app/store/actions/books.actions';
 import { Guid } from 'src/tools/Guid';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-book-manager',
@@ -15,13 +16,17 @@ import { Guid } from 'src/tools/Guid';
 })
 export class BookManagerComponent implements OnInit {
 
-  bookIdToEdit$: Observable<string>;
+  isInEditMode$: Observable<boolean>;
 
   constructor(
     private logger: LoggerService,
     private store: Store<IAppState>,
   ) {
-    this.bookIdToEdit$ = this.store.select(selectBookIdToEdit);
+    this.isInEditMode$ = this.store.select(selectBookIdToEdit).pipe(
+      map(bookIdToEdit => {
+        return !!bookIdToEdit;
+      })
+    );
   }
 
   ngOnInit(): void {

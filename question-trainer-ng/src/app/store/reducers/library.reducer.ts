@@ -1,5 +1,5 @@
 import { initialLibraryState, ILibraryState } from '../state/library.state';
-import { BooksAction, BooksActionTypes } from '../actions/books.actions';
+import { BooksAction, BooksActionTypes, UpdateBook } from '../actions/books.actions';
 
 export function libraryReducers(state = initialLibraryState, action: BooksAction): ILibraryState {
   switch (action.type) {
@@ -22,6 +22,15 @@ export function libraryReducers(state = initialLibraryState, action: BooksAction
       return {
         ...state,
         bookIdToEdit: action.bookId
+      };
+    }
+
+    case BooksActionTypes.UpdateBook: {
+      const books = state.books.filter(b => b.id !== action.book.id);
+      books.push(action.book);
+      return {
+        ...state,
+        books
       };
     }
   }

@@ -1,7 +1,7 @@
 import { libraryReducers } from './library.reducer';
 import { ILibraryState } from '../state/library.state';
 import { Book } from 'src/app/types/Book';
-import { AddBook, RemoveBook, SetBookIdToEdit } from '../actions/books.actions';
+import { AddBook, RemoveBook, SetBookIdToEdit, UpdateBook } from '../actions/books.actions';
 import { getRandomBook } from 'test/library';
 import { getStateWithBooks } from 'test/store';
 
@@ -47,5 +47,29 @@ describe('LibraryReducer', () => {
 
     // Then
     expect(actual.bookIdToEdit).toBe(book.id);
+  });
+
+  it('Should update book.', () => {
+    // Given
+    const book1 = getRandomBook();
+    const bookId = book1.id;
+    const newTitle = 'My beautiful book';
+    const book2 = getRandomBook();
+    const book2OriginalTitle = book2.title;
+    const initialState = getStateWithBooks(book1, book2);
+    book1.title = newTitle;
+    const action = new UpdateBook(book1);
+
+    // When
+    const actual = libraryReducers(initialState.library, action);
+
+    // Then
+    const expectedUpdatedBook = actual.books.find(b => b.id === bookId);
+    expect(expectedUpdatedBook).toBeDefined();
+    expect(expectedUpdatedBook.title).toBe(newTitle);
+
+    const expectedNotUpdatedBook = actual.books.find(b => b.id !== bookId);
+    expect(expectedNotUpdatedBook).toBeDefined();
+    expect(expectedNotUpdatedBook.title).toBe(book2OriginalTitle);
   });
 });

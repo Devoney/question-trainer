@@ -1,4 +1,4 @@
-import { Component, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnInit, SimpleChanges, OnChanges } from '@angular/core';
 import { selectBooks, selectBookToEdit } from 'src/app/store/selectors/library.selectors';
 import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
 import { Book } from 'src/app/types/book';
@@ -15,7 +15,7 @@ import { SetBookIdToEdit } from 'src/app/store/actions/books.actions';
   templateUrl: './book-edit.component.html',
   styleUrls: ['./book-edit.component.css']
 })
-export class BookEditComponent implements OnInit {
+export class BookEditComponent implements OnInit, OnChanges {
 
   invalidTitle$ = new BehaviorSubject<boolean>(false);
   bookTitleIsEmpty$: Observable<boolean>;

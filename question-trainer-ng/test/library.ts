@@ -1,4 +1,4 @@
-import { Book } from 'src/app/types/book'
+import { Book } from 'src/app/types/book';
 import { Guid } from 'src/tools/Guid';
 
 export const getRandomBook = (): Book => {

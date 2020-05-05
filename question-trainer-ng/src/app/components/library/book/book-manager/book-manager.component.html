@@ -1,8 +1,8 @@
 <div>
   <div class="row">
     <div class="col">
-      <app-book-add *ngIf="!(bookIdToEdit$ | async)"></app-book-add>
-      <app-book-edit *ngIf="!!(bookIdToEdit$ | async)"></app-book-edit>
+      <app-book-add *ngIf="(isInEditMode$ | async) === false"></app-book-add>
+      <app-book-edit *ngIf="(isInEditMode$ | async)"></app-book-edit>
     </div>
   </div>
   <div class="row">
