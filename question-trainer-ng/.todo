@@ -25,6 +25,8 @@ Feature:
   ✔ Add confirmation dialog to prevent accidental deletion of a book.
   ☐ Be able to choose your language in the app.
   ☐ Add edit button for book title.
+  ☐ Display books on alphabet
+  ☐ Block deleting books while in edit mode.
   ☐ Adds error message that book title already exists.
 
 Git:

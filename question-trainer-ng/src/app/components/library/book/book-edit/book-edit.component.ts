@@ -8,7 +8,8 @@ import { IAppState } from 'src/app/store/state/app.state';
 import { LoggerService } from 'src/app/services/logger.service';
 import { map } from 'rxjs/operators';
 import { Store, select } from '@ngrx/store';
-import { SetBookIdToEdit } from 'src/app/store/actions/books.actions';
+import { SetBookIdToEdit, UpdateBook } from 'src/app/store/actions/books.actions';
+import { clone } from 'src/tools/ObjectExt';
 
 @Component({
   selector: 'app-book-edit',
@@ -65,7 +66,10 @@ export class BookEditComponent implements OnInit, OnChanges {
     });
 
     this.store.pipe(select(selectBookToEdit)).subscribe(book => {
-      this.book = book;
+      if(!!book) {
+        this.book = clone(book);
+        this.editBookForm.setValue({ bookTitle: book.title});
+      }
     });
   }
 
@@ -92,6 +96,8 @@ export class BookEditComponent implements OnInit, OnChanges {
 
   clear(): void {
     this.editBookForm.reset();
+    this.store.dispatch(new SetBookIdToEdit(null));
+    this.book = null;
   }
 
   onTitleChanged(): void {
@@ -112,8 +118,8 @@ export class BookEditComponent implements OnInit, OnChanges {
     if (this.bookTitleExists(title)) {
       return;
     }
-
-    // this.store.dispatch(new AddBook(book));
+    this.book.title = this.bookTitle;
+    const updateBook = new UpdateBook(this.book);
+    this.store.dispatch(updateBook);
   }
-
 }
