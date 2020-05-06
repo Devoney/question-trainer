@@ -15,14 +15,17 @@ import { Store, select } from '@ngrx/store';
   templateUrl: './book-add.component.html',
   styleUrls: ['./book-add.component.css']
 })
-export class BookAddComponent implements OnInit, OnChanges {
-  invalidTitle$ = new BehaviorSubject<boolean>(false);
+export class BookAddComponent implements OnInit {
+  books$: Observable<Array<Book>>;
+  bookTitle$: Observable<string>;
+  bookTitleExists$: Observable<boolean>;
   bookTitleIsEmpty$: Observable<boolean>;
   bookTitleIsInvalidAndNotEmpty$: Observable<boolean>;
-  books: Array<Book>;
-  books$: Observable<Array<Book>>;
-  errorMessage$ = new BehaviorSubject<string>(null);
+  errorMessage$: Observable<string>;
+  invalidTitle$ = new BehaviorSubject<boolean>(false);
+
   addBookForm: FormGroup;
+  books: Array<Book>;
 
   get bookTitle(): string {
     return this.addBookForm.value.bookTitle;
@@ -41,9 +44,13 @@ export class BookAddComponent implements OnInit, OnChanges {
       bookTitle: ''
     });
 
-    this.bookTitleIsEmpty$ = this.addBookForm.valueChanges.pipe(
-      map(formValues => {
-        return !formValues.bookTitle;
+    this.bookTitle$ = this.addBookForm.valueChanges.pipe(
+      map(formValues => formValues.bookTitle)
+    );
+
+    this.bookTitleIsEmpty$ = this.bookTitle$.pipe(
+      map(bookTitle => {
+        return !bookTitle;
       })
     );
 
@@ -61,14 +68,33 @@ export class BookAddComponent implements OnInit, OnChanges {
       this.books = books;
       this.logger.log(books);
     });
+
+    this.errorMessage$ = combineLatest([
+      this.bookTitle$,
+      this.books$
+    ]).pipe(
+      map(([bookTitle, books]) => {
+        if (!bookTitle) {
+          return null;
+        }
+        
+        if (!books || books.length === 0) {
+          return null;
+        }
+        
+        const bookWithSameTitle = books
+          .filter(book => !!book)
+          .find(book => book.title.toLowerCase() === bookTitle.toLowerCase());
+        if (!bookWithSameTitle) {
+          return '';
+        }
+
+        return 'This title is already in use.';
+      })
+    );
   }
 
   ngOnInit(): void {
-  }
-
-  ngOnChanges(changes: SimpleChanges) {
-    this.logger.log('Changes: ');
-    this.logger.log(changes);
   }
 
   ok(): void {
