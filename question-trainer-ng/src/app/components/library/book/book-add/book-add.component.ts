@@ -100,6 +100,16 @@ export class BookAddComponent implements OnInit {
         return null;
       })
     );
+
+    combineLatest([
+      this.bookTitleExists$
+    ]).pipe(
+      map(([bookTitleExists]) => {
+        return bookTitleExists;
+      })
+    ).subscribe((bookTitleExists) => {
+      this.invalidTitle$.next(bookTitleExists);
+    });
   }
 
   ngOnInit(): void {
@@ -126,7 +136,6 @@ export class BookAddComponent implements OnInit {
     const title = this.addBookForm.value.bookTitle;
     if (!!title) {
       const titleExists = this.bookTitleExists(title);
-      this.invalidTitle$.next(titleExists);
     }
   }
 
