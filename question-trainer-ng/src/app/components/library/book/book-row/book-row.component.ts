@@ -35,9 +35,9 @@ export class BookRowComponent implements OnInit {
     private store: Store<IAppState>,
     private dialogService: DialogService,
     private i18nService: I18nService,
-  ) { 
+  ) {
     this.cannotDelete$ = this.store.pipe(
-      select(selectBookIdToEdit), 
+      select(selectBookIdToEdit),
       map(bookIdToEdit => !!bookIdToEdit)
     );
 

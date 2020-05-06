@@ -17,7 +17,7 @@ import { Store, select } from '@ngrx/store';
 })
 export class BookAddComponent implements OnInit {
   books$: Observable<Array<Book>>;
-  bookTitle$: Observable<string>;
+  bookTitle$ = new BehaviorSubject<string>(null);
   bookTitleExists$: Observable<boolean>;
   bookTitleIsEmpty$: Observable<boolean>;
   bookTitleIsInvalidAndNotEmpty$: Observable<boolean>;
@@ -25,7 +25,6 @@ export class BookAddComponent implements OnInit {
   invalidTitle$ = new BehaviorSubject<boolean>(false);
 
   addBookForm: FormGroup;
-  books: Array<Book>;
 
   get bookTitle(): string {
     return this.addBookForm.value.bookTitle;
@@ -44,9 +43,9 @@ export class BookAddComponent implements OnInit {
       bookTitle: ''
     });
 
-    this.bookTitle$ = this.addBookForm.valueChanges.pipe(
-      map(formValues => formValues.bookTitle)
-    );
+    this.addBookForm.valueChanges.subscribe(formValues => {
+      this.bookTitle$.next(formValues.bookTitle);
+    });
 
     this.bookTitleIsEmpty$ = this.bookTitle$.pipe(
       map(bookTitle => {
@@ -64,10 +63,6 @@ export class BookAddComponent implements OnInit {
     );
 
     this.books$ = this.store.pipe(select(selectBooks));
-    this.books$.subscribe(books => {
-      this.books = books;
-      this.logger.log(books);
-    });
 
     this.bookTitleExists$ = combineLatest([
       this.bookTitle$,
@@ -77,11 +72,11 @@ export class BookAddComponent implements OnInit {
         if (!bookTitle) {
           return false;
         }
-        
+
         if (!books || books.length === 0) {
           return false;
         }
-        
+
         const bookWithSameTitle = books
           .filter(book => !!book)
           .find(book => book.title.toLowerCase() === bookTitle.toLowerCase());
@@ -116,7 +111,7 @@ export class BookAddComponent implements OnInit {
   }
 
   ok(): void {
-    const bookTitle = this.bookTitle;
+    const bookTitle = this.bookTitle$.getValue();
     const invalidTitle = this.invalidTitle$.getValue();
     if (bookTitle && bookTitle.length > 0 && !invalidTitle) {
       this.add(bookTitle);
@@ -132,24 +127,7 @@ export class BookAddComponent implements OnInit {
     this.addBookForm.reset();
   }
 
-  onTitleChanged(): void {
-    const title = this.addBookForm.value.bookTitle;
-    if (!!title) {
-      const titleExists = this.bookTitleExists(title);
-    }
-  }
-
-  bookTitleExists(title: string): boolean {
-    return this.books
-      .filter(book => !!book)
-      .find(book => book.title.toLowerCase() === title.toLowerCase()) != null;
-  }
-
   add(title: string) {
-    if (this.bookTitleExists(title)) {
-      return;
-    }
-
     const book: Book = {
       id: Guid.newGuid(),
       title

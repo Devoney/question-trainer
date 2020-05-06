@@ -60,11 +60,11 @@ describe('BookRowComponent', () => {
   });
 
   function clickDeleteButton(): void {
-    clickButton('app-icon-button[title="Trash"]');
+    clickButton('button[title="Trash"]');
   }
 
   function clickEditButton(): void {
-    clickButton('app-icon-button[title="Edit"]');
+    clickButton('button[title="Edit"]');
   }
 
   function clickButton(query: string): void {

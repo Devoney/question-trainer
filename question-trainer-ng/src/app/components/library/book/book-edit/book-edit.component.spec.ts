@@ -76,11 +76,11 @@ describe('BookEditComponent', () => {
         action = act as UpdateBook;
       }
     });
-  
+
     // When
     setBookTitle(newTitle);
     clickEditButton();
-  
+
     // Then
     expect(action).toBeDefined();
     expect(action.book.id).toBe(book2.id);

@@ -66,7 +66,7 @@ export class BookEditComponent implements OnInit, OnChanges {
     });
 
     this.store.pipe(select(selectBookToEdit)).subscribe(book => {
-      if(!!book) {
+      if (!!book) {
         this.book = clone(book);
         this.editBookForm.setValue({ bookTitle: book.title});
       }
