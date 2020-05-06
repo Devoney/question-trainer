@@ -69,27 +69,35 @@ export class BookAddComponent implements OnInit {
       this.logger.log(books);
     });
 
-    this.errorMessage$ = combineLatest([
+    this.bookTitleExists$ = combineLatest([
       this.bookTitle$,
       this.books$
     ]).pipe(
       map(([bookTitle, books]) => {
         if (!bookTitle) {
-          return null;
+          return false;
         }
         
         if (!books || books.length === 0) {
-          return null;
+          return false;
         }
         
         const bookWithSameTitle = books
           .filter(book => !!book)
           .find(book => book.title.toLowerCase() === bookTitle.toLowerCase());
-        if (!bookWithSameTitle) {
-          return '';
-        }
 
-        return 'This title is already in use.';
+        return !!bookWithSameTitle;
+      })
+    );
+
+    this.errorMessage$ = combineLatest([
+      this.bookTitleExists$,
+    ]).pipe(
+      map(([bookTitleExists]) => {
+        if (bookTitleExists) {
+          return 'This title is already in use.';
+        }
+        return null;
       })
     );
   }
