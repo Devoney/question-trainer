@@ -1,4 +1,5 @@
 export enum i18n {
+  AreYouSureYouWantToDeleteThisBook = 'are-you-sure-you-want-to-delete-this-book',
   DeleteBook = 'delete-book',
-  AreYouSureYouWantToDeleteThisBook = 'are-you-sure-you-want-to-delete-this-book'
+  TitleAlreadyInUse = 'this-title-is-already-in-use',
 }
