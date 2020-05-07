@@ -422,7 +422,7 @@
     </unit>
     <unit id="907136822175606758">
       <notes>
-        <note category="location">src/app/components/layout/view-mode/view-mode.component.html:10</note>
+        <note category="location">src/app/components/layout/view-mode/view-mode.component.html:12</note>
       </notes>
       <segment>
         <source>Questions</source>
@@ -442,6 +442,14 @@
       </notes>
       <segment>
         <source>Ch. Nr.</source>
+      </segment>
+    </unit>
+    <unit id="4335548177977692221">
+      <notes>
+        <note category="location">src/app/components/library/book/book-select/book-select.component.html:2</note>
+      </notes>
+      <segment>
+        <source>Book</source>
       </segment>
     </unit>
   </file>

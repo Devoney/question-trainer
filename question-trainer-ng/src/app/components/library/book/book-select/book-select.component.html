@@ -1,0 +1,6 @@
+<div>
+    <label class="font-weight-bold"><ng-container i18n>Book</ng-container>:</label>
+    <select class="form-control" v-model="bookSelected">
+        <option *ngFor="let book of (books$ | async)" [value]="book.id">{{ book.title }}</option>
+    </select>
+</div>

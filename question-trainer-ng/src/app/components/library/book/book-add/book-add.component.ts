@@ -11,7 +11,7 @@ import { selectBooks } from 'src/app/store/selectors/library.selectors';
 import { Store, select } from '@ngrx/store';
 import { I18nService } from 'src/app/services/i18n.service';
 import { i18n } from 'src/app/enums/i18n';
-
+import * as _ from 'lodash';
 @Component({
   selector: 'app-book-add',
   templateUrl: './book-add.component.html',
@@ -65,7 +65,12 @@ export class BookAddComponent implements OnInit {
       })
     );
 
-    this.books$ = this.store.pipe(select(selectBooks));
+    this.books$ = this.store.pipe( // TODO: Refactor, this sorting is done more often.
+      select(selectBooks),
+      map(books => {
+        return _.sortBy(books, (b) => b.title);
+      })
+    );
 
     this.bookTitleExists$ = combineLatest([
       this.bookTitle$,

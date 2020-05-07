@@ -1,13 +1,11 @@
-
 <div>
-  <div class="row">
-    <div class="col">
+  <div class="row form-group">
+    <div class="col-5 text-left">
+      <app-book-select></app-book-select>
+    </div>
+    <div class="col text-left">
       <app-chapter-add *ngIf="(isInEditMode$ | async) === false"></app-chapter-add>
     </div>
   </div>
-  <div class="row">
-    <div class="col books-overview">
-      No chapter overview yet
-    </div>
-  </div>
+  No chapter overview yet
 </div>
