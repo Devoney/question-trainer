@@ -2,8 +2,9 @@ import { libraryReducers } from './library.reducer';
 import { ILibraryState } from '../state/library.state';
 import { Book } from 'src/app/types/Book';
 import { AddBook, RemoveBook, SetBookIdToEdit, UpdateBook } from '../actions/books.actions';
-import { getRandomBook } from 'test/library';
+import { getRandomBook, getRandomBookWithChapters, getRandomChapter } from 'test/library';
 import { getStateWithBooks } from 'test/store';
+import { AddChapter } from '../actions/chapters.actions';
 
 describe('LibraryReducer', () => {
   it('Should add a book.', () => {
@@ -71,5 +72,24 @@ describe('LibraryReducer', () => {
     const expectedNotUpdatedBook = actual.books.find(b => b.id !== bookId);
     expect(expectedNotUpdatedBook).toBeDefined();
     expect(expectedNotUpdatedBook.title).toBe(book2OriginalTitle);
+  });
+
+  it('Should add chapter to book.', () => {
+    // Given
+    const nrOfChapters = 3;
+    const book1 = getRandomBookWithChapters(2);
+    const book2 = getRandomBookWithChapters(nrOfChapters);
+    const initialState = getStateWithBooks(book1, book2);
+    const chapter = getRandomChapter();
+    const action = new AddChapter(book2.id, chapter);
+
+    // When
+    const actual = libraryReducers(initialState.library, action);
+
+    // Then
+    console.log(book2);
+    const book = actual.books.find(b => b.id === book2.id);
+    expect(book.chapters.length).toBe(nrOfChapters + 1);
+    expect(book.chapters[nrOfChapters]).toBe(chapter);
   });
 });

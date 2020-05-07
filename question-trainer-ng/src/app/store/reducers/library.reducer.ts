@@ -1,8 +1,10 @@
 import { initialLibraryState, ILibraryState } from '../state/library.state';
 import { BooksAction, BooksActionTypes, UpdateBook } from '../actions/books.actions';
+import { ChaptersActionTypes, ChaptersAction } from '../actions/chapters.actions';
 
-export function libraryReducers(state = initialLibraryState, action: BooksAction): ILibraryState {
+export function libraryReducers(state = initialLibraryState, action: BooksAction | ChaptersAction): ILibraryState {
   switch (action.type) {
+    //#region Books
     case BooksActionTypes.Add: {
       return {
         ...state,
@@ -33,5 +35,16 @@ export function libraryReducers(state = initialLibraryState, action: BooksAction
         books
       };
     }
+    //#endregion
+    
+    //#region Chapters
+    case ChaptersActionTypes.Add: {
+      const book = state.books.find(b => b.id === action.bookId);
+      book.chapters.push(action.chapter);
+      return {
+        ...state
+      };
+    }
+    //#endregion
   }
 }

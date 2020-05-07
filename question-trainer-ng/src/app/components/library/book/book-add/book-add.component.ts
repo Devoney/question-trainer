@@ -133,7 +133,8 @@ export class BookAddComponent implements OnInit {
   add(title: string) {
     const book: Book = {
       id: Guid.newGuid(),
-      title
+      title,
+      chapters: [],
     };
     this.store.dispatch(new AddBook(book));
   }

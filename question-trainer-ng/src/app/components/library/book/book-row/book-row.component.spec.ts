@@ -26,7 +26,8 @@ describe('BookRowComponent', () => {
 
   const book: Book = {
     title: 'My title',
-    id: Guid.newGuid()
+    id: Guid.newGuid(),
+    chapters: []
   };
 
   const initialState = getStateWithBooks(book);
