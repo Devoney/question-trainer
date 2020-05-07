@@ -8,7 +8,7 @@ export enum ChaptersActionTypes {
 export class AddChapter implements Action {
     public readonly type = ChaptersActionTypes.Add;
 
-    constructor (
+    constructor(
       public bookId: string,
       public chapter: Chapter,
     ) {

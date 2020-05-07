@@ -12,7 +12,7 @@ export const getRandomBook = (): Book => {
 
 export const getRandomBookWithChapters = (nrOfChapters: number): Book => {
   const book = getRandomBook();
-  for (let i=0; i<nrOfChapters; i++) {
+  for (let i = 0; i < nrOfChapters; i++) {
     book.chapters.push(getRandomChapter());
   }
   return book;
@@ -23,5 +23,5 @@ export const getRandomChapter = (): Chapter => {
     id: Guid.newGuid(),
     nr: Guid.newGuid().substring(0, 6),
     title: Guid.newGuid().substring(0, 6),
-  }
+  };
 };

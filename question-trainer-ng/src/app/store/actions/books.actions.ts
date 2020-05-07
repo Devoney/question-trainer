@@ -5,6 +5,7 @@ export enum BooksActionTypes {
   Add = '[Books] Add',
   Remove = '[Books] Remove',
   SetBookIdToEdit = '[Books] SetBookIdToEdit',
+  SetSelectedBookId = '[Books] SetSelectedBookId',
   UpdateBook = '[Books] UpdateBook',
 }
 
@@ -44,4 +45,14 @@ export class UpdateBook implements Action {
   }
 }
 
-export type BooksAction = AddBook | RemoveBook | SetBookIdToEdit | UpdateBook;
+export class SetSelectedBookId implements Action {
+  public readonly type = BooksActionTypes.SetSelectedBookId;
+
+  constructor(
+    public bookId: string,
+  ) {
+
+  }
+}
+
+export type BooksAction = AddBook | RemoveBook | SetBookIdToEdit | SetSelectedBookId | UpdateBook;

@@ -1,9 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { ChapterAddComponent } from './chapter-add.component';
-import { MockStore, provideMockStore } from '@ngrx/store/testing';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { getEmptyState } from 'test/store';
-import { FormBuilder } from '@angular/forms';
+import { MockStore, provideMockStore } from '@ngrx/store/testing';
 
 describe('ChapterAddComponent', () => {
   let component: ChapterAddComponent;
@@ -15,6 +14,9 @@ describe('ChapterAddComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ ChapterAddComponent ],
+      imports : [
+        ReactiveFormsModule,
+      ],
       providers: [
         FormBuilder,
         provideMockStore({ initialState }),
@@ -22,7 +24,7 @@ describe('ChapterAddComponent', () => {
     })
     .compileComponents();
 
-    store = TestBed.inject(MockStore)
+    store = TestBed.inject(MockStore);
   }));
 
   beforeEach(() => {

@@ -35,8 +35,15 @@ export function libraryReducers(state = initialLibraryState, action: BooksAction
         books
       };
     }
+
+    case BooksActionTypes.SetSelectedBookId: {
+      return {
+        ...state,
+        bookIdSelected: action.bookId,
+      };
+    }
     //#endregion
-    
+
     //#region Chapters
     case ChaptersActionTypes.Add: {
       const book = state.books.find(b => b.id === action.bookId);

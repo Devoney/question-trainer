@@ -1,14 +1,12 @@
-import { async, ComponentFixture, TestBed, tick, fakeAsync } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideMockStore, MockStore } from '@ngrx/store/testing';
 import { BookAddComponent } from './book-add.component';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { IAppState } from 'src/app/store/state/app.state';
 import { AddBook, BooksActionTypes } from 'src/app/store/actions/books.actions';
 import { Action } from '@ngrx/store';
 import { getEmptyState, getStateWithBooks } from 'test/store';
 import { getRandomBook } from 'test/library';
 import { i18n } from 'src/app/enums/i18n';
-import { I18nService } from 'src/app/services/i18n.service';
 import { provideI18nServiceMock } from 'test/I18nService';
 
 describe('BookAddComponent', () => {
