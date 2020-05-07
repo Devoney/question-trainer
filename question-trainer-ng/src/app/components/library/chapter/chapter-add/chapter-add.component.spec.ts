@@ -3,6 +3,7 @@ import { ChapterAddComponent } from './chapter-add.component';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { getEmptyState } from 'test/store';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
+import { BookSelectComponent } from '../../book/book-select/book-select.component';
 
 describe('ChapterAddComponent', () => {
   let component: ChapterAddComponent;
@@ -13,7 +14,10 @@ describe('ChapterAddComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ChapterAddComponent ],
+      declarations: [ 
+        BookSelectComponent,
+        ChapterAddComponent
+      ],
       imports : [
         ReactiveFormsModule,
       ],

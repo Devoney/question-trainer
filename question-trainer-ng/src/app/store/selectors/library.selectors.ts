@@ -39,3 +39,10 @@ export const selectBookToEdit = createSelector(
     return books.find(b => b.id === bookId);
   }
 );
+
+export const selectSelectedBookId = createSelector(
+  selectLibrary,
+  (library) => {
+    return library.bookIdSelected;
+  }
+);

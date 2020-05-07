@@ -4,6 +4,9 @@ General:
 Unit testing:
   ✔ That a title is required when editing a book  
 
+Refactor:
+  ☐ // TODO: Refactor, this sorting is done more often.
+
 Feature:
   ☐ Be able to choose your language in the app.
 

@@ -14,6 +14,7 @@ import { BooksOverviewComponent } from '../../library/book/books-overview/books-
 import { getEmptyState } from 'test/store';
 import { ChapterAddComponent } from '../../library/chapter/chapter-add/chapter-add.component';
 import { ChapterManagerComponent } from '../../library/chapter/chapter-manager/chapter-manager.component';
+import { BookSelectComponent } from '../../library/book/book-select/book-select.component';
 
 describe('ViewModeComponent', () => {
   let component: ViewModeComponent;
@@ -26,6 +27,7 @@ describe('ViewModeComponent', () => {
       declarations: [
         BookAddComponent,
         BookManagerComponent,
+        BookSelectComponent,
         BooksOverviewComponent,
         ChapterAddComponent,
         ChapterManagerComponent,
