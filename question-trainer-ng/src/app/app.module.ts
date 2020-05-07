@@ -14,7 +14,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { getInitialAppState } from './store/state/app.state';
 import { HttpClientModule } from '@angular/common/http';
 import { I18nContainerComponent } from './components/i18n-container/i18n-container.component';
-import { I18nService } from './services/i18n.service';
 import { IconButtonComponent } from './components/controls/icon-button/icon-button.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgModule } from '@angular/core';
@@ -25,6 +24,8 @@ import { TabPageComponent } from './components/layout/tab-page/tab-page.componen
 import { TabsComponent } from './components/layout/tabs/tabs.component';
 import { TopBarComponent } from './components/layout/top-bar/top-bar.component';
 import { ViewModeComponent } from './components/layout/view-mode/view-mode.component';
+import { ChapterAddComponent } from './components/library/chapter/chapter-add/chapter-add.component';
+import { ChapterManagerComponent } from './components/library/chapter/chapter-manager/chapter-manager.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,8 @@ import { ViewModeComponent } from './components/layout/view-mode/view-mode.compo
     TopBarComponent,
     ViewModeComponent,
     BookEditComponent,
+    ChapterAddComponent,
+    ChapterManagerComponent,
   ],
   imports: [
     AppRoutingModule,

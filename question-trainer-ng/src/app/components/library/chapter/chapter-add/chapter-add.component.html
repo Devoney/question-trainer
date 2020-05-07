@@ -1,0 +1,39 @@
+<div>
+  <form [formGroup]="addChapterForm" name="add-chapter-form">
+    <div class="row">
+      <div class="col-2 text-left">
+        <label class="font-weight-bold">
+          <ng-container i18n>Ch. Nr.</ng-container>:
+        </label>
+        <input class="form-control"
+               [class.is-invalid]="invalidNr$ | async"
+               type="text"
+               formControlName="nr"
+               (keydown.esc)="cancel()"
+               [title]="nrErrorMessage$ | async">
+      </div>
+      <div class="col text-left">
+        <label class="font-weight-bold">
+          <ng-container i18n>Title</ng-container>:
+        </label>
+        <div class="input-group row no-gutters">
+          <input class="form-control"
+                 [class.is-invalid]="invalidTitle$ | async"
+                 type="text"
+                 formControlName="title"
+                 (keydown.enter)="ok()"
+                 (keydown.esc)="cancel()"
+                 [title]="titleErrorMessage$ | async">
+          <div class="input-group-append">
+            <button class="btn input-group-append"
+                    [class.btn-primary]="(hasValidInput$ | async) === true"
+                    [class.btn-secondary]="(hasValidInput$ | async) === false"
+                    [disabled]="(hasValidInput$ | async) === false"
+                    (click)="ok()"
+                    i18n>Add</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

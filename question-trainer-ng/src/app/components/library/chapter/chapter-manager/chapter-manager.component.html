@@ -1,0 +1,13 @@
+
+<div>
+  <div class="row">
+    <div class="col">
+      <app-chapter-add *ngIf="(isInEditMode$ | async) === false"></app-chapter-add>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col books-overview">
+      No chapter overview yet
+    </div>
+  </div>
+</div>

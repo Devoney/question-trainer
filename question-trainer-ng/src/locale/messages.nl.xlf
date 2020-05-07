@@ -483,13 +483,22 @@
         <target>Verwijderen</target>
       </segment>
     </unit>
-        <unit id="7585826646011739428">
+    <unit id="7585826646011739428">
       <notes>
         <note category="location">src/app/components/library/book/book-edit/book-edit.component.html:29</note>
       </notes>
       <segment>
         <source>Edit</source>
         <target>Wijzigen</target>
+      </segment>
+    </unit>
+    <unit id="4422838908617796038">
+      <notes>
+        <note category="location">src/app/components/library/chapter/chapter-add/chapter-add.component.html:6</note>
+      </notes>
+      <segment>
+        <source>Ch. Nr.</source>
+        <target>Hfdstk</target>
       </segment>
     </unit>
   </file>

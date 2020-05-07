@@ -258,6 +258,7 @@
         <note category="location">src/app/components/library/book/book-add/book-add.component.html:5</note>
         <note category="location">src/app/components/library/book/books-overview/books-overview.component.html:6</note>
         <note category="location">src/app/components/library/book/book-edit/book-edit.component.html:5</note>
+        <note category="location">src/app/components/library/chapter/chapter-add/chapter-add.component.html:17</note>
       </notes>
       <segment>
         <source>Title</source>
@@ -266,6 +267,7 @@
     <unit id="3249513483374643425">
       <notes>
         <note category="location">src/app/components/library/book/book-add/book-add.component.html:28</note>
+        <note category="location">src/app/components/library/chapter/chapter-add/chapter-add.component.html:33</note>
       </notes>
       <segment>
         <source>Add</source>
@@ -432,6 +434,14 @@
       </notes>
       <segment>
         <source>Edit</source>
+      </segment>
+    </unit>
+    <unit id="4422838908617796038">
+      <notes>
+        <note category="location">src/app/components/library/chapter/chapter-add/chapter-add.component.html:6</note>
+      </notes>
+      <segment>
+        <source>Ch. Nr.</source>
       </segment>
     </unit>
   </file>

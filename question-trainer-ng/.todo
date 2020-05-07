@@ -1,8 +1,8 @@
 General:
-  ☐ Set error message that a title is required when editing a book. 
+  ✔ Set error message that a title is required when editing a book. 
 
 Unit testing:
-  ☐ That a title is required when editing a book  
+  ✔ That a title is required when editing a book  
 
 Feature:
   ☐ Be able to choose your language in the app.
