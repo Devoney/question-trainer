@@ -9,17 +9,13 @@ import { getEmptyState, getStateWithBooks } from 'test/store';
 import { getRandomBook } from 'test/library';
 import { i18n } from 'src/app/enums/i18n';
 import { I18nService } from 'src/app/services/i18n.service';
+import { provideI18nServiceMock } from 'test/I18nService';
 
 describe('BookAddComponent', () => {
   let component: BookAddComponent;
   let fixture: ComponentFixture<BookAddComponent>;
   let nativeElement: HTMLElement;
   let store: MockStore;
-  const mockI18nService: Partial<I18nService> = {
-    getTranslation: (title: i18n) => {
-      return '' + title;
-    }
-  };
   const initialState = getEmptyState();
 
   beforeEach(async(() => {
@@ -31,7 +27,7 @@ describe('BookAddComponent', () => {
       providers: [
         FormBuilder,
         provideMockStore({ initialState }),
-        { provide: I18nService, useValue: mockI18nService }
+        provideI18nServiceMock(),
       ]
     })
     .compileComponents();

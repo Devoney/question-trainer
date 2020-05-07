@@ -2,7 +2,7 @@ General:
   ✔ Add i18n.
     I have chosen https://angular.io/guide/i18n over ngrx-translate as the idea is to have i18n from angular itself evolve where ngrx-translate is to be deprecated
     once i18n of ng covers everything that is need. And i18n contains more features if you do not necessarily need runtime changing of the language.
-  ☐ Update i18n in book-add.
+  ✔ Update i18n in book-add.
 
 Unit testing:
   ✔ Resolve warnings in browser when running unit tests.
@@ -15,10 +15,10 @@ Unit testing:
   Components:
     book-add:
       ✔ Test book addition to store through ui.
-      ☐ Test display of error message when title already exists
+      ✔ Test display of error message when title already exists
     book-row:
       ✔ Test book removal from store through ui.
-      ☐ Test display of error message when title already exists from another book.
+      ✔ Test display of error message when title already exists from another book.
 
 Refactor:
   ✔ // TODO: Fix this in a reactive way using observables
@@ -31,9 +31,9 @@ Feature:
   ✔ Display books on alphabet
   ✔ Block deleting books while in edit mode.
   ✔ Disable edit of book that is already being edited.
-  ☐ Adds error message that book title already exists.
+  ✔ Adds error message that book title already exists.
     ✔ While adding
-    ☐ While editing.
+    ✔ While editing.
 
 Git:
   ☐ Cleanup unused branches.

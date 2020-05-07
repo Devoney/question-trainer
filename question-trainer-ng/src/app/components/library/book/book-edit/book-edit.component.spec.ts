@@ -1,12 +1,13 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { BookEditComponent } from './book-edit.component';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Store } from '@ngrx/store';
 import { IAppState } from 'src/app/store/state/app.state';
 import { provideMockStore, MockStore } from '@ngrx/store/testing';
-import { getEmptyState, getStateWithBooks } from 'test/store';
+import { getStateWithBooks } from 'test/store';
 import { BooksActionTypes, UpdateBook } from 'src/app/store/actions/books.actions';
 import { getRandomBook } from 'test/library';
+import { i18n } from 'src/app/enums/i18n';
+import { provideI18nServiceMock } from 'test/I18nService';
 
 describe('BookEditComponent', () => {
   let component: BookEditComponent;
@@ -29,6 +30,7 @@ describe('BookEditComponent', () => {
       providers: [
         FormBuilder,
         provideMockStore({ initialState }),
+        provideI18nServiceMock(),
       ]
     })
     .compileComponents();
@@ -85,5 +87,40 @@ describe('BookEditComponent', () => {
     expect(action).toBeDefined();
     expect(action.book.id).toBe(book2.id);
     expect(action.book.title).toBe(newTitle);
+  });
+
+  it('Should show error message that title is in use.', () => {
+    // Given
+    const expectedErrorMessage = '' + i18n.TitleAlreadyInUse;
+
+    // When
+    setBookTitle(book1.title);
+
+    // Then
+    expect(nativeElement.innerHTML).toContain(expectedErrorMessage);
+  });
+
+  it('Should not show error message that title is in use for a new title.', () => {
+    // Given
+    const unexpectedErrorMessage = '' + i18n.TitleAlreadyInUse;
+    const newTitle = 'My new title';
+
+    // When
+    setBookTitle(newTitle);
+
+    // Then
+    expect(nativeElement.innerHTML).not.toContain(unexpectedErrorMessage);
+  });
+
+  it('Should not show error message that title is in use for the same title.', () => {
+    // Given
+    const unexpectedErrorMessage = '' + i18n.TitleAlreadyInUse;
+    const title = book2.title;
+
+    // When
+    setBookTitle(title);
+
+    // Then
+    expect(nativeElement.innerHTML).not.toContain(unexpectedErrorMessage);
   });
 });

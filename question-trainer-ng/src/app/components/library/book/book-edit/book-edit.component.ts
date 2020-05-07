@@ -10,6 +10,8 @@ import { map } from 'rxjs/operators';
 import { Store, select } from '@ngrx/store';
 import { SetBookIdToEdit, UpdateBook } from 'src/app/store/actions/books.actions';
 import { clone } from 'src/tools/ObjectExt';
+import { i18n } from 'src/app/enums/i18n';
+import { I18nService } from 'src/app/services/i18n.service';
 
 @Component({
   selector: 'app-book-edit',
@@ -18,12 +20,14 @@ import { clone } from 'src/tools/ObjectExt';
 })
 export class BookEditComponent implements OnInit, OnChanges {
 
+  bookTitle$ = new BehaviorSubject<string>(null);
   invalidTitle$ = new BehaviorSubject<boolean>(false);
   bookTitleIsEmpty$: Observable<boolean>;
+  bookTitleExists$: Observable<boolean>;
   bookTitleIsInvalidOrEmpty$: Observable<boolean>;
   books: Array<Book>;
   books$: Observable<Array<Book>>;
-  errorMessage$ = new BehaviorSubject<string>(null);
+  errorMessage$: Observable<string>;
   editBookForm: FormGroup;
   book: Book;
 
@@ -39,9 +43,14 @@ export class BookEditComponent implements OnInit, OnChanges {
     private logger: LoggerService,
     private formBuilder: FormBuilder,
     private store: Store<IAppState>,
+    private i18nService: I18nService,
   ) {
     this.editBookForm = this.formBuilder.group({
       bookTitle: ''
+    });
+
+    this.editBookForm.valueChanges.subscribe(formValues => {
+      this.bookTitle$.next(formValues.bookTitle);
     });
 
     this.bookTitleIsEmpty$ = this.editBookForm.valueChanges.pipe(
@@ -71,6 +80,38 @@ export class BookEditComponent implements OnInit, OnChanges {
         this.editBookForm.setValue({ bookTitle: book.title});
       }
     });
+
+    this.bookTitleExists$ = combineLatest([
+      this.bookTitle$,
+      this.books$
+    ]).pipe(
+      map(([bookTitle, books]) => {
+        if (!bookTitle) {
+          return false;
+        }
+
+        if (!books || books.length === 0) {
+          return false;
+        }
+
+        const bookWithSameTitle = books
+          .filter(book => !!book && book.id !== this.book.id)
+          .find(book => book.title.toLowerCase() === bookTitle.toLowerCase());
+
+        return !!bookWithSameTitle;
+      })
+    );
+
+    this.errorMessage$ = combineLatest([
+      this.bookTitleExists$,
+    ]).pipe(
+      map(([bookTitleExists]) => {
+        if (bookTitleExists) {
+          return this.i18nService.getTranslation(i18n.TitleAlreadyInUse);
+        }
+        return null;
+      })
+    );
   }
 
   ngOnInit(): void {
