@@ -9,6 +9,8 @@ import { LoggerService } from 'src/app/services/logger.service';
 import { map } from 'rxjs/operators';
 import { selectBooks } from 'src/app/store/selectors/library.selectors';
 import { Store, select } from '@ngrx/store';
+import { I18nService } from 'src/app/services/i18n.service';
+import { i18n } from 'src/app/enums/i18n';
 
 @Component({
   selector: 'app-book-add',
@@ -38,6 +40,7 @@ export class BookAddComponent implements OnInit {
     private logger: LoggerService,
     private formBuilder: FormBuilder,
     private store: Store<IAppState>,
+    private i18nService: I18nService,
   ) {
     this.addBookForm = this.formBuilder.group({
       bookTitle: ''
@@ -90,7 +93,7 @@ export class BookAddComponent implements OnInit {
     ]).pipe(
       map(([bookTitleExists]) => {
         if (bookTitleExists) {
-          return 'This title is already in use.';
+          return i18nService.getTranslation(i18n.TitleAlreadyInUse);
         }
         return null;
       })
