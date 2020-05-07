@@ -5,13 +5,21 @@ import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { IAppState } from 'src/app/store/state/app.state';
 import { AddBook, BooksActionTypes } from 'src/app/store/actions/books.actions';
 import { Action } from '@ngrx/store';
-import { getEmptyState } from 'test/store';
+import { getEmptyState, getStateWithBooks } from 'test/store';
+import { getRandomBook } from 'test/library';
+import { i18n } from 'src/app/enums/i18n';
+import { I18nService } from 'src/app/services/i18n.service';
 
 describe('BookAddComponent', () => {
   let component: BookAddComponent;
   let fixture: ComponentFixture<BookAddComponent>;
   let nativeElement: HTMLElement;
   let store: MockStore;
+  const mockI18nService: Partial<I18nService> = {
+    getTranslation: (title: i18n) => {
+      return '' + title;
+    }
+  };
   const initialState = getEmptyState();
 
   beforeEach(async(() => {
@@ -22,7 +30,8 @@ describe('BookAddComponent', () => {
       ],
       providers: [
         FormBuilder,
-        provideMockStore({ initialState })
+        provideMockStore({ initialState }),
+        { provide: I18nService, useValue: mockI18nService }
       ]
     })
     .compileComponents();
@@ -142,6 +151,35 @@ describe('BookAddComponent', () => {
       // Then
       const addButton = getAddButton();
       expect(addButton.disabled).toBeFalse();
+    });
+
+    it('Should show error message that title is in use.', () => {
+      // Given
+      const book1 = getRandomBook();
+      const state = getStateWithBooks(book1);
+      store.setState(state);
+      const expectedErrorMessage = '' + i18n.TitleAlreadyInUse;
+
+      // When
+      setBookTitle(book1.title);
+
+      // Then
+      expect(nativeElement.innerHTML).toContain(expectedErrorMessage);
+    });
+
+    it('Should not show error message that title is in use.', () => {
+      // Given
+      const book1 = getRandomBook();
+      const state = getStateWithBooks(book1);
+      store.setState(state);
+      const unexpectedErrorMessage = '' + i18n.TitleAlreadyInUse;
+      const newTitle = 'My new title';
+
+      // When
+      setBookTitle(newTitle);
+
+      // Then
+      expect(nativeElement.innerHTML).not.toContain(unexpectedErrorMessage);
     });
   });
 });

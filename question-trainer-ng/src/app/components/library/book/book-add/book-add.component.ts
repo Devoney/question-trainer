@@ -1,7 +1,7 @@
 import { AddBook } from 'src/app/store/actions/books.actions';
 import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
 import { Book } from 'src/app/types/book';
-import { Component, EventEmitter, OnInit, Input, Output, SimpleChanges, OnChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Guid } from 'src/tools/Guid';
 import { IAppState } from 'src/app/store/state/app.state';
@@ -93,7 +93,7 @@ export class BookAddComponent implements OnInit {
     ]).pipe(
       map(([bookTitleExists]) => {
         if (bookTitleExists) {
-          return i18nService.getTranslation(i18n.TitleAlreadyInUse);
+          return this.i18nService.getTranslation(i18n.TitleAlreadyInUse);
         }
         return null;
       })
