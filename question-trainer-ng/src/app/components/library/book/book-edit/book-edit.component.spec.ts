@@ -123,4 +123,16 @@ describe('BookEditComponent', () => {
     // Then
     expect(nativeElement.innerHTML).not.toContain(unexpectedErrorMessage);
   });
+
+  it('Should show error message that title is required.', () => {
+    // Given
+    const expectedErrorMessage = '' + i18n.TitleIsRequired;
+    const title = '';
+
+    // When
+    setBookTitle(title);
+
+    // Then
+    expect(nativeElement.innerHTML).toContain(expectedErrorMessage);
+  });
 });

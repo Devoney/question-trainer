@@ -28,7 +28,10 @@ export class I18nService {
     }
 
     const htmlElment = this.i18nContainer.querySelector('span[title="' + title + '"]');
-    const value = htmlElment.innerHTML;
+    let value = htmlElment.innerHTML;
+    if (!value) {
+      value = 'Translation is missing.';
+    }
     this.cache[title] = value;
     return value;
   }

@@ -95,7 +95,7 @@ export class BookAddComponent implements OnInit {
         if (bookTitleExists) {
           return this.i18nService.getTranslation(i18n.TitleAlreadyInUse);
         }
-        return null;
+        return '';
       })
     );
 

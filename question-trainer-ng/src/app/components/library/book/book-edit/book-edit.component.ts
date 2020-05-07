@@ -103,13 +103,22 @@ export class BookEditComponent implements OnInit, OnChanges {
     );
 
     this.errorMessage$ = combineLatest([
+      this.bookTitleIsEmpty$,
       this.bookTitleExists$,
     ]).pipe(
-      map(([bookTitleExists]) => {
-        if (bookTitleExists) {
-          return this.i18nService.getTranslation(i18n.TitleAlreadyInUse);
+      map(([bookTitleIsEmpty, bookTitleExists]) => {
+        let toTranslate: i18n;
+        if (bookTitleIsEmpty) {
+          toTranslate = i18n.TitleIsRequired;
+        } else if (bookTitleExists) {
+          toTranslate = i18n.TitleAlreadyInUse;
         }
-        return null;
+
+        if (!toTranslate) {
+          return '';
+        }
+
+        return this.i18nService.getTranslation(toTranslate);
       })
     );
   }

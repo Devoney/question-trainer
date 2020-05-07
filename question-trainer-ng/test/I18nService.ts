@@ -5,7 +5,7 @@ export const provideI18nServiceMock = () => {
     const mock: Partial<I18nService> = {
         getTranslation: (title: i18n) => {
             return '' + title;
-        } 
+        }
     };
     return { provide: I18nService, useValue: mock };
 };
