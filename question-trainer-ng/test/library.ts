@@ -25,3 +25,9 @@ export const getRandomChapter = (): Chapter => {
     title: Guid.newGuid().substring(0, 6),
   };
 };
+
+export const getBookWithTitle = (title: string): Book => {
+  const book = getRandomBook();
+  book.title = title;
+  return book;
+};

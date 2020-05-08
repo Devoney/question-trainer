@@ -1,8 +1,8 @@
-import { selectBooks, selectNrOfBooks, selectBookIdToEdit, selectBookToEdit, selectSelectedBookId } from './library.selectors';
+import { selectBooks, selectNrOfBooks, selectBookIdToEdit, selectBookToEdit, selectSelectedBookId, selectBooksOrderedByTitle } from './library.selectors';
 import { Book } from 'src/app/types/Book';
 import { IAppState } from '../state/app.state';
 import { getStateWithBooks } from 'test/store';
-import { getRandomBook } from 'test/library';
+import { getRandomBook, getBookWithTitle } from 'test/library';
 import { Guid } from 'src/tools/Guid';
 
 describe('LibrarySelectors', () => {
@@ -66,5 +66,30 @@ describe('LibrarySelectors', () => {
 
     // Then
     expect(actual).toBe(bookId);
+  });
+
+  it('Should return books ordered by title.', () => {
+    // Given
+    const bookZ = getBookWithTitle('z');
+    const bookA = getBookWithTitle('a');
+    const bookJ = getBookWithTitle('j');
+
+    const books: Array<Book> = [
+      bookZ,
+      bookA,
+      bookJ
+    ];
+
+    const expectedOrder: Array<Book> = [
+      bookA,
+      bookJ,
+      bookZ
+    ];
+
+    // When
+    const actualOrder = selectBooksOrderedByTitle.projector(books);
+
+    // Then
+    expect(actualOrder).toEqual(expectedOrder);
   });
 });

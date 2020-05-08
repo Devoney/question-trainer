@@ -1,17 +1,17 @@
-import { AddBook } from 'src/app/store/actions/books.actions';
-import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
-import { Book } from 'src/app/types/book';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Guid } from 'src/tools/Guid';
-import { IAppState } from 'src/app/store/state/app.state';
-import { LoggerService } from 'src/app/services/logger.service';
+import { select, Store } from '@ngrx/store';
+import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { selectBooks } from 'src/app/store/selectors/library.selectors';
-import { Store, select } from '@ngrx/store';
-import { I18nService } from 'src/app/services/i18n.service';
 import { i18n } from 'src/app/enums/i18n';
-import * as _ from 'lodash';
+import { I18nService } from 'src/app/services/i18n.service';
+import { LoggerService } from 'src/app/services/logger.service';
+import { AddBook } from 'src/app/store/actions/books.actions';
+import { selectBooksOrderedByTitle } from 'src/app/store/selectors/library.selectors';
+import { IAppState } from 'src/app/store/state/app.state';
+import { Book } from 'src/app/types/book';
+import { Guid } from 'src/tools/Guid';
+
 @Component({
   selector: 'app-book-add',
   templateUrl: './book-add.component.html',
@@ -65,12 +65,7 @@ export class BookAddComponent implements OnInit {
       })
     );
 
-    this.books$ = this.store.pipe( // TODO: Refactor, this sorting is done more often.
-      select(selectBooks),
-      map(books => {
-        return _.sortBy(books, (b) => b.title);
-      })
-    );
+    this.books$ = this.store.pipe(select(selectBooksOrderedByTitle));
 
     this.bookTitleExists$ = combineLatest([
       this.bookTitle$,

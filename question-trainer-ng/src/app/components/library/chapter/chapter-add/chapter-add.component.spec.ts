@@ -14,7 +14,7 @@ describe('ChapterAddComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ 
+      declarations: [
         BookSelectComponent,
         ChapterAddComponent
       ],

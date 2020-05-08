@@ -2,7 +2,7 @@ import { createSelector } from '@ngrx/store';
 import { IAppState } from '../state/app.state';
 import { ILibraryState, initialLibraryState } from '../state/library.state';
 import { Book } from 'src/app/types/book';
-
+import * as _ from 'lodash';
 
 const selectLibrary = (state: IAppState) => {
   return (state && state.library) ? state.library : initialLibraryState;
@@ -12,6 +12,13 @@ export const selectBooks = createSelector(
   selectLibrary,
   (libraryState: ILibraryState) => {
     return libraryState.books;
+  }
+);
+
+export const selectBooksOrderedByTitle = createSelector(
+  selectBooks,
+  (books) => {
+    return _.orderBy(books, b => b.title);
   }
 );
 

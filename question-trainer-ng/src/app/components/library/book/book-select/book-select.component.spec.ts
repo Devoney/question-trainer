@@ -21,7 +21,7 @@ describe('BookSelectComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         BookSelectComponent
-      ],      
+      ],
       imports: [
         ReactiveFormsModule,
       ],
@@ -58,7 +58,7 @@ describe('BookSelectComponent', () => {
 
     // When
     setSelectValue(selectControl, book2.id);
-  
+
     // Then
     expect(setSelectedBookIdAction).toBeDefined();
     expect(setSelectedBookIdAction.bookId).toBeDefined(book2.id + 'poep');

@@ -1,15 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { Store, select } from '@ngrx/store';
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { select, Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { LoggerService } from 'src/app/services/logger.service';
+import { SetSelectedBookId } from 'src/app/store/actions/books.actions';
+import { selectBooksOrderedByTitle, selectSelectedBookId } from 'src/app/store/selectors/library.selectors';
 import { IAppState } from 'src/app/store/state/app.state';
 import { Book } from 'src/app/types/book';
-import { Observable } from 'rxjs';
-import { selectBooks, selectSelectedBookId } from 'src/app/store/selectors/library.selectors';
-import { map } from 'rxjs/operators';
-import * as _ from 'lodash';
-import { LoggerService } from 'src/app/services/logger.service';
-import { Event } from '@angular/router';
-import { SetSelectedBookId } from 'src/app/store/actions/books.actions';
-import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-book-select',
@@ -37,15 +35,10 @@ export class BookSelectComponent {
       this.bookSelectionChanged(formValues.bookIdSelected);
     });
 
-    this.books$ = this.store.pipe( // TODO: Refactor, this sorting is done more often.
-      select(selectBooks),
-      map(books => {
-        return _.sortBy(books, (b) => b.title);
-      })
-    );
+    this.books$ = this.store.pipe(select(selectBooksOrderedByTitle));
 
     this.hasBookSelected$ = this.store.pipe(
-      select(selectSelectedBookId), 
+      select(selectSelectedBookId),
       map((selectedBookId) => {
         return !!selectedBookId;
       })
