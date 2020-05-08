@@ -34,9 +34,22 @@ export class ChapterAddComponent {
     private formBuilder: FormBuilder,
   ) {
     this.createFormGroup();
-    this.HandleInputChanged();
+    this.handleInputChanged();
 
     this.selectedBook$ = this.store.pipe(select(selectSelectedBook));
+    this.handleInvalidNr();
+    this.handleInvalidTitle();
+    this.handleHasValidInput();
+  }
+
+  private handleInputChanged() {
+    this.addChapterForm.valueChanges.subscribe((formValues) => {
+      this.nr$.next(formValues.nr);
+      this.title$.next(formValues.title);
+    });
+  }
+
+  private handleInvalidNr(): void {
     this.invalidNr$ = combineLatest([
       this.selectedBook$, 
       this.nr$
@@ -45,18 +58,50 @@ export class ChapterAddComponent {
         if (!selectedBook) {
           return false;
         }
-        
+
         const chapterWithNr = selectedBook.chapters.find(c => c.nr === nr);
         return !!chapterWithNr;
       })
     );
   }
 
-  private HandleInputChanged() {
-    this.addChapterForm.valueChanges.subscribe((formValues) => {
-      this.nr$.next(formValues.nr);
-      this.title$.next(formValues.title);
-    });
+  private handleInvalidTitle(): void {
+    this.invalidNr$ = combineLatest([
+      this.selectedBook$, 
+      this.title$
+    ]).pipe(
+      map(([selectedBook, title]) => {
+        if (!selectedBook) {
+          return false;
+        }
+
+        const chapterWithTitle = selectedBook.chapters.find(c => c.title.toLowerCase() === title.toLowerCase());
+        return !!chapterWithTitle;
+      })
+    );
+  }
+
+  private handleHasValidInput(): void {
+    combineLatest([
+      this.nr$,
+      this.title$,
+      this.invalidNr$,
+      this.invalidTitle$
+    ]).pipe(
+      map(([
+        nr,
+        title,
+        invalidNr,
+        invalidTitle
+      ]) => {
+        if (invalidNr || invalidTitle) {
+          return false;
+        }
+        return (!!nr && !!title);
+      })
+    ).subscribe((hasValidInput) => {
+      this.hasValidInput$.next(hasValidInput);
+    })
   }
 
   private createFormGroup(): void {
