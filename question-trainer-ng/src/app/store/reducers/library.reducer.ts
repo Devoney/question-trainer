@@ -1,6 +1,7 @@
 import { initialLibraryState, ILibraryState } from '../state/library.state';
 import { BooksAction, BooksActionTypes, UpdateBook } from '../actions/books.actions';
 import { ChaptersActionTypes, ChaptersAction } from '../actions/chapters.actions';
+import * as _ from 'lodash';
 
 export function libraryReducers(state = initialLibraryState, action: BooksAction | ChaptersAction): ILibraryState {
   switch (action.type) {
@@ -46,10 +47,19 @@ export function libraryReducers(state = initialLibraryState, action: BooksAction
 
     //#region Chapters
     case ChaptersActionTypes.Add: {
-      const book = state.books.find(b => b.id === action.bookId);
-      book.chapters.push(action.chapter);
+      let book = state.books.find(b => b.id === action.bookId);
+      const chapters = [...book.chapters, action.chapter];
+      book = {
+        ...book,
+        chapters
+      };
+
+      const books = _.filter(state.books, b => b.id !== book.id);
+      books.push(book);
+
       return {
-        ...state
+        ...state,
+        books,
       };
     }
     //#endregion

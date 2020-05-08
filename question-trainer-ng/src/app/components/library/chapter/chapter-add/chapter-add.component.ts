@@ -5,10 +5,14 @@ import { I18nService } from 'src/app/services/i18n.service';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Book } from 'src/app/types/book';
-import { selectSelectedBook } from 'src/app/store/selectors/library.selectors';
+import { selectSelectedBook, selectSelectedBookId } from 'src/app/store/selectors/library.selectors';
 import { combineLatest } from 'rxjs';
 import { map, withLatestFrom } from 'rxjs/operators';
 import { i18n } from 'src/app/enums/i18n';
+import { LoggerService } from 'src/app/services/logger.service';
+import { AddChapter } from 'src/app/store/actions/chapters.actions';
+import { Guid } from 'src/tools/Guid';
+import { Chapter } from 'src/app/types/chapter';
 
 @Component({
   selector: 'app-chapter-add',
@@ -25,19 +29,23 @@ export class ChapterAddComponent {
 
   nr$ = new BehaviorSubject<string>('');
   title$ = new BehaviorSubject<string>('');
-  selectedBook$: Observable<Book>;
+  selectedBook$ = new BehaviorSubject<Book>(null);
 
   addChapterForm: FormGroup;
 
   constructor(
-    private store: Store<IAppState>,
-    private i18nService: I18nService,
     private formBuilder: FormBuilder,
+    private i18nService: I18nService,
+    private logger: LoggerService,
+    private store: Store<IAppState>,
   ) {
     this.createFormGroup();
     this.handleInputChanged();
 
-    this.selectedBook$ = this.store.pipe(select(selectSelectedBook));
+    this.store.pipe(select(selectSelectedBook)).subscribe(selectedBook => {
+      this.selectedBook$.next(selectedBook);
+    });
+
     this.handleInvalidNr();
     this.handleInvalidTitle();
     this.handleHasValidInput();
@@ -56,7 +64,7 @@ export class ChapterAddComponent {
       this.nr$
     ]).pipe(
       map(([selectedBook, nr]) => {
-        if (!selectedBook) {
+        if (!selectedBook || !nr) {
           return false;
         }
 
@@ -82,7 +90,7 @@ export class ChapterAddComponent {
       this.title$
     ]).pipe(
       map(([selectedBook, title]) => {
-        if (!selectedBook) {
+        if (!selectedBook || !title) {
           return false;
         }
 
@@ -135,11 +143,28 @@ export class ChapterAddComponent {
   ok(): void {
     if (!this.hasValidInput$.getValue()) {
       // This should never happen really
+      this.logger.log('User pressed add button of chapter while input is invalid');
       return;
     }
+
+    const selectedBookId = this.selectedBook$.getValue().id;
+    const chapter: Chapter = {
+      id: Guid.newGuid(),
+      nr: this.nr$.getValue(),
+      title: this.title$.getValue(),
+    };
+
+    const addChapterAction = new AddChapter(selectedBookId, chapter);
+    this.store.dispatch(addChapterAction);
+
+    this.clear();
   }
 
   cancel(): void {
+    this.clear();
+  }
 
+  private clear(): void {
+    this.addChapterForm.reset();
   }
 }

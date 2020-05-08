@@ -4,8 +4,8 @@
       <app-book-select></app-book-select>
     </div>
     <div class="col text-left">
-      <app-chapter-add *ngIf="(isInEditMode$ | async) === false"></app-chapter-add>
+      <app-chapter-add *ngIf="(isInEditMode$ | async) === false" [hidden]="(hasBookSelected$ | async) === false"></app-chapter-add>
     </div>
   </div>
-  <app-chapter-overview></app-chapter-overview>
+  <app-chapter-overview [hidden]="(hasBookSelected$ | async) === false"></app-chapter-overview>
 </div>
