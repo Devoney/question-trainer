@@ -259,6 +259,7 @@
         <note category="location">src/app/components/library/book/books-overview/books-overview.component.html:6</note>
         <note category="location">src/app/components/library/book/book-edit/book-edit.component.html:5</note>
         <note category="location">src/app/components/library/chapter/chapter-add/chapter-add.component.html:17</note>
+        <note category="location">src/app/components/library/chapter/chapter-overview/chapter-overview.component.html:6</note>
       </notes>
       <segment>
         <source>Title</source>
@@ -278,6 +279,7 @@
         <note category="description">In order to edit a record</note>
         <note category="meaning">Edit</note>
         <note category="location">src/app/components/library/book/book-row/book-row.component.html:8</note>
+        <note category="location">src/app/components/library/chapter/chapter-row/chapter-row.component.html:7</note>
       </notes>
       <segment>
         <source>Edit</source>
@@ -288,6 +290,7 @@
         <note category="description">In order to delete</note>
         <note category="meaning">Trash</note>
         <note category="location">src/app/components/library/book/book-row/book-row.component.html:14</note>
+        <note category="location">src/app/components/library/chapter/chapter-row/chapter-row.component.html:13</note>
       </notes>
       <segment>
         <source>Trash</source>
@@ -298,6 +301,7 @@
         <note category="description">As in index</note>
         <note category="meaning">Number</note>
         <note category="location">src/app/components/library/book/books-overview/books-overview.component.html:5</note>
+        <note category="location">src/app/components/library/chapter/chapter-overview/chapter-overview.component.html:5</note>
       </notes>
       <segment>
         <source>Nr.</source>
@@ -309,6 +313,7 @@
         <note category="meaning">Number of</note>
         <note category="location">src/app/components/library/book/books-overview/books-overview.component.html:7</note>
         <note category="location">src/app/components/library/book/books-overview/books-overview.component.html:10</note>
+        <note category="location">src/app/components/library/chapter/chapter-overview/chapter-overview.component.html:7</note>
       </notes>
       <segment>
         <source>Nr of</source>
@@ -325,6 +330,7 @@
     <unit id="2650269401046048840">
       <notes>
         <note category="location">src/app/components/library/book/books-overview/books-overview.component.html:11</note>
+        <note category="location">src/app/components/library/chapter/chapter-overview/chapter-overview.component.html:8</note>
       </notes>
       <segment>
         <source>questions</source>
@@ -458,6 +464,14 @@
       </notes>
       <segment>
         <source>Book</source>
+      </segment>
+    </unit>
+    <unit id="4587654072865872868">
+      <notes>
+        <note category="location">src/app/components/library/chapter/chapter-overview/chapter-overview.component.html:17</note>
+      </notes>
+      <segment>
+        <source>No chapters</source>
       </segment>
     </unit>
   </file>

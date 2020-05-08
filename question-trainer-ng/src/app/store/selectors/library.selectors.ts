@@ -65,4 +65,14 @@ export const selectSelectedBook = createSelector(
 //#endregion
 
 //#region Chapters
+export const selectChaptersOfSelectedBook = createSelector(
+  selectSelectedBook,
+  (selectedBook) => {
+    if (!selectedBook) {
+      return [];
+    }
+
+    return selectedBook.chapters;
+  }
+);
 //#endregion

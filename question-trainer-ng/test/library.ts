@@ -13,7 +13,9 @@ export const getRandomBook = (): Book => {
 export const getRandomBookWithChapters = (nrOfChapters: number): Book => {
   const book = getRandomBook();
   for (let i = 0; i < nrOfChapters; i++) {
-    book.chapters.push(getRandomChapter());
+    const chapter = getRandomChapter();
+    chapter.nr = (i + 1) + '';
+    book.chapters.push(chapter);
   }
   return book;
 };

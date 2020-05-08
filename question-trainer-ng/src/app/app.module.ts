@@ -27,6 +27,8 @@ import { ViewModeComponent } from './components/layout/view-mode/view-mode.compo
 import { ChapterAddComponent } from './components/library/chapter/chapter-add/chapter-add.component';
 import { ChapterManagerComponent } from './components/library/chapter/chapter-manager/chapter-manager.component';
 import { BookSelectComponent } from './components/library/book/book-select/book-select.component';
+import { ChapterOverviewComponent } from './components/library/chapter/chapter-overview/chapter-overview.component';
+import { ChapterRowComponent } from './components/library/chapter/chapter-row/chapter-row.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,8 @@ import { BookSelectComponent } from './components/library/book/book-select/book-
     ChapterAddComponent,
     ChapterManagerComponent,
     BookSelectComponent,
+    ChapterOverviewComponent,
+    ChapterRowComponent,
   ],
   imports: [
     AppRoutingModule,

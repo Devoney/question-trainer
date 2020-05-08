@@ -1,0 +1,20 @@
+<div>
+  <table class="table table-striped table-bordered">
+    <thead>
+      <th></th>
+      <th i18n="Number|As in index">Nr.</th>
+      <th class="text-left" i18n>Title</th>
+      <th><ng-container i18n="Number of|As in the number of items in a collection.">Nr of</ng-container>
+        <br><ng-container i18n>questions</ng-container>
+      </th>
+      <th width="90"></th>
+    </thead>
+    <tbody>
+      <tr app-chapter-row *ngFor="let chapter of (chapters$ | async); index as chapterIndex;" [chapter]="chapter" [index]="chapterIndex+1">
+      </tr>
+    </tbody>
+    <tfoot [hidden]="(nrOfChapters$ | async) > 0">
+      <th colspan="6" i18n>No chapters</th>
+    </tfoot>
+  </table>
+</div>

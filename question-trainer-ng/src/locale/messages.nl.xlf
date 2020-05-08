@@ -519,5 +519,14 @@
         <target>Boek</target>
       </segment>
     </unit>
+        <unit id="4587654072865872868">
+      <notes>
+        <note category="location">src/app/components/library/chapter/chapter-overview/chapter-overview.component.html:17</note>
+      </notes>
+      <segment>
+        <source>No chapters</source>
+        <target>Er zijn nog geen hoofdstukken toegevoegd aan dit boek.</target>
+      </segment>
+    </unit>
   </file>
 </xliff>

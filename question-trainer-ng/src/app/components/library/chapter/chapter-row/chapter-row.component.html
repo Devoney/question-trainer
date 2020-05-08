@@ -1,18 +1,17 @@
 <td></td>
-<td>{{ index }}</td>
-<td class="text-left">{{ book.title }}</td>
-<td></td>
+<td>{{ chapter?.nr }}</td>
+<td class="text-left">{{ chapter?.title }}</td>
 <td></td>
 <td>
   <span>
     <button [disabled]="isBeingEdited$ | async" title="Edit" class="btn btn-s"
-      i18n-title="Edit|In order to edit a record" (click)="onEdit(book.id)">
+      i18n-title="Edit|In order to edit a record" (click)="onEdit(chapter?.id)">
       <fa-icon [icon]="editIcon"></fa-icon>
     </button>
   </span>
   <span>
     <button [disabled]="cannotDelete$ | async" title="Trash" class="btn btn-s" i18n-title="Trash|In order to delete"
-      (click)="onTrash(book.id)">
+      (click)="onTrash(chapter?.id)">
       <fa-icon [icon]="trashIcon"></fa-icon>
     </button>
   </span>

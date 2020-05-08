@@ -1,10 +1,10 @@
 import { Book } from 'src/app/types/Book';
 import { Guid } from 'src/tools/Guid';
-import { getBookWithTitle, getRandomBook } from 'test/library';
+import { getBookWithTitle, getRandomBook, getRandomBookWithChapters } from 'test/library';
 import { getStateWithBooks } from 'test/store';
 import {
   selectBookIdToEdit, selectBooks, selectBooksOrderedByTitle, selectBookToEdit,
-  selectNrOfBooks, selectSelectedBook, selectSelectedBookId
+  selectNrOfBooks, selectSelectedBook, selectSelectedBookId, selectChaptersOfSelectedBook
 } from './library.selectors';
 
 describe('LibrarySelectors', () => {
@@ -104,5 +104,18 @@ describe('LibrarySelectors', () => {
 
     // Then
     expect(actualOrder).toEqual(expectedOrder);
+  });
+
+  it('Should select chapters of selected book.', () => {
+    // Given
+    const nrOfChapters = 3;
+    const book = getRandomBookWithChapters(nrOfChapters);
+    const chapters = book.chapters;
+
+    // When
+    const actual = selectChaptersOfSelectedBook.projector(book);
+
+    // Then
+    expect(actual).toEqual(chapters);
   });
 });
