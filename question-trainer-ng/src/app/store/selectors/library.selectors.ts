@@ -8,6 +8,7 @@ const selectLibrary = (state: IAppState) => {
   return (state && state.library) ? state.library : initialLibraryState;
 };
 
+//#region Books
 export const selectBooks = createSelector(
   selectLibrary,
   (libraryState: ILibraryState) => {
@@ -53,3 +54,15 @@ export const selectSelectedBookId = createSelector(
     return library.bookIdSelected;
   }
 );
+
+export const selectSelectedBook = createSelector(
+  selectBooks,
+  selectSelectedBookId,
+  (books, selectedBookId) => {
+    return books.find(b => b.id === selectedBookId);
+  }
+);
+//#endregion
+
+//#region Chapters
+//#endregion
