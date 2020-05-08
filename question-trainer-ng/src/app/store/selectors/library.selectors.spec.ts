@@ -1,9 +1,11 @@
-import { selectBooks, selectNrOfBooks, selectBookIdToEdit, selectBookToEdit, selectSelectedBookId, selectBooksOrderedByTitle, selectSelectedBook } from './library.selectors';
 import { Book } from 'src/app/types/Book';
-import { IAppState } from '../state/app.state';
-import { getStateWithBooks } from 'test/store';
-import { getRandomBook, getBookWithTitle, getRandomBookWithChapters } from 'test/library';
 import { Guid } from 'src/tools/Guid';
+import { getBookWithTitle, getRandomBook } from 'test/library';
+import { getStateWithBooks } from 'test/store';
+import {
+  selectBookIdToEdit, selectBooks, selectBooksOrderedByTitle, selectBookToEdit,
+  selectNrOfBooks, selectSelectedBook, selectSelectedBookId
+} from './library.selectors';
 
 describe('LibrarySelectors', () => {
   const book1 = getRandomBook();
@@ -70,13 +72,11 @@ describe('LibrarySelectors', () => {
 
   it('Should select selected book', () => {
     // Given
-    const book1 = getRandomBook();
-    const book2 = getRandomBook();
     const books = [book1, book2];
-  
+
     // When
     const actual = selectSelectedBook.projector(books, book2.id);
-  
+
     // Then
     expect(actual.id).toBe(book2.id);
   });

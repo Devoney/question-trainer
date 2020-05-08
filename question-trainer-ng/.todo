@@ -4,11 +4,19 @@ General:
 
 Unit testing:
   ✔ That a title is required when editing a book  
+  ☐ Chapter nr already in use error message
+  ☐ Chapter title already in use error message
+  ☐ Add chapter button is only enabled when it is valid input
+    - Book
+    - Chapter Nr
+    - Chapter Title
 
 Refactor:
   ✔ // TODO: Refactor, this sorting is done more often.
 
 Feature:
+  chapter-add:
+    ☐ Hide Nr, title and add button when no book has been selected yet.
   ☐ Be able to choose your language in the app.
     https://medium.com/@jinalshah999/multiple-language-support-in-angular-application-using-i18n-8648df410717
 

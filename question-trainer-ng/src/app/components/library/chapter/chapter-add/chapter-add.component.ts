@@ -7,7 +7,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Book } from 'src/app/types/book';
 import { selectSelectedBook } from 'src/app/store/selectors/library.selectors';
 import { combineLatest } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, withLatestFrom } from 'rxjs/operators';
+import { i18n } from 'src/app/enums/i18n';
 
 @Component({
   selector: 'app-chapter-add',
@@ -17,9 +18,9 @@ import { map } from 'rxjs/operators';
 export class ChapterAddComponent {
 
   invalidNr$: Observable<boolean>;
-  nrErrorMessage$: Observable<boolean>;
+  nrErrorMessage$: Observable<string>;
   invalidTitle$: Observable<boolean>;
-  titleErrorMessage$: Observable<boolean>;
+  titleErrorMessage$: Observable<string>;
   hasValidInput$ = new BehaviorSubject<boolean>(false);
 
   nr$ = new BehaviorSubject<string>('');
@@ -51,7 +52,7 @@ export class ChapterAddComponent {
 
   private handleInvalidNr(): void {
     this.invalidNr$ = combineLatest([
-      this.selectedBook$, 
+      this.selectedBook$,
       this.nr$
     ]).pipe(
       map(([selectedBook, nr]) => {
@@ -63,11 +64,21 @@ export class ChapterAddComponent {
         return !!chapterWithNr;
       })
     );
+
+    this.nrErrorMessage$ = this.invalidNr$
+      .pipe(
+        map((invalidNr) => {
+          if (invalidNr) {
+            return this.i18nService.getTranslation(i18n.NrAlreadyInuse);
+          }
+          return '';
+        })
+      );
   }
 
   private handleInvalidTitle(): void {
-    this.invalidNr$ = combineLatest([
-      this.selectedBook$, 
+    this.invalidTitle$ = combineLatest([
+      this.selectedBook$,
       this.title$
     ]).pipe(
       map(([selectedBook, title]) => {
@@ -79,6 +90,16 @@ export class ChapterAddComponent {
         return !!chapterWithTitle;
       })
     );
+
+    this.titleErrorMessage$ = this.invalidTitle$
+      .pipe(
+        map((invalidTitle) => {
+          if (invalidTitle) {
+            return this.i18nService.getTranslation(i18n.TitleAlreadyInUse);
+          }
+          return '';
+        })
+      );
   }
 
   private handleHasValidInput(): void {
@@ -101,7 +122,7 @@ export class ChapterAddComponent {
       })
     ).subscribe((hasValidInput) => {
       this.hasValidInput$.next(hasValidInput);
-    })
+    });
   }
 
   private createFormGroup(): void {
@@ -112,7 +133,10 @@ export class ChapterAddComponent {
   }
 
   ok(): void {
-
+    if (!this.hasValidInput$.getValue()) {
+      // This should never happen really
+      return;
+    }
   }
 
   cancel(): void {

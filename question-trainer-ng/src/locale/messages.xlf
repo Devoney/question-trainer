@@ -380,9 +380,17 @@
         <source>Are you sure you want to delete this book?</source>
       </segment>
     </unit>
-    <unit id="5695400815426368272">
+    <unit id="8018503018039666538">
       <notes>
         <note category="location">src/app/components/i18n-container/i18n-container.component.html:4</note>
+      </notes>
+      <segment>
+        <source>This number is already in use.</source>
+      </segment>
+    </unit>
+    <unit id="5695400815426368272">
+      <notes>
+        <note category="location">src/app/components/i18n-container/i18n-container.component.html:5</note>
       </notes>
       <segment>
         <source>This title is already in use.</source>
@@ -390,7 +398,7 @@
     </unit>
     <unit id="2443091416140469451">
       <notes>
-        <note category="location">src/app/components/i18n-container/i18n-container.component.html:5</note>
+        <note category="location">src/app/components/i18n-container/i18n-container.component.html:6</note>
       </notes>
       <segment>
         <source>A title is required.</source>
@@ -446,7 +454,7 @@
     </unit>
     <unit id="4335548177977692221">
       <notes>
-        <note category="location">src/app/components/library/book/book-select/book-select.component.html:2</note>
+        <note category="location">src/app/components/library/book/book-select/book-select.component.html:4</note>
       </notes>
       <segment>
         <source>Book</source>
