@@ -1,14 +1,16 @@
 General:
   ✔ Set error message that a title is required when editing a book. 
+  ✔ Add test data to not have to recreate everything everytime.
 
 Unit testing:
   ✔ That a title is required when editing a book  
 
 Refactor:
-  ☐ // TODO: Refactor, this sorting is done more often.
+  ✔ // TODO: Refactor, this sorting is done more often.
 
 Feature:
   ☐ Be able to choose your language in the app.
+    https://medium.com/@jinalshah999/multiple-language-support-in-angular-application-using-i18n-8648df410717
 
 Git:
   ☐ Cleanup unused branches.
