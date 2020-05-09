@@ -1,5 +1,6 @@
 <div>
-  <form [formGroup]="addChapterForm" name="add-chapter-form">
+  <form [formGroup]="addChapterForm"
+        name="add-chapter-form">
     <div class="row">
       <div class="col-2 text-left">
         <label class="font-weight-bold">
@@ -26,6 +27,7 @@
                  [title]="titleErrorMessage$ | async">
           <div class="input-group-append">
             <button class="btn input-group-append"
+                    id="chapter-add-ok"
                     [class.btn-primary]="(hasValidInput$ | async) === true"
                     [class.btn-secondary]="(hasValidInput$ | async) === false"
                     [disabled]="(hasValidInput$ | async) === false"

@@ -5,7 +5,7 @@ import { I18nService } from 'src/app/services/i18n.service';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Book } from 'src/app/types/book';
-import { selectSelectedBook, selectSelectedBookId } from 'src/app/store/selectors/library.selectors';
+import { selectSelectedBook } from 'src/app/store/selectors/library.selectors';
 import { combineLatest } from 'rxjs';
 import { map, withLatestFrom } from 'rxjs/operators';
 import { i18n } from 'src/app/enums/i18n';
@@ -123,6 +123,7 @@ export class ChapterAddComponent {
         invalidNr,
         invalidTitle
       ]) => {
+        this.logger.log('handleHasValidInput', { nr, title, invalidNr, invalidTitle });
         if (invalidNr || invalidTitle) {
           return false;
         }
@@ -141,6 +142,7 @@ export class ChapterAddComponent {
   }
 
   ok(): void {
+    debugger;
     if (!this.hasValidInput$.getValue()) {
       // This should never happen really
       this.logger.log('User pressed add button of chapter while input is invalid');
