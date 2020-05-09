@@ -1,6 +1,6 @@
 import { libraryReducers } from './library.reducer';
 import { ILibraryState } from '../state/library.state';
-import { Book } from 'src/app/types/Book';
+import { Book } from 'src/app/types/book';
 import { AddBook, RemoveBook, SetBookIdToEdit, UpdateBook, SetSelectedBookId } from '../actions/books.actions';
 import { getRandomBook, getRandomBookWithChapters, getRandomChapter } from 'test/library';
 import { getStateWithBooks } from 'test/store';

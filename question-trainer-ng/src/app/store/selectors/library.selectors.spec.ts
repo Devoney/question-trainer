@@ -1,4 +1,4 @@
-import { Book } from 'src/app/types/Book';
+import { Book } from 'src/app/types/book';
 import { Guid } from 'src/tools/Guid';
 import { getBookWithTitle, getRandomBook, getRandomBookWithChapters } from 'test/library';
 import { getStateWithBooks } from 'test/store';

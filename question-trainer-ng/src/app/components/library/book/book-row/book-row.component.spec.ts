@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { Book } from 'src/app/types/Book';
+import { Book } from 'src/app/types/book';
 import { BookRowComponent } from './book-row.component';
 import { DialogService } from 'src/app/services/ui/dialog.service';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
