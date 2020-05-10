@@ -16,7 +16,7 @@ Refactor:
 
 Feature:
   chapter-add:
-    ☐ Hide Nr, title and add button when no book has been selected yet.
+    ✔ Hide Nr, title and add button when no book has been selected yet.
   ☐ Be able to choose your language in the app.
     https://medium.com/@jinalshah999/multiple-language-support-in-angular-application-using-i18n-8648df410717
 
