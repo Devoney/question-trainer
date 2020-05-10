@@ -8,7 +8,7 @@ import { getRandomBookWithChapters } from 'test/library';
 import { BehaviorSubject } from 'rxjs';
 import { IAppState } from 'src/app/store/state/app.state';
 import { AddChapter, ChaptersActionTypes } from 'src/app/store/actions/chapters.actions';
-import { Chapter } from 'src/app/types/chapter';
+import { setTextInput } from 'test/form-controls';
 
 describe('ChapterAddComponent', () => {
   let component: ChapterAddComponent;
@@ -43,18 +43,19 @@ describe('ChapterAddComponent', () => {
     state = {
       ...state,
     };
-    state.library.bookIdSelected = book2.id;
+    state.library = {
+      ...state.library,
+      bookIdSelected: book2.id
+    };
     store.setState(state);
   }
   
   function setNr(nr: string): void {
-    const input = nativeElement.querySelector('[formcontrolname="nr"]') as HTMLInputElement;
-    input.value = nr;
+    setTextInput(nativeElement, '[formcontrolname="nr"]', nr);
   }
   
   function setTitle(title: string): void {
-    const input = nativeElement.querySelector('[formcontrolname="title"]') as HTMLInputElement;
-    input.value = title;
+    setTextInput(nativeElement, '[formcontrolname="title"]', title);
   }
 
   function clickOkButton(): void {
@@ -73,9 +74,8 @@ describe('ChapterAddComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  fit('Chapter should be added.', () => {
+  it('Chapter should be added.', () => {
     // Given
-    debugger;
     setSelectedBook(book2.id);
     const chapterNr = book2.chapters.length + 1 + '';
     setNr(chapterNr);
@@ -91,7 +91,6 @@ describe('ChapterAddComponent', () => {
   
     // When
     clickOkButton();
-    debugger;
   
     // Then
     expect(action).toBeDefined();

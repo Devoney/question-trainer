@@ -142,7 +142,6 @@ export class ChapterAddComponent {
   }
 
   ok(): void {
-    debugger;
     if (!this.hasValidInput$.getValue()) {
       // This should never happen really
       this.logger.log('User pressed add button of chapter while input is invalid');

@@ -14,3 +14,9 @@ export const setSelectValue = (select: HTMLSelectElement, value: string): void =
   select.value = valueToSet;
   select.dispatchEvent(new Event('change'));
 };
+
+export const setTextInput = (nativeElement: HTMLElement, query: string, value: string): void => {
+  const inputControl = nativeElement.querySelector(query) as HTMLInputElement;
+  inputControl.value = value;
+  inputControl.dispatchEvent(new Event('input'));
+}
