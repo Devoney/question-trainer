@@ -1,0 +1,14 @@
+
+.chapter-manager-header {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+}
+
+.chapter-manager-selector {
+	flex: 0 0 240px;
+}
+
+.chapter-manager-editor {
+	flex: 1 1 0;
+}

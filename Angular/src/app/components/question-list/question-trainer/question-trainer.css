@@ -15,6 +15,29 @@
 	font-size: 0.85rem;
 }
 
+.trainer-header {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.trainer-header-left,
+.trainer-header-right {
+	flex: 0 0 auto;
+}
+
+.trainer-header-title {
+	flex: 1 1 auto;
+	text-align: center;
+}
+
+.trainer-ai-settings {
+	margin-top: 8px;
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+}
+
 .ai-endpoint {
 	margin-top: 6px;
 	font-size: 0.8rem;
@@ -67,6 +90,16 @@
 .ai-error {
 	margin-top: 6px;
 	color: #b00020;
+}
+
+.trainer-footer {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.trainer-footer-spacer {
+	flex: 1 1 auto;
 }
 
 .stats-wrong-count {

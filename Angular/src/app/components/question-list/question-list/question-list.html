@@ -1,8 +1,8 @@
 <div class="card">
 	<div class="card-header">
-		<div class="row">
-			<div class="col-2 text-left"><app-clear-button /></div>
-			<div class="col-8">
+		<div class="question-list-header">
+			<div class="question-list-header-left"><app-clear-button /></div>
+			<div class="question-list-header-title">
 				<h5>
 					{{ 'questionList.title' | transloco }}
 					@if ((listHasNoQuestions$ | async) === false) {
@@ -12,7 +12,7 @@
 					}
 				</h5>
 			</div>
-			<div class="col-2"></div>
+			<div class="question-list-header-right"></div>
 		</div>
 	</div>
 	<div class="card-body">

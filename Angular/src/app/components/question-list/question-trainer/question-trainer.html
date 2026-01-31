@@ -1,7 +1,7 @@
 <div class="card">
 	<div class="card-header">
-		<div class="row">
-			<div class="col-2 text-left">
+		<div class="trainer-header">
+			<div class="trainer-header-left">
 				<app-icon-button
 					icon="redo-alt"
 					[argument]="true"
@@ -11,8 +11,8 @@
 					size="m"
 				/>
 			</div>
-			<div class="col-8 text-center h5">{{ 'trainer.title' | transloco }}</div>
-			<div class="col-2 text-right">
+			<div class="trainer-header-title h5">{{ 'trainer.title' | transloco }}</div>
+			<div class="trainer-header-right">
 				<button
 					[attr.aria-label]="'trainer.startAria' | transloco"
 					class="btn"
@@ -25,33 +25,31 @@
 				</button>
 			</div>
 		</div>
-		<div class="row">
-			<div class="col-12">
-				<div class="ai-toggle">
-					<label>
+		<div class="trainer-ai-settings">
+			<div class="ai-toggle">
+				<label>
+					<input
+						type="checkbox"
+						[checked]="useAiGrading"
+						(change)="toggleAiGrading($event)"
+					/>
+					{{ 'trainer.ai.toggle' | transloco }}
+				</label>
+			</div>
+			@if (useAiGrading) {
+				<div class="ai-endpoint">
+					<label class="ai-endpoint-label">
+						<span>{{ 'trainer.ai.endpointLabel' | transloco }}</span>
 						<input
-							type="checkbox"
-							[checked]="useAiGrading"
-							(change)="toggleAiGrading($event)"
+							type="text"
+							[placeholder]="'trainer.ai.endpointPlaceholder' | transloco"
+							[value]="aiEndpoint"
+							(input)="updateAiEndpoint($event)"
+							[attr.title]="'trainer.ai.endpointHelp' | transloco"
 						/>
-						{{ 'trainer.ai.toggle' | transloco }}
 					</label>
 				</div>
-				@if (useAiGrading) {
-					<div class="ai-endpoint">
-						<label class="ai-endpoint-label">
-							<span>{{ 'trainer.ai.endpointLabel' | transloco }}</span>
-							<input
-								type="text"
-								[placeholder]="'trainer.ai.endpointPlaceholder' | transloco"
-								[value]="aiEndpoint"
-								(input)="updateAiEndpoint($event)"
-								[attr.title]="'trainer.ai.endpointHelp' | transloco"
-							/>
-						</label>
-					</div>
-				}
-			</div>
+			}
 		</div>
 	</div>
 	<div class="card-body text-left">
@@ -128,9 +126,9 @@
 		}
 	</div>
 	<div class="card-footer">
-		<div class="row">
+		<div class="trainer-footer">
 			@if (!useAiGrading) {
-				<div class="col-2 text-left">
+				<div class="trainer-footer-left">
 					<button
 						[attr.aria-label]="'trainer.wrongAria' | transloco"
 						class="btn btn-danger"
@@ -144,9 +142,9 @@
 					</button>
 				</div>
 			}
-			<div class="col-8"></div>
+			<div class="trainer-footer-spacer"></div>
 			@if (!useAiGrading) {
-				<div class="col-2 text-right">
+				<div class="trainer-footer-right">
 					<button
 						[attr.aria-label]="'trainer.correctAria' | transloco"
 						class="btn btn-success"
@@ -161,7 +159,7 @@
 				</div>
 			}
 			@if (useAiGrading && aiNeedsContinue && aiWasCorrect === false) {
-				<div class="col-2 text-right">
+				<div class="trainer-footer-right">
 					<button
 						[attr.aria-label]="'trainer.continueAria' | transloco"
 						class="btn btn-primary"

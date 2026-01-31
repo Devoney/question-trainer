@@ -1,0 +1,21 @@
+.memory-usage-row {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.memory-usage-label {
+	flex: 0 0 120px;
+}
+
+.memory-usage-progress {
+	flex: 1 1 auto;
+}
+
+.memory-usage-progress progress {
+	width: 100%;
+}
+
+.memory-usage-percentage {
+	margin-top: 6px;
+}

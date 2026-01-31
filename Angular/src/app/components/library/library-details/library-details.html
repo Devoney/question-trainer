@@ -1,11 +1,9 @@
 <div>
 	<div class="form-group">
-		<div class="row">
-			<div class="col text-left">
-				<label class="font-weight-bold" for="bookTitleText">{{ 'library.details.nameLabel' | transloco }}</label>
-			</div>
+		<div class="library-details-label text-left">
+			<label class="font-weight-bold" for="bookTitleText">{{ 'library.details.nameLabel' | transloco }}</label>
 		</div>
-		<div class="input-group row no-gutters">
+		<div class="input-group library-details-input">
 			<input
 				class="form-control"
 				id="libraryTitle"
@@ -19,9 +17,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="row">
-		<div class="col text-left">
-			<app-memory-usage class="memory-usage-comp" />
-		</div>
+	<div class="library-details-memory text-left">
+		<app-memory-usage class="memory-usage-comp" />
 	</div>
 </div>

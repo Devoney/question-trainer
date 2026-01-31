@@ -4,12 +4,10 @@
 	href="#"
 	(click)="setViewMode($event)"
 >
-	<div class="row">
-		<div class="col-3">
-			@if (icon) {
-				<fa-icon [icon]="icon"></fa-icon>
-			}
-		</div>
-		<div class="col">{{ text }}</div>
+	<div class="view-mode-item-content">
+		@if (icon) {
+			<fa-icon class="view-mode-item-icon" [icon]="icon"></fa-icon>
+		}
+		<div class="view-mode-item-text">{{ text }}</div>
 	</div>
 </a>

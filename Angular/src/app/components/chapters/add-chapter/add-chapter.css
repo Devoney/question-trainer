@@ -1,0 +1,18 @@
+
+.add-chapter-row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+}
+
+.add-chapter-number {
+	flex: 0 0 80px;
+}
+
+.add-chapter-title {
+	flex: 1 1 0;
+}
+
+.add-chapter-input {
+	width: 100%;
+}

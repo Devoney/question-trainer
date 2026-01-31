@@ -1,21 +1,17 @@
 <div>
-	<div class="row">
-		<div class="col has-error">
-			@if (bookEdited) {
-				<app-edit-book />
-			}
-			@if (!bookEdited) {
-				<app-add-book
-					(titleChanged)="titleChanged($event)"
-					[errMessage]="titleIsNotValidMessage"
-					(add)="add($event)"
-				/>
-			}
-		</div>
+	<div class="book-manager-form has-error">
+		@if (bookEdited) {
+			<app-edit-book />
+		}
+		@if (!bookEdited) {
+			<app-add-book
+				(titleChanged)="titleChanged($event)"
+				[errMessage]="titleIsNotValidMessage"
+				(add)="add($event)"
+			/>
+		}
 	</div>
-	<div class="row book-table">
-		<div class="col">
-			<app-book-table />
-		</div>
+	<div class="book-table">
+		<app-book-table />
 	</div>
 </div>

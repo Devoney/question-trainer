@@ -1,3 +1,13 @@
 .dropdown-toggle::after {
 	display: none;
 }
+
+.view-mode-item-content {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.view-mode-item-icon {
+	width: 16px;
+}

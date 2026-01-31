@@ -1,6 +1,6 @@
 <div>
-	<div class="row">
-		<div class="col-2">
+	<div class="edit-chapter-row">
+		<div class="edit-chapter-number">
 			<label class="font-weight-bold">{{ 'chapters.nrLabel' | transloco }}</label>
 			<input
 				class="form-control"
@@ -13,9 +13,9 @@
 				[attr.aria-label]="'chapters.nrAria' | transloco"
 			/>
 		</div>
-		<div class="col">
+		<div class="edit-chapter-title">
 			<label class="font-weight-bold">{{ 'chapters.titleLabel' | transloco }}</label>
-			<div class="input-group row no-gutters">
+			<div class="input-group edit-chapter-input">
 				<input
 					class="form-control"
 					[class.is-invalid]="error.title !== ''"

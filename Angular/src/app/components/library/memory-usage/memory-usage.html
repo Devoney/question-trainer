@@ -1,13 +1,11 @@
 <div>
-	<div class="row">
-		<div class="col-2">
-			<label [for]="id" class="font-weight-bold">{{ 'library.memory.label' | transloco }}</label>
-		</div>
-		<div class="col-11 text-left">
+	<div class="memory-usage-row">
+		<label [for]="id" class="font-weight-bold memory-usage-label">{{ 'library.memory.label' | transloco }}</label>
+		<div class="memory-usage-progress text-left">
 			<progress [id]="id" [value]="usageInBytes" [max]="maxStorageInBytes"></progress>
 		</div>
 	</div>
-	<div class="row">
-		<div class="col">{{ usagePercentage().toFixed(2) }}%</div>
+	<div class="memory-usage-percentage">
+		{{ usagePercentage().toFixed(2) }}%
 	</div>
 </div>

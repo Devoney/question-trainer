@@ -1,9 +1,9 @@
 <div>
-	<div class="row form-group">
-		<div class="col-5 text-left">
+	<div class="chapter-manager-header form-group">
+		<div class="chapter-manager-selector text-left">
 			<app-book-selector />
 		</div>
-		<div class="col text-left">
+		<div class="chapter-manager-editor text-left">
 			@if ((hasBook$ | async) && (inAddMode$ | async)) {
 				<app-add-chapter />
 			}

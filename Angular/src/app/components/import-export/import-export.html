@@ -31,18 +31,16 @@
 					<input type="file" (change)="processFile($event)" />
 				</div>
 				<div class="modal-footer">
-					<div class="row" style="min-width: 100%">
-						<div class="col text-right">
-							<button
-								type="button"
-								class="btn btn-primary"
-								[attr.aria-label]="'importExport.okAria' | transloco"
-								(click)="executeImport()"
-								[disabled]="jsonToImport == null"
-							>
-								{{ 'importExport.importButton' | transloco }}
-							</button>
-						</div>
+					<div class="import-export-footer">
+						<button
+							type="button"
+							class="btn btn-primary"
+							[attr.aria-label]="'importExport.okAria' | transloco"
+							(click)="executeImport()"
+							[disabled]="jsonToImport == null"
+						>
+							{{ 'importExport.importButton' | transloco }}
+						</button>
 					</div>
 				</div>
 			</div>

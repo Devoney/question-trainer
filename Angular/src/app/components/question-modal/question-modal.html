@@ -16,19 +16,13 @@
 			</div>
 			<div class="modal-body">{{ text }}</div>
 			<div class="modal-footer">
-				<div class="container">
-					<div class="row" style="min-width: 100%">
-						<div class="col text-left">
-							<button type="button" [attr.aria-label]="'modal.okAria' | transloco" class="btn btn-secondary" (click)="ok()">
-								{{ okText }}
-							</button>
-						</div>
-						<div class="col text-right">
-							<button type="button" class="btn btn-secondary" [attr.aria-label]="'modal.cancelAria' | transloco" (click)="cancel()">
-								{{ cancelText }}
-							</button>
-						</div>
-					</div>
+				<div class="question-modal-footer">
+					<button type="button" [attr.aria-label]="'modal.okAria' | transloco" class="btn btn-secondary" (click)="ok()">
+						{{ okText }}
+					</button>
+					<button type="button" class="btn btn-secondary" [attr.aria-label]="'modal.cancelAria' | transloco" (click)="cancel()">
+						{{ cancelText }}
+					</button>
 				</div>
 			</div>
 		</div>

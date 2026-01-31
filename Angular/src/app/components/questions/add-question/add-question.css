@@ -1,7 +1,23 @@
-.ckeditorrow {
+.add-question-header {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+	align-items: flex-end;
+}
+
+.add-question-selector,
+.add-question-page {
+	flex: 1 1 220px;
+}
+
+.add-question-page-input {
+	max-width: 140px;
+}
+
+.add-question-editor {
 	margin-top: 20px;
 }
 
-.button-row {
+.add-question-actions {
 	margin-top: 15px;
 }

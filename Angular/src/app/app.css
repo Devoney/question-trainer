@@ -47,6 +47,38 @@
 	display: flex;
 }
 
+.app-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+}
+
+.app-header-left,
+.app-header-right {
+	flex: 0 0 auto;
+}
+
+.app-main {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+	margin-top: 12px;
+}
+
+.app-panel {
+	flex: 1 1 0;
+	min-width: 0;
+}
+
+.app-panel-half {
+	flex: 1 1 calc(50% - 12px);
+}
+
+.app-panel-full {
+	flex: 1 1 100%;
+}
+
 .language-switcher {
 	display: flex;
 	justify-content: flex-end;

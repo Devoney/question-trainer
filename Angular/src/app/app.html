@@ -7,16 +7,14 @@
 <main>
   @if (viewMode$ | async; as viewMode) {
     <div id="app" class="container-fluid">
-      <div class="row">
-        <div class="col text-left">
-          <div class="row">
-            <div class="flex-container">
-              <app-import-export />
-              <app-view-mode class="view-mode" />
-            </div>
+      <div class="app-header">
+        <div class="app-header-left">
+          <div class="flex-container">
+            <app-import-export />
+            <app-view-mode class="view-mode" />
           </div>
         </div>
-        <div class="col text-right">
+        <div class="app-header-right">
           <div class="language-switcher">
             <button
               class="btn btn-light"
@@ -37,19 +35,19 @@
           </div>
         </div>
       </div>
-      <div class="row">
+      <div class="app-main">
         @if (viewMode === 'both' || viewMode === 'library') {
           <div
-            class="col-lg-12 grow box-left"
-            [ngClass]="{ 'col-xl-6': viewMode === 'both', 'col-xl-12': viewMode !== 'both' }"
+            class="app-panel grow box-left"
+            [ngClass]="{ 'app-panel-half': viewMode === 'both', 'app-panel-full': viewMode !== 'both' }"
           >
             <app-library />
           </div>
         }
         @if (viewMode === 'both' || viewMode === 'questions') {
           <div
-            class="col-lg-12"
-            [ngClass]="{ 'col-xl-6': viewMode === 'both', 'col-xl-12': viewMode !== 'both', 'box-right': viewMode === 'both' }"
+            class="app-panel"
+            [ngClass]="{ 'app-panel-half': viewMode === 'both', 'app-panel-full': viewMode !== 'both', 'box-right': viewMode === 'both' }"
           >
             <app-question-trainer />
             <app-question-list class="question-list" />

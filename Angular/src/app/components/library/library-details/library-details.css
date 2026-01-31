@@ -1,3 +1,11 @@
+.library-details-label {
+	display: flex;
+}
+
+.library-details-input {
+	width: 100%;
+}
+
 .memory-usage-comp {
 	margin-top: 20px;
 }

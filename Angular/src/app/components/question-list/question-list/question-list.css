@@ -1,0 +1,15 @@
+
+.question-list-header {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.question-list-header-left,
+.question-list-header-right {
+	flex: 0 0 auto;
+}
+
+.question-list-header-title {
+	flex: 1 1 auto;
+}
