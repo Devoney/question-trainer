@@ -1,0 +1,104 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+
+package "src" {
+  [main.ts] as Main
+  [App.vue] as App
+  [MessageBus.ts] as MessageBus
+  [font-awesome.ts] as FontAwesome
+
+  package "components" as components {
+    [Library.vue]
+    [ViewMode.vue]
+    [ViewModeItem.vue]
+    [Tabs.vue]
+    [TabPage.vue]
+    [QuestionModal.vue]
+    [ImportExport.vue]
+    [IconButton.vue]
+    [ConfirmationModal.vue]
+
+    package "books" {
+      [BookManager.vue]
+      [AddBook.vue]
+      [BookBase.vue]
+      [BookTable.vue]
+      [BookSelector.vue]
+      [BookRecord.vue]
+    }
+
+    package "chapters" {
+      [ChapterManager.vue]
+      [AddChapter.vue]
+      [ChapterBase.vue]
+      [ChapterTable.vue]
+      [ChapterSelector.vue]
+      [ChapterRecord.vue]
+      [EditChapter.vue]
+    }
+
+    package "library" {
+      [LibraryDetails.vue]
+      [MemoryUsage.vue]
+    }
+
+    package "questionList" {
+      [QuestionTrainer.vue]
+      [QuestionList.vue]
+      [QuestionListRecord.vue]
+      [ClearButton.vue]
+    }
+
+    package "questions" {
+      [QuestionManager.vue]
+      [QuestionTable.vue]
+      [QuestionRecord.vue]
+      [AddQuestion.vue]
+    }
+  }
+
+  package "models" as models {
+    [Book.ts]
+    [Chapter.ts]
+    [Question.ts]
+  }
+
+  package "state" as state {
+    [store.ts]
+    [MutationTypes.ts]
+    [IState.ts]
+  }
+
+  package "utils" as utils {
+    [DateString.ts]
+    [Math.ts]
+    [TextTransformers.ts]
+  }
+
+  package "mixins" as mixins {
+    [StoreMixin.ts]
+  }
+
+  package "types" as types {
+    [QuestionModalArgs.ts]
+    [QuestionTestStatistics.ts]
+    [HTMLInputEvent.ts]
+    [Tab.ts]
+  }
+}
+
+Main --> App
+App --> MessageBus
+App --> FontAwesome
+App --> components
+components --> models
+components --> state
+components --> utils
+components --> types
+components --> mixins
+state --> models
+models ..> types : uses
+utils ..> components
+
+@enduml

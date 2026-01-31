@@ -1,0 +1,130 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+
+package "src" {
+  [main.ts] as Main
+  [index.html] as Index
+  [styles.css] as Styles
+
+  package "app" {
+    [app.ts] as App
+    [app.html] as AppHtml
+    [app.css] as AppCss
+    [app.routes.ts] as AppRoutes
+
+    package "components" as components {
+      package "tabs" {
+        [tabs.ts]
+        [tabs.html]
+        [tabs.css]
+      }
+      package "view-mode" {
+        [view-mode.ts]
+        [view-mode.html]
+        [view-mode.css]
+      }
+      package "view-mode-item" {
+        [view-mode-item.ts]
+        [view-mode-item.html]
+        [view-mode-item.css]
+      }
+      package "question-modal" {
+        [question-modal.ts]
+        [question-modal.html]
+        [question-modal.css]
+      }
+
+      package "books" {
+        [book-manager.ts]
+        [add-book.ts]
+        [book-base.ts]
+        [book-table.ts]
+        [book-selector.ts]
+        [book-record.ts]
+        [edit-book.ts]
+      }
+
+      package "chapters" {
+        [chapter-manager.ts]
+        [add-chapter.ts]
+        [chapter-base.ts]
+        [chapter-table.ts]
+        [chapter-selector.ts]
+        [chapter-record.ts]
+        [edit-chapter.ts]
+      }
+
+      package "library" {
+        [library.ts]
+        [library.html]
+        [library.css]
+        [library-details.ts]
+        [memory-usage.ts]
+      }
+
+      package "questionList" {
+        [question-trainer.ts]
+        [question-list.ts]
+        [question-list-record.ts]
+        [clear-button.ts]
+      }
+
+      package "questions" {
+        [question-manager.ts]
+        [question-table.ts]
+        [question-record.ts]
+        [add-question.ts]
+      }
+
+      [icon-button.ts]
+      [confirmation-modal.ts]
+      [import-export.ts]
+    }
+
+    package "services" as services {
+      [message-bus.service.ts] as MessageBus
+    }
+
+    package "state" as state {
+      [app-state.ts]
+      [app.actions.ts]
+      [app.effects.ts]
+      [app.reducer.ts]
+      [app.selectors.ts]
+      [index.ts]
+    }
+
+    package "utils" as utils {
+      [date-string.ts]
+      [math.ts]
+      [text-transformers.ts]
+    }
+
+    package "types" as types {
+      [tab.ts]
+      [question-test-statistics.ts]
+      [question-modal-args.ts]
+      [html-input-event.ts]
+    }
+
+    [font-awesome.ts] as FontAwesome
+    package "models" as models {
+      [Book.ts]
+      [Chapter.ts]
+      [Question.ts]
+    }
+  }
+}
+
+Main --> App
+App --> MessageBus
+App --> FontAwesome
+components --> services
+components --> state
+components --> utils
+components --> types
+state --> models
+utils ..> components
+
+@enduml
