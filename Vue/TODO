@@ -1,0 +1,44 @@
+General:
+  ☐ Remember tab page in the store
+  ☐ Mobile first. Check that the page is shown nicely on portait mode and other resolutions.
+  Books:
+    ☐ Add all questions from all books
+    ☐ Move logic for adding book into AddBook itself, out of BookManager to simply ping ponging of data.
+  State:
+    ☐ Store in state that the question is shown in question-trainer, instead of in question-trainer.
+       This would also make unit testing easier because now either that text should be clicked,
+       or a private member of question-trainer needs to be modified.
+       Neither of this is nice.
+    ☐ Make getter types available.
+    ☐ Move mutations in to modules based on models or components.
+Testing:
+    ☐ Spy on the store's commit method, instead of testing the state. To make the tests less fragile and more focussed.
+        BookManager.spec.ts:
+          - A book without a title is not added.
+          - If title already exists, then book is not added.
+          - A book is added upon add event.
+        BookRecord.spec.ts:
+          - All questions in book are added to question list when add button is clicked.
+          - All questions in the book are removed from the question list.
+        BookTable.spec.ts:
+          - Book is not deleted when trash button of a book is clicked.
+          - Book is deleted when action is confirmed.
+        AddChapter.spec.ts:
+          - Chapter can be added.
+          - Chapter cannot be added when chapter number is missing.
+          - Chapter cannot be added when title is missing.
+          - Chapter with duplicate title is not added.
+          - Chapter with duplicate chapter number is not added.
+        ChapterRecord.spec.ts:
+          - Chapter is set to be edited when edit button is clicked.
+        EditChapter.spec.ts:
+          - Edited chapter is set to undefined when accepting edit.
+          - Edited chapter is set to undefined when edit is cancelled.
+        QuestionListRecord.spec.ts:
+          - Question is removed from question list when remove button is clicked.
+        AddQuestion.spec.ts:
+          - Question is not added to current selected chapter when the question is empty.
+        QuestionRecord.spec.ts:
+          - Question is added to the list.
+          - Question is removed from the list.
+      ☐ Refactor all tests indexed.

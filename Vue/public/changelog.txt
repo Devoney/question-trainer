@@ -1,0 +1,27 @@
+vx.x.x - xxxx-xx-xx
+  - Adds indicator of much local memory is consumed
+
+v1.2.0 - 2019-09-29
+  - Fixes layout of view / import / export buttons.
+  - Fixes margin between view mode and question trainer when view is set to questions only
+  - Fixes bug that switching between editing questions did not update the question being edited.
+  - Adds date time string to exported file name.
+  - Adds tab for library management where the name of the library can be set.
+  - Uses library name for name of exported file to download.
+
+v1.1.0 - 2019-09-22
+  - Adds buttons on the homepage to export/import the library.
+
+v1.0.3 - 2019-09-21
+  - Fixes bug that book and chapter selection became incorrect after page reload. Which could cause questions to go lost.
+  - Added view mode
+
+v1.0.2 - 2019-05-02
+  - A tad better view on mobile devices by using full screen width
+
+v1.0.1 - 2019-05-01
+  - Fixes bug that repeat of wrong questions could not be turned off.
+  - Add short descriptive text in help tab
+
+v1.0.0 - 2019-04-30
+  - Initial release
