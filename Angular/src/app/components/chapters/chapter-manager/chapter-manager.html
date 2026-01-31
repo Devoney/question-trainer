@@ -4,9 +4,15 @@
 			<app-book-selector />
 		</div>
 		<div class="col text-left">
-			<app-add-chapter *ngIf="(hasBook$ | async) && (inAddMode$ | async)" />
-			<app-edit-chapter *ngIf="(hasBook$ | async) && (inEditMode$ | async)" />
+			@if ((hasBook$ | async) && (inAddMode$ | async)) {
+				<app-add-chapter />
+			}
+			@if ((hasBook$ | async) && (inEditMode$ | async)) {
+				<app-edit-chapter />
+			}
 		</div>
 	</div>
-	<app-chapter-table *ngIf="hasBook$ | async" />
+	@if (hasBook$ | async) {
+		<app-chapter-table />
+	}
 </div>

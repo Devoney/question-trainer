@@ -17,7 +17,10 @@
     "repeatToggleLabel": "Schakel modus om vragen die je fout beantwoordde te herhalen.",
     "ai": {
       "toggle": "AI-beoordeling gebruiken",
-      "explanationLabel": "Waarom dit antwoord niet werd geaccepteerd"
+      "explanationLabel": "Waarom dit antwoord niet werd geaccepteerd",
+      "endpointLabel": "AI-serveradres",
+      "endpointPlaceholder": "http://localhost:11434/api/generate",
+      "endpointHelp": "Pas dit aan als de AI-server op een andere computer draait."
     },
     "title": "Vragentrainer",
     "start": "Start",

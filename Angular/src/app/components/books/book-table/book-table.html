@@ -11,17 +11,16 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr
-				app-book-record
-				*ngFor="let book of booksSorted$ | async; index as i"
-				[book]="book"
-				[index]="i + 1"
-			></tr>
+			@for (book of booksSorted$ | async; track book.id; let i = $index) {
+				<tr app-book-record [book]="book" [index]="i + 1"></tr>
+			}
 		</tbody>
-		<tfoot *ngIf="(hasBooks$ | async) === false">
-			<tr>
-				<th colspan="6">{{ 'books.table.none' | transloco }}</th>
-			</tr>
-		</tfoot>
+		@if ((hasBooks$ | async) === false) {
+			<tfoot>
+				<tr>
+					<th colspan="6">{{ 'books.table.none' | transloco }}</th>
+				</tr>
+			</tfoot>
+		}
 	</table>
 </div>

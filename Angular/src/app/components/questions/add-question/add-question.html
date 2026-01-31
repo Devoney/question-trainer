@@ -4,15 +4,19 @@
 			<app-book-selector />
 		</div>
 		<div class="col-5 text-left">
-			<app-chapter-selector *ngIf="bookIsSelected" />
+			@if (bookIsSelected) {
+				<app-chapter-selector />
+			}
 		</div>
 		<div class="col text-left">
-			<div *ngIf="chapterIsSelected">
-				<label class="font-weight-bold">{{ 'questions.add.page' | transloco }}</label>
-				<div class="input-group row no-gutters">
-					<input class="form-control" min="1" max="9999" type="number" [(ngModel)]="pageNr" />
+			@if (chapterIsSelected) {
+				<div>
+					<label class="font-weight-bold">{{ 'questions.add.page' | transloco }}</label>
+					<div class="input-group row no-gutters">
+						<input class="form-control" min="1" max="9999" type="number" [(ngModel)]="pageNr" />
+					</div>
 				</div>
-			</div>
+			}
 		</div>
 	</div>
 	<div class="row ckeditorrow">

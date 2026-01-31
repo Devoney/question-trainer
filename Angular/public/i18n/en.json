@@ -17,7 +17,10 @@
     "repeatToggleLabel": "Toggle mode to repeat questions you answered incorrectly.",
     "ai": {
       "toggle": "Use AI grading",
-      "explanationLabel": "Why this answer wasn't accepted"
+      "explanationLabel": "Why this answer wasn't accepted",
+      "endpointLabel": "AI server address",
+      "endpointPlaceholder": "http://localhost:11434/api/generate",
+      "endpointHelp": "Change this if the AI server runs on another machine."
     },
     "title": "Question trainer",
     "start": "Start",

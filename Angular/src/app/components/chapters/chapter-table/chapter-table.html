@@ -10,16 +10,16 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr
-				app-chapter-record
-				*ngFor="let chapter of chapters$ | async"
-				[chapter]="chapter"
-			></tr>
+			@for (chapter of chapters$ | async; track chapter.id) {
+				<tr app-chapter-record [chapter]="chapter"></tr>
+			}
 		</tbody>
-		<tfoot *ngIf="(hasChapters$ | async) === false">
-			<tr>
-				<th colspan="5">{{ 'chapters.table.none' | transloco }}</th>
-			</tr>
-		</tfoot>
+		@if ((hasChapters$ | async) === false) {
+			<tfoot>
+				<tr>
+					<th colspan="5">{{ 'chapters.table.none' | transloco }}</th>
+				</tr>
+			</tfoot>
+		}
 	</table>
 </div>

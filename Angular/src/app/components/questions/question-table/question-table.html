@@ -11,17 +11,16 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr
-				app-question-record
-				*ngFor="let question of questions$ | async; index as i"
-				[index]="i + 1"
-				[question]="question"
-			></tr>
+			@for (question of questions$ | async; track question.id; let i = $index) {
+				<tr app-question-record [index]="i + 1" [question]="question"></tr>
+			}
 		</tbody>
-		<tfoot *ngIf="(hasQuestions$ | async) === false">
-			<tr>
-				<th colspan="6">{{ 'questions.table.none' | transloco }}</th>
-			</tr>
-		</tfoot>
+		@if ((hasQuestions$ | async) === false) {
+			<tfoot>
+				<tr>
+					<th colspan="6">{{ 'questions.table.none' | transloco }}</th>
+				</tr>
+			</tfoot>
+		}
 	</table>
 </div>

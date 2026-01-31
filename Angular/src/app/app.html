@@ -5,55 +5,59 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * Delete the template below * * * * * * * * * -->
 <main>
-  <div id="app" class="container-fluid" *ngIf="viewMode$ | async as viewMode">
-    <div class="row">
-      <div class="col text-left">
-        <div class="row">
-          <div class="flex-container">
-            <app-import-export />
-            <app-view-mode class="view-mode" />
+  @if (viewMode$ | async; as viewMode) {
+    <div id="app" class="container-fluid">
+      <div class="row">
+        <div class="col text-left">
+          <div class="row">
+            <div class="flex-container">
+              <app-import-export />
+              <app-view-mode class="view-mode" />
+            </div>
+          </div>
+        </div>
+        <div class="col text-right">
+          <div class="language-switcher">
+            <button
+              class="btn btn-light"
+              [class.active]="activeLang === 'en'"
+              (click)="setLang('en')"
+              [attr.aria-label]="'common.langEnglish' | transloco"
+            >
+              🇬🇧
+            </button>
+            <button
+              class="btn btn-light"
+              [class.active]="activeLang === 'nl'"
+              (click)="setLang('nl')"
+              [attr.aria-label]="'common.langDutch' | transloco"
+            >
+              🇳🇱
+            </button>
           </div>
         </div>
       </div>
-      <div class="col text-right">
-        <div class="language-switcher">
-          <button
-            class="btn btn-light"
-            [class.active]="activeLang === 'en'"
-            (click)="setLang('en')"
-            [attr.aria-label]="'common.langEnglish' | transloco"
+      <div class="row">
+        @if (viewMode === 'both' || viewMode === 'library') {
+          <div
+            class="col-lg-12 grow box-left"
+            [ngClass]="{ 'col-xl-6': viewMode === 'both', 'col-xl-12': viewMode !== 'both' }"
           >
-            🇬🇧
-          </button>
-          <button
-            class="btn btn-light"
-            [class.active]="activeLang === 'nl'"
-            (click)="setLang('nl')"
-            [attr.aria-label]="'common.langDutch' | transloco"
+            <app-library />
+          </div>
+        }
+        @if (viewMode === 'both' || viewMode === 'questions') {
+          <div
+            class="col-lg-12"
+            [ngClass]="{ 'col-xl-6': viewMode === 'both', 'col-xl-12': viewMode !== 'both', 'box-right': viewMode === 'both' }"
           >
-            🇳🇱
-          </button>
-        </div>
+            <app-question-trainer />
+            <app-question-list class="question-list" />
+          </div>
+        }
       </div>
     </div>
-    <div class="row">
-      <div
-        *ngIf="viewMode === 'both' || viewMode === 'library'"
-        class="col-lg-12 grow box-left"
-        [ngClass]="{ 'col-xl-6': viewMode === 'both', 'col-xl-12': viewMode !== 'both' }"
-      >
-        <app-library />
-      </div>
-      <div
-        *ngIf="viewMode === 'both' || viewMode === 'questions'"
-        class="col-lg-12"
-        [ngClass]="{ 'col-xl-6': viewMode === 'both', 'col-xl-12': viewMode !== 'both', 'box-right': viewMode === 'both' }"
-      >
-        <app-question-trainer />
-        <app-question-list class="question-list" />
-      </div>
-    </div>
-  </div>
+  }
   <app-question-modal />
 </main>
 <footer class="footer">

@@ -9,27 +9,29 @@
 		<fa-icon icon="eye" />
 		<span class="view-mode-text">{{ 'viewMode.label' | transloco }}</span>
 	</button>
-	<div class="dropdown-menu" [class.show]="isOpen" *ngIf="viewMode$ | async as viewMode">
-		<app-view-mode-item
-			icon="columns"
-			[text]="'viewMode.both' | transloco"
-			viewMode="both"
-			[currentViewMode]="viewMode"
-			(select)="updateViewMode($event)"
-		/>
-		<app-view-mode-item
-			icon="book"
-			[text]="'viewMode.libraryOnly' | transloco"
-			viewMode="library"
-			[currentViewMode]="viewMode"
-			(select)="updateViewMode($event)"
-		/>
-		<app-view-mode-item
-			icon="question-circle"
-			[text]="'viewMode.questionsOnly' | transloco"
-			viewMode="questions"
-			[currentViewMode]="viewMode"
-			(select)="updateViewMode($event)"
-		/>
-	</div>
+	@if (viewMode$ | async; as viewMode) {
+		<div class="dropdown-menu" [class.show]="isOpen">
+			<app-view-mode-item
+				icon="columns"
+				[text]="'viewMode.both' | transloco"
+				viewMode="both"
+				[currentViewMode]="viewMode"
+				(select)="updateViewMode($event)"
+			/>
+			<app-view-mode-item
+				icon="book"
+				[text]="'viewMode.libraryOnly' | transloco"
+				viewMode="library"
+				[currentViewMode]="viewMode"
+				(select)="updateViewMode($event)"
+			/>
+			<app-view-mode-item
+				icon="question-circle"
+				[text]="'viewMode.questionsOnly' | transloco"
+				viewMode="questions"
+				[currentViewMode]="viewMode"
+				(select)="updateViewMode($event)"
+			/>
+		</div>
+	}
 </div>
