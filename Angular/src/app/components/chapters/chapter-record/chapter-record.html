@@ -1,22 +1,22 @@
 	<td class="text-center" style="width: 70px;">
 		<app-add-or-remove removeColor="red" (add)="addQuestionsToList()" (remove)="removeQuestionsFromList()" />
 	</td>
-	<td class="text-right" aria-label="Chapter number" style="width: 70px;">{{ chapter.nr }}</td>
-	<td class="text-left" aria-label="Title of chapter">{{ chapter.title }}</td>
-	<td class="text-center" style="width: 120px;" aria-label="Number of questions in this chapter">
+	<td class="text-right" [attr.aria-label]="'chapters.record.numberAria' | transloco" style="width: 70px;">{{ chapter.nr }}</td>
+	<td class="text-left" [attr.aria-label]="'chapters.record.titleAria' | transloco">{{ chapter.title }}</td>
+	<td class="text-center" style="width: 120px;" [attr.aria-label]="'chapters.record.questionsAria' | transloco">
 		{{ nrOfQuestions }}
 	</td>
 	<td class="text-center">
 		<app-icon-button
 			icon="edit"
-			label="Edit chapter"
+			[label]="'chapters.record.edit' | transloco"
 			[argument]="chapter"
 			(buttonClick)="edit(chapter)"
 			[disabled]="chapterInEditMode"
 		/>
 		<app-icon-button
 			icon="trash-alt"
-			label="Trash chapter"
+			[label]="'chapters.record.trash' | transloco"
 			[argument]="chapter"
 			(buttonClick)="trash(chapter)"
 			[disabled]="chapterInEditMode"

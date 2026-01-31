@@ -1,43 +1,37 @@
 <app-tabs>
-	<app-tab-page title="Library">
+	<app-tab-page [title]="'library.tabs.library' | transloco">
 		<app-library-details />
 	</app-tab-page>
-	<app-tab-page title="Books" [isDefault]="true">
+	<app-tab-page [title]="'library.tabs.books' | transloco" [isDefault]="true">
 		<app-book-manager />
 	</app-tab-page>
-	<app-tab-page title="Chapters">
+	<app-tab-page [title]="'library.tabs.chapters' | transloco">
 		<app-chapter-manager />
 	</app-tab-page>
-	<app-tab-page title="Questions">
+	<app-tab-page [title]="'library.tabs.questions' | transloco">
 		<app-question-manager />
 	</app-tab-page>
-	<app-tab-page title="Help">
+	<app-tab-page [title]="'library.tabs.help' | transloco">
 		<div class="text-left">
-			<h4>What is this app?</h4>
+			<h4>{{ 'library.help.whatIs' | transloco }}</h4>
 			<p>
-				An effective way to learn new things is by starting with a question, find the
-				answer, and repeat that. So when you are studying from books for instance, you
-				can turn everything you didn't know into questions. You then find the answer
-				for it. When you repeat the questions till you know them, you are effectively
-				studying. This app helps you doint that.
+				{{ 'library.help.whatIsText' | transloco }}
 			</p>
-			<h4>How to use it?</h4>
+			<h4>{{ 'library.help.howToUse' | transloco }}</h4>
 			<ul>
-				<li>Start by adding books.</li>
-				<li>For each book you then add chapters.</li>
-				<li>For each chapter you then add questions.</li>
-				<li>Put questions you want to study in the list.</li>
-				<li>Press start to train the questions.</li>
+				<li>{{ 'library.help.step1' | transloco }}</li>
+				<li>{{ 'library.help.step2' | transloco }}</li>
+				<li>{{ 'library.help.step3' | transloco }}</li>
+				<li>{{ 'library.help.step4' | transloco }}</li>
+				<li>{{ 'library.help.step5' | transloco }}</li>
 			</ul>
-			<h4>How do I know I am ready for the exam?</h4>
+			<h4>{{ 'library.help.readyTitle' | transloco }}</h4>
 			<ul>
 				<li>
-					When you have been honest with yourself, and you have created a question
-					for every little thing you did not know yet.
+					{{ 'library.help.ready1' | transloco }}
 				</li>
 				<li>
-					You have repeated the list of questions several times while answering all
-					questions correctly.
+					{{ 'library.help.ready2' | transloco }}
 				</li>
 			</ul>
 		</div>

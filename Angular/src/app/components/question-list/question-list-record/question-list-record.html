@@ -2,10 +2,10 @@
 		<app-icon-button
 			icon="minus"
 			color="red"
-			label="Remove from question list"
+			[label]="'questionList.remove' | transloco"
 			[argument]="question"
 			(buttonClick)="removeFromQuestionList(question)"
 		/>
 	</td>
-	<td aria-label="Question number">{{ index }}</td>
-	<td class="text-left" aria-label="Question text">{{ questionText }}</td>
+	<td [attr.aria-label]="'questionList.record.numberAria' | transloco">{{ index }}</td>
+	<td class="text-left" [attr.aria-label]="'questionList.record.textAria' | transloco">{{ questionText }}</td>

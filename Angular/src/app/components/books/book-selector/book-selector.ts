@@ -7,10 +7,11 @@ import { AppState } from '../../../state/app-state';
 import { Book } from '../../../models/book';
 import { selectBookSelected, selectBooksSortedByTitle } from '../../../state/app.selectors';
 import { setSelectedBook } from '../../../state/app.actions';
+import { TranslocoModule } from '@ngneat/transloco';
 
 @Component({
   selector: 'app-book-selector',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, TranslocoModule],
   templateUrl: './book-selector.html',
   styleUrl: './book-selector.css',
 })

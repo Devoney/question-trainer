@@ -2,30 +2,30 @@
 		<app-add-or-remove removeColor="red" (add)="addQuestionsToList()" (remove)="removeQuestionsFromList()" />
 	</td>
 	<td class="text-right" style="width: 70px;">
-		<span aria-label="Index">{{ index }}</span>
+		<span [attr.aria-label]="'books.record.indexAria' | transloco">{{ index }}</span>
 	</td>
 	<td class="text-left">
-		<span style="cursor: pointer;" aria-label="Title of book">{{ book.title }}</span>
+		<span style="cursor: pointer;" [attr.aria-label]="'books.record.titleAria' | transloco">{{ book.title }}</span>
 	</td>
 	<td class="text-center">
 		<div>
-			<span aria-label="Number of chapters">{{ nrOfChapters }}</span>
+			<span [attr.aria-label]="'books.record.chaptersAria' | transloco">{{ nrOfChapters }}</span>
 		</div>
 	</td>
 	<td class="text-center">
-		<span aria-label="Number of questions">{{ nrOfQuestions }}</span>
+		<span [attr.aria-label]="'books.record.questionsAria' | transloco">{{ nrOfQuestions }}</span>
 	</td>
 	<td class="text-center table-col-delete">
 		<app-icon-button
 			icon="edit"
-			label="Edit book"
+			[label]="'books.record.edit' | transloco"
 			[argument]="book"
 			(buttonClick)="edit(book)"
 			[disabled]="bookInEditMode"
 		/>
 		<app-icon-button
 			icon="trash-alt"
-			label="Trash book"
+			[label]="'books.record.trash' | transloco"
 			[argument]="book"
 			(buttonClick)="trash(book)"
 			[disabled]="bookInEditMode"

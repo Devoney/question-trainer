@@ -8,7 +8,7 @@
 		</div>
 		<div class="col text-left">
 			<div *ngIf="chapterIsSelected">
-				<label class="font-weight-bold">Page #:</label>
+				<label class="font-weight-bold">{{ 'questions.add.page' | transloco }}</label>
 				<div class="input-group row no-gutters">
 					<input class="form-control" min="1" max="9999" type="number" [(ngModel)]="pageNr" />
 				</div>
@@ -17,7 +17,7 @@
 	</div>
 	<div class="row ckeditorrow">
 		<div class="col text-left">
-			<label class="font-weight-bold">Question:</label>
+			<label class="font-weight-bold">{{ 'questions.add.question' | transloco }}</label>
 			<ckeditor
 				[disabled]="!chapterIsSelected"
 				[editor]="editor"
@@ -28,7 +28,7 @@
 	</div>
 	<div class="row ckeditorrow">
 		<div class="col text-left">
-			<label class="font-weight-bold">Answer:</label>
+			<label class="font-weight-bold">{{ 'questions.add.answer' | transloco }}</label>
 			<ckeditor
 				[disabled]="(!chapterIsSelected || !hasQuestion) && !hasAnswer"
 				[editor]="editor"

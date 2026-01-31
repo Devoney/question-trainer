@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { TranslocoModule } from '@ngneat/transloco';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { ViewModeItem } from '../view-mode-item/view-mode-item';
@@ -10,7 +11,7 @@ import { setViewMode } from '../../state/app.actions';
 
 @Component({
   selector: 'app-view-mode',
-  imports: [CommonModule, FontAwesomeModule, ViewModeItem],
+  imports: [CommonModule, FontAwesomeModule, ViewModeItem, TranslocoModule],
   templateUrl: './view-mode.html',
   styleUrl: './view-mode.css',
 })

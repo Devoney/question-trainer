@@ -6,10 +6,11 @@ import { Observable } from 'rxjs';
 import { AppState } from '../../../state/app-state';
 import { selectQuestionList } from '../../../state/app.selectors';
 import { clearQuestionList } from '../../../state/app.actions';
+import { TranslocoModule } from '@ngneat/transloco';
 
 @Component({
   selector: 'app-clear-button',
-  imports: [CommonModule],
+  imports: [CommonModule, TranslocoModule],
   templateUrl: './clear-button.html',
   styleUrl: './clear-button.css',
 })

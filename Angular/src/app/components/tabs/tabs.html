@@ -15,8 +15,8 @@
 	</ul>
 	<div class="tab-content">
 		<ng-content>
-			<app-tab-page title="Default tab page">
-				Add tab pages by using 'app-tab-page' components.
+			<app-tab-page [title]="'tabs.defaultTitle' | transloco">
+				{{ 'tabs.defaultBody' | transloco }}
 			</app-tab-page>
 		</ng-content>
 	</div>

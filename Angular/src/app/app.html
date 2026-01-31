@@ -15,6 +15,26 @@
           </div>
         </div>
       </div>
+      <div class="col text-right">
+        <div class="language-switcher">
+          <button
+            class="btn btn-light"
+            [class.active]="activeLang === 'en'"
+            (click)="setLang('en')"
+            [attr.aria-label]="'common.langEnglish' | transloco"
+          >
+            🇬🇧
+          </button>
+          <button
+            class="btn btn-light"
+            [class.active]="activeLang === 'nl'"
+            (click)="setLang('nl')"
+            [attr.aria-label]="'common.langDutch' | transloco"
+          >
+            🇳🇱
+          </button>
+        </div>
+      </div>
     </div>
     <div class="row">
       <div
@@ -39,23 +59,25 @@
 <footer class="footer">
   <div class="container">
     <div>
-      Question Trainer
-      <a href="/changelog.txt" target="_blank">v{{ version$ | async }}</a> by
+      {{ 'app.footer.title' | transloco }}
+      <a href="/changelog.txt" target="_blank">v{{ version$ | async }}</a> {{ 'app.footer.by' | transloco }}
       <a href="mailto:mikedeklerk@gmail.com">Mike de Klerk</a> &copy; 2019<br />
-      <a href="https://github.com/Devoney/question-trainer">Source code at Github</a>
-      and <a href="https://www.youtube.com/watch?v=OExLkoSoytU">instruction video</a>
-      at YouTube.
+      <a href="https://github.com/Devoney/question-trainer">{{ 'app.footer.sourceCode' | transloco }}</a>
+      {{ 'app.footer.and' | transloco }}
+      <a href="https://www.youtube.com/watch?v=OExLkoSoytU">{{ 'app.footer.instructionVideo' | transloco }}</a>
+      {{ 'app.footer.atYouTube' | transloco }}
     </div>
     <div class="favicon-credits">
-      Icons made by
+      {{ 'app.footer.iconsMadeBy' | transloco }}
       <a href="https://www.flaticon.com/authors/popcorns-arts" title="Icon Pond">Icon Pond</a>
-      from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
-      is licensed by
+      {{ 'app.footer.from' | transloco }}
+      <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+      {{ 'app.footer.licensedBy' | transloco }}
       <a
         href="http://creativecommons.org/licenses/by/3.0/"
         title="Creative Commons BY 3.0"
         target="_blank"
-        >CC 3.0 BY</a
+        >{{ 'app.footer.ccBy' | transloco }}</a
       >
     </div>
   </div>

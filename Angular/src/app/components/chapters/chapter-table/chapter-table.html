@@ -3,12 +3,9 @@
 		<thead>
 			<tr>
 				<th></th>
-				<th>Nr.</th>
-				<th class="text-left">Title</th>
-				<th>
-					Nr of
-					<br />questions
-				</th>
+				<th>{{ 'chapters.table.nr' | transloco }}</th>
+				<th class="text-left">{{ 'chapters.table.title' | transloco }}</th>
+				<th>{{ 'chapters.table.nrOfQuestions' | transloco }}</th>
 				<th width="90"></th>
 			</tr>
 		</thead>
@@ -21,7 +18,7 @@
 		</tbody>
 		<tfoot *ngIf="(hasChapters$ | async) === false">
 			<tr>
-				<th colspan="5">No chapters</th>
+				<th colspan="5">{{ 'chapters.table.none' | transloco }}</th>
 			</tr>
 		</tfoot>
 	</table>

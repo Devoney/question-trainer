@@ -6,10 +6,11 @@ import { AppState } from '../../state/app-state';
 import { selectAppState } from '../../state/app.selectors';
 import { dateString } from '../../utils/date-string';
 import { IconButtonComponent } from '../icon-button/icon-button';
+import { TranslocoModule } from '@ngneat/transloco';
 
 @Component({
   selector: 'app-import-export',
-  imports: [CommonModule, IconButtonComponent],
+  imports: [CommonModule, IconButtonComponent, TranslocoModule],
   templateUrl: './import-export.html',
   styleUrl: './import-export.css',
 })

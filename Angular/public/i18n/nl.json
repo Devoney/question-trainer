@@ -1,0 +1,204 @@
+{
+  "app": {
+    "footer": {
+      "title": "Vragentrainer",
+      "by": "door",
+      "and": "en",
+      "sourceCode": "Broncode op GitHub",
+      "instructionVideo": "instructievideo",
+      "atYouTube": "op YouTube.",
+      "iconsMadeBy": "Pictogrammen gemaakt door",
+      "from": "van",
+      "licensedBy": "is gelicentieerd onder",
+      "ccBy": "CC 3.0 BY"
+    }
+  },
+  "trainer": {
+    "repeatToggleLabel": "Schakel modus om vragen die je fout beantwoordde te herhalen.",
+    "ai": {
+      "toggle": "AI-beoordeling gebruiken"
+    },
+    "title": "Vragentrainer",
+    "start": "Start",
+    "startAria": "Start training",
+    "stats": {
+      "aria": "Recente statistieken",
+      "prefix": "Je hebt de laatste training beëindigd met",
+      "incorrect": "vraag/vragen fout beantwoord en",
+      "correct": "correct."
+    },
+    "instructions": {
+      "buildList": "Stel hieronder een lijst met vragen samen en start daarna met trainen.",
+      "aria": "Instructies om een lijst te maken",
+      "pressStart": "Klik op Start om te beginnen met trainen!"
+    },
+    "labels": {
+      "question": "Vraag:",
+      "yourAnswer": "Jouw antwoord:",
+      "expectedAnswer": "Verwacht antwoord:"
+    },
+    "aria": {
+      "questionHtml": "Vraag-html",
+      "answerHtml": "Antwoord-html"
+    },
+    "showAnswer": "Klik hier om het antwoord te tonen",
+    "checkAnswer": "Antwoord controleren",
+    "checking": "Bezig met controleren...",
+    "wrong": "Fout",
+    "wrongAria": "Fout antwoord",
+    "correct": "Goed",
+    "correctAria": "Goed antwoord",
+    "continue": "Verder",
+    "continueAria": "Verder"
+  },
+  "library": {
+    "tabs": {
+      "library": "Bibliotheek",
+      "books": "Boeken",
+      "chapters": "Hoofdstukken",
+      "questions": "Vragen",
+      "help": "Help"
+    },
+    "help": {
+      "whatIs": "Wat is deze app?",
+      "whatIsText": "Een effectieve manier om nieuwe dingen te leren is door te beginnen met een vraag, het antwoord te vinden en dat te herhalen. Dus wanneer je bijvoorbeeld uit boeken studeert, kun je alles wat je nog niet wist omzetten in vragen. Vervolgens zoek je het antwoord. Door die vragen te herhalen totdat je ze kent, ben je effectief aan het studeren. Deze app helpt je daarbij.",
+      "howToUse": "Hoe gebruik je het?",
+      "step1": "Begin met het toevoegen van boeken.",
+      "step2": "Voeg voor elk boek vervolgens hoofdstukken toe.",
+      "step3": "Voeg voor elk hoofdstuk vervolgens vragen toe.",
+      "step4": "Zet vragen die je wilt studeren in de lijst.",
+      "step5": "Druk op start om de vragen te trainen.",
+      "readyTitle": "Hoe weet ik dat ik klaar ben voor het examen?",
+      "ready1": "Wanneer je eerlijk bent geweest tegenover jezelf en je een vraag hebt gemaakt voor elk klein ding dat je nog niet wist.",
+      "ready2": "Je hebt de vragenlijst meerdere keren herhaald terwijl je alle vragen correct beantwoordde."
+    },
+    "details": {
+      "nameLabel": "Bibliotheeknaam:"
+    },
+    "memory": {
+      "label": "Geheugengebruik:"
+    }
+  },
+  "importExport": {
+    "export": "Bibliotheek exporteren",
+    "import": "Bibliotheek importeren",
+    "modalTitle": "Bibliotheek importeren",
+    "close": "Sluiten",
+    "warning": "Dit overschrijft je huidige bibliotheek. Het is aan te raden eerst je huidige bibliotheek te exporteren.",
+    "selectHint": "Selecteer de bibliotheek die je eerder hebt geëxporteerd",
+    "okAria": "ok",
+    "importButton": "Importeren"
+  },
+  "viewMode": {
+    "label": "Weergavemodus",
+    "both": "Beide",
+    "libraryOnly": "Alleen bibliotheek",
+    "questionsOnly": "Alleen vragen"
+  },
+  "questionList": {
+    "title": "Vragenlijst",
+    "countAria": "Aantal vragen in de lijst.",
+    "header": {
+      "number": "#",
+      "question": "Vraag"
+    },
+    "addInstructionsAria": "Instructies om een vraag aan de lijst toe te voegen.",
+    "addInstructionsPrefix": "Voeg vragen aan deze lijst toe met de",
+    "addInstructionsSuffix": "knop bij boeken, hoofdstukken en individuele vragen.",
+    "remove": "Verwijderen uit vragenlijst",
+    "record": {
+      "numberAria": "Vragennummer",
+      "textAria": "Vraagtekst"
+    },
+    "clear": "Wissen",
+    "clearAria": "Vragenlijst wissen",
+    "clearTitle": "Verwijdert alle vragen uit de lijst"
+  },
+  "modal": {
+    "close": "Sluiten",
+    "okAria": "ok",
+    "cancelAria": "annuleren"
+  },
+  "questions": {
+    "record": {
+      "questionAria": "Vraag",
+      "answerAria": "Antwoord",
+      "pageAria": "Paginanummer",
+      "edit": "Vraag bewerken",
+      "trash": "Vraag verwijderen"
+    },
+    "table": {
+      "nr": "Nr.",
+      "question": "Vraag",
+      "answer": "Antwoord",
+      "page": "Paginanr.",
+      "none": "Geen vragen"
+    },
+    "add": {
+      "page": "Pagina #:",
+      "question": "Vraag:",
+      "answer": "Antwoord:"
+    }
+  },
+  "buttons": {
+    "remove": "verwijderen",
+    "add": "toevoegen"
+  },
+  "tabs": {
+    "defaultTitle": "Standaard tabblad",
+    "defaultBody": "Voeg tabbladen toe door 'app-tab-page'-componenten te gebruiken."
+  },
+  "tabPage": {
+    "empty": "Dit tabblad heeft nog geen inhoud.",
+    "emptyHint": "Gebruik de 'slot' van het tabbladcomponent om inhoud toe te voegen."
+  },
+  "common": {
+    "save": "Opslaan",
+    "langEnglish": "Engels",
+    "langDutch": "Nederlands"
+  },
+  "books": {
+    "titleLabel": "Titel:",
+    "selector": {
+      "label": "Boek:"
+    },
+    "table": {
+      "nr": "Nr.",
+      "title": "Titel",
+      "nrOfChapters": "Aantal hoofdstukken",
+      "nrOfQuestions": "Aantal vragen",
+      "none": "Geen boeken"
+    },
+    "record": {
+      "indexAria": "Index",
+      "titleAria": "Boektitel",
+      "chaptersAria": "Aantal hoofdstukken",
+      "questionsAria": "Aantal vragen",
+      "edit": "Boek bewerken",
+      "trash": "Boek verwijderen"
+    }
+  },
+  "chapters": {
+    "nrLabel": "Hfdst. nr.:",
+    "titleLabel": "Titel:",
+    "nrAria": "Hoofdstuknummer",
+    "titleAria": "Hoofdstuktitel",
+    "selector": {
+      "label": "Hoofdstuk:",
+      "separator": " - "
+    },
+    "table": {
+      "nr": "Nr.",
+      "title": "Titel",
+      "nrOfQuestions": "Aantal vragen",
+      "none": "Geen hoofdstukken"
+    },
+    "record": {
+      "numberAria": "Hoofdstuknummer",
+      "titleAria": "Hoofdstuktitel",
+      "questionsAria": "Aantal vragen in dit hoofdstuk",
+      "edit": "Hoofdstuk bewerken",
+      "trash": "Hoofdstuk verwijderen"
+    }
+  }
+}

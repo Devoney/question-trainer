@@ -6,10 +6,11 @@ import { Observable } from 'rxjs';
 import { AppState } from '../../../state/app-state';
 import { selectBooks, selectBooksSortedByTitle } from '../../../state/app.selectors';
 import { BookRecord } from '../book-record/book-record';
+import { TranslocoModule } from '@ngneat/transloco';
 
 @Component({
   selector: 'app-book-table',
-  imports: [CommonModule, BookRecord],
+  imports: [CommonModule, BookRecord, TranslocoModule],
   templateUrl: './book-table.html',
   styleUrl: './book-table.css',
 })

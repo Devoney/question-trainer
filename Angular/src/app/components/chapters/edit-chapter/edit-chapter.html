@@ -1,7 +1,7 @@
 <div>
 	<div class="row">
 		<div class="col-2">
-			<label class="font-weight-bold">Ch. Nr.:</label>
+			<label class="font-weight-bold">{{ 'chapters.nrLabel' | transloco }}</label>
 			<input
 				class="form-control"
 				[class.is-invalid]="error.nr !== ''"
@@ -10,11 +10,11 @@
 				(ngModelChange)="numberChanged()"
 				(keydown.escape)="cancel()"
 				[title]="error.nr"
-				aria-label="Nr of chapter"
+				[attr.aria-label]="'chapters.nrAria' | transloco"
 			/>
 		</div>
 		<div class="col">
-			<label class="font-weight-bold">Title:</label>
+			<label class="font-weight-bold">{{ 'chapters.titleLabel' | transloco }}</label>
 			<div class="input-group row no-gutters">
 				<input
 					class="form-control"
@@ -25,7 +25,7 @@
 					(keydown.enter)="ok()"
 					(keydown.escape)="cancel()"
 					[title]="error.title"
-					aria-label="Title of chapter"
+					[attr.aria-label]="'chapters.titleAria' | transloco"
 				/>
 				<div class="input-group-append">
 					<button

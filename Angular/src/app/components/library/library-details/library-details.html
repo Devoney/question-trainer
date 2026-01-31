@@ -2,7 +2,7 @@
 	<div class="form-group">
 		<div class="row">
 			<div class="col text-left">
-				<label class="font-weight-bold" for="bookTitleText">Library name:</label>
+				<label class="font-weight-bold" for="bookTitleText">{{ 'library.details.nameLabel' | transloco }}</label>
 			</div>
 		</div>
 		<div class="input-group row no-gutters">
@@ -15,7 +15,7 @@
 				(keydown.escape)="cancel()"
 			/>
 			<div class="input-group-append">
-				<button class="btn input-group-append btn-primary" (click)="ok()">Save</button>
+				<button class="btn input-group-append btn-primary" (click)="ok()">{{ 'common.save' | transloco }}</button>
 			</div>
 		</div>
 	</div>

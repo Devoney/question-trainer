@@ -13,10 +13,11 @@ import { ChapterSelector } from '../../chapters/chapter-selector/chapter-selecto
 import { Question } from '../../../models/question';
 import { addQuestion, editQuestion, setEditedQuestion } from '../../../state/app.actions';
 import { selectBookSelected, selectChapterSelected, selectQuestionEdited } from '../../../state/app.selectors';
+import { TranslocoModule } from '@ngneat/transloco';
 
 @Component({
   selector: 'app-add-question',
-  imports: [CommonModule, FormsModule, CKEditorModule, BookSelector, ChapterSelector],
+  imports: [CommonModule, FormsModule, CKEditorModule, BookSelector, ChapterSelector, TranslocoModule],
   templateUrl: './add-question.html',
   styleUrl: './add-question.css',
 })

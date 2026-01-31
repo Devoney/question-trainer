@@ -3,6 +3,8 @@ import { Type } from '@angular/core';
 import { provideMockStore, MockStore } from '@ngrx/store/testing';
 import { provideHttpClient } from '@angular/common/http';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { provideTransloco, translocoConfig, TranslocoLoader } from '@ngneat/transloco';
+import { of } from 'rxjs';
 import { initialAppState } from '../state/app.reducer';
 import { MessageBusService } from '../services/message-bus.service';
 import { QuestionModalArgs } from '../types/question-modal-args';
@@ -48,6 +50,17 @@ const baseProviders = [
   provideMockStore({ initialState: { app: initialAppState } }),
   provideHttpClient(),
   MessageBusService,
+  provideTransloco({
+    config: translocoConfig({
+      availableLangs: ['en', 'nl'],
+      defaultLang: 'en',
+      reRenderOnLangChange: true,
+      prodMode: true,
+    }),
+    loader: {
+      getTranslation: () => of({}),
+    } as TranslocoLoader,
+  }),
 ];
 
 async function configure<T>(component: Type<T>): Promise<void> {

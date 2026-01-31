@@ -3,10 +3,10 @@
 		<thead>
 			<tr>
 				<th width="40"></th>
-				<th width="70">Nr.</th>
-				<th class="text-left">Question</th>
-				<th class="text-left">Answer</th>
-				<th width="70">Page Nr.</th>
+				<th width="70">{{ 'questions.table.nr' | transloco }}</th>
+				<th class="text-left">{{ 'questions.table.question' | transloco }}</th>
+				<th class="text-left">{{ 'questions.table.answer' | transloco }}</th>
+				<th width="70">{{ 'questions.table.page' | transloco }}</th>
 				<th width="90"></th>
 			</tr>
 		</thead>
@@ -20,7 +20,7 @@
 		</tbody>
 		<tfoot *ngIf="(hasQuestions$ | async) === false">
 			<tr>
-				<th colspan="6">No questions</th>
+				<th colspan="6">{{ 'questions.table.none' | transloco }}</th>
 			</tr>
 		</tfoot>
 	</table>

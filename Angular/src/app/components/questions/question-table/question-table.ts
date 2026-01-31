@@ -7,10 +7,11 @@ import { Question } from '../../../models/question';
 import { AppState } from '../../../state/app-state';
 import { selectChapterSelected } from '../../../state/app.selectors';
 import { QuestionRecord } from '../question-record/question-record';
+import { TranslocoModule } from '@ngneat/transloco';
 
 @Component({
   selector: 'app-question-table',
-  imports: [CommonModule, QuestionRecord],
+  imports: [CommonModule, QuestionRecord, TranslocoModule],
   templateUrl: './question-table.html',
   styleUrl: './question-table.css',
 })

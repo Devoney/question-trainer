@@ -2,8 +2,8 @@
 	class="btn btn-secondary"
 	(click)="clear()"
 	[disabled]="listHasNoQuestions$ | async"
-	aria-label="Clear question list"
-	title="Removes all questions in the list"
+	[attr.aria-label]="'questionList.clearAria' | transloco"
+	[title]="'questionList.clearTitle' | transloco"
 >
-	Clear
+	{{ 'questionList.clear' | transloco }}
 </button>

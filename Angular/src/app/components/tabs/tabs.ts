@@ -1,10 +1,11 @@
 import { AfterContentInit, Component, ContentChildren, QueryList } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TabPage } from '../tab-page/tab-page';
+import { TranslocoModule } from '@ngneat/transloco';
 
 @Component({
   selector: 'app-tabs',
-  imports: [CommonModule, TabPage],
+  imports: [CommonModule, TabPage, TranslocoModule],
   templateUrl: './tabs.html',
   styleUrl: './tabs.css',
 })

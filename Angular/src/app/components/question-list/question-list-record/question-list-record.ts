@@ -6,10 +6,11 @@ import { Question } from '../../../models/question';
 import { truncateWithDots } from '../../../utils/text-transformers';
 import { removeFromQuestionList } from '../../../state/app.actions';
 import { IconButtonComponent } from '../../icon-button/icon-button';
+import { TranslocoModule } from '@ngneat/transloco';
 
 @Component({
   selector: 'tr[app-question-list-record]',
-  imports: [CommonModule, IconButtonComponent],
+  imports: [CommonModule, IconButtonComponent, TranslocoModule],
   templateUrl: './question-list-record.html',
   styleUrl: './question-list-record.css',
 })

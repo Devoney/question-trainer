@@ -7,7 +7,7 @@
 					[argument]="true"
 					(buttonClick)="toggleRepeat()"
 					[color]="repeat ? '#000000' : '#CCCCCC'"
-					label="Toggle mode to repeat questions you answered incorrectly."
+					[label]="'trainer.repeatToggleLabel' | transloco"
 					size="m"
 				/>
 				<div class="ai-toggle">
@@ -17,43 +17,45 @@
 							[checked]="useAiGrading"
 							(change)="toggleAiGrading($event)"
 						/>
-						Use AI grading
+						{{ 'trainer.ai.toggle' | transloco }}
 					</label>
 				</div>
 			</div>
-			<div class="col-8 text-center h5">Question trainer</div>
+			<div class="col-8 text-center h5">{{ 'trainer.title' | transloco }}</div>
 			<div class="col-2 text-right">
 				<button
-					aria-label="Start training"
+					[attr.aria-label]="'trainer.startAria' | transloco"
 					class="btn"
 					[class.btn-primary]="canStart"
 					[class.btn-secondary]="!canStart"
 					(click)="start()"
 					[disabled]="!canStart"
 				>
-					Start
+					{{ 'trainer.start' | transloco }}
 				</button>
 			</div>
 		</div>
 	</div>
 	<div class="card-body text-left">
 		<div *ngIf="!hasQuestion && !hasQuestionsInList" class="text-center">
-			<p *ngIf="showStatistics" aria-label="Recent statistics">
-				You finished last training with
-				<span class="stats-wrong-count">{{ statisticsView.wrongCount }}</span> question(s) answered incorrectly and
-				<span class="stats-correct-count">{{ statisticsView.correctCount }}</span> correctly.
+			<p *ngIf="showStatistics" [attr.aria-label]="'trainer.stats.aria' | transloco">
+				{{ 'trainer.stats.prefix' | transloco }}
+				<span class="stats-wrong-count">{{ statisticsView.wrongCount }}</span>
+				{{ 'trainer.stats.incorrect' | transloco }}
+				<span class="stats-correct-count">{{ statisticsView.correctCount }}</span>
+				{{ 'trainer.stats.correct' | transloco }}
 			</p>
-			<span aria-label="Instructions to create list">
-				Put together a list of questions below and then start training.
+			<span [attr.aria-label]="'trainer.instructions.aria' | transloco">
+				{{ 'trainer.instructions.buildList' | transloco }}
 			</span>
 		</div>
 		<div *ngIf="!hasQuestion && hasQuestionsInList" class="text-center">
-			Press Start to begin training!
+			{{ 'trainer.instructions.pressStart' | transloco }}
 		</div>
 		<div *ngIf="hasQuestion">
-			<div class="font-weight-bold">Question:</div>
-			<div [innerHTML]="questionHtml" aria-label="Question html"></div>
-			<div class="font-weight-bold answer">Your answer:</div>
+			<div class="font-weight-bold">{{ 'trainer.labels.question' | transloco }}</div>
+			<div [innerHTML]="questionHtml" [attr.aria-label]="'trainer.aria.questionHtml' | transloco"></div>
+			<div class="font-weight-bold answer">{{ 'trainer.labels.yourAnswer' | transloco }}</div>
 			<div *ngIf="!showAnswer && hasQuestion">
 				<ckeditor
 					[editor]="editor"
@@ -63,13 +65,13 @@
 				></ckeditor>
 			</div>
 			<div *ngIf="showAnswer" [innerHTML]="answerGiven"></div>
-			<div class="font-weight-bold answer">Expected answer:</div>
+			<div class="font-weight-bold answer">{{ 'trainer.labels.expectedAnswer' | transloco }}</div>
 			<div
 				class="show-answer-banner"
 				*ngIf="!useAiGrading && !showAnswer && hasQuestion"
 				(click)="showAnswer = true"
 			>
-				Click here to show the answer
+				{{ 'trainer.showAnswer' | transloco }}
 			</div>
 			<div *ngIf="useAiGrading && hasQuestion" class="ai-check-container">
 				<button
@@ -78,50 +80,50 @@
 					[disabled]="!canCheckAnswer"
 					(click)="checkAnswerWithAi()"
 				>
-					Check answer
+					{{ 'trainer.checkAnswer' | transloco }}
 				</button>
-				<div *ngIf="aiCheckInProgress" class="ai-checking">Checking...</div>
+				<div *ngIf="aiCheckInProgress" class="ai-checking">{{ 'trainer.checking' | transloco }}</div>
 				<div *ngIf="aiError" class="ai-error">{{ aiError }}</div>
 				<div *ngIf="aiFeedback && aiNeedsContinue && aiWasCorrect === false" class="ai-feedback">
 					{{ aiFeedback }}
 				</div>
 			</div>
-			<div aria-label="Answer html" *ngIf="showAnswer" [innerHTML]="answerHtml"></div>
+			<div [attr.aria-label]="'trainer.aria.answerHtml' | transloco" *ngIf="showAnswer" [innerHTML]="answerHtml"></div>
 		</div>
 	</div>
 	<div class="card-footer">
 		<div class="row">
 			<div class="col-2 text-left" *ngIf="!useAiGrading">
 				<button
-					aria-label="Wrong answer"
+					[attr.aria-label]="'trainer.wrongAria' | transloco"
 					class="btn btn-danger"
 					[disabled]="!hasQuestion || !showAnswer"
 					(click)="answerIsWrong()"
 				>
-					Wrong
+					{{ 'trainer.wrong' | transloco }}
 					<span *ngIf="hasQuestion">({{ statisticsView.wrongCount }})</span>
 				</button>
 			</div>
 			<div class="col-8"></div>
 			<div class="col-2 text-right" *ngIf="!useAiGrading">
 				<button
-					aria-label="Correct answer"
+					[attr.aria-label]="'trainer.correctAria' | transloco"
 					class="btn btn-success"
 					[disabled]="!hasQuestion || !showAnswer"
 					(click)="answerIsCorrect()"
 				>
-					Correct
+					{{ 'trainer.correct' | transloco }}
 					<span *ngIf="hasQuestion">({{ statisticsView.correctCount }})</span>
 				</button>
 			</div>
 			<div class="col-2 text-right" *ngIf="useAiGrading">
 				<button
-					aria-label="Continue"
+					[attr.aria-label]="'trainer.continueAria' | transloco"
 					class="btn btn-primary"
 					[disabled]="!aiNeedsContinue"
 					(click)="continueAfterAiCheck()"
 				>
-					Continue
+					{{ 'trainer.continue' | transloco }}
 				</button>
 			</div>
 		</div>

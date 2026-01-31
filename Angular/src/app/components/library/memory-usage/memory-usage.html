@@ -1,7 +1,7 @@
 <div>
 	<div class="row">
 		<div class="col-2">
-			<label [for]="id" class="font-weight-bold">Memory Usage:</label>
+			<label [for]="id" class="font-weight-bold">{{ 'library.memory.label' | transloco }}</label>
 		</div>
 		<div class="col-11 text-left">
 			<progress [id]="id" [value]="usageInBytes" [max]="maxStorageInBytes"></progress>

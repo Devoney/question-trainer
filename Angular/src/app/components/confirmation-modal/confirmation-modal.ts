@@ -1,9 +1,10 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TranslocoModule } from '@ngneat/transloco';
 
 @Component({
   selector: 'app-confirmation-modal',
-  imports: [CommonModule],
+  imports: [CommonModule, TranslocoModule],
   templateUrl: './confirmation-modal.html',
   styleUrl: './confirmation-modal.css',
 })

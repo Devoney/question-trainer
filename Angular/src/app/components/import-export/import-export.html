@@ -2,14 +2,14 @@
 	<a [id]="exportLibLinkId" style="display: none"></a>
 	<app-icon-button
 		icon="file-download"
-		label="Export library"
+		[label]="'importExport.export' | transloco"
 		[argument]="true"
 		[size]="buttonSize"
 		(buttonClick)="exportLib()"
 	/>
 	<app-icon-button
 		icon="file-upload"
-		label="Import library"
+		[label]="'importExport.import' | transloco"
 		[argument]="true"
 		[size]="buttonSize"
 		(buttonClick)="importLib()"
@@ -18,17 +18,16 @@
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title">Import library</h5>
-					<button type="button" class="close" aria-label="Close" (click)="closeModal()">
+					<h5 class="modal-title">{{ 'importExport.modalTitle' | transloco }}</h5>
+					<button type="button" class="close" [attr.aria-label]="'importExport.close' | transloco" (click)="closeModal()">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
 				<div class="modal-body">
 					<p>
-						This will overwrite your current library. It is advised to export your
-						current library first.
+						{{ 'importExport.warning' | transloco }}
 					</p>
-					<p>Select the library you have exported earlier</p>
+					<p>{{ 'importExport.selectHint' | transloco }}</p>
 					<input type="file" (change)="processFile($event)" />
 				</div>
 				<div class="modal-footer">
@@ -37,11 +36,11 @@
 							<button
 								type="button"
 								class="btn btn-primary"
-								aria-label="ok"
+								[attr.aria-label]="'importExport.okAria' | transloco"
 								(click)="executeImport()"
 								[disabled]="jsonToImport == null"
 							>
-								Import
+								{{ 'importExport.importButton' | transloco }}
 							</button>
 						</div>
 					</div>

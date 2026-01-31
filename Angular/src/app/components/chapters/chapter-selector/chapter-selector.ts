@@ -7,10 +7,11 @@ import { AppState } from '../../../state/app-state';
 import { Chapter } from '../../../models/chapter';
 import { selectChapterSelected, selectChaptersSortedByTitle } from '../../../state/app.selectors';
 import { setSelectedChapter } from '../../../state/app.actions';
+import { TranslocoModule } from '@ngneat/transloco';
 
 @Component({
   selector: 'app-chapter-selector',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, TranslocoModule],
   templateUrl: './chapter-selector.html',
   styleUrl: './chapter-selector.css',
 })

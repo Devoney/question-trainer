@@ -8,10 +8,11 @@ import { selectQuestionList } from '../../../state/app.selectors';
 import { ClearButton } from '../clear-button/clear-button';
 import { IconButtonComponent } from '../../icon-button/icon-button';
 import { QuestionListRecord } from '../question-list-record/question-list-record';
+import { TranslocoModule } from '@ngneat/transloco';
 
 @Component({
   selector: 'app-question-list',
-  imports: [CommonModule, ClearButton, IconButtonComponent, QuestionListRecord],
+  imports: [CommonModule, ClearButton, IconButtonComponent, QuestionListRecord, TranslocoModule],
   templateUrl: './question-list.html',
   styleUrl: './question-list.css',
 })

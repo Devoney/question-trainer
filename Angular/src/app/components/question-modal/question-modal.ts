@@ -2,10 +2,11 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MessageBusService } from '../../services/message-bus.service';
 import { QuestionModalArgs } from '../../types/question-modal-args';
+import { TranslocoModule } from '@ngneat/transloco';
 
 @Component({
   selector: 'app-question-modal',
-  imports: [CommonModule],
+  imports: [CommonModule, TranslocoModule],
   templateUrl: './question-modal.html',
   styleUrl: './question-modal.css',
 })

@@ -1,10 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { v4 as uuid } from 'uuid';
+import { TranslocoModule } from '@ngneat/transloco';
 
 @Component({
   selector: 'app-tab-page',
-  imports: [CommonModule],
+  imports: [CommonModule, TranslocoModule],
   templateUrl: './tab-page.html',
   styleUrl: './tab-page.css',
 })

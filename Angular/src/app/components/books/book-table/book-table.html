@@ -3,16 +3,10 @@
 		<thead>
 			<tr>
 				<th></th>
-				<th>Nr.</th>
-				<th class="text-left">Title</th>
-				<th>
-					Nr of
-					<br />chapters
-				</th>
-				<th>
-					Nr of
-					<br />questions
-				</th>
+				<th>{{ 'books.table.nr' | transloco }}</th>
+				<th class="text-left">{{ 'books.table.title' | transloco }}</th>
+				<th>{{ 'books.table.nrOfChapters' | transloco }}</th>
+				<th>{{ 'books.table.nrOfQuestions' | transloco }}</th>
 				<th width="90"></th>
 			</tr>
 		</thead>
@@ -26,7 +20,7 @@
 		</tbody>
 		<tfoot *ngIf="(hasBooks$ | async) === false">
 			<tr>
-				<th colspan="6">No books</th>
+				<th colspan="6">{{ 'books.table.none' | transloco }}</th>
 			</tr>
 		</tfoot>
 	</table>

@@ -9,10 +9,11 @@ import { Chapter } from '../../../models/chapter';
 import { AppState } from '../../../state/app-state';
 import { addChapter } from '../../../state/app.actions';
 import { selectBookSelected } from '../../../state/app.selectors';
+import { TranslocoModule } from '@ngneat/transloco';
 
 @Component({
   selector: 'app-add-chapter',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, TranslocoModule],
   templateUrl: './add-chapter.html',
   styleUrl: './add-chapter.css',
 })

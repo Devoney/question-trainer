@@ -46,3 +46,13 @@
 .flex-container {
 	display: flex;
 }
+
+.language-switcher {
+	display: flex;
+	justify-content: flex-end;
+	gap: 8px;
+}
+
+.language-switcher .btn.active {
+	border: 2px solid #2c3e50;
+}

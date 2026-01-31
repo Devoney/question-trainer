@@ -1,0 +1,204 @@
+{
+  "app": {
+    "footer": {
+      "title": "Question Trainer",
+      "by": "by",
+      "and": "and",
+      "sourceCode": "Source code at Github",
+      "instructionVideo": "instruction video",
+      "atYouTube": "at YouTube.",
+      "iconsMadeBy": "Icons made by",
+      "from": "from",
+      "licensedBy": "is licensed by",
+      "ccBy": "CC 3.0 BY"
+    }
+  },
+  "trainer": {
+    "repeatToggleLabel": "Toggle mode to repeat questions you answered incorrectly.",
+    "ai": {
+      "toggle": "Use AI grading"
+    },
+    "title": "Question trainer",
+    "start": "Start",
+    "startAria": "Start training",
+    "stats": {
+      "aria": "Recent statistics",
+      "prefix": "You finished last training with",
+      "incorrect": "question(s) answered incorrectly and",
+      "correct": "correctly."
+    },
+    "instructions": {
+      "buildList": "Put together a list of questions below and then start training.",
+      "aria": "Instructions to create list",
+      "pressStart": "Press Start to begin training!"
+    },
+    "labels": {
+      "question": "Question:",
+      "yourAnswer": "Your answer:",
+      "expectedAnswer": "Expected answer:"
+    },
+    "aria": {
+      "questionHtml": "Question html",
+      "answerHtml": "Answer html"
+    },
+    "showAnswer": "Click here to show the answer",
+    "checkAnswer": "Check answer",
+    "checking": "Checking...",
+    "wrong": "Wrong",
+    "wrongAria": "Wrong answer",
+    "correct": "Correct",
+    "correctAria": "Correct answer",
+    "continue": "Continue",
+    "continueAria": "Continue"
+  },
+  "library": {
+    "tabs": {
+      "library": "Library",
+      "books": "Books",
+      "chapters": "Chapters",
+      "questions": "Questions",
+      "help": "Help"
+    },
+    "help": {
+      "whatIs": "What is this app?",
+      "whatIsText": "An effective way to learn new things is by starting with a question, find the answer, and repeat that. So when you are studying from books for instance, you can turn everything you didn't know into questions. You then find the answer for it. When you repeat the questions till you know them, you are effectively studying. This app helps you doint that.",
+      "howToUse": "How to use it?",
+      "step1": "Start by adding books.",
+      "step2": "For each book you then add chapters.",
+      "step3": "For each chapter you then add questions.",
+      "step4": "Put questions you want to study in the list.",
+      "step5": "Press start to train the questions.",
+      "readyTitle": "How do I know I am ready for the exam?",
+      "ready1": "When you have been honest with yourself, and you have created a question for every little thing you did not know yet.",
+      "ready2": "You have repeated the list of questions several times while answering all questions correctly."
+    },
+    "details": {
+      "nameLabel": "Library name:"
+    },
+    "memory": {
+      "label": "Memory Usage:"
+    }
+  },
+  "importExport": {
+    "export": "Export library",
+    "import": "Import library",
+    "modalTitle": "Import library",
+    "close": "Close",
+    "warning": "This will overwrite your current library. It is advised to export your current library first.",
+    "selectHint": "Select the library you have exported earlier",
+    "okAria": "ok",
+    "importButton": "Import"
+  },
+  "viewMode": {
+    "label": "View mode",
+    "both": "Both",
+    "libraryOnly": "Library only",
+    "questionsOnly": "Questions only"
+  },
+  "questionList": {
+    "title": "Question list",
+    "countAria": "Number of questions in the list.",
+    "header": {
+      "number": "#",
+      "question": "Question"
+    },
+    "addInstructionsAria": "Instructions on how to add a question to the list.",
+    "addInstructionsPrefix": "Add questions to this list by using the",
+    "addInstructionsSuffix": "button on books, chapters and individual questions.",
+    "remove": "Remove from question list",
+    "record": {
+      "numberAria": "Question number",
+      "textAria": "Question text"
+    },
+    "clear": "Clear",
+    "clearAria": "Clear question list",
+    "clearTitle": "Removes all questions in the list"
+  },
+  "modal": {
+    "close": "Close",
+    "okAria": "ok",
+    "cancelAria": "cancel"
+  },
+  "questions": {
+    "record": {
+      "questionAria": "Question",
+      "answerAria": "Answer",
+      "pageAria": "Page number",
+      "edit": "Edit question",
+      "trash": "Trash question"
+    },
+    "table": {
+      "nr": "Nr.",
+      "question": "Question",
+      "answer": "Answer",
+      "page": "Page Nr.",
+      "none": "No questions"
+    },
+    "add": {
+      "page": "Page #:",
+      "question": "Question:",
+      "answer": "Answer:"
+    }
+  },
+  "buttons": {
+    "remove": "remove",
+    "add": "add"
+  },
+  "tabs": {
+    "defaultTitle": "Default tab page",
+    "defaultBody": "Add tab pages by using 'app-tab-page' components."
+  },
+  "tabPage": {
+    "empty": "This tab page has no content yet.",
+    "emptyHint": "Use the 'slot' of the tab-page component to add content."
+  },
+  "common": {
+    "save": "Save",
+    "langEnglish": "English",
+    "langDutch": "Dutch"
+  },
+  "books": {
+    "titleLabel": "Title:",
+    "selector": {
+      "label": "Book:"
+    },
+    "table": {
+      "nr": "Nr.",
+      "title": "Title",
+      "nrOfChapters": "Nr of chapters",
+      "nrOfQuestions": "Nr of questions",
+      "none": "No books"
+    },
+    "record": {
+      "indexAria": "Index",
+      "titleAria": "Title of book",
+      "chaptersAria": "Number of chapters",
+      "questionsAria": "Number of questions",
+      "edit": "Edit book",
+      "trash": "Trash book"
+    }
+  },
+  "chapters": {
+    "nrLabel": "Ch. Nr.:",
+    "titleLabel": "Title:",
+    "nrAria": "Nr of chapter",
+    "titleAria": "Title of chapter",
+    "selector": {
+      "label": "Chapter:",
+      "separator": " - "
+    },
+    "table": {
+      "nr": "Nr.",
+      "title": "Title",
+      "nrOfQuestions": "Nr of questions",
+      "none": "No chapters"
+    },
+    "record": {
+      "numberAria": "Chapter number",
+      "titleAria": "Title of chapter",
+      "questionsAria": "Number of questions in this chapter",
+      "edit": "Edit chapter",
+      "trash": "Trash chapter"
+    }
+  }
+}

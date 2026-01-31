@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TranslocoModule } from '@ngneat/transloco';
 
 @Component({
   selector: 'app-memory-usage',
-  imports: [CommonModule],
+  imports: [CommonModule, TranslocoModule],
   templateUrl: './memory-usage.html',
   styleUrl: './memory-usage.css',
 })

@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { Store } from '@ngrx/store';
 import { map } from 'rxjs/operators';
+import { TranslocoModule } from '@ngneat/transloco';
+import { TranslocoService } from '@ngneat/transloco';
 import { registerFontAwesomeIcons } from './font-awesome';
 import { ImportExport } from './components/import-export/import-export';
 import { Library } from './components/library/library';
@@ -21,6 +23,7 @@ import { Observable } from 'rxjs';
     RouterOutlet,
     CommonModule,
     FontAwesomeModule,
+    TranslocoModule,
     ImportExport,
     Library,
     QuestionList,
@@ -34,6 +37,7 @@ import { Observable } from 'rxjs';
 export class App {
   private readonly store = inject<Store<{ app: AppState }>>(Store);
   private readonly library = inject(FaIconLibrary);
+  private readonly transloco = inject(TranslocoService);
 
   readonly viewMode$ = this.store.select(selectViewMode);
   readonly showLibrary$ = this.viewMode$.pipe(
@@ -43,8 +47,20 @@ export class App {
     map((mode) => mode === 'both' || mode === 'questions')
   );
   readonly version$ = this.store.select(selectVersion);
+  activeLang = 'en';
 
   constructor() {
     registerFontAwesomeIcons(this.library);
+    const storedLang = localStorage.getItem('lang');
+    if (storedLang) {
+      this.transloco.setActiveLang(storedLang);
+    }
+    this.activeLang = this.transloco.getActiveLang();
+  }
+
+  setLang(lang: 'en' | 'nl'): void {
+    this.transloco.setActiveLang(lang);
+    this.activeLang = lang;
+    localStorage.setItem('lang', lang);
   }
 }

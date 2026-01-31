@@ -2,10 +2,11 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import _ from 'lodash';
+import { TranslocoModule } from '@ngneat/transloco';
 
 @Component({
   selector: 'app-add-book',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, TranslocoModule],
   templateUrl: './add-book.html',
   styleUrl: './add-book.css',
 })

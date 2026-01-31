@@ -14,10 +14,11 @@ import { addToQuestionList, removeFromQuestionList, setCurrentQuestion, setStati
 import { selectCurrentQuestion, selectQuestionList, selectQuestionStatistics, selectRepeatWrongQuestions } from '../../../state/app.selectors';
 import { AnswerCheckerService } from '../../../services/answer-checker.service';
 import { take } from 'rxjs/operators';
+import { TranslocoModule } from '@ngneat/transloco';
 
 @Component({
   selector: 'app-question-trainer',
-  imports: [CommonModule, FormsModule, CKEditorModule, IconButtonComponent],
+  imports: [CommonModule, FormsModule, CKEditorModule, IconButtonComponent, TranslocoModule],
   templateUrl: './question-trainer.html',
   styleUrl: './question-trainer.css',
 })

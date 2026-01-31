@@ -8,10 +8,11 @@ import { AppState } from '../../../state/app-state';
 import { Book } from '../../../models/book';
 import { editBookTitle, setEditedBook } from '../../../state/app.actions';
 import { selectBookEdited, selectBooks } from '../../../state/app.selectors';
+import { TranslocoModule } from '@ngneat/transloco';
 
 @Component({
   selector: 'app-edit-book',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, TranslocoModule],
   templateUrl: './edit-book.html',
   styleUrl: './edit-book.css',
 })

@@ -1,9 +1,10 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { TranslocoModule } from '@ngneat/transloco';
 
 @Component({
   selector: 'app-add-or-remove',
-  imports: [FontAwesomeModule],
+  imports: [FontAwesomeModule, TranslocoModule],
   templateUrl: './add-or-remove.html',
   styleUrl: './add-or-remove.css',
 })

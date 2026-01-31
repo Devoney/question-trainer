@@ -2,20 +2,20 @@
 		<app-add-or-remove removeColor="red" (add)="addQuestionToList()" (remove)="removeQuestionFromList()" />
 	</td>
 	<td>{{ index }}</td>
-	<td class="text-left" aria-label="Question" [innerHTML]="questionStr()"></td>
-	<td class="text-left" aria-label="Answer" [innerHTML]="answerStr()"></td>
-	<td aria-label="Page number">{{ question.pageNr }}</td>
+	<td class="text-left" [attr.aria-label]="'questions.record.questionAria' | transloco" [innerHTML]="questionStr()"></td>
+	<td class="text-left" [attr.aria-label]="'questions.record.answerAria' | transloco" [innerHTML]="answerStr()"></td>
+	<td [attr.aria-label]="'questions.record.pageAria' | transloco">{{ question.pageNr }}</td>
 	<td class="text-center">
 		<app-icon-button
 			icon="edit"
-			label="Edit question"
+			[label]="'questions.record.edit' | transloco"
 			[argument]="question"
 			(buttonClick)="edit(question)"
 			[disabled]="questionInEditMode"
 		/>
 		<app-icon-button
 			icon="trash-alt"
-			label="Trash question"
+			[label]="'questions.record.trash' | transloco"
 			[argument]="question"
 			(buttonClick)="trash(question)"
 		/>

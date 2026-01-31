@@ -11,10 +11,11 @@ import { AddOrRemove } from '../../add-or-remove/add-or-remove';
 import { IconButtonComponent } from '../../icon-button/icon-button';
 import { MessageBusService } from '../../../services/message-bus.service';
 import { QuestionModalArgs } from '../../../types/question-modal-args';
+import { TranslocoModule } from '@ngneat/transloco';
 
 @Component({
   selector: 'tr[app-chapter-record]',
-  imports: [CommonModule, AddOrRemove, IconButtonComponent],
+  imports: [CommonModule, AddOrRemove, IconButtonComponent, TranslocoModule],
   templateUrl: './chapter-record.html',
   styleUrl: './chapter-record.css',
 })

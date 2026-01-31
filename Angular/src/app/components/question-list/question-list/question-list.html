@@ -4,11 +4,11 @@
 			<div class="col-2 text-left"><app-clear-button /></div>
 			<div class="col-8">
 				<h5>
-					Question list
+					{{ 'questionList.title' | transloco }}
 					<span
 						class="h6"
 						*ngIf="(listHasNoQuestions$ | async) === false"
-						aria-label="Number of questions in the list."
+						[attr.aria-label]="'questionList.countAria' | transloco"
 					>
 						({{ (questionsInList$ | async)?.length }})
 					</span>
@@ -22,8 +22,8 @@
 			<thead>
 				<tr>
 					<th width="40"></th>
-					<th width="60">#</th>
-					<th class="text-left">Question</th>
+					<th width="60">{{ 'questionList.header.number' | transloco }}</th>
+					<th class="text-left">{{ 'questionList.header.question' | transloco }}</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -36,9 +36,10 @@
 			</tbody>
 			<tfoot *ngIf="listHasNoQuestions$ | async">
 				<tr>
-					<th colspan="3" aria-label="Instructions on how to add a question to the list." class="font-weight-normal">
-						Add questions to this list by using the
-						<app-icon-button icon="plus" [argument]="true" />button on books, chapters and individual questions.
+					<th colspan="3" [attr.aria-label]="'questionList.addInstructionsAria' | transloco" class="font-weight-normal">
+						{{ 'questionList.addInstructionsPrefix' | transloco }}
+						<app-icon-button icon="plus" [argument]="true" />
+						{{ 'questionList.addInstructionsSuffix' | transloco }}
 					</th>
 				</tr>
 			</tfoot>
