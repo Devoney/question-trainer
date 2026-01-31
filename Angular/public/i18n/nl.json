@@ -16,7 +16,8 @@
   "trainer": {
     "repeatToggleLabel": "Schakel modus om vragen die je fout beantwoordde te herhalen.",
     "ai": {
-      "toggle": "AI-beoordeling gebruiken"
+      "toggle": "AI-beoordeling gebruiken",
+      "explanationLabel": "Waarom dit antwoord niet werd geaccepteerd"
     },
     "title": "Vragentrainer",
     "start": "Start",
@@ -56,6 +57,7 @@
       "intro": "Je beoordeelt een studieantwoord.",
       "format": "Geef alleen JSON terug in de vorm: {\"correct\": true|false, \"reason\": \"...\"}.",
       "semantic": "Als het antwoord niet exact hetzelfde is, maar semantisch correct/hetzelfde, geef correct=true terug.",
+      "language": "Antwoord in {{language}}.",
       "question": "Vraag: {{question}}",
       "expected": "Verwacht antwoord: {{expectedAnswer}}",
       "user": "Gebruikersantwoord: {{userAnswer}}"

@@ -16,7 +16,8 @@
   "trainer": {
     "repeatToggleLabel": "Toggle mode to repeat questions you answered incorrectly.",
     "ai": {
-      "toggle": "Use AI grading"
+      "toggle": "Use AI grading",
+      "explanationLabel": "Why this answer wasn't accepted"
     },
     "title": "Question trainer",
     "start": "Start",
@@ -56,6 +57,7 @@
       "intro": "You are grading a study answer.",
       "format": "Return JSON only in the form: {\"correct\": true|false, \"reason\": \"...\"}.",
       "semantic": "If the answer is not exactly the same, but semantically correct/the same, return correct=true.",
+      "language": "Respond in {{language}}.",
       "question": "Question: {{question}}",
       "expected": "Expected answer: {{expectedAnswer}}",
       "user": "User answer: {{userAnswer}}"

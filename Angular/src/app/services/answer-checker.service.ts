@@ -34,15 +34,28 @@ export class AnswerCheckerService {
   }
 
   private buildPrompt(question: string, expectedAnswer: string, userAnswer: string): string {
+    const language = this.getUserLanguageLabel();
     return [
       this.transloco.translate('aiCheck.prompt.intro'),
       this.transloco.translate('aiCheck.prompt.format'),
       this.transloco.translate('aiCheck.prompt.semantic'),
+      this.transloco.translate('aiCheck.prompt.language', { language }),
       '',
       this.transloco.translate('aiCheck.prompt.question', { question }),
       this.transloco.translate('aiCheck.prompt.expected', { expectedAnswer }),
       this.transloco.translate('aiCheck.prompt.user', { userAnswer }),
     ].join('\n');
+  }
+
+  private getUserLanguageLabel(): string {
+    const activeLang = this.transloco.getActiveLang();
+    if (activeLang === 'nl') {
+      return this.transloco.translate('common.langDutch');
+    }
+    if (activeLang === 'en') {
+      return this.transloco.translate('common.langEnglish');
+    }
+    return activeLang;
   }
 
   private parseResponse(response: OllamaResponse): AiCheckResult {

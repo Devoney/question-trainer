@@ -15,10 +15,15 @@ describe('AnswerCheckerService', () => {
             format: 'Return JSON only in the form: {"correct": true|false, "reason": "..."}.',
             semantic:
               'If the answer is not exactly the same, but semantically correct/the same, return correct=true.',
+            language: 'Respond in {{language}}.',
             question: 'Question: {{question}}',
             expected: 'Expected answer: {{expectedAnswer}}',
             user: 'User answer: {{userAnswer}}',
           },
+        },
+        common: {
+          langEnglish: 'English',
+          langDutch: 'Dutch',
         },
       });
     }

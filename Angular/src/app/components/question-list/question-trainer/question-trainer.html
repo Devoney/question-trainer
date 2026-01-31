@@ -84,11 +84,12 @@
 				</button>
 				<div *ngIf="aiCheckInProgress" class="ai-checking">{{ 'trainer.checking' | transloco }}</div>
 				<div *ngIf="aiError" class="ai-error">{{ aiError }}</div>
-				<div *ngIf="aiFeedback && aiNeedsContinue && aiWasCorrect === false" class="ai-feedback">
-					{{ aiFeedback }}
-				</div>
 			</div>
 			<div [attr.aria-label]="'trainer.aria.answerHtml' | transloco" *ngIf="showAnswer" [innerHTML]="answerHtml"></div>
+			<div *ngIf="aiFeedback && aiNeedsContinue && aiWasCorrect === false">
+				<div class="ai-feedback-label font-weight-bold">{{ 'trainer.ai.explanationLabel' | transloco }}</div>
+				<div class="ai-feedback-text" class="ai-feedback">{{ aiFeedback }}</div>
+			</div>
 		</div>
 	</div>
 	<div class="card-footer">

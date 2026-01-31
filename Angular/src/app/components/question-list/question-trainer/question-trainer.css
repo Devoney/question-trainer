@@ -33,6 +33,12 @@
 	border-radius: 4px;
 }
 
+.ai-feedback-label {
+	color: #b00020;
+	font-weight: 600;
+	margin-bottom: 4px;
+}
+
 .ai-error {
 	margin-top: 6px;
 	color: #b00020;
