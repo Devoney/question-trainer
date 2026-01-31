@@ -1704,6 +1704,347 @@
           ]
         }
       ]
+    },
+    {
+      "id": "a1b2c3d4-6666-4a8b-9c2d-000000000006",
+      "title": "Nederlandse cultuur",
+      "chapters": [
+        {
+          "id": "b1c2d3e4-6666-4a8b-9c2d-000000000061",
+          "nr": "1",
+          "title": "Geschiedenis en tradities",
+          "questions": [
+            {
+              "id": "c1d2e3f4-6666-4a8b-9c2d-000000000611",
+              "question": "<p>Wat is Koningsdag?</p>",
+              "answer": "<p>Een nationale feestdag waarop de verjaardag van de koning wordt gevierd.</p>",
+              "pageNr": "1"
+            },
+            {
+              "id": "c1d2e3f4-6666-4a8b-9c2d-000000000612",
+              "question": "<p>Welke dag is Dodenherdenking?</p>",
+              "answer": "<p>Op 4 mei herdenken Nederlanders de oorlogsslachtoffers.</p>",
+              "pageNr": "2"
+            },
+            {
+              "id": "c1d2e3f4-6666-4a8b-9c2d-000000000613",
+              "question": "<p>Wat wordt gevierd op Bevrijdingsdag?</p>",
+              "answer": "<p>De bevrijding van Nederland in 1945, op 5 mei.</p>",
+              "pageNr": "2"
+            },
+            {
+              "id": "c1d2e3f4-6666-4a8b-9c2d-000000000614",
+              "question": "<p>Wat is het volkslied van Nederland?</p>",
+              "answer": "<p>Het Wilhelmus.</p>",
+              "pageNr": "3"
+            },
+            {
+              "id": "c1d2e3f4-6666-4a8b-9c2d-000000000615",
+              "question": "<p>Wat betekent het poldermodel?</p>",
+              "answer": "<p>Overleg en compromis tussen overheid, werkgevers en werknemers.</p>",
+              "pageNr": "3"
+            },
+            {
+              "id": "c1d2e3f4-6666-4a8b-9c2d-000000000616",
+              "question": "<p>Wat zijn Sinterklaastradities?</p>",
+              "answer": "<p>Intocht, schoentje zetten en cadeaus op 5 december.</p>",
+              "pageNr": "4"
+            },
+            {
+              "id": "c1d2e3f4-6666-4a8b-9c2d-000000000617",
+              "question": "<p>Wat is de betekenis van de Elfstedentocht?</p>",
+              "answer": "<p>Een lange schaatstocht langs Friese steden.</p>",
+              "pageNr": "4"
+            },
+            {
+              "id": "c1d2e3f4-6666-4a8b-9c2d-000000000618",
+              "question": "<p>Waarom zijn dijken belangrijk?</p>",
+              "answer": "<p>Ze beschermen het land tegen overstromingen.</p>",
+              "pageNr": "5"
+            },
+            {
+              "id": "c1d2e3f4-6666-4a8b-9c2d-000000000619",
+              "question": "<p>Waar staat het Rijksmuseum om bekend?</p>",
+              "answer": "<p>De nationale collectie kunst en geschiedenis.</p>",
+              "pageNr": "5"
+            },
+            {
+              "id": "c1d2e3f4-6666-4a8b-9c2d-000000000620",
+              "question": "<p>Wat betekent het woord “gezellig”?</p>",
+              "answer": "<p>Een sfeer van warmte, saamhorigheid en comfort.</p>",
+              "pageNr": "6"
+            }
+          ]
+        },
+        {
+          "id": "b1c2d3e4-6666-4a8b-9c2d-000000000062",
+          "nr": "2",
+          "title": "Taal en literatuur",
+          "questions": [
+            {
+              "id": "c1d2e3f4-6666-4a8b-9c2d-000000000621",
+              "question": "<p>Welke taal is officieel in Nederland?</p>",
+              "answer": "<p>Nederlands is de officiële taal.</p>",
+              "pageNr": "7"
+            },
+            {
+              "id": "c1d2e3f4-6666-4a8b-9c2d-000000000622",
+              "question": "<p>Wat is de Nederlandse Taalunie?</p>",
+              "answer": "<p>Een organisatie die het taalbeleid voor het Nederlands coördineert.</p>",
+              "pageNr": "7"
+            },
+            {
+              "id": "c1d2e3f4-6666-4a8b-9c2d-000000000623",
+              "question": "<p>Wie schreef “Max Havelaar”?</p>",
+              "answer": "<p>Multatuli.</p>",
+              "pageNr": "8"
+            },
+            {
+              "id": "c1d2e3f4-6666-4a8b-9c2d-000000000624",
+              "question": "<p>Wat betekent ABN?</p>",
+              "answer": "<p>Algemeen Nederlands.</p>",
+              "pageNr": "8"
+            },
+            {
+              "id": "c1d2e3f4-6666-4a8b-9c2d-000000000625",
+              "question": "<p>Wat is een dialect?</p>",
+              "answer": "<p>Een regionale variant van een taal.</p>",
+              "pageNr": "9"
+            },
+            {
+              "id": "c1d2e3f4-6666-4a8b-9c2d-000000000626",
+              "question": "<p>Wie schreef “De ontdekking van de hemel”?</p>",
+              "answer": "<p>Harry Mulisch.</p>",
+              "pageNr": "9"
+            },
+            {
+              "id": "c1d2e3f4-6666-4a8b-9c2d-000000000627",
+              "question": "<p>Wat is een spreekwoord?</p>",
+              "answer": "<p>Een vaste uitdrukking met een figuurlijke betekenis.</p>",
+              "pageNr": "10"
+            },
+            {
+              "id": "c1d2e3f4-6666-4a8b-9c2d-000000000628",
+              "question": "<p>Wat is een Dichter des Vaderlands?</p>",
+              "answer": "<p>Een nationale dichter die actuele thema’s bezingt.</p>",
+              "pageNr": "10"
+            },
+            {
+              "id": "c1d2e3f4-6666-4a8b-9c2d-000000000629",
+              "question": "<p>Wat is een leenwoord?</p>",
+              "answer": "<p>Een woord dat uit een andere taal is overgenomen.</p>",
+              "pageNr": "11"
+            },
+            {
+              "id": "c1d2e3f4-6666-4a8b-9c2d-000000000630",
+              "question": "<p>Wat is het verschil tussen “u” en “jij”?</p>",
+              "answer": "<p>“U” is formeel en “jij” is informeel.</p>",
+              "pageNr": "11"
+            }
+          ]
+        },
+        {
+          "id": "b1c2d3e4-6666-4a8b-9c2d-000000000063",
+          "nr": "3",
+          "title": "Kunst en architectuur",
+          "questions": [
+            {
+              "id": "c1d2e3f4-6666-4a8b-9c2d-000000000631",
+              "question": "<p>Wie schilderde “De Nachtwacht”?</p>",
+              "answer": "<p>Rembrandt van Rijn.</p>",
+              "pageNr": "12"
+            },
+            {
+              "id": "c1d2e3f4-6666-4a8b-9c2d-000000000632",
+              "question": "<p>Welke schilder is bekend om zonnebloemen?</p>",
+              "answer": "<p>Vincent van Gogh.</p>",
+              "pageNr": "12"
+            },
+            {
+              "id": "c1d2e3f4-6666-4a8b-9c2d-000000000633",
+              "question": "<p>Wat is De Stijl?</p>",
+              "answer": "<p>Een kunstbeweging met rechte lijnen en primaire kleuren.</p>",
+              "pageNr": "13"
+            },
+            {
+              "id": "c1d2e3f4-6666-4a8b-9c2d-000000000634",
+              "question": "<p>Wie was Piet Mondriaan?</p>",
+              "answer": "<p>Een Nederlandse schilder van De Stijl.</p>",
+              "pageNr": "13"
+            },
+            {
+              "id": "c1d2e3f4-6666-4a8b-9c2d-000000000635",
+              "question": "<p>Wat is typisch aan Amsterdamse grachtenhuizen?</p>",
+              "answer": "<p>Smalle, hoge gevels langs de grachten.</p>",
+              "pageNr": "14"
+            },
+            {
+              "id": "c1d2e3f4-6666-4a8b-9c2d-000000000636",
+              "question": "<p>Waarvoor werden molens traditioneel gebruikt?</p>",
+              "answer": "<p>Voor malen, zagen en waterbeheer.</p>",
+              "pageNr": "14"
+            },
+            {
+              "id": "c1d2e3f4-6666-4a8b-9c2d-000000000637",
+              "question": "<p>Waar is het Van Gogh Museum aan gewijd?</p>",
+              "answer": "<p>Aan het leven en werk van Vincent van Gogh.</p>",
+              "pageNr": "15"
+            },
+            {
+              "id": "c1d2e3f4-6666-4a8b-9c2d-000000000638",
+              "question": "<p>Welke architect geldt als pionier van het modernisme in Nederland?</p>",
+              "answer": "<p>Hendrik Petrus Berlage.</p>",
+              "pageNr": "15"
+            },
+            {
+              "id": "c1d2e3f4-6666-4a8b-9c2d-000000000639",
+              "question": "<p>Wat is het Rietveld Schröderhuis?</p>",
+              "answer": "<p>Een iconisch huis in De Stijl, UNESCO-werelderfgoed.</p>",
+              "pageNr": "16"
+            },
+            {
+              "id": "c1d2e3f4-6666-4a8b-9c2d-000000000640",
+              "question": "<p>Wat betekent UNESCO Werelderfgoed?</p>",
+              "answer": "<p>Cultureel of natuurlijk erfgoed van uitzonderlijke waarde.</p>",
+              "pageNr": "16"
+            }
+          ]
+        },
+        {
+          "id": "b1c2d3e4-6666-4a8b-9c2d-000000000064",
+          "nr": "4",
+          "title": "Eten en drinken",
+          "questions": [
+            {
+              "id": "c1d2e3f4-6666-4a8b-9c2d-000000000641",
+              "question": "<p>Wat is een stroopwafel?</p>",
+              "answer": "<p>Een wafel met stroopvulling tussen twee dunne lagen.</p>",
+              "pageNr": "17"
+            },
+            {
+              "id": "c1d2e3f4-6666-4a8b-9c2d-000000000642",
+              "question": "<p>Wat zijn bitterballen?</p>",
+              "answer": "<p>Gefrituurde snacks met ragoutvulling.</p>",
+              "pageNr": "17"
+            },
+            {
+              "id": "c1d2e3f4-6666-4a8b-9c2d-000000000643",
+              "question": "<p>Wat betekent “haring happen”?</p>",
+              "answer": "<p>Rauwe haring eten, vaak met ui.</p>",
+              "pageNr": "18"
+            },
+            {
+              "id": "c1d2e3f4-6666-4a8b-9c2d-000000000644",
+              "question": "<p>Wat is erwtensoep (snert)?</p>",
+              "answer": "<p>Een dikke soep van spliterwten en groenten.</p>",
+              "pageNr": "18"
+            },
+            {
+              "id": "c1d2e3f4-6666-4a8b-9c2d-000000000645",
+              "question": "<p>Wat zijn poffertjes?</p>",
+              "answer": "<p>Kleine, luchtige pannenkoekjes.</p>",
+              "pageNr": "19"
+            },
+            {
+              "id": "c1d2e3f4-6666-4a8b-9c2d-000000000646",
+              "question": "<p>Wat is een kaasmarkt?</p>",
+              "answer": "<p>Een traditionele markt waar kaas wordt verhandeld.</p>",
+              "pageNr": "19"
+            },
+            {
+              "id": "c1d2e3f4-6666-4a8b-9c2d-000000000647",
+              "question": "<p>Wat is jenever?</p>",
+              "answer": "<p>Een traditionele Nederlandse gedistilleerde drank.</p>",
+              "pageNr": "20"
+            },
+            {
+              "id": "c1d2e3f4-6666-4a8b-9c2d-000000000648",
+              "question": "<p>Wat betekent patat of friet?</p>",
+              "answer": "<p>Gefrituurde aardappelstaafjes.</p>",
+              "pageNr": "20"
+            },
+            {
+              "id": "c1d2e3f4-6666-4a8b-9c2d-000000000649",
+              "question": "<p>Wat is een kroket?</p>",
+              "answer": "<p>Een gefrituurde snack met ragout.</p>",
+              "pageNr": "21"
+            },
+            {
+              "id": "c1d2e3f4-6666-4a8b-9c2d-000000000650",
+              "question": "<p>Wat is koffie verkeerd?</p>",
+              "answer": "<p>Koffie met veel melk.</p>",
+              "pageNr": "21"
+            }
+          ]
+        },
+        {
+          "id": "b1c2d3e4-6666-4a8b-9c2d-000000000065",
+          "nr": "5",
+          "title": "Samenleving en dagelijks leven",
+          "questions": [
+            {
+              "id": "c1d2e3f4-6666-4a8b-9c2d-000000000651",
+              "question": "<p>Waarom is de fiets zo belangrijk in Nederland?</p>",
+              "answer": "<p>Het is een veelgebruikt en praktisch vervoermiddel.</p>",
+              "pageNr": "22"
+            },
+            {
+              "id": "c1d2e3f4-6666-4a8b-9c2d-000000000652",
+              "question": "<p>Wat betekent “polderen” in de samenleving?</p>",
+              "answer": "<p>Overleggen en compromissen sluiten.</p>",
+              "pageNr": "22"
+            },
+            {
+              "id": "c1d2e3f4-6666-4a8b-9c2d-000000000653",
+              "question": "<p>Hoe werkt de basiszorgverzekering in Nederland?</p>",
+              "answer": "<p>Iedereen is verplicht verzekerd voor basiszorg.</p>",
+              "pageNr": "23"
+            },
+            {
+              "id": "c1d2e3f4-6666-4a8b-9c2d-000000000654",
+              "question": "<p>Wat zijn havo en vwo?</p>",
+              "answer": "<p>Verschillende niveaus van middelbaar onderwijs.</p>",
+              "pageNr": "23"
+            },
+            {
+              "id": "c1d2e3f4-6666-4a8b-9c2d-000000000655",
+              "question": "<p>Wat is een kringverjaardag?</p>",
+              "answer": "<p>Een verjaardag waarbij gasten in een kring zitten.</p>",
+              "pageNr": "24"
+            },
+            {
+              "id": "c1d2e3f4-6666-4a8b-9c2d-000000000656",
+              "question": "<p>Waarom is waterbeheer cruciaal?</p>",
+              "answer": "<p>Om overstromingen te voorkomen en land droog te houden.</p>",
+              "pageNr": "24"
+            },
+            {
+              "id": "c1d2e3f4-6666-4a8b-9c2d-000000000657",
+              "question": "<p>Wat is typisch voor Nederlandse directheid?</p>",
+              "answer": "<p>Open en directe communicatie.</p>",
+              "pageNr": "25"
+            },
+            {
+              "id": "c1d2e3f4-6666-4a8b-9c2d-000000000658",
+              "question": "<p>Wat is een koopavond?</p>",
+              "answer": "<p>Een avond waarop winkels langer open zijn.</p>",
+              "pageNr": "25"
+            },
+            {
+              "id": "c1d2e3f4-6666-4a8b-9c2d-000000000659",
+              "question": "<p>Wat is de OV-chipkaart?</p>",
+              "answer": "<p>Een kaart om in te checken in het openbaar vervoer.</p>",
+              "pageNr": "26"
+            },
+            {
+              "id": "c1d2e3f4-6666-4a8b-9c2d-000000000660",
+              "question": "<p>Wat is een rijtjeshuis?</p>",
+              "answer": "<p>Een huis dat deel uitmaakt van een rij identieke woningen.</p>",
+              "pageNr": "26"
+            }
+          ]
+        }
+      ]
     }
   ],
   "libraryName": "STEM Question Trainer Library",

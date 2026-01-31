@@ -51,6 +51,16 @@
     "continue": "Continue",
     "continueAria": "Continue"
   },
+  "aiCheck": {
+    "prompt": {
+      "intro": "You are grading a study answer.",
+      "format": "Return JSON only in the form: {\"correct\": true|false, \"reason\": \"...\"}.",
+      "semantic": "If the answer is not exactly the same, but semantically correct/the same, return correct=true.",
+      "question": "Question: {{question}}",
+      "expected": "Expected answer: {{expectedAnswer}}",
+      "user": "User answer: {{userAnswer}}"
+    }
+  },
   "library": {
     "tabs": {
       "library": "Library",

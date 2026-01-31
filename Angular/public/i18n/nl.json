@@ -51,6 +51,16 @@
     "continue": "Verder",
     "continueAria": "Verder"
   },
+  "aiCheck": {
+    "prompt": {
+      "intro": "Je beoordeelt een studieantwoord.",
+      "format": "Geef alleen JSON terug in de vorm: {\"correct\": true|false, \"reason\": \"...\"}.",
+      "semantic": "Als het antwoord niet exact hetzelfde is, maar semantisch correct/hetzelfde, geef correct=true terug.",
+      "question": "Vraag: {{question}}",
+      "expected": "Verwacht antwoord: {{expectedAnswer}}",
+      "user": "Gebruikersantwoord: {{userAnswer}}"
+    }
+  },
   "library": {
     "tabs": {
       "library": "Bibliotheek",

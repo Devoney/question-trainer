@@ -1,5 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { TranslocoService } from '@ngneat/transloco';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
@@ -15,6 +16,7 @@ interface OllamaResponse {
 @Injectable({ providedIn: 'root' })
 export class AnswerCheckerService {
   private readonly http = inject(HttpClient);
+  private readonly transloco = inject(TranslocoService);
   private readonly ollamaUrl = 'http://localhost:11434/api/generate';
   private readonly model = 'gpt-oss:20b';
 
@@ -33,13 +35,13 @@ export class AnswerCheckerService {
 
   private buildPrompt(question: string, expectedAnswer: string, userAnswer: string): string {
     return [
-      'You are grading a study answer.',
-      'Return JSON only in the form: {"correct": true|false, "reason": "..."}.',
-      'If the answer is not exactly the same, but semantically correct/the same, return correct=true.',
+      this.transloco.translate('aiCheck.prompt.intro'),
+      this.transloco.translate('aiCheck.prompt.format'),
+      this.transloco.translate('aiCheck.prompt.semantic'),
       '',
-      `Question: ${question}`,
-      `Expected answer: ${expectedAnswer}`,
-      `User answer: ${userAnswer}`,
+      this.transloco.translate('aiCheck.prompt.question', { question }),
+      this.transloco.translate('aiCheck.prompt.expected', { expectedAnswer }),
+      this.transloco.translate('aiCheck.prompt.user', { userAnswer }),
     ].join('\n');
   }
 
