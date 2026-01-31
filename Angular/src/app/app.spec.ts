@@ -6,6 +6,18 @@ import { initialAppState } from './state/app.reducer';
 import { App } from './app';
 
 describe('App', () => {
+  class TestTranslocoLoader implements TranslocoLoader {
+    getTranslation() {
+      return of({
+        app: {
+          footer: {
+            title: 'Question Trainer',
+          },
+        },
+      });
+    }
+  }
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [App],
@@ -18,9 +30,7 @@ describe('App', () => {
             reRenderOnLangChange: true,
             prodMode: true,
           }),
-          loader: {
-            getTranslation: () => of({}),
-          } as TranslocoLoader,
+          loader: TestTranslocoLoader,
         }),
       ],
     }).compileComponents();

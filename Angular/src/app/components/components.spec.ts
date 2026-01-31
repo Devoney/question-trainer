@@ -46,6 +46,12 @@ import { Tabs } from './tabs/tabs';
 import { ViewMode } from './view-mode/view-mode';
 import { ViewModeItem } from './view-mode-item/view-mode-item';
 
+class TestTranslocoLoader implements TranslocoLoader {
+  getTranslation() {
+    return of({});
+  }
+}
+
 const baseProviders = [
   provideMockStore({ initialState: { app: initialAppState } }),
   provideHttpClient(),
@@ -57,9 +63,7 @@ const baseProviders = [
       reRenderOnLangChange: true,
       prodMode: true,
     }),
-    loader: {
-      getTranslation: () => of({}),
-    } as TranslocoLoader,
+    loader: TestTranslocoLoader,
   }),
 ];
 
