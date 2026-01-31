@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
@@ -32,20 +32,19 @@ import { Observable } from 'rxjs';
   styleUrl: './app.css'
 })
 export class App {
-  readonly viewMode$!: Observable<string>;
-  readonly showLibrary$!: Observable<boolean>;
-  readonly showQuestions$!: Observable<boolean>;
-  readonly version$!: Observable<string>;
+  private readonly store = inject<Store<{ app: AppState }>>(Store);
+  private readonly library = inject(FaIconLibrary);
 
-  constructor(private store: Store<{ app: AppState }>, library: FaIconLibrary) {
-    registerFontAwesomeIcons(library);
-    this.viewMode$ = this.store.select(selectViewMode);
-    this.showLibrary$ = this.viewMode$.pipe(
-      map((mode) => mode === 'both' || mode === 'library')
-    );
-    this.showQuestions$ = this.viewMode$.pipe(
-      map((mode) => mode === 'both' || mode === 'questions')
-    );
-    this.version$ = this.store.select(selectVersion);
+  readonly viewMode$ = this.store.select(selectViewMode);
+  readonly showLibrary$ = this.viewMode$.pipe(
+    map((mode) => mode === 'both' || mode === 'library')
+  );
+  readonly showQuestions$ = this.viewMode$.pipe(
+    map((mode) => mode === 'both' || mode === 'questions')
+  );
+  readonly version$ = this.store.select(selectVersion);
+
+  constructor() {
+    registerFontAwesomeIcons(this.library);
   }
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { take } from 'rxjs/operators';
@@ -14,13 +14,12 @@ import { IconButtonComponent } from '../icon-button/icon-button';
   styleUrl: './import-export.css',
 })
 export class ImportExport {
+  private readonly store = inject<Store<{ app: AppState }>>(Store);
   buttonSize: 'xs' | 'm' | 'l' = 'm';
   exportLibLinkId = '38398hfdhf393f98-sfh83';
   importModalId = '0390jafmvi-23n3n';
   jsonToImport: string | null = null;
   isImportOpen = false;
-
-  constructor(private store: Store<{ app: AppState }>) {}
 
   exportLib(): void {
     this.store

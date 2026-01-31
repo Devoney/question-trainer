@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { map } from 'rxjs/operators';
@@ -16,11 +16,8 @@ import { QuestionListRecord } from '../question-list-record/question-list-record
   styleUrl: './question-list.css',
 })
 export class QuestionList {
-  readonly questionsInList$!: Observable<ReturnType<typeof selectQuestionList>>;
-  readonly listHasNoQuestions$!: Observable<boolean>;
+  private readonly store = inject<Store<{ app: AppState }>>(Store);
 
-  constructor(private store: Store<{ app: AppState }>) {
-    this.questionsInList$ = this.store.select(selectQuestionList);
-    this.listHasNoQuestions$ = this.questionsInList$.pipe(map((list) => list.length === 0));
-  }
+  readonly questionsInList$ = this.store.select(selectQuestionList);
+  readonly listHasNoQuestions$ = this.questionsInList$.pipe(map((list) => list.length === 0));
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { Store } from '@ngrx/store';
@@ -15,12 +15,9 @@ import { setViewMode } from '../../state/app.actions';
   styleUrl: './view-mode.css',
 })
 export class ViewMode {
-  readonly viewMode$!: Observable<string>;
+  private readonly store = inject<Store<{ app: AppState }>>(Store);
+  readonly viewMode$ = this.store.select(selectViewMode);
   isOpen = false;
-
-  constructor(private store: Store<{ app: AppState }>) {
-    this.viewMode$ = this.store.select(selectViewMode);
-  }
 
   toggleMenu(): void {
     this.isOpen = !this.isOpen;

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MessageBusService } from '../../services/message-bus.service';
 import { QuestionModalArgs } from '../../types/question-modal-args';
@@ -10,6 +10,7 @@ import { QuestionModalArgs } from '../../types/question-modal-args';
   styleUrl: './question-modal.css',
 })
 export class QuestionModal {
+  private readonly bus = inject(MessageBusService);
   id = 'question-modal-id';
   args?: QuestionModalArgs;
   cancelText = 'Cancel';
@@ -18,7 +19,7 @@ export class QuestionModal {
   title = '';
   isOpen = false;
 
-  constructor(private bus: MessageBusService) {
+  constructor() {
     this.bus.onShowQuestionModal((args) => this.onShowQuestionModal(args));
   }
 

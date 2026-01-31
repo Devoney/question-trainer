@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { map } from 'rxjs/operators';
@@ -15,11 +15,9 @@ import { QuestionTable } from '../question-table/question-table';
   styleUrl: './question-manager.css',
 })
 export class QuestionManager {
-  readonly showQuestionTable$!: Observable<boolean>;
+  private readonly store = inject<Store<{ app: AppState }>>(Store);
 
-  constructor(private store: Store<{ app: AppState }>) {
-    this.showQuestionTable$ = this.store
-      .select(selectChapterSelected)
-      .pipe(map((chapter) => !!chapter));
-  }
+  readonly showQuestionTable$ = this.store
+    .select(selectChapterSelected)
+    .pipe(map((chapter) => !!chapter));
 }
