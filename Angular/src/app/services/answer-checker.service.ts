@@ -17,20 +17,34 @@ interface OllamaResponse {
 export class AnswerCheckerService {
   private readonly http = inject(HttpClient);
   private readonly transloco = inject(TranslocoService);
-  private readonly ollamaUrl = 'http://localhost:11434/api/generate';
+  private readonly endpointStorageKey = 'aiEndpointUrl';
+  private readonly defaultOllamaUrl = 'http://localhost:11434/api/generate';
   private readonly model = 'gpt-oss:20b';
 
   checkAnswer(question: string, expectedAnswer: string, userAnswer: string): Observable<AiCheckResult> {
     const prompt = this.buildPrompt(question, expectedAnswer, userAnswer);
+    const ollamaUrl = this.getOllamaUrl();
     const payload = {
       model: this.model,
       prompt,
       stream: false,
     };
 
-    return this.http.post<OllamaResponse>(this.ollamaUrl, payload).pipe(
+    return this.http.post<OllamaResponse>(ollamaUrl, payload).pipe(
       map((response) => this.parseResponse(response))
     );
+  }
+
+  getOllamaUrl(): string {
+    return localStorage.getItem(this.endpointStorageKey) ?? this.defaultOllamaUrl;
+  }
+
+  getDefaultOllamaUrl(): string {
+    return this.defaultOllamaUrl;
+  }
+
+  setOllamaUrl(url: string): void {
+    localStorage.setItem(this.endpointStorageKey, url);
   }
 
   private buildPrompt(question: string, expectedAnswer: string, userAnswer: string): string {

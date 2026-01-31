@@ -15,6 +15,29 @@
 	font-size: 0.85rem;
 }
 
+.ai-endpoint {
+	margin-top: 6px;
+	font-size: 0.8rem;
+}
+
+.ai-endpoint-label {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+
+.ai-endpoint-label input {
+	max-width: 240px;
+	font-size: 0.8rem;
+	padding: 2px 6px;
+}
+
+.ai-endpoint-help {
+	margin-top: 2px;
+	color: #666;
+	font-size: 0.75rem;
+}
+
 .ai-check-container {
 	margin-top: 8px;
 }
