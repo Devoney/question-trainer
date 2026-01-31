@@ -13,3 +13,6 @@ The following Angular files can be modernized (e.g., replace manual `destroy$` s
 - [x] [Angular/src/app/components/question-list/question-trainer/question-trainer.ts](Angular/src/app/components/question-list/question-trainer/question-trainer.ts)
 - [x] [Angular/src/app/components/questions/add-question/add-question.ts](Angular/src/app/components/questions/add-question/add-question.ts)
 - [x] [Angular/src/app/components/questions/question-record/question-record.ts](Angular/src/app/components/questions/question-record/question-record.ts)
+
+## Additional modernization ideas
+- [x] Use `afterNextRender` to replace `setTimeout` focus in [Angular/src/app/components/books/edit-book/edit-book.ts](Angular/src/app/components/books/edit-book/edit-book.ts)

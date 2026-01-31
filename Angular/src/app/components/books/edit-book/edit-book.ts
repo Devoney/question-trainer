@@ -1,4 +1,4 @@
-import { Component, DestroyRef, ElementRef, OnInit, ViewChild, inject } from '@angular/core';
+import { Component, DestroyRef, ElementRef, OnInit, ViewChild, afterNextRender, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Store } from '@ngrx/store';
@@ -101,8 +101,8 @@ export class EditBook implements OnInit {
   }
 
   private setFocus(): void {
-    setTimeout(() => {
+    afterNextRender(() => {
       this.bookTitleText?.nativeElement.focus();
-    }, 0);
+    });
   }
 }
