@@ -35,6 +35,7 @@ export class AnswerCheckerService {
     return [
       'You are grading a study answer.',
       'Return JSON only in the form: {"correct": true|false, "reason": "..."}.',
+      'If the answer is not exactly the same, but semantically correct/the same, return correct=true.',
       '',
       `Question: ${question}`,
       `Expected answer: ${expectedAnswer}`,

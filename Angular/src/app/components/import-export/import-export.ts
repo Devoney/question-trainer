@@ -64,9 +64,15 @@ export class ImportExport {
     if (!this.jsonToImport) {
       return;
     }
-
-    localStorage.setItem('store', this.jsonToImport);
-    window.location.reload();
+    try {
+      const parsedState = JSON.parse(this.jsonToImport) as AppState;
+      localStorage.setItem('store', JSON.stringify(parsedState));
+      window.location.reload();
+    } catch (error) {
+      console.error('Failed to import library JSON.', error);
+      this.jsonToImport = null;
+      this.changeDetectorRef.detectChanges();
+    }
   }
 
   processFile(event: Event): void {

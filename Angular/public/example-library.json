@@ -1,0 +1,2126 @@
+{
+  "books": [
+    {
+      "id": "a1b2c3d4-1111-4a8b-9c2d-000000000001",
+      "title": "Biology",
+      "chapters": [
+        {
+          "id": "b1c2d3e4-1111-4a8b-9c2d-000000000011",
+          "nr": "1",
+          "title": "Cells and Microscopy",
+          "questions": [
+            {
+              "id": "c1d2e3f4-1111-4a8b-9c2d-000000000111",
+              "question": "<p>What is the main function of the cell membrane?</p>",
+              "answer": "<p>It controls what enters and leaves the cell.</p>",
+              "pageNr": "1"
+            },
+            {
+              "id": "c1d2e3f4-1111-4a8b-9c2d-000000000112",
+              "question": "<p>Which organelle produces ATP?</p>",
+              "answer": "<p>The mitochondrion produces ATP.</p>",
+              "pageNr": "2"
+            },
+            {
+              "id": "c1d2e3f4-1111-4a8b-9c2d-000000000113",
+              "question": "<p>What does the nucleus contain?</p>",
+              "answer": "<p>It contains the cell’s DNA.</p>",
+              "pageNr": "2"
+            },
+            {
+              "id": "c1d2e3f4-1111-4a8b-9c2d-000000000114",
+              "question": "<p>What is the role of ribosomes?</p>",
+              "answer": "<p>They synthesize proteins.</p>",
+              "pageNr": "3"
+            },
+            {
+              "id": "c1d2e3f4-1111-4a8b-9c2d-000000000115",
+              "question": "<p>Which microscope uses light to view cells?</p>",
+              "answer": "<p>The light microscope uses visible light.</p>",
+              "pageNr": "3"
+            },
+            {
+              "id": "c1d2e3f4-1111-4a8b-9c2d-000000000116",
+              "question": "<p>What is cytoplasm?</p>",
+              "answer": "<p>It is the fluid where organelles are suspended.</p>",
+              "pageNr": "4"
+            },
+            {
+              "id": "c1d2e3f4-1111-4a8b-9c2d-000000000117",
+              "question": "<p>What is the function of the cell wall in plants?</p>",
+              "answer": "<p>It provides support and protection.</p>",
+              "pageNr": "4"
+            },
+            {
+              "id": "c1d2e3f4-1111-4a8b-9c2d-000000000118",
+              "question": "<p>What does the Golgi apparatus do?</p>",
+              "answer": "<p>It modifies and packages proteins.</p>",
+              "pageNr": "5"
+            },
+            {
+              "id": "c1d2e3f4-1111-4a8b-9c2d-000000000119",
+              "question": "<p>Which organelle is responsible for photosynthesis?</p>",
+              "answer": "<p>The chloroplast performs photosynthesis.</p>",
+              "pageNr": "5"
+            },
+            {
+              "id": "c1d2e3f4-1111-4a8b-9c2d-000000000120",
+              "question": "<p>What is diffusion?</p>",
+              "answer": "<p>It is movement from high to low concentration.</p>",
+              "pageNr": "6"
+            }
+          ]
+        },
+        {
+          "id": "b1c2d3e4-1111-4a8b-9c2d-000000000012",
+          "nr": "2",
+          "title": "Genetics",
+          "questions": [
+            {
+              "id": "c1d2e3f4-1111-4a8b-9c2d-000000000121",
+              "question": "<p>What is a gene?</p>",
+              "answer": "<p>A gene is a segment of DNA with instructions.</p>",
+              "pageNr": "7"
+            },
+            {
+              "id": "c1d2e3f4-1111-4a8b-9c2d-000000000122",
+              "question": "<p>What are alleles?</p>",
+              "answer": "<p>They are different forms of a gene.</p>",
+              "pageNr": "7"
+            },
+            {
+              "id": "c1d2e3f4-1111-4a8b-9c2d-000000000123",
+              "question": "<p>What does dominant mean in genetics?</p>",
+              "answer": "<p>A dominant allele masks a recessive allele.</p>",
+              "pageNr": "8"
+            },
+            {
+              "id": "c1d2e3f4-1111-4a8b-9c2d-000000000124",
+              "question": "<p>What is a phenotype?</p>",
+              "answer": "<p>It is the observable trait.</p>",
+              "pageNr": "8"
+            },
+            {
+              "id": "c1d2e3f4-1111-4a8b-9c2d-000000000125",
+              "question": "<p>What is a genotype?</p>",
+              "answer": "<p>It is the genetic makeup for a trait.</p>",
+              "pageNr": "9"
+            },
+            {
+              "id": "c1d2e3f4-1111-4a8b-9c2d-000000000126",
+              "question": "<p>What does DNA stand for?</p>",
+              "answer": "<p>Deoxyribonucleic acid.</p>",
+              "pageNr": "9"
+            },
+            {
+              "id": "c1d2e3f4-1111-4a8b-9c2d-000000000127",
+              "question": "<p>What is a chromosome?</p>",
+              "answer": "<p>It is a DNA-protein structure carrying genes.</p>",
+              "pageNr": "10"
+            },
+            {
+              "id": "c1d2e3f4-1111-4a8b-9c2d-000000000128",
+              "question": "<p>What is meiosis?</p>",
+              "answer": "<p>It is cell division that forms gametes.</p>",
+              "pageNr": "10"
+            },
+            {
+              "id": "c1d2e3f4-1111-4a8b-9c2d-000000000129",
+              "question": "<p>What is a Punnett square used for?</p>",
+              "answer": "<p>It predicts genetic cross outcomes.</p>",
+              "pageNr": "11"
+            },
+            {
+              "id": "c1d2e3f4-1111-4a8b-9c2d-000000000130",
+              "question": "<p>What is mutation?</p>",
+              "answer": "<p>A mutation is a change in DNA sequence.</p>",
+              "pageNr": "11"
+            }
+          ]
+        },
+        {
+          "id": "b1c2d3e4-1111-4a8b-9c2d-000000000013",
+          "nr": "3",
+          "title": "Ecology",
+          "questions": [
+            {
+              "id": "c1d2e3f4-1111-4a8b-9c2d-000000000131",
+              "question": "<p>What is an ecosystem?</p>",
+              "answer": "<p>It is a community of organisms and their environment.</p>",
+              "pageNr": "12"
+            },
+            {
+              "id": "c1d2e3f4-1111-4a8b-9c2d-000000000132",
+              "question": "<p>What are producers?</p>",
+              "answer": "<p>They are organisms that make their own food.</p>",
+              "pageNr": "12"
+            },
+            {
+              "id": "c1d2e3f4-1111-4a8b-9c2d-000000000133",
+              "question": "<p>What are consumers?</p>",
+              "answer": "<p>They obtain energy by eating other organisms.</p>",
+              "pageNr": "13"
+            },
+            {
+              "id": "c1d2e3f4-1111-4a8b-9c2d-000000000134",
+              "question": "<p>What is a food chain?</p>",
+              "answer": "<p>It shows energy flow between organisms.</p>",
+              "pageNr": "13"
+            },
+            {
+              "id": "c1d2e3f4-1111-4a8b-9c2d-000000000135",
+              "question": "<p>What is a food web?</p>",
+              "answer": "<p>It is a network of interconnected food chains.</p>",
+              "pageNr": "14"
+            },
+            {
+              "id": "c1d2e3f4-1111-4a8b-9c2d-000000000136",
+              "question": "<p>What is biodiversity?</p>",
+              "answer": "<p>It is the variety of life in an area.</p>",
+              "pageNr": "14"
+            },
+            {
+              "id": "c1d2e3f4-1111-4a8b-9c2d-000000000137",
+              "question": "<p>What is a niche?</p>",
+              "answer": "<p>It is the role of a species in its environment.</p>",
+              "pageNr": "15"
+            },
+            {
+              "id": "c1d2e3f4-1111-4a8b-9c2d-000000000138",
+              "question": "<p>What is population density?</p>",
+              "answer": "<p>It is the number of individuals per area.</p>",
+              "pageNr": "15"
+            },
+            {
+              "id": "c1d2e3f4-1111-4a8b-9c2d-000000000139",
+              "question": "<p>What is carrying capacity?</p>",
+              "answer": "<p>It is the maximum population an area supports.</p>",
+              "pageNr": "16"
+            },
+            {
+              "id": "c1d2e3f4-1111-4a8b-9c2d-000000000140",
+              "question": "<p>What is succession?</p>",
+              "answer": "<p>It is gradual change in ecosystems over time.</p>",
+              "pageNr": "16"
+            }
+          ]
+        },
+        {
+          "id": "b1c2d3e4-1111-4a8b-9c2d-000000000014",
+          "nr": "4",
+          "title": "Human Body Systems",
+          "questions": [
+            {
+              "id": "c1d2e3f4-1111-4a8b-9c2d-000000000141",
+              "question": "<p>What is the function of the circulatory system?</p>",
+              "answer": "<p>It transports blood, oxygen, and nutrients.</p>",
+              "pageNr": "17"
+            },
+            {
+              "id": "c1d2e3f4-1111-4a8b-9c2d-000000000142",
+              "question": "<p>What is the main organ of the respiratory system?</p>",
+              "answer": "<p>The lungs are the main organ.</p>",
+              "pageNr": "17"
+            },
+            {
+              "id": "c1d2e3f4-1111-4a8b-9c2d-000000000143",
+              "question": "<p>What does the digestive system do?</p>",
+              "answer": "<p>It breaks down food and absorbs nutrients.</p>",
+              "pageNr": "18"
+            },
+            {
+              "id": "c1d2e3f4-1111-4a8b-9c2d-000000000144",
+              "question": "<p>What is the function of the nervous system?</p>",
+              "answer": "<p>It coordinates body responses and actions.</p>",
+              "pageNr": "18"
+            },
+            {
+              "id": "c1d2e3f4-1111-4a8b-9c2d-000000000145",
+              "question": "<p>What does the skeletal system provide?</p>",
+              "answer": "<p>It provides support and protection.</p>",
+              "pageNr": "19"
+            },
+            {
+              "id": "c1d2e3f4-1111-4a8b-9c2d-000000000146",
+              "question": "<p>What is the role of the immune system?</p>",
+              "answer": "<p>It defends the body against pathogens.</p>",
+              "pageNr": "19"
+            },
+            {
+              "id": "c1d2e3f4-1111-4a8b-9c2d-000000000147",
+              "question": "<p>What organ filters blood to produce urine?</p>",
+              "answer": "<p>The kidneys filter blood.</p>",
+              "pageNr": "20"
+            },
+            {
+              "id": "c1d2e3f4-1111-4a8b-9c2d-000000000148",
+              "question": "<p>What does the endocrine system use?</p>",
+              "answer": "<p>It uses hormones to regulate body functions.</p>",
+              "pageNr": "20"
+            },
+            {
+              "id": "c1d2e3f4-1111-4a8b-9c2d-000000000149",
+              "question": "<p>What is the function of muscles?</p>",
+              "answer": "<p>They enable movement.</p>",
+              "pageNr": "21"
+            },
+            {
+              "id": "c1d2e3f4-1111-4a8b-9c2d-000000000150",
+              "question": "<p>What does the integumentary system include?</p>",
+              "answer": "<p>It includes skin, hair, and nails.</p>",
+              "pageNr": "21"
+            }
+          ]
+        },
+        {
+          "id": "b1c2d3e4-1111-4a8b-9c2d-000000000015",
+          "nr": "5",
+          "title": "Evolution",
+          "questions": [
+            {
+              "id": "c1d2e3f4-1111-4a8b-9c2d-000000000151",
+              "question": "<p>What is natural selection?</p>",
+              "answer": "<p>It is survival and reproduction of the fittest.</p>",
+              "pageNr": "22"
+            },
+            {
+              "id": "c1d2e3f4-1111-4a8b-9c2d-000000000152",
+              "question": "<p>What is adaptation?</p>",
+              "answer": "<p>It is a trait that improves survival.</p>",
+              "pageNr": "22"
+            },
+            {
+              "id": "c1d2e3f4-1111-4a8b-9c2d-000000000153",
+              "question": "<p>What is speciation?</p>",
+              "answer": "<p>It is the formation of new species.</p>",
+              "pageNr": "23"
+            },
+            {
+              "id": "c1d2e3f4-1111-4a8b-9c2d-000000000154",
+              "question": "<p>What is genetic drift?</p>",
+              "answer": "<p>It is random change in allele frequencies.</p>",
+              "pageNr": "23"
+            },
+            {
+              "id": "c1d2e3f4-1111-4a8b-9c2d-000000000155",
+              "question": "<p>What is a fossil?</p>",
+              "answer": "<p>It is preserved evidence of past life.</p>",
+              "pageNr": "24"
+            },
+            {
+              "id": "c1d2e3f4-1111-4a8b-9c2d-000000000156",
+              "question": "<p>What is common ancestry?</p>",
+              "answer": "<p>It means species share ancestors.</p>",
+              "pageNr": "24"
+            },
+            {
+              "id": "c1d2e3f4-1111-4a8b-9c2d-000000000157",
+              "question": "<p>What is a homologous structure?</p>",
+              "answer": "<p>It is a similar structure from shared ancestry.</p>",
+              "pageNr": "25"
+            },
+            {
+              "id": "c1d2e3f4-1111-4a8b-9c2d-000000000158",
+              "question": "<p>What is an analogous structure?</p>",
+              "answer": "<p>It is a similar function with different origin.</p>",
+              "pageNr": "25"
+            },
+            {
+              "id": "c1d2e3f4-1111-4a8b-9c2d-000000000159",
+              "question": "<p>What is a selective pressure?</p>",
+              "answer": "<p>It is a factor that influences survival.</p>",
+              "pageNr": "26"
+            },
+            {
+              "id": "c1d2e3f4-1111-4a8b-9c2d-000000000160",
+              "question": "<p>What is the modern synthesis?</p>",
+              "answer": "<p>It combines evolution with genetics.</p>",
+              "pageNr": "26"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a1b2c3d4-2222-4a8b-9c2d-000000000002",
+      "title": "Electronics",
+      "chapters": [
+        {
+          "id": "b1c2d3e4-2222-4a8b-9c2d-000000000021",
+          "nr": "1",
+          "title": "Basic Circuits",
+          "questions": [
+            {
+              "id": "c1d2e3f4-2222-4a8b-9c2d-000000000211",
+              "question": "<p>What is voltage?</p>",
+              "answer": "<p>Voltage is electric potential difference.</p>",
+              "pageNr": "1"
+            },
+            {
+              "id": "c1d2e3f4-2222-4a8b-9c2d-000000000212",
+              "question": "<p>What unit measures current?</p>",
+              "answer": "<p>Current is measured in amperes.</p>",
+              "pageNr": "2"
+            },
+            {
+              "id": "c1d2e3f4-2222-4a8b-9c2d-000000000213",
+              "question": "<p>What is resistance?</p>",
+              "answer": "<p>Resistance opposes the flow of current.</p>",
+              "pageNr": "2"
+            },
+            {
+              "id": "c1d2e3f4-2222-4a8b-9c2d-000000000214",
+              "question": "<p>State Ohm’s law.</p>",
+              "answer": "<p>Ohm’s law is $V = I \\times R$.</p>",
+              "pageNr": "3"
+            },
+            {
+              "id": "c1d2e3f4-2222-4a8b-9c2d-000000000215",
+              "question": "<p>What is a series circuit?</p>",
+              "answer": "<p>It has one path for current.</p>",
+              "pageNr": "3"
+            },
+            {
+              "id": "c1d2e3f4-2222-4a8b-9c2d-000000000216",
+              "question": "<p>What is a parallel circuit?</p>",
+              "answer": "<p>It has multiple current paths.</p>",
+              "pageNr": "4"
+            },
+            {
+              "id": "c1d2e3f4-2222-4a8b-9c2d-000000000217",
+              "question": "<p>What does a resistor do?</p>",
+              "answer": "<p>It limits current flow.</p>",
+              "pageNr": "4"
+            },
+            {
+              "id": "c1d2e3f4-2222-4a8b-9c2d-000000000218",
+              "question": "<p>What is power in a circuit?</p>",
+              "answer": "<p>Power is energy per unit time.</p>",
+              "pageNr": "5"
+            },
+            {
+              "id": "c1d2e3f4-2222-4a8b-9c2d-000000000219",
+              "question": "<p>What is a fuse used for?</p>",
+              "answer": "<p>It protects circuits from overcurrent.</p>",
+              "pageNr": "5"
+            },
+            {
+              "id": "c1d2e3f4-2222-4a8b-9c2d-000000000220",
+              "question": "<p>What is a short circuit?</p>",
+              "answer": "<p>It is an unintended low-resistance path.</p>",
+              "pageNr": "6"
+            }
+          ]
+        },
+        {
+          "id": "b1c2d3e4-2222-4a8b-9c2d-000000000022",
+          "nr": "2",
+          "title": "Diodes and Transistors",
+          "questions": [
+            {
+              "id": "c1d2e3f4-2222-4a8b-9c2d-000000000221",
+              "question": "<p>What is a diode?</p>",
+              "answer": "<p>It allows current to flow in one direction.</p>",
+              "pageNr": "7"
+            },
+            {
+              "id": "c1d2e3f4-2222-4a8b-9c2d-000000000222",
+              "question": "<p>What does an LED emit?</p>",
+              "answer": "<p>An LED emits light.</p>",
+              "pageNr": "7"
+            },
+            {
+              "id": "c1d2e3f4-2222-4a8b-9c2d-000000000223",
+              "question": "<p>What is a transistor used for?</p>",
+              "answer": "<p>It amplifies or switches signals.</p>",
+              "pageNr": "8"
+            },
+            {
+              "id": "c1d2e3f4-2222-4a8b-9c2d-000000000224",
+              "question": "<p>What are the terminals of a BJT?</p>",
+              "answer": "<p>Emitter, base, and collector.</p>",
+              "pageNr": "8"
+            },
+            {
+              "id": "c1d2e3f4-2222-4a8b-9c2d-000000000225",
+              "question": "<p>What is forward bias?</p>",
+              "answer": "<p>It is when a diode conducts current.</p>",
+              "pageNr": "9"
+            },
+            {
+              "id": "c1d2e3f4-2222-4a8b-9c2d-000000000226",
+              "question": "<p>What is reverse bias?</p>",
+              "answer": "<p>It is when a diode blocks current.</p>",
+              "pageNr": "9"
+            },
+            {
+              "id": "c1d2e3f4-2222-4a8b-9c2d-000000000227",
+              "question": "<p>What is a MOSFET?</p>",
+              "answer": "<p>It is a voltage-controlled transistor.</p>",
+              "pageNr": "10"
+            },
+            {
+              "id": "c1d2e3f4-2222-4a8b-9c2d-000000000228",
+              "question": "<p>What does a Zener diode do?</p>",
+              "answer": "<p>It regulates voltage in reverse bias.</p>",
+              "pageNr": "10"
+            },
+            {
+              "id": "c1d2e3f4-2222-4a8b-9c2d-000000000229",
+              "question": "<p>What is transistor gain?</p>",
+              "answer": "<p>It is the ratio of output to input current.</p>",
+              "pageNr": "11"
+            },
+            {
+              "id": "c1d2e3f4-2222-4a8b-9c2d-000000000230",
+              "question": "<p>What is a rectifier?</p>",
+              "answer": "<p>It converts AC to DC.</p>",
+              "pageNr": "11"
+            }
+          ]
+        },
+        {
+          "id": "b1c2d3e4-2222-4a8b-9c2d-000000000023",
+          "nr": "3",
+          "title": "Analog Signals",
+          "questions": [
+            {
+              "id": "c1d2e3f4-2222-4a8b-9c2d-000000000231",
+              "question": "<p>What is an analog signal?</p>",
+              "answer": "<p>It varies continuously with time.</p>",
+              "pageNr": "12"
+            },
+            {
+              "id": "c1d2e3f4-2222-4a8b-9c2d-000000000232",
+              "question": "<p>What does a capacitor store?</p>",
+              "answer": "<p>It stores electric charge.</p>",
+              "pageNr": "12"
+            },
+            {
+              "id": "c1d2e3f4-2222-4a8b-9c2d-000000000233",
+              "question": "<p>What does an inductor store?</p>",
+              "answer": "<p>It stores energy in a magnetic field.</p>",
+              "pageNr": "13"
+            },
+            {
+              "id": "c1d2e3f4-2222-4a8b-9c2d-000000000234",
+              "question": "<p>What is a filter?</p>",
+              "answer": "<p>It passes certain frequencies and blocks others.</p>",
+              "pageNr": "13"
+            },
+            {
+              "id": "c1d2e3f4-2222-4a8b-9c2d-000000000235",
+              "question": "<p>What is gain?</p>",
+              "answer": "<p>Gain is amplification of a signal.</p>",
+              "pageNr": "14"
+            },
+            {
+              "id": "c1d2e3f4-2222-4a8b-9c2d-000000000236",
+              "question": "<p>What does an op-amp do?</p>",
+              "answer": "<p>It amplifies the difference between inputs.</p>",
+              "pageNr": "14"
+            },
+            {
+              "id": "c1d2e3f4-2222-4a8b-9c2d-000000000237",
+              "question": "<p>What is signal clipping?</p>",
+              "answer": "<p>It is when amplitude exceeds limits.</p>",
+              "pageNr": "15"
+            },
+            {
+              "id": "c1d2e3f4-2222-4a8b-9c2d-000000000238",
+              "question": "<p>What is noise?</p>",
+              "answer": "<p>Noise is unwanted signal variation.</p>",
+              "pageNr": "15"
+            },
+            {
+              "id": "c1d2e3f4-2222-4a8b-9c2d-000000000239",
+              "question": "<p>What is a potentiometer?</p>",
+              "answer": "<p>It is a variable resistor.</p>",
+              "pageNr": "16"
+            },
+            {
+              "id": "c1d2e3f4-2222-4a8b-9c2d-000000000240",
+              "question": "<p>What is impedance?</p>",
+              "answer": "<p>It is opposition to AC flow.</p>",
+              "pageNr": "16"
+            }
+          ]
+        },
+        {
+          "id": "b1c2d3e4-2222-4a8b-9c2d-000000000024",
+          "nr": "4",
+          "title": "Digital Logic",
+          "questions": [
+            {
+              "id": "c1d2e3f4-2222-4a8b-9c2d-000000000241",
+              "question": "<p>What is a logic gate?</p>",
+              "answer": "<p>It performs a basic logical operation.</p>",
+              "pageNr": "17"
+            },
+            {
+              "id": "c1d2e3f4-2222-4a8b-9c2d-000000000242",
+              "question": "<p>What does an AND gate output?</p>",
+              "answer": "<p>It outputs 1 only if both inputs are 1.</p>",
+              "pageNr": "17"
+            },
+            {
+              "id": "c1d2e3f4-2222-4a8b-9c2d-000000000243",
+              "question": "<p>What does an OR gate output?</p>",
+              "answer": "<p>It outputs 1 if any input is 1.</p>",
+              "pageNr": "18"
+            },
+            {
+              "id": "c1d2e3f4-2222-4a8b-9c2d-000000000244",
+              "question": "<p>What does a NOT gate do?</p>",
+              "answer": "<p>It inverts the input.</p>",
+              "pageNr": "18"
+            },
+            {
+              "id": "c1d2e3f4-2222-4a8b-9c2d-000000000245",
+              "question": "<p>What is a flip-flop?</p>",
+              "answer": "<p>It stores one bit of data.</p>",
+              "pageNr": "19"
+            },
+            {
+              "id": "c1d2e3f4-2222-4a8b-9c2d-000000000246",
+              "question": "<p>What is a binary number?</p>",
+              "answer": "<p>It is a base-2 number system.</p>",
+              "pageNr": "19"
+            },
+            {
+              "id": "c1d2e3f4-2222-4a8b-9c2d-000000000247",
+              "question": "<p>What does a XOR gate do?</p>",
+              "answer": "<p>It outputs 1 if inputs differ.</p>",
+              "pageNr": "20"
+            },
+            {
+              "id": "c1d2e3f4-2222-4a8b-9c2d-000000000248",
+              "question": "<p>What is a decoder?</p>",
+              "answer": "<p>It converts binary inputs to one active output.</p>",
+              "pageNr": "20"
+            },
+            {
+              "id": "c1d2e3f4-2222-4a8b-9c2d-000000000249",
+              "question": "<p>What is a multiplexer?</p>",
+              "answer": "<p>It selects one of many inputs.</p>",
+              "pageNr": "21"
+            },
+            {
+              "id": "c1d2e3f4-2222-4a8b-9c2d-000000000250",
+              "question": "<p>What is a clock signal?</p>",
+              "answer": "<p>It synchronizes digital circuits.</p>",
+              "pageNr": "21"
+            }
+          ]
+        },
+        {
+          "id": "b1c2d3e4-2222-4a8b-9c2d-000000000025",
+          "nr": "5",
+          "title": "Embedded Systems",
+          "questions": [
+            {
+              "id": "c1d2e3f4-2222-4a8b-9c2d-000000000251",
+              "question": "<p>What is a microcontroller?</p>",
+              "answer": "<p>It is a small computer on a single chip.</p>",
+              "pageNr": "22"
+            },
+            {
+              "id": "c1d2e3f4-2222-4a8b-9c2d-000000000252",
+              "question": "<p>What does GPIO stand for?</p>",
+              "answer": "<p>General-purpose input/output.</p>",
+              "pageNr": "22"
+            },
+            {
+              "id": "c1d2e3f4-2222-4a8b-9c2d-000000000253",
+              "question": "<p>What is PWM?</p>",
+              "answer": "<p>Pulse-width modulation controls power.</p>",
+              "pageNr": "23"
+            },
+            {
+              "id": "c1d2e3f4-2222-4a8b-9c2d-000000000254",
+              "question": "<p>What is a sensor?</p>",
+              "answer": "<p>It measures a physical quantity.</p>",
+              "pageNr": "23"
+            },
+            {
+              "id": "c1d2e3f4-2222-4a8b-9c2d-000000000255",
+              "question": "<p>What is an actuator?</p>",
+              "answer": "<p>It converts control signals into action.</p>",
+              "pageNr": "24"
+            },
+            {
+              "id": "c1d2e3f4-2222-4a8b-9c2d-000000000256",
+              "question": "<p>What is firmware?</p>",
+              "answer": "<p>It is low-level software on hardware.</p>",
+              "pageNr": "24"
+            },
+            {
+              "id": "c1d2e3f4-2222-4a8b-9c2d-000000000257",
+              "question": "<p>What does I2C enable?</p>",
+              "answer": "<p>It enables two-wire communication between chips.</p>",
+              "pageNr": "25"
+            },
+            {
+              "id": "c1d2e3f4-2222-4a8b-9c2d-000000000258",
+              "question": "<p>What does SPI stand for?</p>",
+              "answer": "<p>Serial Peripheral Interface.</p>",
+              "pageNr": "25"
+            },
+            {
+              "id": "c1d2e3f4-2222-4a8b-9c2d-000000000259",
+              "question": "<p>What is a real-time system?</p>",
+              "answer": "<p>It must respond within strict time limits.</p>",
+              "pageNr": "26"
+            },
+            {
+              "id": "c1d2e3f4-2222-4a8b-9c2d-000000000260",
+              "question": "<p>What is power management?</p>",
+              "answer": "<p>It reduces energy use and heat.</p>",
+              "pageNr": "26"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a1b2c3d4-3333-4a8b-9c2d-000000000003",
+      "title": "Chemistry",
+      "chapters": [
+        {
+          "id": "b1c2d3e4-3333-4a8b-9c2d-000000000031",
+          "nr": "1",
+          "title": "Atomic Structure",
+          "questions": [
+            {
+              "id": "c1d2e3f4-3333-4a8b-9c2d-000000000311",
+              "question": "<p>What is an atom?</p>",
+              "answer": "<p>An atom is the smallest unit of an element.</p>",
+              "pageNr": "1"
+            },
+            {
+              "id": "c1d2e3f4-3333-4a8b-9c2d-000000000312",
+              "question": "<p>What particle has a positive charge?</p>",
+              "answer": "<p>A proton has a positive charge.</p>",
+              "pageNr": "2"
+            },
+            {
+              "id": "c1d2e3f4-3333-4a8b-9c2d-000000000313",
+              "question": "<p>What particle has no charge?</p>",
+              "answer": "<p>A neutron has no charge.</p>",
+              "pageNr": "2"
+            },
+            {
+              "id": "c1d2e3f4-3333-4a8b-9c2d-000000000314",
+              "question": "<p>What particle has a negative charge?</p>",
+              "answer": "<p>An electron has a negative charge.</p>",
+              "pageNr": "3"
+            },
+            {
+              "id": "c1d2e3f4-3333-4a8b-9c2d-000000000315",
+              "question": "<p>What is atomic number?</p>",
+              "answer": "<p>It is the number of protons in the nucleus.</p>",
+              "pageNr": "3"
+            },
+            {
+              "id": "c1d2e3f4-3333-4a8b-9c2d-000000000316",
+              "question": "<p>What is mass number?</p>",
+              "answer": "<p>It is the number of protons plus neutrons.</p>",
+              "pageNr": "4"
+            },
+            {
+              "id": "c1d2e3f4-3333-4a8b-9c2d-000000000317",
+              "question": "<p>What is an isotope?</p>",
+              "answer": "<p>Atoms of the same element with different neutrons.</p>",
+              "pageNr": "4"
+            },
+            {
+              "id": "c1d2e3f4-3333-4a8b-9c2d-000000000318",
+              "question": "<p>What is an ion?</p>",
+              "answer": "<p>An ion is a charged atom.</p>",
+              "pageNr": "5"
+            },
+            {
+              "id": "c1d2e3f4-3333-4a8b-9c2d-000000000319",
+              "question": "<p>What is the nucleus?</p>",
+              "answer": "<p>It is the dense center of the atom.</p>",
+              "pageNr": "5"
+            },
+            {
+              "id": "c1d2e3f4-3333-4a8b-9c2d-000000000320",
+              "question": "<p>What is electron shell?</p>",
+              "answer": "<p>It is a region where electrons are likely found.</p>",
+              "pageNr": "6"
+            }
+          ]
+        },
+        {
+          "id": "b1c2d3e4-3333-4a8b-9c2d-000000000032",
+          "nr": "2",
+          "title": "Chemical Bonding",
+          "questions": [
+            {
+              "id": "c1d2e3f4-3333-4a8b-9c2d-000000000321",
+              "question": "<p>What is an ionic bond?</p>",
+              "answer": "<p>It forms by electron transfer.</p>",
+              "pageNr": "7"
+            },
+            {
+              "id": "c1d2e3f4-3333-4a8b-9c2d-000000000322",
+              "question": "<p>What is a covalent bond?</p>",
+              "answer": "<p>It forms by electron sharing.</p>",
+              "pageNr": "7"
+            },
+            {
+              "id": "c1d2e3f4-3333-4a8b-9c2d-000000000323",
+              "question": "<p>What is electronegativity?</p>",
+              "answer": "<p>It is an atom’s tendency to attract electrons.</p>",
+              "pageNr": "8"
+            },
+            {
+              "id": "c1d2e3f4-3333-4a8b-9c2d-000000000324",
+              "question": "<p>What is a polar bond?</p>",
+              "answer": "<p>It has unequal electron sharing.</p>",
+              "pageNr": "8"
+            },
+            {
+              "id": "c1d2e3f4-3333-4a8b-9c2d-000000000325",
+              "question": "<p>What is a nonpolar bond?</p>",
+              "answer": "<p>It has equal electron sharing.</p>",
+              "pageNr": "9"
+            },
+            {
+              "id": "c1d2e3f4-3333-4a8b-9c2d-000000000326",
+              "question": "<p>What is a metallic bond?</p>",
+              "answer": "<p>It is bonding via a sea of electrons.</p>",
+              "pageNr": "9"
+            },
+            {
+              "id": "c1d2e3f4-3333-4a8b-9c2d-000000000327",
+              "question": "<p>What is a Lewis structure?</p>",
+              "answer": "<p>It shows valence electrons in a molecule.</p>",
+              "pageNr": "10"
+            },
+            {
+              "id": "c1d2e3f4-3333-4a8b-9c2d-000000000328",
+              "question": "<p>What is a double bond?</p>",
+              "answer": "<p>It involves two shared electron pairs.</p>",
+              "pageNr": "10"
+            },
+            {
+              "id": "c1d2e3f4-3333-4a8b-9c2d-000000000329",
+              "question": "<p>What is a triple bond?</p>",
+              "answer": "<p>It involves three shared electron pairs.</p>",
+              "pageNr": "11"
+            },
+            {
+              "id": "c1d2e3f4-3333-4a8b-9c2d-000000000330",
+              "question": "<p>What is bond energy?</p>",
+              "answer": "<p>It is energy required to break a bond.</p>",
+              "pageNr": "11"
+            }
+          ]
+        },
+        {
+          "id": "b1c2d3e4-3333-4a8b-9c2d-000000000033",
+          "nr": "3",
+          "title": "Chemical Reactions",
+          "questions": [
+            {
+              "id": "c1d2e3f4-3333-4a8b-9c2d-000000000331",
+              "question": "<p>What is a reactant?</p>",
+              "answer": "<p>It is a starting substance in a reaction.</p>",
+              "pageNr": "12"
+            },
+            {
+              "id": "c1d2e3f4-3333-4a8b-9c2d-000000000332",
+              "question": "<p>What is a product?</p>",
+              "answer": "<p>It is a substance formed in a reaction.</p>",
+              "pageNr": "12"
+            },
+            {
+              "id": "c1d2e3f4-3333-4a8b-9c2d-000000000333",
+              "question": "<p>What is a catalyst?</p>",
+              "answer": "<p>It speeds up a reaction without being used.</p>",
+              "pageNr": "13"
+            },
+            {
+              "id": "c1d2e3f4-3333-4a8b-9c2d-000000000334",
+              "question": "<p>What is an exothermic reaction?</p>",
+              "answer": "<p>It releases heat.</p>",
+              "pageNr": "13"
+            },
+            {
+              "id": "c1d2e3f4-3333-4a8b-9c2d-000000000335",
+              "question": "<p>What is an endothermic reaction?</p>",
+              "answer": "<p>It absorbs heat.</p>",
+              "pageNr": "14"
+            },
+            {
+              "id": "c1d2e3f4-3333-4a8b-9c2d-000000000336",
+              "question": "<p>What is a balanced equation?</p>",
+              "answer": "<p>It has equal atoms on both sides.</p>",
+              "pageNr": "14"
+            },
+            {
+              "id": "c1d2e3f4-3333-4a8b-9c2d-000000000337",
+              "question": "<p>What is a combustion reaction?</p>",
+              "answer": "<p>It involves oxygen producing heat and light.</p>",
+              "pageNr": "15"
+            },
+            {
+              "id": "c1d2e3f4-3333-4a8b-9c2d-000000000338",
+              "question": "<p>What is precipitation?</p>",
+              "answer": "<p>It is formation of a solid from solution.</p>",
+              "pageNr": "15"
+            },
+            {
+              "id": "c1d2e3f4-3333-4a8b-9c2d-000000000339",
+              "question": "<p>What is oxidation?</p>",
+              "answer": "<p>It is loss of electrons.</p>",
+              "pageNr": "16"
+            },
+            {
+              "id": "c1d2e3f4-3333-4a8b-9c2d-000000000340",
+              "question": "<p>What is reduction?</p>",
+              "answer": "<p>It is gain of electrons.</p>",
+              "pageNr": "16"
+            }
+          ]
+        },
+        {
+          "id": "b1c2d3e4-3333-4a8b-9c2d-000000000034",
+          "nr": "4",
+          "title": "Solutions and Acids",
+          "questions": [
+            {
+              "id": "c1d2e3f4-3333-4a8b-9c2d-000000000341",
+              "question": "<p>What is a solution?</p>",
+              "answer": "<p>It is a homogeneous mixture of substances.</p>",
+              "pageNr": "17"
+            },
+            {
+              "id": "c1d2e3f4-3333-4a8b-9c2d-000000000342",
+              "question": "<p>What is a solvent?</p>",
+              "answer": "<p>It is the substance that dissolves solute.</p>",
+              "pageNr": "17"
+            },
+            {
+              "id": "c1d2e3f4-3333-4a8b-9c2d-000000000343",
+              "question": "<p>What is a solute?</p>",
+              "answer": "<p>It is the substance being dissolved.</p>",
+              "pageNr": "18"
+            },
+            {
+              "id": "c1d2e3f4-3333-4a8b-9c2d-000000000344",
+              "question": "<p>What is pH?</p>",
+              "answer": "<p>It measures acidity or alkalinity.</p>",
+              "pageNr": "18"
+            },
+            {
+              "id": "c1d2e3f4-3333-4a8b-9c2d-000000000345",
+              "question": "<p>What is an acid?</p>",
+              "answer": "<p>It donates $H^+$ ions in water.</p>",
+              "pageNr": "19"
+            },
+            {
+              "id": "c1d2e3f4-3333-4a8b-9c2d-000000000346",
+              "question": "<p>What is a base?</p>",
+              "answer": "<p>It accepts $H^+$ ions or produces $OH^-$.</p>",
+              "pageNr": "19"
+            },
+            {
+              "id": "c1d2e3f4-3333-4a8b-9c2d-000000000347",
+              "question": "<p>What is neutralization?</p>",
+              "answer": "<p>It is reaction of acid and base.</p>",
+              "pageNr": "20"
+            },
+            {
+              "id": "c1d2e3f4-3333-4a8b-9c2d-000000000348",
+              "question": "<p>What is a buffer?</p>",
+              "answer": "<p>It resists changes in pH.</p>",
+              "pageNr": "20"
+            },
+            {
+              "id": "c1d2e3f4-3333-4a8b-9c2d-000000000349",
+              "question": "<p>What is concentration?</p>",
+              "answer": "<p>It is the amount of solute per volume.</p>",
+              "pageNr": "21"
+            },
+            {
+              "id": "c1d2e3f4-3333-4a8b-9c2d-000000000350",
+              "question": "<p>What is molarity?</p>",
+              "answer": "<p>It is moles of solute per liter.</p>",
+              "pageNr": "21"
+            }
+          ]
+        },
+        {
+          "id": "b1c2d3e4-3333-4a8b-9c2d-000000000035",
+          "nr": "5",
+          "title": "Organic Chemistry",
+          "questions": [
+            {
+              "id": "c1d2e3f4-3333-4a8b-9c2d-000000000351",
+              "question": "<p>What is an alkane?</p>",
+              "answer": "<p>It is a saturated hydrocarbon.</p>",
+              "pageNr": "22"
+            },
+            {
+              "id": "c1d2e3f4-3333-4a8b-9c2d-000000000352",
+              "question": "<p>What is an alkene?</p>",
+              "answer": "<p>It is a hydrocarbon with a double bond.</p>",
+              "pageNr": "22"
+            },
+            {
+              "id": "c1d2e3f4-3333-4a8b-9c2d-000000000353",
+              "question": "<p>What is an alkyne?</p>",
+              "answer": "<p>It has a triple bond.</p>",
+              "pageNr": "23"
+            },
+            {
+              "id": "c1d2e3f4-3333-4a8b-9c2d-000000000354",
+              "question": "<p>What is a functional group?</p>",
+              "answer": "<p>It is a reactive group in organic molecules.</p>",
+              "pageNr": "23"
+            },
+            {
+              "id": "c1d2e3f4-3333-4a8b-9c2d-000000000355",
+              "question": "<p>What is an alcohol group?</p>",
+              "answer": "<p>It is a hydroxyl group $-OH$.</p>",
+              "pageNr": "24"
+            },
+            {
+              "id": "c1d2e3f4-3333-4a8b-9c2d-000000000356",
+              "question": "<p>What is a carboxylic acid?</p>",
+              "answer": "<p>It contains the $-COOH$ group.</p>",
+              "pageNr": "24"
+            },
+            {
+              "id": "c1d2e3f4-3333-4a8b-9c2d-000000000357",
+              "question": "<p>What is polymerization?</p>",
+              "answer": "<p>It forms large molecules from monomers.</p>",
+              "pageNr": "25"
+            },
+            {
+              "id": "c1d2e3f4-3333-4a8b-9c2d-000000000358",
+              "question": "<p>What is isomerism?</p>",
+              "answer": "<p>Compounds share a formula but differ in structure.</p>",
+              "pageNr": "25"
+            },
+            {
+              "id": "c1d2e3f4-3333-4a8b-9c2d-000000000359",
+              "question": "<p>What is a hydrocarbon?</p>",
+              "answer": "<p>It contains only hydrogen and carbon.</p>",
+              "pageNr": "26"
+            },
+            {
+              "id": "c1d2e3f4-3333-4a8b-9c2d-000000000360",
+              "question": "<p>What is a catalyst in organic reactions?</p>",
+              "answer": "<p>It increases reaction rate without being consumed.</p>",
+              "pageNr": "26"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a1b2c3d4-4444-4a8b-9c2d-000000000004",
+      "title": "Physics",
+      "chapters": [
+        {
+          "id": "b1c2d3e4-4444-4a8b-9c2d-000000000041",
+          "nr": "1",
+          "title": "Kinematics",
+          "questions": [
+            {
+              "id": "c1d2e3f4-4444-4a8b-9c2d-000000000411",
+              "question": "<p>What is displacement?</p>",
+              "answer": "<p>It is the change in position.</p>",
+              "pageNr": "1"
+            },
+            {
+              "id": "c1d2e3f4-4444-4a8b-9c2d-000000000412",
+              "question": "<p>What is velocity?</p>",
+              "answer": "<p>It is displacement per unit time.</p>",
+              "pageNr": "2"
+            },
+            {
+              "id": "c1d2e3f4-4444-4a8b-9c2d-000000000413",
+              "question": "<p>What is acceleration?</p>",
+              "answer": "<p>It is the rate of change of velocity.</p>",
+              "pageNr": "2"
+            },
+            {
+              "id": "c1d2e3f4-4444-4a8b-9c2d-000000000414",
+              "question": "<p>What is uniform motion?</p>",
+              "answer": "<p>It is motion with constant velocity.</p>",
+              "pageNr": "3"
+            },
+            {
+              "id": "c1d2e3f4-4444-4a8b-9c2d-000000000415",
+              "question": "<p>What is free fall?</p>",
+              "answer": "<p>It is motion under gravity only.</p>",
+              "pageNr": "3"
+            },
+            {
+              "id": "c1d2e3f4-4444-4a8b-9c2d-000000000416",
+              "question": "<p>What is $g$ on Earth?</p>",
+              "answer": "<p>About $9.8\\,\\text{m/s}^2$.</p>",
+              "pageNr": "4"
+            },
+            {
+              "id": "c1d2e3f4-4444-4a8b-9c2d-000000000417",
+              "question": "<p>What is speed?</p>",
+              "answer": "<p>It is distance per unit time.</p>",
+              "pageNr": "4"
+            },
+            {
+              "id": "c1d2e3f4-4444-4a8b-9c2d-000000000418",
+              "question": "<p>What is a position-time graph used for?</p>",
+              "answer": "<p>It shows displacement over time.</p>",
+              "pageNr": "5"
+            },
+            {
+              "id": "c1d2e3f4-4444-4a8b-9c2d-000000000419",
+              "question": "<p>What is instantaneous velocity?</p>",
+              "answer": "<p>Velocity at a specific moment.</p>",
+              "pageNr": "5"
+            },
+            {
+              "id": "c1d2e3f4-4444-4a8b-9c2d-000000000420",
+              "question": "<p>What is average acceleration?</p>",
+              "answer": "<p>Change in velocity over time interval.</p>",
+              "pageNr": "6"
+            }
+          ]
+        },
+        {
+          "id": "b1c2d3e4-4444-4a8b-9c2d-000000000042",
+          "nr": "2",
+          "title": "Dynamics",
+          "questions": [
+            {
+              "id": "c1d2e3f4-4444-4a8b-9c2d-000000000421",
+              "question": "<p>State Newton’s first law.</p>",
+              "answer": "<p>An object remains at rest or in motion unless acted on.</p>",
+              "pageNr": "7"
+            },
+            {
+              "id": "c1d2e3f4-4444-4a8b-9c2d-000000000422",
+              "question": "<p>State Newton’s second law.</p>",
+              "answer": "<p>Net force equals $m\\times a$.</p>",
+              "pageNr": "7"
+            },
+            {
+              "id": "c1d2e3f4-4444-4a8b-9c2d-000000000423",
+              "question": "<p>State Newton’s third law.</p>",
+              "answer": "<p>Every action has an equal and opposite reaction.</p>",
+              "pageNr": "8"
+            },
+            {
+              "id": "c1d2e3f4-4444-4a8b-9c2d-000000000424",
+              "question": "<p>What is friction?</p>",
+              "answer": "<p>It is a force opposing motion.</p>",
+              "pageNr": "8"
+            },
+            {
+              "id": "c1d2e3f4-4444-4a8b-9c2d-000000000425",
+              "question": "<p>What is weight?</p>",
+              "answer": "<p>It is the force due to gravity.</p>",
+              "pageNr": "9"
+            },
+            {
+              "id": "c1d2e3f4-4444-4a8b-9c2d-000000000426",
+              "question": "<p>What is mass?</p>",
+              "answer": "<p>It is the amount of matter in an object.</p>",
+              "pageNr": "9"
+            },
+            {
+              "id": "c1d2e3f4-4444-4a8b-9c2d-000000000427",
+              "question": "<p>What is momentum?</p>",
+              "answer": "<p>It is $p = m \\times v$.</p>",
+              "pageNr": "10"
+            },
+            {
+              "id": "c1d2e3f4-4444-4a8b-9c2d-000000000428",
+              "question": "<p>What is impulse?</p>",
+              "answer": "<p>It is force times time interval.</p>",
+              "pageNr": "10"
+            },
+            {
+              "id": "c1d2e3f4-4444-4a8b-9c2d-000000000429",
+              "question": "<p>What is a free-body diagram?</p>",
+              "answer": "<p>It shows all forces on an object.</p>",
+              "pageNr": "11"
+            },
+            {
+              "id": "c1d2e3f4-4444-4a8b-9c2d-000000000430",
+              "question": "<p>What is centripetal force?</p>",
+              "answer": "<p>It is the inward force for circular motion.</p>",
+              "pageNr": "11"
+            }
+          ]
+        },
+        {
+          "id": "b1c2d3e4-4444-4a8b-9c2d-000000000043",
+          "nr": "3",
+          "title": "Energy and Work",
+          "questions": [
+            {
+              "id": "c1d2e3f4-4444-4a8b-9c2d-000000000431",
+              "question": "<p>What is work in physics?</p>",
+              "answer": "<p>Work is force times displacement.</p>",
+              "pageNr": "12"
+            },
+            {
+              "id": "c1d2e3f4-4444-4a8b-9c2d-000000000432",
+              "question": "<p>What is kinetic energy?</p>",
+              "answer": "<p>Energy of motion, $\\frac{1}{2}mv^2$.</p>",
+              "pageNr": "12"
+            },
+            {
+              "id": "c1d2e3f4-4444-4a8b-9c2d-000000000433",
+              "question": "<p>What is potential energy?</p>",
+              "answer": "<p>Energy due to position, like $mgh$.</p>",
+              "pageNr": "13"
+            },
+            {
+              "id": "c1d2e3f4-4444-4a8b-9c2d-000000000434",
+              "question": "<p>What is power?</p>",
+              "answer": "<p>Power is work done per unit time.</p>",
+              "pageNr": "13"
+            },
+            {
+              "id": "c1d2e3f4-4444-4a8b-9c2d-000000000435",
+              "question": "<p>What is mechanical energy?</p>",
+              "answer": "<p>It is the sum of kinetic and potential energy.</p>",
+              "pageNr": "14"
+            },
+            {
+              "id": "c1d2e3f4-4444-4a8b-9c2d-000000000436",
+              "question": "<p>What is conservation of energy?</p>",
+              "answer": "<p>Energy cannot be created or destroyed.</p>",
+              "pageNr": "14"
+            },
+            {
+              "id": "c1d2e3f4-4444-4a8b-9c2d-000000000437",
+              "question": "<p>What is efficiency?</p>",
+              "answer": "<p>Useful output energy divided by input energy.</p>",
+              "pageNr": "15"
+            },
+            {
+              "id": "c1d2e3f4-4444-4a8b-9c2d-000000000438",
+              "question": "<p>What is elastic potential energy?</p>",
+              "answer": "<p>Energy stored in stretched or compressed objects.</p>",
+              "pageNr": "15"
+            },
+            {
+              "id": "c1d2e3f4-4444-4a8b-9c2d-000000000439",
+              "question": "<p>What is work–energy theorem?</p>",
+              "answer": "<p>Net work equals change in kinetic energy.</p>",
+              "pageNr": "16"
+            },
+            {
+              "id": "c1d2e3f4-4444-4a8b-9c2d-000000000440",
+              "question": "<p>What is a joule?</p>",
+              "answer": "<p>It is the SI unit of energy.</p>",
+              "pageNr": "16"
+            }
+          ]
+        },
+        {
+          "id": "b1c2d3e4-4444-4a8b-9c2d-000000000044",
+          "nr": "4",
+          "title": "Waves",
+          "questions": [
+            {
+              "id": "c1d2e3f4-4444-4a8b-9c2d-000000000441",
+              "question": "<p>What is a wave?</p>",
+              "answer": "<p>It is a disturbance that transfers energy.</p>",
+              "pageNr": "17"
+            },
+            {
+              "id": "c1d2e3f4-4444-4a8b-9c2d-000000000442",
+              "question": "<p>What is wavelength?</p>",
+              "answer": "<p>It is the distance between identical points on waves.</p>",
+              "pageNr": "17"
+            },
+            {
+              "id": "c1d2e3f4-4444-4a8b-9c2d-000000000443",
+              "question": "<p>What is frequency?</p>",
+              "answer": "<p>It is the number of cycles per second.</p>",
+              "pageNr": "18"
+            },
+            {
+              "id": "c1d2e3f4-4444-4a8b-9c2d-000000000444",
+              "question": "<p>What is amplitude?</p>",
+              "answer": "<p>It is the maximum displacement from rest.</p>",
+              "pageNr": "18"
+            },
+            {
+              "id": "c1d2e3f4-4444-4a8b-9c2d-000000000445",
+              "question": "<p>What is wave speed?</p>",
+              "answer": "<p>It is $v = f \\times \\lambda$.</p>",
+              "pageNr": "19"
+            },
+            {
+              "id": "c1d2e3f4-4444-4a8b-9c2d-000000000446",
+              "question": "<p>What is a transverse wave?</p>",
+              "answer": "<p>Oscillations are perpendicular to direction of travel.</p>",
+              "pageNr": "19"
+            },
+            {
+              "id": "c1d2e3f4-4444-4a8b-9c2d-000000000447",
+              "question": "<p>What is a longitudinal wave?</p>",
+              "answer": "<p>Oscillations are parallel to direction of travel.</p>",
+              "pageNr": "20"
+            },
+            {
+              "id": "c1d2e3f4-4444-4a8b-9c2d-000000000448",
+              "question": "<p>What is reflection?</p>",
+              "answer": "<p>It is wave bouncing off a surface.</p>",
+              "pageNr": "20"
+            },
+            {
+              "id": "c1d2e3f4-4444-4a8b-9c2d-000000000449",
+              "question": "<p>What is refraction?</p>",
+              "answer": "<p>It is bending of waves in a new medium.</p>",
+              "pageNr": "21"
+            },
+            {
+              "id": "c1d2e3f4-4444-4a8b-9c2d-000000000450",
+              "question": "<p>What is diffraction?</p>",
+              "answer": "<p>It is spreading of waves around obstacles.</p>",
+              "pageNr": "21"
+            }
+          ]
+        },
+        {
+          "id": "b1c2d3e4-4444-4a8b-9c2d-000000000045",
+          "nr": "5",
+          "title": "Electricity and Magnetism",
+          "questions": [
+            {
+              "id": "c1d2e3f4-4444-4a8b-9c2d-000000000451",
+              "question": "<p>What is electric charge?</p>",
+              "answer": "<p>It is a property that causes electric forces.</p>",
+              "pageNr": "22"
+            },
+            {
+              "id": "c1d2e3f4-4444-4a8b-9c2d-000000000452",
+              "question": "<p>What is Coulomb’s law?</p>",
+              "answer": "<p>Force is proportional to charge product and inverse distance squared.</p>",
+              "pageNr": "22"
+            },
+            {
+              "id": "c1d2e3f4-4444-4a8b-9c2d-000000000453",
+              "question": "<p>What is electric field?</p>",
+              "answer": "<p>It is the force per unit charge.</p>",
+              "pageNr": "23"
+            },
+            {
+              "id": "c1d2e3f4-4444-4a8b-9c2d-000000000454",
+              "question": "<p>What is electric potential?</p>",
+              "answer": "<p>It is potential energy per unit charge.</p>",
+              "pageNr": "23"
+            },
+            {
+              "id": "c1d2e3f4-4444-4a8b-9c2d-000000000455",
+              "question": "<p>What is a capacitor?</p>",
+              "answer": "<p>It stores charge and energy in an electric field.</p>",
+              "pageNr": "24"
+            },
+            {
+              "id": "c1d2e3f4-4444-4a8b-9c2d-000000000456",
+              "question": "<p>What is a magnet?</p>",
+              "answer": "<p>It produces a magnetic field.</p>",
+              "pageNr": "24"
+            },
+            {
+              "id": "c1d2e3f4-4444-4a8b-9c2d-000000000457",
+              "question": "<p>What is electromagnetic induction?</p>",
+              "answer": "<p>It is generating voltage by changing magnetic field.</p>",
+              "pageNr": "25"
+            },
+            {
+              "id": "c1d2e3f4-4444-4a8b-9c2d-000000000458",
+              "question": "<p>What is a solenoid?</p>",
+              "answer": "<p>It is a coil that creates a magnetic field.</p>",
+              "pageNr": "25"
+            },
+            {
+              "id": "c1d2e3f4-4444-4a8b-9c2d-000000000459",
+              "question": "<p>What is an electric motor?</p>",
+              "answer": "<p>It converts electrical energy to mechanical energy.</p>",
+              "pageNr": "26"
+            },
+            {
+              "id": "c1d2e3f4-4444-4a8b-9c2d-000000000460",
+              "question": "<p>What is a generator?</p>",
+              "answer": "<p>It converts mechanical energy to electrical energy.</p>",
+              "pageNr": "26"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a1b2c3d4-5555-4a8b-9c2d-000000000005",
+      "title": "Computer Science",
+      "chapters": [
+        {
+          "id": "b1c2d3e4-5555-4a8b-9c2d-000000000051",
+          "nr": "1",
+          "title": "Programming Basics",
+          "questions": [
+            {
+              "id": "c1d2e3f4-5555-4a8b-9c2d-000000000511",
+              "question": "<p>What is a variable?</p>",
+              "answer": "<p>It stores a value that can change.</p>",
+              "pageNr": "1"
+            },
+            {
+              "id": "c1d2e3f4-5555-4a8b-9c2d-000000000512",
+              "question": "<p>What is a data type?</p>",
+              "answer": "<p>It defines the kind of value stored.</p>",
+              "pageNr": "2"
+            },
+            {
+              "id": "c1d2e3f4-5555-4a8b-9c2d-000000000513",
+              "question": "<p>What is a function?</p>",
+              "answer": "<p>It is a reusable block of code.</p>",
+              "pageNr": "2"
+            },
+            {
+              "id": "c1d2e3f4-5555-4a8b-9c2d-000000000514",
+              "question": "<p>What is a loop?</p>",
+              "answer": "<p>It repeats code while a condition is true.</p>",
+              "pageNr": "3"
+            },
+            {
+              "id": "c1d2e3f4-5555-4a8b-9c2d-000000000515",
+              "question": "<p>What is a conditional statement?</p>",
+              "answer": "<p>It executes code based on a condition.</p>",
+              "pageNr": "3"
+            },
+            {
+              "id": "c1d2e3f4-5555-4a8b-9c2d-000000000516",
+              "question": "<p>What is an array?</p>",
+              "answer": "<p>It is an ordered collection of values.</p>",
+              "pageNr": "4"
+            },
+            {
+              "id": "c1d2e3f4-5555-4a8b-9c2d-000000000517",
+              "question": "<p>What is a string?</p>",
+              "answer": "<p>It is a sequence of characters.</p>",
+              "pageNr": "4"
+            },
+            {
+              "id": "c1d2e3f4-5555-4a8b-9c2d-000000000518",
+              "question": "<p>What is debugging?</p>",
+              "answer": "<p>It is finding and fixing errors.</p>",
+              "pageNr": "5"
+            },
+            {
+              "id": "c1d2e3f4-5555-4a8b-9c2d-000000000519",
+              "question": "<p>What is an algorithm?</p>",
+              "answer": "<p>It is a step-by-step procedure to solve a problem.</p>",
+              "pageNr": "5"
+            },
+            {
+              "id": "c1d2e3f4-5555-4a8b-9c2d-000000000520",
+              "question": "<p>What is input/output?</p>",
+              "answer": "<p>It is data entering or leaving a program.</p>",
+              "pageNr": "6"
+            }
+          ]
+        },
+        {
+          "id": "b1c2d3e4-5555-4a8b-9c2d-000000000052",
+          "nr": "2",
+          "title": "Data Structures",
+          "questions": [
+            {
+              "id": "c1d2e3f4-5555-4a8b-9c2d-000000000521",
+              "question": "<p>What is a stack?</p>",
+              "answer": "<p>It is a LIFO data structure.</p>",
+              "pageNr": "7"
+            },
+            {
+              "id": "c1d2e3f4-5555-4a8b-9c2d-000000000522",
+              "question": "<p>What is a queue?</p>",
+              "answer": "<p>It is a FIFO data structure.</p>",
+              "pageNr": "7"
+            },
+            {
+              "id": "c1d2e3f4-5555-4a8b-9c2d-000000000523",
+              "question": "<p>What is a linked list?</p>",
+              "answer": "<p>It is a sequence of nodes linked by pointers.</p>",
+              "pageNr": "8"
+            },
+            {
+              "id": "c1d2e3f4-5555-4a8b-9c2d-000000000524",
+              "question": "<p>What is a tree?</p>",
+              "answer": "<p>It is a hierarchical data structure.</p>",
+              "pageNr": "8"
+            },
+            {
+              "id": "c1d2e3f4-5555-4a8b-9c2d-000000000525",
+              "question": "<p>What is a graph?</p>",
+              "answer": "<p>It is a set of nodes connected by edges.</p>",
+              "pageNr": "9"
+            },
+            {
+              "id": "c1d2e3f4-5555-4a8b-9c2d-000000000526",
+              "question": "<p>What is a hash table?</p>",
+              "answer": "<p>It stores key-value pairs with fast lookup.</p>",
+              "pageNr": "9"
+            },
+            {
+              "id": "c1d2e3f4-5555-4a8b-9c2d-000000000527",
+              "question": "<p>What is a priority queue?</p>",
+              "answer": "<p>It dequeues items by priority.</p>",
+              "pageNr": "10"
+            },
+            {
+              "id": "c1d2e3f4-5555-4a8b-9c2d-000000000528",
+              "question": "<p>What is a binary search tree?</p>",
+              "answer": "<p>It is a tree with ordered left/right nodes.</p>",
+              "pageNr": "10"
+            },
+            {
+              "id": "c1d2e3f4-5555-4a8b-9c2d-000000000529",
+              "question": "<p>What is a heap?</p>",
+              "answer": "<p>It is a tree with a heap-order property.</p>",
+              "pageNr": "11"
+            },
+            {
+              "id": "c1d2e3f4-5555-4a8b-9c2d-000000000530",
+              "question": "<p>What is an array index?</p>",
+              "answer": "<p>It is a position of an element in an array.</p>",
+              "pageNr": "11"
+            }
+          ]
+        },
+        {
+          "id": "b1c2d3e4-5555-4a8b-9c2d-000000000053",
+          "nr": "3",
+          "title": "Algorithms",
+          "questions": [
+            {
+              "id": "c1d2e3f4-5555-4a8b-9c2d-000000000531",
+              "question": "<p>What is linear search?</p>",
+              "answer": "<p>It checks each element in order.</p>",
+              "pageNr": "12"
+            },
+            {
+              "id": "c1d2e3f4-5555-4a8b-9c2d-000000000532",
+              "question": "<p>What is binary search?</p>",
+              "answer": "<p>It repeatedly halves a sorted list.</p>",
+              "pageNr": "12"
+            },
+            {
+              "id": "c1d2e3f4-5555-4a8b-9c2d-000000000533",
+              "question": "<p>What is sorting?</p>",
+              "answer": "<p>It is arranging elements in order.</p>",
+              "pageNr": "13"
+            },
+            {
+              "id": "c1d2e3f4-5555-4a8b-9c2d-000000000534",
+              "question": "<p>What is bubble sort?</p>",
+              "answer": "<p>It swaps adjacent elements repeatedly.</p>",
+              "pageNr": "13"
+            },
+            {
+              "id": "c1d2e3f4-5555-4a8b-9c2d-000000000535",
+              "question": "<p>What is quicksort?</p>",
+              "answer": "<p>It partitions around a pivot and sorts recursively.</p>",
+              "pageNr": "14"
+            },
+            {
+              "id": "c1d2e3f4-5555-4a8b-9c2d-000000000536",
+              "question": "<p>What is merge sort?</p>",
+              "answer": "<p>It divides, sorts, and merges lists.</p>",
+              "pageNr": "14"
+            },
+            {
+              "id": "c1d2e3f4-5555-4a8b-9c2d-000000000537",
+              "question": "<p>What is Big-O notation?</p>",
+              "answer": "<p>It describes algorithm time complexity.</p>",
+              "pageNr": "15"
+            },
+            {
+              "id": "c1d2e3f4-5555-4a8b-9c2d-000000000538",
+              "question": "<p>What is recursion?</p>",
+              "answer": "<p>It is a function calling itself.</p>",
+              "pageNr": "15"
+            },
+            {
+              "id": "c1d2e3f4-5555-4a8b-9c2d-000000000539",
+              "question": "<p>What is dynamic programming?</p>",
+              "answer": "<p>It solves problems using overlapping subproblems.</p>",
+              "pageNr": "16"
+            },
+            {
+              "id": "c1d2e3f4-5555-4a8b-9c2d-000000000540",
+              "question": "<p>What is a greedy algorithm?</p>",
+              "answer": "<p>It chooses the best local option each step.</p>",
+              "pageNr": "16"
+            }
+          ]
+        },
+        {
+          "id": "b1c2d3e4-5555-4a8b-9c2d-000000000054",
+          "nr": "4",
+          "title": "Databases",
+          "questions": [
+            {
+              "id": "c1d2e3f4-5555-4a8b-9c2d-000000000541",
+              "question": "<p>What is a database?</p>",
+              "answer": "<p>It is an organized collection of data.</p>",
+              "pageNr": "17"
+            },
+            {
+              "id": "c1d2e3f4-5555-4a8b-9c2d-000000000542",
+              "question": "<p>What is a table?</p>",
+              "answer": "<p>It stores data in rows and columns.</p>",
+              "pageNr": "17"
+            },
+            {
+              "id": "c1d2e3f4-5555-4a8b-9c2d-000000000543",
+              "question": "<p>What is a primary key?</p>",
+              "answer": "<p>It uniquely identifies each row.</p>",
+              "pageNr": "18"
+            },
+            {
+              "id": "c1d2e3f4-5555-4a8b-9c2d-000000000544",
+              "question": "<p>What is a foreign key?</p>",
+              "answer": "<p>It links rows between tables.</p>",
+              "pageNr": "18"
+            },
+            {
+              "id": "c1d2e3f4-5555-4a8b-9c2d-000000000545",
+              "question": "<p>What is SQL?</p>",
+              "answer": "<p>It is a language for managing data.</p>",
+              "pageNr": "19"
+            },
+            {
+              "id": "c1d2e3f4-5555-4a8b-9c2d-000000000546",
+              "question": "<p>What is normalization?</p>",
+              "answer": "<p>It reduces redundancy in a database.</p>",
+              "pageNr": "19"
+            },
+            {
+              "id": "c1d2e3f4-5555-4a8b-9c2d-000000000547",
+              "question": "<p>What is an index?</p>",
+              "answer": "<p>It speeds up data retrieval.</p>",
+              "pageNr": "20"
+            },
+            {
+              "id": "c1d2e3f4-5555-4a8b-9c2d-000000000548",
+              "question": "<p>What is a query?</p>",
+              "answer": "<p>It is a request for specific data.</p>",
+              "pageNr": "20"
+            },
+            {
+              "id": "c1d2e3f4-5555-4a8b-9c2d-000000000549",
+              "question": "<p>What is a transaction?</p>",
+              "answer": "<p>It is a set of operations treated as one unit.</p>",
+              "pageNr": "21"
+            },
+            {
+              "id": "c1d2e3f4-5555-4a8b-9c2d-000000000550",
+              "question": "<p>What is ACID?</p>",
+              "answer": "<p>It stands for Atomicity, Consistency, Isolation, Durability.</p>",
+              "pageNr": "21"
+            }
+          ]
+        },
+        {
+          "id": "b1c2d3e4-5555-4a8b-9c2d-000000000055",
+          "nr": "5",
+          "title": "Networks",
+          "questions": [
+            {
+              "id": "c1d2e3f4-5555-4a8b-9c2d-000000000551",
+              "question": "<p>What is a network?</p>",
+              "answer": "<p>It is a system of connected devices.</p>",
+              "pageNr": "22"
+            },
+            {
+              "id": "c1d2e3f4-5555-4a8b-9c2d-000000000552",
+              "question": "<p>What is an IP address?</p>",
+              "answer": "<p>It identifies a device on a network.</p>",
+              "pageNr": "22"
+            },
+            {
+              "id": "c1d2e3f4-5555-4a8b-9c2d-000000000553",
+              "question": "<p>What is a router?</p>",
+              "answer": "<p>It forwards data between networks.</p>",
+              "pageNr": "23"
+            },
+            {
+              "id": "c1d2e3f4-5555-4a8b-9c2d-000000000554",
+              "question": "<p>What is a switch?</p>",
+              "answer": "<p>It connects devices within a LAN.</p>",
+              "pageNr": "23"
+            },
+            {
+              "id": "c1d2e3f4-5555-4a8b-9c2d-000000000555",
+              "question": "<p>What is DNS?</p>",
+              "answer": "<p>It translates domain names to IP addresses.</p>",
+              "pageNr": "24"
+            },
+            {
+              "id": "c1d2e3f4-5555-4a8b-9c2d-000000000556",
+              "question": "<p>What is HTTP?</p>",
+              "answer": "<p>It is a protocol for web communication.</p>",
+              "pageNr": "24"
+            },
+            {
+              "id": "c1d2e3f4-5555-4a8b-9c2d-000000000557",
+              "question": "<p>What is TCP?</p>",
+              "answer": "<p>It provides reliable data transmission.</p>",
+              "pageNr": "25"
+            },
+            {
+              "id": "c1d2e3f4-5555-4a8b-9c2d-000000000558",
+              "question": "<p>What is UDP?</p>",
+              "answer": "<p>It provides faster but unreliable transmission.</p>",
+              "pageNr": "25"
+            },
+            {
+              "id": "c1d2e3f4-5555-4a8b-9c2d-000000000559",
+              "question": "<p>What is bandwidth?</p>",
+              "answer": "<p>It is the maximum data transfer rate.</p>",
+              "pageNr": "26"
+            },
+            {
+              "id": "c1d2e3f4-5555-4a8b-9c2d-000000000560",
+              "question": "<p>What is latency?</p>",
+              "answer": "<p>It is the delay in data transmission.</p>",
+              "pageNr": "26"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "libraryName": "STEM Question Trainer Library",
+  "questionList": [],
+  "questionTestStatistics": {
+    "wrongCount": 0,
+    "correctCount": 0
+  },
+  "repeatWrongQuestions": true,
+  "version": "0.0.0",
+  "viewMode": "both",
+  "bookSelected": {
+    "id": "a1b2c3d4-1111-4a8b-9c2d-000000000001",
+    "title": "Biology",
+    "chapters": [
+      {
+        "id": "b1c2d3e4-1111-4a8b-9c2d-000000000011",
+        "nr": "1",
+        "title": "Cells and Microscopy",
+        "questions": [
+          {
+            "id": "c1d2e3f4-1111-4a8b-9c2d-000000000111",
+            "question": "<p>What is the main function of the cell membrane?</p>",
+            "answer": "<p>It controls what enters and leaves the cell.</p>",
+            "pageNr": "1"
+          },
+          {
+            "id": "c1d2e3f4-1111-4a8b-9c2d-000000000112",
+            "question": "<p>Which organelle produces ATP?</p>",
+            "answer": "<p>The mitochondrion produces ATP.</p>",
+            "pageNr": "2"
+          },
+          {
+            "id": "c1d2e3f4-1111-4a8b-9c2d-000000000113",
+            "question": "<p>What does the nucleus contain?</p>",
+            "answer": "<p>It contains the cell’s DNA.</p>",
+            "pageNr": "2"
+          },
+          {
+            "id": "c1d2e3f4-1111-4a8b-9c2d-000000000114",
+            "question": "<p>What is the role of ribosomes?</p>",
+            "answer": "<p>They synthesize proteins.</p>",
+            "pageNr": "3"
+          },
+          {
+            "id": "c1d2e3f4-1111-4a8b-9c2d-000000000115",
+            "question": "<p>Which microscope uses light to view cells?</p>",
+            "answer": "<p>The light microscope uses visible light.</p>",
+            "pageNr": "3"
+          },
+          {
+            "id": "c1d2e3f4-1111-4a8b-9c2d-000000000116",
+            "question": "<p>What is cytoplasm?</p>",
+            "answer": "<p>It is the fluid where organelles are suspended.</p>",
+            "pageNr": "4"
+          },
+          {
+            "id": "c1d2e3f4-1111-4a8b-9c2d-000000000117",
+            "question": "<p>What is the function of the cell wall in plants?</p>",
+            "answer": "<p>It provides support and protection.</p>",
+            "pageNr": "4"
+          },
+          {
+            "id": "c1d2e3f4-1111-4a8b-9c2d-000000000118",
+            "question": "<p>What does the Golgi apparatus do?</p>",
+            "answer": "<p>It modifies and packages proteins.</p>",
+            "pageNr": "5"
+          },
+          {
+            "id": "c1d2e3f4-1111-4a8b-9c2d-000000000119",
+            "question": "<p>Which organelle is responsible for photosynthesis?</p>",
+            "answer": "<p>The chloroplast performs photosynthesis.</p>",
+            "pageNr": "5"
+          },
+          {
+            "id": "c1d2e3f4-1111-4a8b-9c2d-000000000120",
+            "question": "<p>What is diffusion?</p>",
+            "answer": "<p>It is movement from high to low concentration.</p>",
+            "pageNr": "6"
+          }
+        ]
+      },
+      {
+        "id": "b1c2d3e4-1111-4a8b-9c2d-000000000012",
+        "nr": "2",
+        "title": "Genetics",
+        "questions": [
+          {
+            "id": "c1d2e3f4-1111-4a8b-9c2d-000000000121",
+            "question": "<p>What is a gene?</p>",
+            "answer": "<p>A gene is a segment of DNA with instructions.</p>",
+            "pageNr": "7"
+          },
+          {
+            "id": "c1d2e3f4-1111-4a8b-9c2d-000000000122",
+            "question": "<p>What are alleles?</p>",
+            "answer": "<p>They are different forms of a gene.</p>",
+            "pageNr": "7"
+          },
+          {
+            "id": "c1d2e3f4-1111-4a8b-9c2d-000000000123",
+            "question": "<p>What does dominant mean in genetics?</p>",
+            "answer": "<p>A dominant allele masks a recessive allele.</p>",
+            "pageNr": "8"
+          },
+          {
+            "id": "c1d2e3f4-1111-4a8b-9c2d-000000000124",
+            "question": "<p>What is a phenotype?</p>",
+            "answer": "<p>It is the observable trait.</p>",
+            "pageNr": "8"
+          },
+          {
+            "id": "c1d2e3f4-1111-4a8b-9c2d-000000000125",
+            "question": "<p>What is a genotype?</p>",
+            "answer": "<p>It is the genetic makeup for a trait.</p>",
+            "pageNr": "9"
+          },
+          {
+            "id": "c1d2e3f4-1111-4a8b-9c2d-000000000126",
+            "question": "<p>What does DNA stand for?</p>",
+            "answer": "<p>Deoxyribonucleic acid.</p>",
+            "pageNr": "9"
+          },
+          {
+            "id": "c1d2e3f4-1111-4a8b-9c2d-000000000127",
+            "question": "<p>What is a chromosome?</p>",
+            "answer": "<p>It is a DNA-protein structure carrying genes.</p>",
+            "pageNr": "10"
+          },
+          {
+            "id": "c1d2e3f4-1111-4a8b-9c2d-000000000128",
+            "question": "<p>What is meiosis?</p>",
+            "answer": "<p>It is cell division that forms gametes.</p>",
+            "pageNr": "10"
+          },
+          {
+            "id": "c1d2e3f4-1111-4a8b-9c2d-000000000129",
+            "question": "<p>What is a Punnett square used for?</p>",
+            "answer": "<p>It predicts genetic cross outcomes.</p>",
+            "pageNr": "11"
+          },
+          {
+            "id": "c1d2e3f4-1111-4a8b-9c2d-000000000130",
+            "question": "<p>What is mutation?</p>",
+            "answer": "<p>A mutation is a change in DNA sequence.</p>",
+            "pageNr": "11"
+          }
+        ]
+      },
+      {
+        "id": "b1c2d3e4-1111-4a8b-9c2d-000000000013",
+        "nr": "3",
+        "title": "Ecology",
+        "questions": [
+          {
+            "id": "c1d2e3f4-1111-4a8b-9c2d-000000000131",
+            "question": "<p>What is an ecosystem?</p>",
+            "answer": "<p>It is a community of organisms and their environment.</p>",
+            "pageNr": "12"
+          },
+          {
+            "id": "c1d2e3f4-1111-4a8b-9c2d-000000000132",
+            "question": "<p>What are producers?</p>",
+            "answer": "<p>They are organisms that make their own food.</p>",
+            "pageNr": "12"
+          },
+          {
+            "id": "c1d2e3f4-1111-4a8b-9c2d-000000000133",
+            "question": "<p>What are consumers?</p>",
+            "answer": "<p>They obtain energy by eating other organisms.</p>",
+            "pageNr": "13"
+          },
+          {
+            "id": "c1d2e3f4-1111-4a8b-9c2d-000000000134",
+            "question": "<p>What is a food chain?</p>",
+            "answer": "<p>It shows energy flow between organisms.</p>",
+            "pageNr": "13"
+          },
+          {
+            "id": "c1d2e3f4-1111-4a8b-9c2d-000000000135",
+            "question": "<p>What is a food web?</p>",
+            "answer": "<p>It is a network of interconnected food chains.</p>",
+            "pageNr": "14"
+          },
+          {
+            "id": "c1d2e3f4-1111-4a8b-9c2d-000000000136",
+            "question": "<p>What is biodiversity?</p>",
+            "answer": "<p>It is the variety of life in an area.</p>",
+            "pageNr": "14"
+          },
+          {
+            "id": "c1d2e3f4-1111-4a8b-9c2d-000000000137",
+            "question": "<p>What is a niche?</p>",
+            "answer": "<p>It is the role of a species in its environment.</p>",
+            "pageNr": "15"
+          },
+          {
+            "id": "c1d2e3f4-1111-4a8b-9c2d-000000000138",
+            "question": "<p>What is population density?</p>",
+            "answer": "<p>It is the number of individuals per area.</p>",
+            "pageNr": "15"
+          },
+          {
+            "id": "c1d2e3f4-1111-4a8b-9c2d-000000000139",
+            "question": "<p>What is carrying capacity?</p>",
+            "answer": "<p>It is the maximum population an area supports.</p>",
+            "pageNr": "16"
+          },
+          {
+            "id": "c1d2e3f4-1111-4a8b-9c2d-000000000140",
+            "question": "<p>What is succession?</p>",
+            "answer": "<p>It is gradual change in ecosystems over time.</p>",
+            "pageNr": "16"
+          }
+        ]
+      },
+      {
+        "id": "b1c2d3e4-1111-4a8b-9c2d-000000000014",
+        "nr": "4",
+        "title": "Human Body Systems",
+        "questions": [
+          {
+            "id": "c1d2e3f4-1111-4a8b-9c2d-000000000141",
+            "question": "<p>What is the function of the circulatory system?</p>",
+            "answer": "<p>It transports blood, oxygen, and nutrients.</p>",
+            "pageNr": "17"
+          },
+          {
+            "id": "c1d2e3f4-1111-4a8b-9c2d-000000000142",
+            "question": "<p>What is the main organ of the respiratory system?</p>",
+            "answer": "<p>The lungs are the main organ.</p>",
+            "pageNr": "17"
+          },
+          {
+            "id": "c1d2e3f4-1111-4a8b-9c2d-000000000143",
+            "question": "<p>What does the digestive system do?</p>",
+            "answer": "<p>It breaks down food and absorbs nutrients.</p>",
+            "pageNr": "18"
+          },
+          {
+            "id": "c1d2e3f4-1111-4a8b-9c2d-000000000144",
+            "question": "<p>What is the function of the nervous system?</p>",
+            "answer": "<p>It coordinates body responses and actions.</p>",
+            "pageNr": "18"
+          },
+          {
+            "id": "c1d2e3f4-1111-4a8b-9c2d-000000000145",
+            "question": "<p>What does the skeletal system provide?</p>",
+            "answer": "<p>It provides support and protection.</p>",
+            "pageNr": "19"
+          },
+          {
+            "id": "c1d2e3f4-1111-4a8b-9c2d-000000000146",
+            "question": "<p>What is the role of the immune system?</p>",
+            "answer": "<p>It defends the body against pathogens.</p>",
+            "pageNr": "19"
+          },
+          {
+            "id": "c1d2e3f4-1111-4a8b-9c2d-000000000147",
+            "question": "<p>What organ filters blood to produce urine?</p>",
+            "answer": "<p>The kidneys filter blood.</p>",
+            "pageNr": "20"
+          },
+          {
+            "id": "c1d2e3f4-1111-4a8b-9c2d-000000000148",
+            "question": "<p>What does the endocrine system use?</p>",
+            "answer": "<p>It uses hormones to regulate body functions.</p>",
+            "pageNr": "20"
+          },
+          {
+            "id": "c1d2e3f4-1111-4a8b-9c2d-000000000149",
+            "question": "<p>What is the function of muscles?</p>",
+            "answer": "<p>They enable movement.</p>",
+            "pageNr": "21"
+          },
+          {
+            "id": "c1d2e3f4-1111-4a8b-9c2d-000000000150",
+            "question": "<p>What does the integumentary system include?</p>",
+            "answer": "<p>It includes skin, hair, and nails.</p>",
+            "pageNr": "21"
+          }
+        ]
+      },
+      {
+        "id": "b1c2d3e4-1111-4a8b-9c2d-000000000015",
+        "nr": "5",
+        "title": "Evolution",
+        "questions": [
+          {
+            "id": "c1d2e3f4-1111-4a8b-9c2d-000000000151",
+            "question": "<p>What is natural selection?</p>",
+            "answer": "<p>It is survival and reproduction of the fittest.</p>",
+            "pageNr": "22"
+          },
+          {
+            "id": "c1d2e3f4-1111-4a8b-9c2d-000000000152",
+            "question": "<p>What is adaptation?</p>",
+            "answer": "<p>It is a trait that improves survival.</p>",
+            "pageNr": "22"
+          },
+          {
+            "id": "c1d2e3f4-1111-4a8b-9c2d-000000000153",
+            "question": "<p>What is speciation?</p>",
+            "answer": "<p>It is the formation of new species.</p>",
+            "pageNr": "23"
+          },
+          {
+            "id": "c1d2e3f4-1111-4a8b-9c2d-000000000154",
+            "question": "<p>What is genetic drift?</p>",
+            "answer": "<p>It is random change in allele frequencies.</p>",
+            "pageNr": "23"
+          },
+          {
+            "id": "c1d2e3f4-1111-4a8b-9c2d-000000000155",
+            "question": "<p>What is a fossil?</p>",
+            "answer": "<p>It is preserved evidence of past life.</p>",
+            "pageNr": "24"
+          },
+          {
+            "id": "c1d2e3f4-1111-4a8b-9c2d-000000000156",
+            "question": "<p>What is common ancestry?</p>",
+            "answer": "<p>It means species share ancestors.</p>",
+            "pageNr": "24"
+          },
+          {
+            "id": "c1d2e3f4-1111-4a8b-9c2d-000000000157",
+            "question": "<p>What is a homologous structure?</p>",
+            "answer": "<p>It is a similar structure from shared ancestry.</p>",
+            "pageNr": "25"
+          },
+          {
+            "id": "c1d2e3f4-1111-4a8b-9c2d-000000000158",
+            "question": "<p>What is an analogous structure?</p>",
+            "answer": "<p>It is a similar function with different origin.</p>",
+            "pageNr": "25"
+          },
+          {
+            "id": "c1d2e3f4-1111-4a8b-9c2d-000000000159",
+            "question": "<p>What is a selective pressure?</p>",
+            "answer": "<p>It is a factor that influences survival.</p>",
+            "pageNr": "26"
+          },
+          {
+            "id": "c1d2e3f4-1111-4a8b-9c2d-000000000160",
+            "question": "<p>What is the modern synthesis?</p>",
+            "answer": "<p>It combines evolution with genetics.</p>",
+            "pageNr": "26"
+          }
+        ]
+      }
+    ]
+  },
+  "chapterSelected": {
+    "id": "b1c2d3e4-1111-4a8b-9c2d-000000000011",
+    "nr": "1",
+    "title": "Cells and Microscopy",
+    "questions": [
+      {
+        "id": "c1d2e3f4-1111-4a8b-9c2d-000000000111",
+        "question": "<p>What is the main function of the cell membrane?</p>",
+        "answer": "<p>It controls what enters and leaves the cell.</p>",
+        "pageNr": "1"
+      },
+      {
+        "id": "c1d2e3f4-1111-4a8b-9c2d-000000000112",
+        "question": "<p>Which organelle produces ATP?</p>",
+        "answer": "<p>The mitochondrion produces ATP.</p>",
+        "pageNr": "2"
+      },
+      {
+        "id": "c1d2e3f4-1111-4a8b-9c2d-000000000113",
+        "question": "<p>What does the nucleus contain?</p>",
+        "answer": "<p>It contains the cell’s DNA.</p>",
+        "pageNr": "2"
+      },
+      {
+        "id": "c1d2e3f4-1111-4a8b-9c2d-000000000114",
+        "question": "<p>What is the role of ribosomes?</p>",
+        "answer": "<p>They synthesize proteins.</p>",
+        "pageNr": "3"
+      },
+      {
+        "id": "c1d2e3f4-1111-4a8b-9c2d-000000000115",
+        "question": "<p>Which microscope uses light to view cells?</p>",
+        "answer": "<p>The light microscope uses visible light.</p>",
+        "pageNr": "3"
+      },
+      {
+        "id": "c1d2e3f4-1111-4a8b-9c2d-000000000116",
+        "question": "<p>What is cytoplasm?</p>",
+        "answer": "<p>It is the fluid where organelles are suspended.</p>",
+        "pageNr": "4"
+      },
+      {
+        "id": "c1d2e3f4-1111-4a8b-9c2d-000000000117",
+        "question": "<p>What is the function of the cell wall in plants?</p>",
+        "answer": "<p>It provides support and protection.</p>",
+        "pageNr": "4"
+      },
+      {
+        "id": "c1d2e3f4-1111-4a8b-9c2d-000000000118",
+        "question": "<p>What does the Golgi apparatus do?</p>",
+        "answer": "<p>It modifies and packages proteins.</p>",
+        "pageNr": "5"
+      },
+      {
+        "id": "c1d2e3f4-1111-4a8b-9c2d-000000000119",
+        "question": "<p>Which organelle is responsible for photosynthesis?</p>",
+        "answer": "<p>The chloroplast performs photosynthesis.</p>",
+        "pageNr": "5"
+      },
+      {
+        "id": "c1d2e3f4-1111-4a8b-9c2d-000000000120",
+        "question": "<p>What is diffusion?</p>",
+        "answer": "<p>It is movement from high to low concentration.</p>",
+        "pageNr": "6"
+      }
+    ]
+  }
+}

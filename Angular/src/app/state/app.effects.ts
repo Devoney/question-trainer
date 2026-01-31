@@ -18,8 +18,14 @@ export class AppEffects {
         if (!stored) {
           return { type: '[App] Noop' } as const;
         }
-        const state = JSON.parse(stored) as AppState;
-        return AppActions.hydrateState({ state });
+        try {
+          const state = JSON.parse(stored) as AppState;
+          return AppActions.hydrateState({ state });
+        } catch (error) {
+          console.error('Failed to parse stored state.', error);
+          localStorage.removeItem('store');
+          return { type: '[App] Noop' } as const;
+        }
       })
     )
   );
