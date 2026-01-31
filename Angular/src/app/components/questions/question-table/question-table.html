@@ -11,11 +11,12 @@
 			</tr>
 		</thead>
 		<tbody>
-			<app-question-record
+			<tr
+				app-question-record
 				*ngFor="let question of questions$ | async; index as i"
 				[index]="i + 1"
 				[question]="question"
-			/>
+			></tr>
 		</tbody>
 		<tfoot *ngIf="(hasQuestions$ | async) === false">
 			<tr>

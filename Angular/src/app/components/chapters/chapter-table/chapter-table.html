@@ -13,14 +13,15 @@
 			</tr>
 		</thead>
 		<tbody>
-			<app-chapter-record
+			<tr
+				app-chapter-record
 				*ngFor="let chapter of chapters$ | async"
 				[chapter]="chapter"
-			/>
+			></tr>
 		</tbody>
 		<tfoot *ngIf="(hasChapters$ | async) === false">
 			<tr>
-				<th colspan="6">No chapters</th>
+				<th colspan="5">No chapters</th>
 			</tr>
 		</tfoot>
 	</table>

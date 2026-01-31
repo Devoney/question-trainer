@@ -27,11 +27,12 @@
 				</tr>
 			</thead>
 			<tbody>
-				<app-question-list-record
+				<tr
+					app-question-list-record
 					*ngFor="let question of questionsInList$ | async; index as i"
 					[index]="i + 1"
 					[question]="question"
-				/>
+				></tr>
 			</tbody>
 			<tfoot *ngIf="listHasNoQuestions$ | async">
 				<tr>

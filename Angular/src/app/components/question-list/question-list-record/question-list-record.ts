@@ -8,7 +8,7 @@ import { removeFromQuestionList } from '../../../state/app.actions';
 import { IconButtonComponent } from '../../icon-button/icon-button';
 
 @Component({
-  selector: 'app-question-list-record',
+  selector: 'tr[app-question-list-record]',
   imports: [CommonModule, IconButtonComponent],
   templateUrl: './question-list-record.html',
   styleUrl: './question-list-record.css',

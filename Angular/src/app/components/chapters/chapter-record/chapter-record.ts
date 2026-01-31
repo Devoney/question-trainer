@@ -14,7 +14,7 @@ import { MessageBusService } from '../../../services/message-bus.service';
 import { QuestionModalArgs } from '../../../types/question-modal-args';
 
 @Component({
-  selector: 'app-chapter-record',
+  selector: 'tr[app-chapter-record]',
   imports: [CommonModule, AddOrRemove, IconButtonComponent],
   templateUrl: './chapter-record.html',
   styleUrl: './chapter-record.css',

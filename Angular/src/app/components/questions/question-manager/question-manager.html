@@ -1,4 +1,4 @@
 <div>
-	<app-add-question />
+	<app-add-question *ngIf="showQuestionTable$ | async" />
 	<app-question-table class="question-table" *ngIf="showQuestionTable$ | async" />
 </div>

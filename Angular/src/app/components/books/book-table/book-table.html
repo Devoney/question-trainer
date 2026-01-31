@@ -17,11 +17,12 @@
 			</tr>
 		</thead>
 		<tbody>
-			<app-book-record
+			<tr
+				app-book-record
 				*ngFor="let book of booksSorted$ | async; index as i"
 				[book]="book"
 				[index]="i + 1"
-			/>
+			></tr>
 		</tbody>
 		<tfoot *ngIf="(hasBooks$ | async) === false">
 			<tr>

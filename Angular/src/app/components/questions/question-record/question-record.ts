@@ -14,7 +14,7 @@ import { MessageBusService } from '../../../services/message-bus.service';
 import { QuestionModalArgs } from '../../../types/question-modal-args';
 
 @Component({
-  selector: 'app-question-record',
+  selector: 'tr[app-question-record]',
   imports: [CommonModule, AddOrRemove, IconButtonComponent],
   templateUrl: './question-record.html',
   styleUrl: './question-record.css'
