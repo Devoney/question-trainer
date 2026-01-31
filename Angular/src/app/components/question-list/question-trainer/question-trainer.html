@@ -10,28 +10,6 @@
 					[label]="'trainer.repeatToggleLabel' | transloco"
 					size="m"
 				/>
-				<div class="ai-toggle">
-					<label>
-						<input
-							type="checkbox"
-							[checked]="useAiGrading"
-							(change)="toggleAiGrading($event)"
-						/>
-						{{ 'trainer.ai.toggle' | transloco }}
-					</label>
-				</div>
-				<div class="ai-endpoint">
-					<label class="ai-endpoint-label">
-						<span>{{ 'trainer.ai.endpointLabel' | transloco }}</span>
-						<input
-							type="text"
-							[placeholder]="'trainer.ai.endpointPlaceholder' | transloco"
-							[value]="aiEndpoint"
-							(input)="updateAiEndpoint($event)"
-						/>
-					</label>
-					<div class="ai-endpoint-help">{{ 'trainer.ai.endpointHelp' | transloco }}</div>
-				</div>
 			</div>
 			<div class="col-8 text-center h5">{{ 'trainer.title' | transloco }}</div>
 			<div class="col-2 text-right">
@@ -45,6 +23,34 @@
 				>
 					{{ 'trainer.start' | transloco }}
 				</button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12">
+				<div class="ai-toggle">
+					<label>
+						<input
+							type="checkbox"
+							[checked]="useAiGrading"
+							(change)="toggleAiGrading($event)"
+						/>
+						{{ 'trainer.ai.toggle' | transloco }}
+					</label>
+				</div>
+				@if (useAiGrading) {
+					<div class="ai-endpoint">
+						<label class="ai-endpoint-label">
+							<span>{{ 'trainer.ai.endpointLabel' | transloco }}</span>
+							<input
+								type="text"
+								[placeholder]="'trainer.ai.endpointPlaceholder' | transloco"
+								[value]="aiEndpoint"
+								(input)="updateAiEndpoint($event)"
+								[attr.title]="'trainer.ai.endpointHelp' | transloco"
+							/>
+						</label>
+					</div>
+				}
 			</div>
 		</div>
 	</div>
