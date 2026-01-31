@@ -360,6 +360,10 @@ describe('QuestionTrainer', () => {
     const fixture = createFixture(QuestionTrainer);
     expect(fixture.componentInstance).toBeTruthy();
   });
+
+  it.todo('uses AI mode to check answers instead of showing them');
+  it.todo('shows AI feedback when an answer is incorrect');
+  it.todo('shows Continue after AI check completes');
 });
 
 describe('QuestionModal', () => {

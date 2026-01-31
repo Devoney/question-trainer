@@ -45,6 +45,7 @@ Add an AI-assisted mode for question rehearsal that checks the user’s answer v
    - If AI says **incorrect**:
      - Increment wrong count (same as current `answerIsWrong()` path).
      - Reveal expected answer.
+     - Display the AI’s reasoning/feedback so the user understands why it was rejected.
      - Show a “Continue” button to move to next question.
 
 5. **Continue**
@@ -59,6 +60,15 @@ Add an AI-assisted mode for question rehearsal that checks the user’s answer v
 - Response expectations:
   - Prefer JSON output with a minimal schema, e.g. `{ "correct": true|false, "reason": "..." }`.
   - If Ollama returns plain text, parse for a strict `correct` boolean.
+
+## Prompt construction and sanitization
+- Convert HTML from CKEditor (`questionHtml`, `answerHtml`, `answerGiven`) into plain text before sending to Ollama.
+  - Strip tags and decode entities to avoid leaking markup into the prompt.
+  - Keep the prompt short and structured, e.g.:
+    - “Question: …”
+    - “Expected answer: …”
+    - “User answer: …”
+- Require the model to respond with JSON only to simplify parsing.
 
 ## Component-level changes (question-trainer)
 ### New state in question-trainer.ts
