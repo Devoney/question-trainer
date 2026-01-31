@@ -116,11 +116,10 @@
 					<span *ngIf="hasQuestion">({{ statisticsView.correctCount }})</span>
 				</button>
 			</div>
-			<div class="col-2 text-right" *ngIf="useAiGrading">
+			<div class="col-2 text-right" *ngIf="useAiGrading && aiNeedsContinue && aiWasCorrect === false">
 				<button
 					[attr.aria-label]="'trainer.continueAria' | transloco"
 					class="btn btn-primary"
-					[disabled]="!aiNeedsContinue"
 					(click)="continueAfterAiCheck()"
 				>
 					{{ 'trainer.continue' | transloco }}

@@ -181,11 +181,12 @@ export class QuestionTrainer implements OnInit {
         next: (result) => {
           this.aiCheckInProgress = false;
           this.aiFeedback = result.reason ?? '';
-          this.aiNeedsContinue = true;
           this.aiWasCorrect = result.correct;
 
           if (result.correct) {
             this.incrementCorrectCount();
+            this.answerGiven = '';
+            this.setNextQuestion();
             return;
           }
 
@@ -194,6 +195,7 @@ export class QuestionTrainer implements OnInit {
             this.store.dispatch(addToQuestionList({ question: this.currentQuestion }));
           }
           this.showAnswer = true;
+          this.aiNeedsContinue = true;
         },
         error: () => {
           this.aiCheckInProgress = false;
