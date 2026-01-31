@@ -27,10 +27,21 @@ export class AppEffects {
   persist$ = createEffect(
     () =>
       this.actions$.pipe(
-        filter((action) => action.type !== AppActions.hydrateState.type),
+        filter(
+          (action) =>
+            action.type !== AppActions.hydrateState.type && action.type !== ROOT_EFFECTS_INIT
+        ),
         withLatestFrom(this.store.select((state) => state.app)),
         tap(([_, appState]) => {
-          localStorage.setItem('store', JSON.stringify(appState));
+          const stateToPersist: AppState = {
+            ...appState,
+            questionList: [],
+            currentQuestion: undefined,
+            questionEdited: undefined,
+            bookEdited: undefined,
+            chapterEdited: undefined
+          };
+          localStorage.setItem('store', JSON.stringify(stateToPersist));
         })
       ),
     { dispatch: false }

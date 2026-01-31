@@ -30,11 +30,37 @@ function cloneState(state: AppState): AppState {
 
 export const appReducer = createReducer(
   initialAppState,
-  on(AppActions.hydrateState, (_, { state }) => ({
-    ...cloneState(state),
-    bookEdited: undefined,
-    chapterEdited: undefined
-  })),
+  on(AppActions.hydrateState, (_, { state }) => {
+    const hydrated = cloneState(state);
+    const selectedBookId = hydrated.bookSelected?.id;
+    const selectedChapterId = hydrated.chapterSelected?.id;
+    const editedChapterId = hydrated.chapterEdited?.id;
+
+    hydrated.bookSelected = selectedBookId
+      ? hydrated.books.find((book) => book.id === selectedBookId)
+      : undefined;
+
+    hydrated.bookEdited = undefined;
+    hydrated.chapterEdited = undefined;
+    hydrated.questionEdited = undefined;
+    hydrated.currentQuestion = undefined;
+    hydrated.questionList = [];
+
+    if (hydrated.bookSelected) {
+      const chapters = hydrated.bookSelected.chapters ?? [];
+      hydrated.chapterSelected = selectedChapterId
+        ? chapters.find((chapter) => chapter.id === selectedChapterId)
+        : undefined;
+      hydrated.chapterEdited = editedChapterId
+        ? chapters.find((chapter) => chapter.id === editedChapterId)
+        : undefined;
+    } else {
+      hydrated.chapterSelected = undefined;
+      hydrated.chapterEdited = undefined;
+    }
+
+    return hydrated;
+  }),
   on(AppActions.setViewMode, (state, { viewMode }) => ({ ...state, viewMode })),
   on(AppActions.addBook, (state, { book }) => ({
     ...state,

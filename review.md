@@ -187,8 +187,8 @@
 #### Angular/src/app/state
 - [ ] Angular/src/app/state/app-state.ts
 - [ ] Angular/src/app/state/app.actions.ts
-- [ ] Angular/src/app/state/app.effects.ts
-- [ ] Angular/src/app/state/app.reducer.ts
+- [x] Angular/src/app/state/app.effects.ts
+- [x] Angular/src/app/state/app.reducer.ts
 - [ ] Angular/src/app/state/app.selectors.ts
 - [ ] Angular/src/app/state/index.ts
 
