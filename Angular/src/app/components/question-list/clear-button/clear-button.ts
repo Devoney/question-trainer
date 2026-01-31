@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { map } from 'rxjs/operators';
@@ -14,13 +14,10 @@ import { clearQuestionList } from '../../../state/app.actions';
   styleUrl: './clear-button.css',
 })
 export class ClearButton {
-  readonly listHasNoQuestions$!: Observable<boolean>;
-
-  constructor(private store: Store<{ app: AppState }>) {
-    this.listHasNoQuestions$ = this.store
-      .select(selectQuestionList)
-      .pipe(map((list) => !list || list.length === 0));
-  }
+  private readonly store = inject<Store<{ app: AppState }>>(Store);
+  readonly listHasNoQuestions$ = this.store
+    .select(selectQuestionList)
+    .pipe(map((list) => !list || list.length === 0));
 
   clear(): void {
     this.store.dispatch(clearQuestionList());

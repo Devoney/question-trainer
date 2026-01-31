@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Store } from '@ngrx/store';
@@ -16,12 +16,12 @@ import { setSelectedChapter } from '../../../state/app.actions';
   styleUrl: './chapter-selector.css',
 })
 export class ChapterSelector implements OnInit, OnDestroy {
+  private readonly store = inject<Store<{ app: AppState }>>(Store);
   chapters: Chapter[] = [];
   selectedChapterId = '';
 
   private destroy$ = new Subject<void>();
 
-  constructor(private store: Store<{ app: AppState }>) {}
 
   ngOnInit(): void {
     this.store

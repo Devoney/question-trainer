@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { map } from 'rxjs/operators';
@@ -15,13 +15,9 @@ import { ChapterRecord } from '../chapter-record/chapter-record';
   styleUrl: './chapter-table.css',
 })
 export class ChapterTable {
-  readonly chapters$!: Observable<Chapter[]>;
-  readonly hasChapters$!: Observable<boolean>;
-
-  constructor(private store: Store<{ app: AppState }>) {
-    this.chapters$ = this.store
-      .select(selectBookSelected)
-      .pipe(map((book) => book?.chapters ?? []));
-    this.hasChapters$ = this.chapters$.pipe(map((chapters) => chapters.length > 0));
-  }
+  private readonly store = inject<Store<{ app: AppState }>>(Store);
+  readonly chapters$ = this.store
+    .select(selectBookSelected)
+    .pipe(map((book) => book?.chapters ?? []));
+  readonly hasChapters$ = this.chapters$.pipe(map((chapters) => chapters.length > 0));
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { map } from 'rxjs/operators';
@@ -17,13 +17,8 @@ import { ChapterTable } from '../chapter-table/chapter-table';
   styleUrl: './chapter-manager.css',
 })
 export class ChapterManager {
-  readonly hasBook$!: Observable<boolean>;
-  readonly inAddMode$!: Observable<boolean>;
-  readonly inEditMode$!: Observable<boolean>;
-
-  constructor(private store: Store<{ app: AppState }>) {
-    this.hasBook$ = this.store.select(selectBookSelected).pipe(map((book) => !!book));
-    this.inAddMode$ = this.store.select(selectChapterEdited).pipe(map((chapter) => !chapter));
-    this.inEditMode$ = this.store.select(selectChapterEdited).pipe(map((chapter) => !!chapter));
-  }
+  private readonly store = inject<Store<{ app: AppState }>>(Store);
+  readonly hasBook$ = this.store.select(selectBookSelected).pipe(map((book) => !!book));
+  readonly inAddMode$ = this.store.select(selectChapterEdited).pipe(map((chapter) => !chapter));
+  readonly inEditMode$ = this.store.select(selectChapterEdited).pipe(map((chapter) => !!chapter));
 }

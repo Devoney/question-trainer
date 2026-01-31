@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { map } from 'rxjs/operators';
@@ -15,13 +15,9 @@ import { QuestionRecord } from '../question-record/question-record';
   styleUrl: './question-table.css',
 })
 export class QuestionTable {
-  readonly questions$!: Observable<Question[]>;
-  readonly hasQuestions$!: Observable<boolean>;
-
-  constructor(private store: Store<{ app: AppState }>) {
-    this.questions$ = this.store
-      .select(selectChapterSelected)
-      .pipe(map((chapter) => chapter?.questions ?? []));
-    this.hasQuestions$ = this.questions$.pipe(map((questions) => questions.length > 0));
-  }
+  private readonly store = inject<Store<{ app: AppState }>>(Store);
+  readonly questions$ = this.store
+    .select(selectChapterSelected)
+    .pipe(map((chapter) => chapter?.questions ?? []));
+  readonly hasQuestions$ = this.questions$.pipe(map((questions) => questions.length > 0));
 }

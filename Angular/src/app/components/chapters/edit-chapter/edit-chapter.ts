@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Store } from '@ngrx/store';
@@ -17,6 +17,7 @@ import { selectBookSelected, selectChapterEdited } from '../../../state/app.sele
   styleUrl: './edit-chapter.css',
 })
 export class EditChapter implements OnInit, OnDestroy {
+  private readonly store = inject<Store<{ app: AppState }>>(Store);
   buttonText = 'Edit';
   chapter = { id: '', nr: '', title: '' };
   error = { nr: '', title: '' };
@@ -24,7 +25,6 @@ export class EditChapter implements OnInit, OnDestroy {
 
   private destroy$ = new Subject<void>();
 
-  constructor(private store: Store<{ app: AppState }>) {}
 
   ngOnInit(): void {
     this.store

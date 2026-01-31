@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../state/app-state';
@@ -16,8 +16,7 @@ import { IconButtonComponent } from '../../icon-button/icon-button';
 export class QuestionListRecord {
   @Input({ required: true }) index!: number;
   @Input({ required: true }) question!: Question;
-
-  constructor(private store: Store<{ app: AppState }>) {}
+  private readonly store = inject<Store<{ app: AppState }>>(Store);
 
   get questionText(): string {
     return truncateWithDots(this.question.question, 60);

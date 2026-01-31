@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { Subject } from 'rxjs';
@@ -20,16 +20,13 @@ import { QuestionModalArgs } from '../../../types/question-modal-args';
   styleUrl: './book-record.css',
 })
 export class BookRecord implements OnInit, OnDestroy {
+  private readonly store = inject<Store<{ app: AppState }>>(Store);
+  private readonly bus = inject(MessageBusService);
   @Input({ required: true }) book!: Book;
   @Input({ required: true }) index!: number;
 
   bookInEditMode = false;
   private destroy$ = new Subject<void>();
-
-  constructor(
-    private store: Store<{ app: AppState }>,
-    private bus: MessageBusService
-  ) {}
 
   ngOnInit(): void {
     this.store

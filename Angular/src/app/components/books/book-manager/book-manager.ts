@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { Subject } from 'rxjs';
@@ -20,13 +20,13 @@ import { BookTable } from '../book-table/book-table';
   styleUrl: './book-manager.css'
 })
 export class BookManager implements OnInit, OnDestroy {
+  private readonly store = inject<Store<{ app: AppState }>>(Store);
   titleIsNotValidMessage = '';
   bookEdited?: Book;
   books: Book[] = [];
 
   private destroy$ = new Subject<void>();
 
-  constructor(private store: Store<{ app: AppState }>) {}
 
   ngOnInit(): void {
     this.store

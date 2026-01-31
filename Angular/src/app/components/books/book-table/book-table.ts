@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { map } from 'rxjs/operators';
@@ -14,11 +14,7 @@ import { BookRecord } from '../book-record/book-record';
   styleUrl: './book-table.css',
 })
 export class BookTable {
-  readonly booksSorted$!: Observable<ReturnType<typeof selectBooksSortedByTitle>>;
-  readonly hasBooks$!: Observable<boolean>;
-
-  constructor(private store: Store<{ app: AppState }>) {
-    this.booksSorted$ = this.store.select(selectBooksSortedByTitle);
-    this.hasBooks$ = this.store.select(selectBooks).pipe(map((books) => books.length > 0));
-  }
+  private readonly store = inject<Store<{ app: AppState }>>(Store);
+  readonly booksSorted$ = this.store.select(selectBooksSortedByTitle);
+  readonly hasBooks$ = this.store.select(selectBooks).pipe(map((books) => books.length > 0));
 }
