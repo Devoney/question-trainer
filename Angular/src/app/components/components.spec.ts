@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Type } from '@angular/core';
 import { provideMockStore, MockStore } from '@ngrx/store/testing';
+import { provideHttpClient } from '@angular/common/http';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { initialAppState } from '../state/app.reducer';
 import { MessageBusService } from '../services/message-bus.service';
@@ -45,6 +46,7 @@ import { ViewModeItem } from './view-mode-item/view-mode-item';
 
 const baseProviders = [
   provideMockStore({ initialState: { app: initialAppState } }),
+  provideHttpClient(),
   MessageBusService,
 ];
 

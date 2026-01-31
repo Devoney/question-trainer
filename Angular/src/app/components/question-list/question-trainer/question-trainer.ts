@@ -12,6 +12,8 @@ import { getRandomInt } from '../../../utils/math';
 import { IconButtonComponent } from '../../icon-button/icon-button';
 import { addToQuestionList, removeFromQuestionList, setCurrentQuestion, setStatistics, toggleRepeat } from '../../../state/app.actions';
 import { selectCurrentQuestion, selectQuestionList, selectQuestionStatistics, selectRepeatWrongQuestions } from '../../../state/app.selectors';
+import { AnswerCheckerService } from '../../../services/answer-checker.service';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-question-trainer',
@@ -22,6 +24,7 @@ import { selectCurrentQuestion, selectQuestionList, selectQuestionStatistics, se
 export class QuestionTrainer implements OnInit {
   private readonly store = inject<Store<{ app: AppState }>>(Store);
   private readonly destroyRef = inject(DestroyRef);
+  private readonly answerChecker = inject(AnswerCheckerService);
   answerGiven = '';
   editor = ClassicEditor;
   editorConfig: any = {
@@ -29,6 +32,12 @@ export class QuestionTrainer implements OnInit {
     toolbar: ['bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote', 'insertTable', 'undo', 'redo']
   };
   showAnswer = false;
+  useAiGrading = false;
+  aiCheckInProgress = false;
+  aiNeedsContinue = false;
+  aiFeedback = '';
+  aiError = '';
+  aiWasCorrect: boolean | null = null;
 
   private currentQuestion?: Question;
   private questionList: Question[] = [];
@@ -38,6 +47,8 @@ export class QuestionTrainer implements OnInit {
 
 
   ngOnInit(): void {
+    const storedAiMode = localStorage.getItem('useAiGrading');
+    this.useAiGrading = storedAiMode === 'true';
     this.store
       .select(selectCurrentQuestion)
       .pipe(takeUntilDestroyed(this.destroyRef))
@@ -65,6 +76,15 @@ export class QuestionTrainer implements OnInit {
 
   get canStart(): boolean {
     return this.questionList.length > 0 && !this.hasQuestion;
+  }
+
+  get canCheckAnswer(): boolean {
+    return (
+      this.hasQuestion &&
+      !this.aiCheckInProgress &&
+      !this.aiNeedsContinue &&
+      this.answerGiven.trim().length > 0
+    );
   }
 
   get hasQuestion(): boolean {
@@ -111,10 +131,12 @@ export class QuestionTrainer implements OnInit {
 
   start(): void {
     this.resetCount();
+    this.resetAiState();
     this.setNextQuestion();
   }
 
   setNextQuestion(): void {
+    this.resetAiState();
     this.showAnswer = false;
     const question = this.takeQuestion();
     this.store.dispatch(setCurrentQuestion({ question }));
@@ -125,6 +147,66 @@ export class QuestionTrainer implements OnInit {
 
   toggleRepeat(): void {
     this.store.dispatch(toggleRepeat());
+  }
+
+  toggleAiGrading(event: Event): void {
+    const target = event.target as HTMLInputElement | null;
+    this.useAiGrading = !!target?.checked;
+    localStorage.setItem('useAiGrading', String(this.useAiGrading));
+    this.resetAiState();
+    if (!this.useAiGrading) {
+      this.aiError = '';
+      this.aiFeedback = '';
+    }
+  }
+
+  checkAnswerWithAi(): void {
+    if (!this.canCheckAnswer || !this.currentQuestion) {
+      return;
+    }
+
+    this.aiCheckInProgress = true;
+    this.aiError = '';
+    this.aiFeedback = '';
+
+    const questionText = this.stripHtml(this.questionHtml);
+    const expectedText = this.stripHtml(this.answerHtml);
+    const userText = this.stripHtml(this.answerGiven);
+
+    this.answerChecker
+      .checkAnswer(questionText, expectedText, userText)
+      .pipe(take(1))
+      .subscribe({
+        next: (result) => {
+          this.aiCheckInProgress = false;
+          this.aiFeedback = result.reason ?? '';
+          this.aiNeedsContinue = true;
+          this.aiWasCorrect = result.correct;
+
+          if (result.correct) {
+            this.incrementCorrectCount();
+            return;
+          }
+
+          this.incrementWrongCount();
+          if (this.repeat && this.currentQuestion) {
+            this.store.dispatch(addToQuestionList({ question: this.currentQuestion }));
+          }
+          this.showAnswer = true;
+        },
+        error: () => {
+          this.aiCheckInProgress = false;
+          this.aiError = 'AI check failed. Please try again.';
+        },
+      });
+  }
+
+  continueAfterAiCheck(): void {
+    if (!this.aiNeedsContinue) {
+      return;
+    }
+    this.answerGiven = '';
+    this.setNextQuestion();
   }
 
   incrementCorrectCount(): void {
@@ -139,6 +221,20 @@ export class QuestionTrainer implements OnInit {
 
   resetCount(): void {
     this.store.dispatch(setStatistics({ statistics: { correctCount: 0, wrongCount: 0 } }));
+  }
+
+  private resetAiState(): void {
+    this.aiCheckInProgress = false;
+    this.aiNeedsContinue = false;
+    this.aiFeedback = '';
+    this.aiError = '';
+    this.aiWasCorrect = null;
+  }
+
+  private stripHtml(text: string): string {
+    const element = document.createElement('div');
+    element.innerHTML = text;
+    return element.textContent ?? element.innerText ?? '';
   }
 
   takeQuestion(): Question | undefined {

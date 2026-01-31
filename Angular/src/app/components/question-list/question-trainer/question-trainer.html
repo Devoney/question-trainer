@@ -10,6 +10,16 @@
 					label="Toggle mode to repeat questions you answered incorrectly."
 					size="m"
 				/>
+				<div class="ai-toggle">
+					<label>
+						<input
+							type="checkbox"
+							[checked]="useAiGrading"
+							(change)="toggleAiGrading($event)"
+						/>
+						Use AI grading
+					</label>
+				</div>
 			</div>
 			<div class="col-8 text-center h5">Question trainer</div>
 			<div class="col-2 text-right">
@@ -56,17 +66,32 @@
 			<div class="font-weight-bold answer">Expected answer:</div>
 			<div
 				class="show-answer-banner"
-				*ngIf="!showAnswer && hasQuestion"
+				*ngIf="!useAiGrading && !showAnswer && hasQuestion"
 				(click)="showAnswer = true"
 			>
 				Click here to show the answer
+			</div>
+			<div *ngIf="useAiGrading && hasQuestion" class="ai-check-container">
+				<button
+					*ngIf="!aiNeedsContinue"
+					class="btn btn-secondary"
+					[disabled]="!canCheckAnswer"
+					(click)="checkAnswerWithAi()"
+				>
+					Check answer
+				</button>
+				<div *ngIf="aiCheckInProgress" class="ai-checking">Checking...</div>
+				<div *ngIf="aiError" class="ai-error">{{ aiError }}</div>
+				<div *ngIf="aiFeedback && aiNeedsContinue && aiWasCorrect === false" class="ai-feedback">
+					{{ aiFeedback }}
+				</div>
 			</div>
 			<div aria-label="Answer html" *ngIf="showAnswer" [innerHTML]="answerHtml"></div>
 		</div>
 	</div>
 	<div class="card-footer">
 		<div class="row">
-			<div class="col-2 text-left">
+			<div class="col-2 text-left" *ngIf="!useAiGrading">
 				<button
 					aria-label="Wrong answer"
 					class="btn btn-danger"
@@ -78,7 +103,7 @@
 				</button>
 			</div>
 			<div class="col-8"></div>
-			<div class="col-2 text-right">
+			<div class="col-2 text-right" *ngIf="!useAiGrading">
 				<button
 					aria-label="Correct answer"
 					class="btn btn-success"
@@ -87,6 +112,16 @@
 				>
 					Correct
 					<span *ngIf="hasQuestion">({{ statisticsView.correctCount }})</span>
+				</button>
+			</div>
+			<div class="col-2 text-right" *ngIf="useAiGrading">
+				<button
+					aria-label="Continue"
+					class="btn btn-primary"
+					[disabled]="!aiNeedsContinue"
+					(click)="continueAfterAiCheck()"
+				>
+					Continue
 				</button>
 			</div>
 		</div>
