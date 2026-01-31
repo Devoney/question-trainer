@@ -1,8 +1,7 @@
-import { Component, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, DestroyRef, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { v4 as uuid } from 'uuid';
 import _ from 'lodash';
 import { AppState } from '../../../state/app-state';
@@ -19,29 +18,23 @@ import { BookTable } from '../book-table/book-table';
   templateUrl: './book-manager.html',
   styleUrl: './book-manager.css'
 })
-export class BookManager implements OnInit, OnDestroy {
+export class BookManager implements OnInit {
   private readonly store = inject<Store<{ app: AppState }>>(Store);
+  private readonly destroyRef = inject(DestroyRef);
   titleIsNotValidMessage = '';
   bookEdited?: Book;
   books: Book[] = [];
-
-  private destroy$ = new Subject<void>();
 
 
   ngOnInit(): void {
     this.store
       .select(selectBooks)
-      .pipe(takeUntil(this.destroy$))
+      .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((books) => (this.books = books));
     this.store
       .select(selectBookEdited)
-      .pipe(takeUntil(this.destroy$))
+      .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((book) => (this.bookEdited = book));
-  }
-
-  ngOnDestroy(): void {
-    this.destroy$.next();
-    this.destroy$.complete();
   }
 
   add(title: string): void {

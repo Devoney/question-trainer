@@ -1,9 +1,8 @@
-import { Component, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, DestroyRef, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { v4 as uuid } from 'uuid';
 import _ from 'lodash';
 import { Chapter } from '../../../models/chapter';
@@ -17,30 +16,25 @@ import { selectBookSelected } from '../../../state/app.selectors';
   templateUrl: './add-chapter.html',
   styleUrl: './add-chapter.css',
 })
-export class AddChapter implements OnInit, OnDestroy {
+export class AddChapter implements OnInit {
   private readonly store = inject<Store<{ app: AppState }>>(Store);
+  private readonly destroyRef = inject(DestroyRef);
   buttonText = 'Add';
   chapter = { id: '', nr: '', title: '' };
   error = { nr: '', title: '' };
   chapters: Chapter[] = [];
 
-  private destroy$ = new Subject<void>();
 
 
   ngOnInit(): void {
     this.store
       .select(selectBookSelected)
-      .pipe(takeUntil(this.destroy$))
+      .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((book) => {
         this.chapters = book?.chapters ?? [];
         this.numberChanged();
         this.titleChanged();
       });
-  }
-
-  ngOnDestroy(): void {
-    this.destroy$.next();
-    this.destroy$.complete();
   }
 
   get canExecute(): boolean {

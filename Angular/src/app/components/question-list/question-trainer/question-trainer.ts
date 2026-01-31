@@ -1,9 +1,8 @@
-import { Component, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, DestroyRef, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { AppState } from '../../../state/app-state';
@@ -20,8 +19,9 @@ import { selectCurrentQuestion, selectQuestionList, selectQuestionStatistics, se
   templateUrl: './question-trainer.html',
   styleUrl: './question-trainer.css',
 })
-export class QuestionTrainer implements OnInit, OnDestroy {
+export class QuestionTrainer implements OnInit {
   private readonly store = inject<Store<{ app: AppState }>>(Store);
+  private readonly destroyRef = inject(DestroyRef);
   answerGiven = '';
   editor = ClassicEditor;
   editorConfig: any = {
@@ -35,31 +35,25 @@ export class QuestionTrainer implements OnInit, OnDestroy {
   private repeatWrongQuestions = true;
   private statistics = new QuestionTestStatistics();
 
-  private destroy$ = new Subject<void>();
 
 
   ngOnInit(): void {
     this.store
       .select(selectCurrentQuestion)
-      .pipe(takeUntil(this.destroy$))
+      .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((question) => (this.currentQuestion = question));
     this.store
       .select(selectQuestionList)
-      .pipe(takeUntil(this.destroy$))
+      .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((list) => (this.questionList = list));
     this.store
       .select(selectRepeatWrongQuestions)
-      .pipe(takeUntil(this.destroy$))
+      .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((repeat) => (this.repeatWrongQuestions = repeat));
     this.store
       .select(selectQuestionStatistics)
-      .pipe(takeUntil(this.destroy$))
+      .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((stats) => (this.statistics = stats));
-  }
-
-  ngOnDestroy(): void {
-    this.destroy$.next();
-    this.destroy$.complete();
   }
 
   get answerHtml(): string {

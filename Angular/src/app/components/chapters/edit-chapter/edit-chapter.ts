@@ -1,9 +1,8 @@
-import { Component, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, DestroyRef, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import _ from 'lodash';
 import { Chapter } from '../../../models/chapter';
 import { AppState } from '../../../state/app-state';
@@ -16,20 +15,20 @@ import { selectBookSelected, selectChapterEdited } from '../../../state/app.sele
   templateUrl: './edit-chapter.html',
   styleUrl: './edit-chapter.css',
 })
-export class EditChapter implements OnInit, OnDestroy {
+export class EditChapter implements OnInit {
   private readonly store = inject<Store<{ app: AppState }>>(Store);
+  private readonly destroyRef = inject(DestroyRef);
   buttonText = 'Edit';
   chapter = { id: '', nr: '', title: '' };
   error = { nr: '', title: '' };
   chapters: Chapter[] = [];
 
-  private destroy$ = new Subject<void>();
 
 
   ngOnInit(): void {
     this.store
       .select(selectBookSelected)
-      .pipe(takeUntil(this.destroy$))
+      .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((book) => {
         this.chapters = book?.chapters ?? [];
         this.numberChanged();
@@ -38,7 +37,7 @@ export class EditChapter implements OnInit, OnDestroy {
 
     this.store
       .select(selectChapterEdited)
-      .pipe(takeUntil(this.destroy$))
+      .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((chapterEdited) => {
         if (!chapterEdited) {
           return;
@@ -49,11 +48,6 @@ export class EditChapter implements OnInit, OnDestroy {
         this.numberChanged();
         this.titleChanged();
       });
-  }
-
-  ngOnDestroy(): void {
-    this.destroy$.next();
-    this.destroy$.complete();
   }
 
   get canExecute(): boolean {

@@ -1,8 +1,7 @@
-import { Component, Input, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, DestroyRef, Input, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import _ from 'lodash';
 import { Book } from '../../../models/book';
 import { AppState } from '../../../state/app-state';
@@ -19,27 +18,22 @@ import { QuestionModalArgs } from '../../../types/question-modal-args';
   templateUrl: './book-record.html',
   styleUrl: './book-record.css',
 })
-export class BookRecord implements OnInit, OnDestroy {
+export class BookRecord implements OnInit {
   private readonly store = inject<Store<{ app: AppState }>>(Store);
   private readonly bus = inject(MessageBusService);
+  private readonly destroyRef = inject(DestroyRef);
   @Input({ required: true }) book!: Book;
   @Input({ required: true }) index!: number;
 
   bookInEditMode = false;
-  private destroy$ = new Subject<void>();
 
   ngOnInit(): void {
     this.store
       .select(selectBookEdited)
-      .pipe(takeUntil(this.destroy$))
+      .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((edited) => {
         this.bookInEditMode = !!edited && edited.id === this.book.id;
       });
-  }
-
-  ngOnDestroy(): void {
-    this.destroy$.next();
-    this.destroy$.complete();
   }
 
   get nrOfQuestions(): number {

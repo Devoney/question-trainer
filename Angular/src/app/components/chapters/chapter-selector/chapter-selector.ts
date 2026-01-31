@@ -1,9 +1,8 @@
-import { Component, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, DestroyRef, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { AppState } from '../../../state/app-state';
 import { Chapter } from '../../../models/chapter';
 import { selectChapterSelected, selectChaptersSortedByTitle } from '../../../state/app.selectors';
@@ -15,30 +14,24 @@ import { setSelectedChapter } from '../../../state/app.actions';
   templateUrl: './chapter-selector.html',
   styleUrl: './chapter-selector.css',
 })
-export class ChapterSelector implements OnInit, OnDestroy {
+export class ChapterSelector implements OnInit {
   private readonly store = inject<Store<{ app: AppState }>>(Store);
+  private readonly destroyRef = inject(DestroyRef);
   chapters: Chapter[] = [];
   selectedChapterId = '';
-
-  private destroy$ = new Subject<void>();
 
 
   ngOnInit(): void {
     this.store
       .select(selectChaptersSortedByTitle)
-      .pipe(takeUntil(this.destroy$))
+      .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((chapters) => (this.chapters = chapters));
     this.store
       .select(selectChapterSelected)
-      .pipe(takeUntil(this.destroy$))
+      .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((chapter) => {
         this.selectedChapterId = chapter?.id ?? '';
       });
-  }
-
-  ngOnDestroy(): void {
-    this.destroy$.next();
-    this.destroy$.complete();
   }
 
   onChapterSelected(chapterId: string): void {

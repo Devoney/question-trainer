@@ -1,8 +1,7 @@
-import { Component, Input, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, DestroyRef, Input, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { AppState } from '../../../state/app-state';
 import { Question } from '../../../models/question';
 import { truncateWithDots } from '../../../utils/text-transformers';
@@ -19,29 +18,24 @@ import { QuestionModalArgs } from '../../../types/question-modal-args';
   templateUrl: './question-record.html',
   styleUrl: './question-record.css'
 })
-export class QuestionRecord implements OnInit, OnDestroy {
+export class QuestionRecord implements OnInit {
   private readonly store = inject<Store<{ app: AppState }>>(Store);
   private readonly bus = inject(MessageBusService);
+  private readonly destroyRef = inject(DestroyRef);
   @Input({ required: true }) index!: number;
   @Input({ required: true }) question!: Question;
 
   maxLengthText = 40;
   questionInEditMode = false;
 
-  private destroy$ = new Subject<void>();
 
   ngOnInit(): void {
     this.store
       .select(selectQuestionEdited)
-      .pipe(takeUntil(this.destroy$))
+      .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((edited) => {
         this.questionInEditMode = !!edited && edited.id === this.question.id;
       });
-  }
-
-  ngOnDestroy(): void {
-    this.destroy$.next();
-    this.destroy$.complete();
   }
 
   answerStr(): string {

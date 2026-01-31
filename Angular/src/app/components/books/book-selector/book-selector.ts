@@ -1,9 +1,8 @@
-import { Component, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, DestroyRef, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { AppState } from '../../../state/app-state';
 import { Book } from '../../../models/book';
 import { selectBookSelected, selectBooksSortedByTitle } from '../../../state/app.selectors';
@@ -15,30 +14,24 @@ import { setSelectedBook } from '../../../state/app.actions';
   templateUrl: './book-selector.html',
   styleUrl: './book-selector.css',
 })
-export class BookSelector implements OnInit, OnDestroy {
+export class BookSelector implements OnInit {
   private readonly store = inject<Store<{ app: AppState }>>(Store);
+  private readonly destroyRef = inject(DestroyRef);
   books: Book[] = [];
   selectedBookId = '';
-
-  private destroy$ = new Subject<void>();
 
 
   ngOnInit(): void {
     this.store
       .select(selectBooksSortedByTitle)
-      .pipe(takeUntil(this.destroy$))
+      .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((books) => (this.books = books));
     this.store
       .select(selectBookSelected)
-      .pipe(takeUntil(this.destroy$))
+      .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((book) => {
         this.selectedBookId = book?.id ?? '';
       });
-  }
-
-  ngOnDestroy(): void {
-    this.destroy$.next();
-    this.destroy$.complete();
   }
 
   onBookSelected(bookId: string): void {

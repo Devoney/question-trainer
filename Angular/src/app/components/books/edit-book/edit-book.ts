@@ -1,9 +1,8 @@
-import { Component, ElementRef, OnDestroy, OnInit, ViewChild, inject } from '@angular/core';
+import { Component, DestroyRef, ElementRef, OnInit, ViewChild, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import _ from 'lodash';
 import { AppState } from '../../../state/app-state';
 import { Book } from '../../../models/book';
@@ -16,8 +15,9 @@ import { selectBookEdited, selectBooks } from '../../../state/app.selectors';
   templateUrl: './edit-book.html',
   styleUrl: './edit-book.css',
 })
-export class EditBook implements OnInit, OnDestroy {
+export class EditBook implements OnInit {
   private readonly store = inject<Store<{ app: AppState }>>(Store);
+  private readonly destroyRef = inject(DestroyRef);
   @ViewChild('bookTitleText') bookTitleText?: ElementRef<HTMLInputElement>;
 
   buttonText = 'Save';
@@ -27,17 +27,16 @@ export class EditBook implements OnInit, OnDestroy {
   private books: Book[] = [];
   private editedBook?: Book;
 
-  private destroy$ = new Subject<void>();
 
 
   ngOnInit(): void {
     this.store
       .select(selectBooks)
-      .pipe(takeUntil(this.destroy$))
+      .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((books) => (this.books = books));
     this.store
       .select(selectBookEdited)
-      .pipe(takeUntil(this.destroy$))
+      .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((book) => {
         this.editedBook = book;
         if (book) {
@@ -45,11 +44,6 @@ export class EditBook implements OnInit, OnDestroy {
           this.setFocus();
         }
       });
-  }
-
-  ngOnDestroy(): void {
-    this.destroy$.next();
-    this.destroy$.complete();
   }
 
   get invalidTitle(): boolean {

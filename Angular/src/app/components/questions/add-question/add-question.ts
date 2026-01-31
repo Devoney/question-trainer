@@ -1,9 +1,8 @@
-import { Component, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, DestroyRef, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import _ from 'lodash';
 import { v4 as uuid } from 'uuid';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
@@ -21,8 +20,9 @@ import { selectBookSelected, selectChapterSelected, selectQuestionEdited } from 
   templateUrl: './add-question.html',
   styleUrl: './add-question.css',
 })
-export class AddQuestion implements OnInit, OnDestroy {
+export class AddQuestion implements OnInit {
   private readonly store = inject<Store<{ app: AppState }>>(Store);
+  private readonly destroyRef = inject(DestroyRef);
   pageNr = '1';
   editor = ClassicEditor;
   question = '';
@@ -36,21 +36,20 @@ export class AddQuestion implements OnInit, OnDestroy {
   private chapterSelected = false;
   private inEditMode = false;
 
-  private destroy$ = new Subject<void>();
 
 
   ngOnInit(): void {
     this.store
       .select(selectBookSelected)
-      .pipe(takeUntil(this.destroy$))
+      .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((book) => (this.bookSelected = !!book));
     this.store
       .select(selectChapterSelected)
-      .pipe(takeUntil(this.destroy$))
+      .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((chapter) => (this.chapterSelected = !!chapter));
     this.store
       .select(selectQuestionEdited)
-      .pipe(takeUntil(this.destroy$))
+      .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((question) => {
         this.inEditMode = !!question;
         if (question) {
@@ -61,11 +60,6 @@ export class AddQuestion implements OnInit, OnDestroy {
           this.clear();
         }
       });
-  }
-
-  ngOnDestroy(): void {
-    this.destroy$.next();
-    this.destroy$.complete();
   }
 
   get bookIsSelected(): boolean {
