@@ -1,0 +1,44 @@
+<div>
+	<div class="row">
+		<div class="col-2">
+			<label class="font-weight-bold">Ch. Nr.:</label>
+			<input
+				class="form-control"
+				[class.is-invalid]="error.nr !== ''"
+				type="text"
+				[(ngModel)]="chapter.nr"
+				(ngModelChange)="numberChanged()"
+				(keydown.escape)="cancel()"
+				[title]="error.nr"
+				aria-label="Nr of chapter"
+			/>
+		</div>
+		<div class="col">
+			<label class="font-weight-bold">Title:</label>
+			<div class="input-group row no-gutters">
+				<input
+					class="form-control"
+					[class.is-invalid]="error.title !== ''"
+					type="text"
+					[(ngModel)]="chapter.title"
+					(ngModelChange)="titleChanged()"
+					(keydown.enter)="ok()"
+					(keydown.escape)="cancel()"
+					[title]="error.title"
+					aria-label="Title of chapter"
+				/>
+				<div class="input-group-append">
+					<button
+						class="btn input-group-append"
+						[class.btn-primary]="canExecute"
+						[class.btn-secondary]="!canExecute"
+						[disabled]="!canExecute"
+						(click)="ok()"
+					>
+						{{ buttonText }}
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

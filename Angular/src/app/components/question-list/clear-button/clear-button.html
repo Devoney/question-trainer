@@ -1,0 +1,9 @@
+<button
+	class="btn btn-secondary"
+	(click)="clear()"
+	[disabled]="listHasNoQuestions$ | async"
+	aria-label="Clear question list"
+	title="Removes all questions in the list"
+>
+	Clear
+</button>

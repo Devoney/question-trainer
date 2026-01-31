@@ -1,0 +1,24 @@
+<tr>
+	<td>
+		<app-add-or-remove removeColor="red" (add)="addQuestionToList()" (remove)="removeQuestionFromList()" />
+	</td>
+	<td>{{ index }}</td>
+	<td class="text-left" aria-label="Question" [innerHTML]="questionStr()"></td>
+	<td class="text-left" aria-label="Answer" [innerHTML]="answerStr()"></td>
+	<td aria-label="Page number">{{ question.pageNr }}</td>
+	<td class="text-center">
+		<app-icon-button
+			icon="edit"
+			label="Edit question"
+			[argument]="question"
+			(buttonClick)="edit(question)"
+			[disabled]="questionInEditMode"
+		/>
+		<app-icon-button
+			icon="trash-alt"
+			label="Trash question"
+			[argument]="question"
+			(buttonClick)="trash(question)"
+		/>
+	</td>
+</tr>

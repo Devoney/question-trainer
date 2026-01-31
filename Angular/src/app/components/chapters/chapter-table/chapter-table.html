@@ -1,0 +1,27 @@
+<div>
+	<table class="table table-striped table-bordered">
+		<thead>
+			<tr>
+				<th></th>
+				<th>Nr.</th>
+				<th class="text-left">Title</th>
+				<th>
+					Nr of
+					<br />questions
+				</th>
+				<th width="90"></th>
+			</tr>
+		</thead>
+		<tbody>
+			<app-chapter-record
+				*ngFor="let chapter of chapters$ | async"
+				[chapter]="chapter"
+			/>
+		</tbody>
+		<tfoot *ngIf="(hasChapters$ | async) === false">
+			<tr>
+				<th colspan="6">No chapters</th>
+			</tr>
+		</tfoot>
+	</table>
+</div>

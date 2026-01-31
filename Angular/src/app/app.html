@@ -1,0 +1,65 @@
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * Delete the template below * * * * * * * * * -->
+<main>
+  <div id="app" class="container-fluid" *ngIf="viewMode$ | async as viewMode">
+    <div class="row">
+      <div class="col text-left">
+        <div class="row">
+          <div class="flex-container">
+            <app-import-export />
+            <app-view-mode class="view-mode" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div
+        *ngIf="viewMode === 'both' || viewMode === 'library'"
+        class="col-lg-12 grow box-left"
+        [ngClass]="{ 'col-xl-6': viewMode === 'both', 'col-xl-12': viewMode !== 'both' }"
+      >
+        <app-library />
+      </div>
+      <div
+        *ngIf="viewMode === 'both' || viewMode === 'questions'"
+        class="col-lg-12"
+        [ngClass]="{ 'col-xl-6': viewMode === 'both', 'col-xl-12': viewMode !== 'both', 'box-right': viewMode === 'both' }"
+      >
+        <app-question-trainer />
+        <app-question-list class="question-list" />
+      </div>
+    </div>
+  </div>
+  <app-question-modal />
+</main>
+<footer class="footer">
+  <div class="container">
+    <div>
+      Question Trainer
+      <a href="/changelog.txt" target="_blank">v{{ version$ | async }}</a> by
+      <a href="mailto:mikedeklerk@gmail.com">Mike de Klerk</a> &copy; 2019<br />
+      <a href="https://github.com/Devoney/question-trainer">Source code at Github</a>
+      and <a href="https://www.youtube.com/watch?v=OExLkoSoytU">instruction video</a>
+      at YouTube.
+    </div>
+    <div class="favicon-credits">
+      Icons made by
+      <a href="https://www.flaticon.com/authors/popcorns-arts" title="Icon Pond">Icon Pond</a>
+      from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+      is licensed by
+      <a
+        href="http://creativecommons.org/licenses/by/3.0/"
+        title="Creative Commons BY 3.0"
+        target="_blank"
+        >CC 3.0 BY</a
+      >
+    </div>
+  </div>
+</footer>
+
+<router-outlet />
+    width: 100%;

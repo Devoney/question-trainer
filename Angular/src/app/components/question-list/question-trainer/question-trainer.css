@@ -1,0 +1,21 @@
+.answer {
+	margin-top: 10px;
+}
+
+.correct-wrong-buttons {
+	margin-top: 10px;
+}
+
+.show-answer-banner {
+	cursor: pointer;
+}
+
+.stats-wrong-count {
+	color: red;
+	font-weight: bold;
+}
+
+.stats-correct-count {
+	color: green;
+	font-weight: bold;
+}

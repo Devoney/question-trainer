@@ -1,0 +1,94 @@
+<div class="card">
+	<div class="card-header">
+		<div class="row">
+			<div class="col-2 text-left">
+				<app-icon-button
+					icon="redo-alt"
+					[argument]="true"
+					(buttonClick)="toggleRepeat()"
+					[color]="repeat ? '#000000' : '#CCCCCC'"
+					label="Toggle mode to repeat questions you answered incorrectly."
+					size="m"
+				/>
+			</div>
+			<div class="col-8 text-center h5">Question trainer</div>
+			<div class="col-2 text-right">
+				<button
+					aria-label="Start training"
+					class="btn"
+					[class.btn-primary]="canStart"
+					[class.btn-secondary]="!canStart"
+					(click)="start()"
+					[disabled]="!canStart"
+				>
+					Start
+				</button>
+			</div>
+		</div>
+	</div>
+	<div class="card-body text-left">
+		<div *ngIf="!hasQuestion && !hasQuestionsInList" class="text-center">
+			<p *ngIf="showStatistics" aria-label="Recent statistics">
+				You finished last training with
+				<span class="stats-wrong-count">{{ statisticsView.wrongCount }}</span> question(s) answered incorrectly and
+				<span class="stats-correct-count">{{ statisticsView.correctCount }}</span> correctly.
+			</p>
+			<span aria-label="Instructions to create list">
+				Put together a list of questions below and then start training.
+			</span>
+		</div>
+		<div *ngIf="!hasQuestion && hasQuestionsInList" class="text-center">
+			Press Start to begin training!
+		</div>
+		<div *ngIf="hasQuestion">
+			<div class="font-weight-bold">Question:</div>
+			<div [innerHTML]="questionHtml" aria-label="Question html"></div>
+			<div class="font-weight-bold answer">Your answer:</div>
+			<div *ngIf="!showAnswer && hasQuestion">
+				<ckeditor
+					[editor]="editor"
+					[(ngModel)]="answerGiven"
+					[config]="editorConfig"
+					[disabled]="!hasQuestion"
+				></ckeditor>
+			</div>
+			<div *ngIf="showAnswer" [innerHTML]="answerGiven"></div>
+			<div class="font-weight-bold answer">Expected answer:</div>
+			<div
+				class="show-answer-banner"
+				*ngIf="!showAnswer && hasQuestion"
+				(click)="showAnswer = true"
+			>
+				Click here to show the answer
+			</div>
+			<div aria-label="Answer html" *ngIf="showAnswer" [innerHTML]="answerHtml"></div>
+		</div>
+	</div>
+	<div class="card-footer">
+		<div class="row">
+			<div class="col-2 text-left">
+				<button
+					aria-label="Wrong answer"
+					class="btn btn-danger"
+					[disabled]="!hasQuestion || !showAnswer"
+					(click)="answerIsWrong()"
+				>
+					Wrong
+					<span *ngIf="hasQuestion">({{ statisticsView.wrongCount }})</span>
+				</button>
+			</div>
+			<div class="col-8"></div>
+			<div class="col-2 text-right">
+				<button
+					aria-label="Correct answer"
+					class="btn btn-success"
+					[disabled]="!hasQuestion || !showAnswer"
+					(click)="answerIsCorrect()"
+				>
+					Correct
+					<span *ngIf="hasQuestion">({{ statisticsView.correctCount }})</span>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>

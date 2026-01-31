@@ -1,0 +1,33 @@
+<div class="form-group">
+	<div class="row">
+		<div class="col text-left">
+			<label class="font-weight-bold" for="bookTitleText">Title:</label>
+		</div>
+	</div>
+	<div class="input-group row no-gutters">
+		<input
+			class="form-control"
+			[class.is-invalid]="invalidTitle && !bookTitleIsEmpty"
+			id="bookTitleText"
+			type="text"
+			#bookTitleText
+			[(ngModel)]="bookTitle"
+			(ngModelChange)="onTitleChanged()"
+			(keydown.enter)="ok()"
+			(keydown.escape)="cancel()"
+			[title]="errorMessageToShow"
+		/>
+		<div class="input-group-append">
+			<button
+				class="btn input-group-append"
+				[class.btn-primary]="!invalidTitle"
+				[class.btn-secondary]="invalidTitle"
+				[disabled]="invalidTitle"
+				id="btn-ok-book"
+				(click)="ok()"
+			>
+				{{ buttonText }}
+			</button>
+		</div>
+	</div>
+</div>

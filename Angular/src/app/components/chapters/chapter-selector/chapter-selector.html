@@ -1,0 +1,8 @@
+<div>
+	<label class="font-weight-bold">Chapter:</label>
+	<select class="form-control" [ngModel]="selectedChapterId" (ngModelChange)="onChapterSelected($event)">
+		<option *ngFor="let chapter of chapters" [value]="chapter.id">
+			{{ chapter.nr + ' - ' + chapter.title }}
+		</option>
+	</select>
+</div>

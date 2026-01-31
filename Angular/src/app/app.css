@@ -1,0 +1,48 @@
+#app {
+	font-family: "Avenir", Helvetica, Arial, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-align: center;
+	color: #2c3e50;
+	margin-top: 30px;
+}
+
+.box-left {
+	min-width: 588px;
+}
+
+.box-right {
+	margin-top: 49px;
+	min-width: 596px;
+}
+
+.container {
+	width: 100%;
+	min-width: 96%;
+}
+
+.favicon-credits {
+	display: none;
+}
+
+.footer {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background-color: #cccccc;
+	color: white;
+	text-align: center;
+}
+
+.question-list {
+	margin-top: 15px;
+}
+
+.view-mode {
+	width: 220px;
+}
+
+.flex-container {
+	display: flex;
+}

@@ -1,0 +1,12 @@
+<div class="tab-pane" [ngClass]="{ active: active, show: active }" [id]="id" role="tabpanel">
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<div class="tab-content bordered">
+				<ng-content>
+					This tab page has no content yet.
+					<br />Use the 'slot' of the tab-page component to add content.
+				</ng-content>
+			</div>
+		</div>
+	</div>
+</div>

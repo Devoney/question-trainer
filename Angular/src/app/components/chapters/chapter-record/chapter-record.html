@@ -1,0 +1,26 @@
+<tr>
+	<td class="text-center" style="width: 70px;">
+		<app-add-or-remove removeColor="red" (add)="addQuestionsToList()" (remove)="removeQuestionsFromList()" />
+	</td>
+	<td class="text-right" aria-label="Chapter number" style="width: 70px;">{{ chapter.nr }}</td>
+	<td class="text-left" aria-label="Title of chapter">{{ chapter.title }}</td>
+	<td class="text-center" style="width: 120px;" aria-label="Number of questions in this chapter">
+		{{ nrOfQuestions }}
+	</td>
+	<td class="text-center">
+		<app-icon-button
+			icon="edit"
+			label="Edit chapter"
+			[argument]="chapter"
+			(buttonClick)="edit(chapter)"
+			[disabled]="chapterInEditMode"
+		/>
+		<app-icon-button
+			icon="trash-alt"
+			label="Trash chapter"
+			[argument]="chapter"
+			(buttonClick)="trash(chapter)"
+			[disabled]="chapterInEditMode"
+		/>
+	</td>
+</tr>

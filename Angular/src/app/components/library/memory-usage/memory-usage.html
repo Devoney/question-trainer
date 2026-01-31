@@ -1,0 +1,13 @@
+<div>
+	<div class="row">
+		<div class="col-2">
+			<label [for]="id" class="font-weight-bold">Memory Usage:</label>
+		</div>
+		<div class="col-11 text-left">
+			<progress [id]="id" [value]="usageInBytes" [max]="maxStorageInBytes"></progress>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">{{ usagePercentage().toFixed(2) }}%</div>
+	</div>
+</div>

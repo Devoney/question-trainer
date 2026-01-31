@@ -1,0 +1,26 @@
+<div>
+	<table class="table table-striped table-bordered">
+		<thead>
+			<tr>
+				<th width="40"></th>
+				<th width="70">Nr.</th>
+				<th class="text-left">Question</th>
+				<th class="text-left">Answer</th>
+				<th width="70">Page Nr.</th>
+				<th width="90"></th>
+			</tr>
+		</thead>
+		<tbody>
+			<app-question-record
+				*ngFor="let question of questions$ | async; index as i"
+				[index]="i + 1"
+				[question]="question"
+			/>
+		</tbody>
+		<tfoot *ngIf="(hasQuestions$ | async) === false">
+			<tr>
+				<th colspan="6">No questions</th>
+			</tr>
+		</tfoot>
+	</table>
+</div>

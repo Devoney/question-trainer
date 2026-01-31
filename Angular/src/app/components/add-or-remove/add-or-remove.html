@@ -1,0 +1,18 @@
+<div style="width: 70px;">
+	<button
+		aria-label="remove"
+		class="btn btn-xs"
+		[title]="removeFromText"
+		(click)="click('remove')"
+	>
+		<fa-icon icon="minus" [style]="{ color: removeColor }"></fa-icon>
+	</button>
+	<button
+		aria-label="add"
+		class="btn btn-xs"
+		[title]="addToText"
+		(click)="click('add')"
+	>
+		<fa-icon icon="plus" [style]="{ color: addColor }"></fa-icon>
+	</button>
+</div>

@@ -1,0 +1,47 @@
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { MessageBusService } from '../../services/message-bus.service';
+import { QuestionModalArgs } from '../../types/question-modal-args';
+
+@Component({
+  selector: 'app-question-modal',
+  imports: [CommonModule],
+  templateUrl: './question-modal.html',
+  styleUrl: './question-modal.css',
+})
+export class QuestionModal {
+  id = 'question-modal-id';
+  args?: QuestionModalArgs;
+  cancelText = 'Cancel';
+  okText = 'Ok';
+  text = '';
+  title = '';
+  isOpen = false;
+
+  constructor(private bus: MessageBusService) {
+    this.bus.onShowQuestionModal((args) => this.onShowQuestionModal(args));
+  }
+
+  onShowQuestionModal(args: QuestionModalArgs): void {
+    this.args = args;
+    this.cancelText = args.cancelButtonText;
+    this.okText = args.okButtonText;
+    this.text = args.text;
+    this.title = args.title;
+    this.isOpen = true;
+  }
+
+  cancel(): void {
+    if (this.args?.cancelHandler) {
+      this.args.cancelHandler();
+    }
+    this.isOpen = false;
+  }
+
+  ok(): void {
+    this.isOpen = false;
+    if (this.args?.okHandler) {
+      this.args.okHandler();
+    }
+  }
+}

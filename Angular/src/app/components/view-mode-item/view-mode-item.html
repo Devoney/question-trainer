@@ -1,0 +1,13 @@
+<a
+	class="dropdown-item"
+	[class.disabled]="viewModeIsActive()"
+	href="#"
+	(click)="setViewMode($event)"
+>
+	<div class="row">
+		<div class="col-3">
+			<fa-icon *ngIf="icon" [icon]="icon"></fa-icon>
+		</div>
+		<div class="col">{{ text }}</div>
+	</div>
+</a>

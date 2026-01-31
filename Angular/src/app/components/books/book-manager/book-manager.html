@@ -1,0 +1,18 @@
+<div>
+	<div class="row">
+		<div class="col has-error">
+			<app-edit-book *ngIf="bookEdited" />
+			<app-add-book
+				*ngIf="!bookEdited"
+				(titleChanged)="titleChanged($event)"
+				[errMessage]="titleIsNotValidMessage"
+				(add)="add($event)"
+			/>
+		</div>
+	</div>
+	<div class="row book-table">
+		<div class="col">
+			<app-book-table />
+		</div>
+	</div>
+</div>

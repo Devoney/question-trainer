@@ -1,0 +1,45 @@
+<app-tabs>
+	<app-tab-page title="Library">
+		<app-library-details />
+	</app-tab-page>
+	<app-tab-page title="Books" [isDefault]="true">
+		<app-book-manager />
+	</app-tab-page>
+	<app-tab-page title="Chapters">
+		<app-chapter-manager />
+	</app-tab-page>
+	<app-tab-page title="Questions">
+		<app-question-manager />
+	</app-tab-page>
+	<app-tab-page title="Help">
+		<div class="text-left">
+			<h4>What is this app?</h4>
+			<p>
+				An effective way to learn new things is by starting with a question, find the
+				answer, and repeat that. So when you are studying from books for instance, you
+				can turn everything you didn't know into questions. You then find the answer
+				for it. When you repeat the questions till you know them, you are effectively
+				studying. This app helps you doint that.
+			</p>
+			<h4>How to use it?</h4>
+			<ul>
+				<li>Start by adding books.</li>
+				<li>For each book you then add chapters.</li>
+				<li>For each chapter you then add questions.</li>
+				<li>Put questions you want to study in the list.</li>
+				<li>Press start to train the questions.</li>
+			</ul>
+			<h4>How do I know I am ready for the exam?</h4>
+			<ul>
+				<li>
+					When you have been honest with yourself, and you have created a question
+					for every little thing you did not know yet.
+				</li>
+				<li>
+					You have repeated the list of questions several times while answering all
+					questions correctly.
+				</li>
+			</ul>
+		</div>
+	</app-tab-page>
+</app-tabs>

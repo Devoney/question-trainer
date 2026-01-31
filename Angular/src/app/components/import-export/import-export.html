@@ -1,0 +1,52 @@
+<div>
+	<a [id]="exportLibLinkId" style="display: none"></a>
+	<app-icon-button
+		icon="file-download"
+		label="Export library"
+		[argument]="true"
+		[size]="buttonSize"
+		(buttonClick)="exportLib()"
+	/>
+	<app-icon-button
+		icon="file-upload"
+		label="Import library"
+		[argument]="true"
+		[size]="buttonSize"
+		(buttonClick)="importLib()"
+	/>
+	<div class="modal fade" tabindex="-1" role="dialog" [id]="importModalId" [class.show]="isImportOpen" [style.display]="isImportOpen ? 'block' : 'none'">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Import library</h5>
+					<button type="button" class="close" aria-label="Close" (click)="closeModal()">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<p>
+						This will overwrite your current library. It is advised to export your
+						current library first.
+					</p>
+					<p>Select the library you have exported earlier</p>
+					<input type="file" (change)="processFile($event)" />
+				</div>
+				<div class="modal-footer">
+					<div class="row" style="min-width: 100%">
+						<div class="col text-right">
+							<button
+								type="button"
+								class="btn btn-primary"
+								aria-label="ok"
+								(click)="executeImport()"
+								[disabled]="jsonToImport == null"
+							>
+								Import
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

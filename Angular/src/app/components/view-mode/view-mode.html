@@ -1,0 +1,35 @@
+<div class="dropdown" (mouseleave)="closeMenu()">
+	<button
+		class="btn dropdown-toggle"
+		type="button"
+		aria-haspopup="true"
+		[attr.aria-expanded]="isOpen"
+		(click)="toggleMenu()"
+	>
+		<fa-icon icon="eye" />
+		<span class="view-mode-text">View mode</span>
+	</button>
+	<div class="dropdown-menu" [class.show]="isOpen" *ngIf="viewMode$ | async as viewMode">
+		<app-view-mode-item
+			icon="columns"
+			text="Both"
+			viewMode="both"
+			[currentViewMode]="viewMode"
+			(select)="updateViewMode($event)"
+		/>
+		<app-view-mode-item
+			icon="book"
+			text="Library only"
+			viewMode="library"
+			[currentViewMode]="viewMode"
+			(select)="updateViewMode($event)"
+		/>
+		<app-view-mode-item
+			icon="question-circle"
+			text="Questions only"
+			viewMode="questions"
+			[currentViewMode]="viewMode"
+			(select)="updateViewMode($event)"
+		/>
+	</div>
+</div>

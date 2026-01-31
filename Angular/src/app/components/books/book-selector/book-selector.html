@@ -1,0 +1,6 @@
+<div>
+	<label class="font-weight-bold">Book:</label>
+	<select class="form-control" [ngModel]="selectedBookId" (ngModelChange)="onBookSelected($event)">
+		<option *ngFor="let book of books" [value]="book.id">{{ book.title }}</option>
+	</select>
+</div>

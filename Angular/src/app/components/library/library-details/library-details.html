@@ -1,0 +1,27 @@
+<div>
+	<div class="form-group">
+		<div class="row">
+			<div class="col text-left">
+				<label class="font-weight-bold" for="bookTitleText">Library name:</label>
+			</div>
+		</div>
+		<div class="input-group row no-gutters">
+			<input
+				class="form-control"
+				id="libraryTitle"
+				type="text"
+				[(ngModel)]="libraryName"
+				(keydown.enter)="ok()"
+				(keydown.escape)="cancel()"
+			/>
+			<div class="input-group-append">
+				<button class="btn input-group-append btn-primary" (click)="ok()">Save</button>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col text-left">
+			<app-memory-usage class="memory-usage-comp" />
+		</div>
+	</div>
+</div>
