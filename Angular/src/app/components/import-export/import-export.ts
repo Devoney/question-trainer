@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { take } from 'rxjs/operators';
@@ -16,6 +16,7 @@ import { TranslocoModule } from '@ngneat/transloco';
 })
 export class ImportExport {
   private readonly store = inject<Store<{ app: AppState }>>(Store);
+  private readonly changeDetectorRef = inject(ChangeDetectorRef);
   buttonSize: 'xs' | 'm' | 'l' = 'm';
   exportLibLinkId = '38398hfdhf393f98-sfh83';
   importModalId = '0390jafmvi-23n3n';
@@ -78,6 +79,7 @@ export class ImportExport {
     const fileReader = new FileReader();
     fileReader.onload = () => {
       this.jsonToImport = fileReader.result as string;
+      this.changeDetectorRef.detectChanges();
     };
     fileReader.readAsText(file);
   }
