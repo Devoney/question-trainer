@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Tabs } from '../tabs/tabs';
-import { TabPage } from '../tab-page/tab-page';
+import { MatTabsModule } from '@angular/material/tabs';
 import { LibraryDetails } from './library-details/library-details';
 import { BookManager } from '../books/book-manager/book-manager';
 import { ChapterManager } from '../chapters/chapter-manager/chapter-manager';
@@ -14,14 +13,13 @@ import { TranslocoModule } from '@ngneat/transloco';
   selector: 'app-library',
   imports: [
     CommonModule,
-    Tabs,
-    TabPage,
     LibraryDetails,
     BookManager,
     ChapterManager,
     QuestionManager,
     IngestPhoto,
     Settings,
+    MatTabsModule,
     TranslocoModule,
   ],
   templateUrl: './library.html',

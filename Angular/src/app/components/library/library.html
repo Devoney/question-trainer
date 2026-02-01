@@ -1,23 +1,23 @@
-<app-tabs>
-	<app-tab-page [title]="'library.tabs.library' | transloco">
+<mat-tab-group [selectedIndex]="1">
+	<mat-tab [label]="'library.tabs.library' | transloco">
 		<app-library-details />
-	</app-tab-page>
-	<app-tab-page [title]="'library.tabs.books' | transloco" [isDefault]="true">
+	</mat-tab>
+	<mat-tab [label]="'library.tabs.books' | transloco">
 		<app-book-manager />
-	</app-tab-page>
-	<app-tab-page [title]="'library.tabs.chapters' | transloco">
+	</mat-tab>
+	<mat-tab [label]="'library.tabs.chapters' | transloco">
 		<app-chapter-manager />
-	</app-tab-page>
-	<app-tab-page [title]="'library.tabs.questions' | transloco">
+	</mat-tab>
+	<mat-tab [label]="'library.tabs.questions' | transloco">
 		<app-question-manager />
-	</app-tab-page>
-	<app-tab-page [title]="'library.tabs.ingest' | transloco">
+	</mat-tab>
+	<mat-tab [label]="'library.tabs.ingest' | transloco">
 		<app-ingest-photo />
-	</app-tab-page>
-	<app-tab-page [title]="'library.tabs.settings' | transloco">
+	</mat-tab>
+	<mat-tab [label]="'library.tabs.settings' | transloco">
 		<app-settings />
-	</app-tab-page>
-	<app-tab-page [title]="'library.tabs.help' | transloco">
+	</mat-tab>
+	<mat-tab [label]="'library.tabs.help' | transloco">
 		<div class="text-left">
 			<h4>{{ 'library.help.whatIs' | transloco }}</h4>
 			<p>
@@ -41,5 +41,5 @@
 				</li>
 			</ul>
 		</div>
-	</app-tab-page>
-</app-tabs>
+	</mat-tab>
+</mat-tab-group>
