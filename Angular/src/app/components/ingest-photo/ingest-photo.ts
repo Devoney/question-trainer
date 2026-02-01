@@ -67,7 +67,7 @@ export class IngestPhoto {
       return;
     }
 
-    const maxSizeBytes = 5 * 1024 * 1024;
+    const maxSizeBytes = 25 * 1024 * 1024;
     if (file.size > maxSizeBytes) {
       this.errorKey = 'ingestPhoto.errors.fileTooLarge';
       return;

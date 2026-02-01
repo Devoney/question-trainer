@@ -132,7 +132,7 @@
     },
     "errors": {
       "invalidFile": "Please select a JPG or PNG image.",
-      "fileTooLarge": "The selected image is too large. Maximum size is 5 MB.",
+      "fileTooLarge": "The selected image is too large. Maximum size is 25 MB.",
       "parseFailed": "The AI response could not be parsed. Please try again.",
       "noQuestions": "No questions were found in the photo."
     },

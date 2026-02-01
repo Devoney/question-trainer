@@ -132,7 +132,7 @@
     },
     "errors": {
       "invalidFile": "Selecteer een JPG- of PNG-afbeelding.",
-      "fileTooLarge": "De geselecteerde afbeelding is te groot. Maximale grootte is 5 MB.",
+      "fileTooLarge": "De geselecteerde afbeelding is te groot. Maximale grootte is 25 MB.",
       "parseFailed": "Het AI-antwoord kon niet worden verwerkt. Probeer het opnieuw.",
       "noQuestions": "Er zijn geen vragen gevonden in de foto."
     },
