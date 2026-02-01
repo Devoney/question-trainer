@@ -34,7 +34,20 @@
 						{{ 'importExport.warning' | transloco }}
 					</p>
 					<p>{{ 'importExport.selectHint' | transloco }}</p>
-					<input type="file" (change)="processFile($event)" />
+					<input #importFileInput type="file" (change)="processFile($event)" hidden />
+					<mat-form-field appearance="outline" class="import-export-field">
+						<mat-label>{{ 'importExport.selectHint' | transloco }}</mat-label>
+						<input
+							matInput
+							[readonly]="true"
+							[value]="importFileName"
+							[placeholder]="'importExport.selectHint' | transloco"
+							(click)="importFileInput.click()"
+						/>
+						<button mat-button matSuffix type="button" (click)="importFileInput.click()">
+							{{ 'importExport.browseButton' | transloco }}
+						</button>
+					</mat-form-field>
 				</div>
 				<div class="modal-footer">
 					<div class="import-export-footer">

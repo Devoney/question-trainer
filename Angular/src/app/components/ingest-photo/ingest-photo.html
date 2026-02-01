@@ -3,62 +3,73 @@
 	<p class="ingest-photo-description">{{ 'ingestPhoto.description' | transloco }}</p>
 
 	<div class="ingest-photo-form">
-		<div class="form-group">
-			<label class="form-label">{{ 'ingestPhoto.bookLabel' | transloco }}</label>
-			<div class="form-input">
-				<app-book-selector [showLabel]="false" [disabled]="isLoading" />
-			</div>
+		<div class="form-row-full">
+			<app-book-selector [showLabel]="true" [disabled]="isLoading" />
 		</div>
-		<div class="form-group">
-			<label class="form-label">{{ 'ingestPhoto.chapterLabel' | transloco }}</label>
-			<div class="form-input">
-				<app-chapter-selector [showLabel]="false" [disabled]="isLoading" />
-			</div>
+		<div class="form-row-full">
+			<app-chapter-selector [showLabel]="true" [disabled]="isLoading" />
 		</div>
 		@if (!hasChapterSelected) {
 			<div class="selection-hint">{{ 'ingestPhoto.selectionHint' | transloco }}</div>
 		}
-		<div class="form-group">
-			<label class="form-label">{{ 'ingestPhoto.photoLabel' | transloco }}</label>
-			<div class="form-input">
+		<div class="form-row-full">
+			<input
+				#fileInput
+				type="file"
+				accept="image/*"
+				[disabled]="isLoading"
+				(change)="onFileSelected($event)"
+				hidden
+			/>
+			<mat-form-field appearance="outline" class="ingest-photo-field">
+				<mat-label>{{ 'ingestPhoto.photoLabel' | transloco }}</mat-label>
 				<input
-					class="form-control"
-					type="file"
-					accept="image/*"
+					matInput
+					[readonly]="true"
 					[disabled]="isLoading"
-					(change)="onFileSelected($event)"
+					[value]="fileName"
+					[placeholder]="'ingestPhoto.photoPlaceholder' | transloco"
+					(click)="fileInput.click()"
 				/>
-				@if (fileName) {
-					<div class="file-name">{{ fileName }}</div>
-				}
-				@if (photoPreviewUrl) {
-					<div class="photo-preview">
-						<img [src]="photoPreviewUrl" [alt]="'ingestPhoto.previewAlt' | transloco" />
-					</div>
-				}
-			</div>
+				<button
+					mat-button
+					matSuffix
+					type="button"
+					[disabled]="isLoading"
+					(click)="fileInput.click()"
+				>
+					{{ 'ingestPhoto.browseButton' | transloco }}
+				</button>
+			</mat-form-field>
+			@if (photoPreviewUrl) {
+				<div class="photo-preview">
+					<img [src]="photoPreviewUrl" [alt]="'ingestPhoto.previewAlt' | transloco" />
+				</div>
+			}
 		</div>
-		<div class="form-group">
-			<label class="form-label">{{ 'ingestPhoto.pageLabelStatic' | transloco }}</label>
-			<div class="form-input">
+		<div class="form-row-full">
+			<mat-form-field appearance="outline" class="ingest-photo-field">
+				<mat-label>{{ 'ingestPhoto.pageLabelStatic' | transloco }}</mat-label>
 				<input
-					class="form-control"
+					matInput
 					type="text"
 					[disabled]="isLoading"
 					[(ngModel)]="pageNr"
 					[placeholder]="'ingestPhoto.pagePlaceholder' | transloco"
 				/>
-			</div>
+			</mat-form-field>
 		</div>
 		<div class="form-row-full">
-			<label class="form-label">{{ 'ingestPhoto.instructionsLabel' | transloco }}</label>
-			<textarea
-				class="form-control"
-				rows="2"
-				[disabled]="isLoading"
-				[(ngModel)]="additionalInstructions"
-				[placeholder]="'ingestPhoto.instructionsPlaceholder' | transloco"
-			></textarea>
+			<mat-form-field appearance="outline" class="ingest-photo-field">
+				<mat-label>{{ 'ingestPhoto.instructionsLabel' | transloco }}</mat-label>
+				<textarea
+					matInput
+					rows="2"
+					[disabled]="isLoading"
+					[(ngModel)]="additionalInstructions"
+					[placeholder]="'ingestPhoto.instructionsPlaceholder' | transloco"
+				></textarea>
+			</mat-form-field>
 		</div>
 		@if (errorKey) {
 			<div class="alert alert-danger" role="alert">{{ errorKey | transloco }}</div>

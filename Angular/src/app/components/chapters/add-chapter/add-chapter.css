@@ -15,4 +15,11 @@
 
 .add-chapter-input {
 	width: 100%;
+	display: flex;
+	align-items: flex-end;
+	gap: 8px;
+}
+
+.add-chapter-field {
+	width: 100%;
 }

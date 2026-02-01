@@ -8,10 +8,12 @@ import { Book } from '../../../models/book';
 import { selectBookSelected, selectBooksSortedByTitle } from '../../../state/app.selectors';
 import { setSelectedBook } from '../../../state/app.actions';
 import { TranslocoModule } from '@ngneat/transloco';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
 
 @Component({
   selector: 'app-book-selector',
-  imports: [CommonModule, FormsModule, TranslocoModule],
+  imports: [CommonModule, FormsModule, TranslocoModule, MatFormFieldModule, MatSelectModule],
   templateUrl: './book-selector.html',
   styleUrl: './book-selector.css',
 })

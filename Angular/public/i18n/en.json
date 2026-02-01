@@ -104,6 +104,7 @@
     "warning": "This will overwrite your current library. It is advised to export your current library first.",
     "selectHint": "Select the library you have exported earlier",
     "okAria": "ok",
+    "browseButton": "Browse",
     "importButton": "Import"
   },
   "ingestPhoto": {
@@ -112,6 +113,8 @@
     "bookLabel": "Book:",
     "chapterLabel": "Chapter:",
     "photoLabel": "Photo:",
+    "photoPlaceholder": "Select a photo",
+    "browseButton": "Browse",
     "pageLabelStatic": "Page number (optional):",
     "pagePlaceholder": "e.g. 12",
     "instructionsLabel": "Additional instructions (optional):",

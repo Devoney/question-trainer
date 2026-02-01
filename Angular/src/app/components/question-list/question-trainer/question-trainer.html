@@ -26,14 +26,9 @@
 		</div>
 		<div class="trainer-ai-settings">
 			<div class="ai-toggle">
-				<label>
-					<input
-						type="checkbox"
-						[checked]="useAiGrading"
-						(change)="toggleAiGrading($event)"
-					/>
+				<mat-checkbox [checked]="useAiGrading" (change)="toggleAiGrading($event.checked)">
 					{{ 'trainer.ai.toggle' | transloco }}
-				</label>
+				</mat-checkbox>
 			</div>
 		</div>
 	</div>

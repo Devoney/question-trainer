@@ -16,10 +16,11 @@ import { AnswerCheckerService } from '../../../services/answer-checker.service';
 import { take } from 'rxjs/operators';
 import { TranslocoModule } from '@ngneat/transloco';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @Component({
   selector: 'app-question-trainer',
-  imports: [CommonModule, FormsModule, CKEditorModule, IconButtonComponent, TranslocoModule, MatButtonModule],
+  imports: [CommonModule, FormsModule, CKEditorModule, IconButtonComponent, TranslocoModule, MatButtonModule, MatCheckboxModule],
   templateUrl: './question-trainer.html',
   styleUrl: './question-trainer.css',
 })
@@ -151,9 +152,8 @@ export class QuestionTrainer implements OnInit {
     this.store.dispatch(toggleRepeat());
   }
 
-  toggleAiGrading(event: Event): void {
-    const target = event.target as HTMLInputElement | null;
-    this.useAiGrading = !!target?.checked;
+  toggleAiGrading(checked: boolean): void {
+    this.useAiGrading = !!checked;
     localStorage.setItem('useAiGrading', String(this.useAiGrading));
     this.resetAiState();
     if (!this.useAiGrading) {

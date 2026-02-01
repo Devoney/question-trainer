@@ -1,15 +1,16 @@
 <div>
-	@if (showLabel) {
-		<label class="font-weight-bold">{{ 'books.selector.label' | transloco }}</label>
-	}
-	<select
-		class="form-control"
-		[disabled]="disabled"
-		[ngModel]="selectedBookId"
-		(ngModelChange)="onBookSelected($event)"
-	>
-		@for (book of books; track book.id) {
-			<option [value]="book.id">{{ book.title }}</option>
+	<mat-form-field appearance="outline" class="selector-field">
+		@if (showLabel) {
+			<mat-label>{{ 'books.selector.label' | transloco }}</mat-label>
 		}
-	</select>
+		<mat-select
+			[disabled]="disabled"
+			[ngModel]="selectedBookId"
+			(ngModelChange)="onBookSelected($event)"
+		>
+			@for (book of books; track book.id) {
+				<mat-option [value]="book.id">{{ book.title }}</mat-option>
+			}
+		</mat-select>
+	</mat-form-field>
 </div>

@@ -10,10 +10,12 @@ import { editBookTitle, setEditedBook } from '../../../state/app.actions';
 import { selectBookEdited, selectBooks } from '../../../state/app.selectors';
 import { TranslocoModule } from '@ngneat/transloco';
 import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-edit-book',
-  imports: [CommonModule, FormsModule, TranslocoModule, MatButtonModule],
+  imports: [CommonModule, FormsModule, TranslocoModule, MatButtonModule, MatFormFieldModule, MatInputModule],
   templateUrl: './edit-book.html',
   styleUrl: './edit-book.css',
 })

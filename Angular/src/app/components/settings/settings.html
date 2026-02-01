@@ -2,85 +2,77 @@
   <h4 class="settings-title">{{ 'settings.title' | transloco }}</h4>
   <p class="settings-description">{{ 'settings.description' | transloco }}</p>
 
-  <div class="settings-section">
-    <label class="settings-label">
-      <span>{{ 'settings.ollamaBaseUrlLabel' | transloco }}</span>
-      <input
-        type="text"
-        [placeholder]="'settings.ollamaBaseUrlPlaceholder' | transloco"
-        [value]="baseEndpoint"
-        (input)="updateBaseEndpoint($event)"
-      />
-    </label>
-    <small class="settings-help">{{ 'settings.ollamaBaseUrlHelp' | transloco }}</small>
-  </div>
+  <mat-form-field appearance="outline" class="settings-field">
+    <mat-label>{{ 'settings.ollamaBaseUrlLabel' | transloco }}</mat-label>
+    <input
+      matInput
+      type="text"
+      [placeholder]="'settings.ollamaBaseUrlPlaceholder' | transloco"
+      [value]="baseEndpoint"
+      (input)="updateBaseEndpoint($event)"
+    />
+    <mat-hint>{{ 'settings.ollamaBaseUrlHelp' | transloco }}</mat-hint>
+  </mat-form-field>
 
-  <div class="settings-section">
-    <label class="settings-label">
-      <span>{{ 'settings.ollamaOcrUrlLabel' | transloco }}</span>
-      <input
-        type="text"
-        [placeholder]="'settings.ollamaOcrUrlPlaceholder' | transloco"
-        [value]="ocrEndpoint"
-        (input)="updateOcrEndpoint($event)"
-      />
-    </label>
-    <small class="settings-help">{{ 'settings.ollamaOcrUrlHelp' | transloco }}</small>
-  </div>
+  <mat-form-field appearance="outline" class="settings-field">
+    <mat-label>{{ 'settings.ollamaOcrUrlLabel' | transloco }}</mat-label>
+    <input
+      matInput
+      type="text"
+      [placeholder]="'settings.ollamaOcrUrlPlaceholder' | transloco"
+      [value]="ocrEndpoint"
+      (input)="updateOcrEndpoint($event)"
+    />
+    <mat-hint>{{ 'settings.ollamaOcrUrlHelp' | transloco }}</mat-hint>
+  </mat-form-field>
 
-  <div class="settings-section">
-    <label class="settings-label">
-      <span>{{ 'settings.aiGradingModelLabel' | transloco }}</span>
-      <select
-        [disabled]="modelsLoading || !availableModels.length"
-        [(ngModel)]="aiGradingModel"
-        (ngModelChange)="updateAiGradingModel($event)"
-      >
-        @if (!availableModels.length) {
-          <option value="">{{ 'settings.modelsEmpty' | transloco }}</option>
-        }
-        @for (model of availableModels; track model) {
-          <option [value]="model">{{ model }}</option>
-        }
-      </select>
-    </label>
-  </div>
+  <mat-form-field appearance="outline" class="settings-field">
+    <mat-label>{{ 'settings.aiGradingModelLabel' | transloco }}</mat-label>
+    <mat-select
+      [disabled]="modelsLoading || !availableModels.length"
+      [(ngModel)]="aiGradingModel"
+      (ngModelChange)="updateAiGradingModel($event)"
+    >
+      @if (!availableModels.length) {
+        <mat-option value="">{{ 'settings.modelsEmpty' | transloco }}</mat-option>
+      }
+      @for (model of availableModels; track model) {
+        <mat-option [value]="model">{{ model }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
 
-  <div class="settings-section">
-    <label class="settings-label">
-      <span>{{ 'settings.ocrModelLabel' | transloco }}</span>
-      <select
-        [disabled]="modelsLoading || !availableModels.length"
-        [(ngModel)]="ocrModel"
-        (ngModelChange)="updateOcrModel($event)"
-      >
-        @if (!availableModels.length) {
-          <option value="">{{ 'settings.modelsEmpty' | transloco }}</option>
-        }
-        @for (model of availableModels; track model) {
-          <option [value]="model">{{ model }}</option>
-        }
-      </select>
-    </label>
-  </div>
+  <mat-form-field appearance="outline" class="settings-field">
+    <mat-label>{{ 'settings.ocrModelLabel' | transloco }}</mat-label>
+    <mat-select
+      [disabled]="modelsLoading || !availableModels.length"
+      [(ngModel)]="ocrModel"
+      (ngModelChange)="updateOcrModel($event)"
+    >
+      @if (!availableModels.length) {
+        <mat-option value="">{{ 'settings.modelsEmpty' | transloco }}</mat-option>
+      }
+      @for (model of availableModels; track model) {
+        <mat-option [value]="model">{{ model }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
 
-  <div class="settings-section">
-    <label class="settings-label">
-      <span>{{ 'settings.qaModelLabel' | transloco }}</span>
-      <select
-        [disabled]="modelsLoading || !availableModels.length"
-        [(ngModel)]="qaModel"
-        (ngModelChange)="updateQaModel($event)"
-      >
-        @if (!availableModels.length) {
-          <option value="">{{ 'settings.modelsEmpty' | transloco }}</option>
-        }
-        @for (model of availableModels; track model) {
-          <option [value]="model">{{ model }}</option>
-        }
-      </select>
-    </label>
-  </div>
+  <mat-form-field appearance="outline" class="settings-field">
+    <mat-label>{{ 'settings.qaModelLabel' | transloco }}</mat-label>
+    <mat-select
+      [disabled]="modelsLoading || !availableModels.length"
+      [(ngModel)]="qaModel"
+      (ngModelChange)="updateQaModel($event)"
+    >
+      @if (!availableModels.length) {
+        <mat-option value="">{{ 'settings.modelsEmpty' | transloco }}</mat-option>
+      }
+      @for (model of availableModels; track model) {
+        <mat-option [value]="model">{{ model }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
 </div>
 
 @if (modelsLoading) {

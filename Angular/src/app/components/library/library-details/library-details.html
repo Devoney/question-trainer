@@ -1,20 +1,18 @@
 <div>
 	<div class="form-group">
-		<div class="library-details-label text-left">
-			<label class="font-weight-bold" for="bookTitleText">{{ 'library.details.nameLabel' | transloco }}</label>
-		</div>
 		<div class="input-group library-details-input">
-			<input
-				class="form-control"
-				id="libraryTitle"
-				type="text"
-				[(ngModel)]="libraryName"
-				(keydown.enter)="ok()"
-				(keydown.escape)="cancel()"
-			/>
-			<div class="input-group-text input-group-button">
-				<button mat-raised-button color="primary" (click)="ok()">{{ 'common.save' | transloco }}</button>
-			</div>
+			<mat-form-field appearance="outline" class="library-details-field">
+				<mat-label>{{ 'library.details.nameLabel' | transloco }}</mat-label>
+				<input
+					matInput
+					id="libraryTitle"
+					type="text"
+					[(ngModel)]="libraryName"
+					(keydown.enter)="ok()"
+					(keydown.escape)="cancel()"
+				/>
+			</mat-form-field>
+			<button mat-raised-button color="primary" (click)="ok()">{{ 'common.save' | transloco }}</button>
 		</div>
 	</div>
 	<div class="library-details-memory text-left">

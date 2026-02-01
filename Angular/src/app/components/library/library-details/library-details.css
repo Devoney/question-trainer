@@ -1,9 +1,12 @@
-.library-details-label {
-	display: flex;
-}
-
 .library-details-input {
 	width: 100%;
+	display: flex;
+	align-items: flex-end;
+	gap: 8px;
+}
+
+.library-details-field {
+	flex: 1 1 auto;
 }
 
 .memory-usage-comp {

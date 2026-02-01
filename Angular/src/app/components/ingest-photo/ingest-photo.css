@@ -46,9 +46,8 @@
 	flex: 1;
 }
 
-.file-name {
-	font-size: 0.85rem;
-	color: #555;
+.ingest-photo-field {
+	width: 100%;
 }
 
 .selection-hint {

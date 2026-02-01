@@ -13,10 +13,12 @@ import { ChapterSelector } from '../chapters/chapter-selector/chapter-selector';
 import { TranslocoModule } from '@ngneat/transloco';
 import { PhotoQaIngestionService, IngestedQuestion, IngestionStreamEvent } from '../../services/photo-qa-ingestion.service';
 import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-ingest-photo',
-  imports: [CommonModule, FormsModule, TranslocoModule, BookSelector, ChapterSelector, MatButtonModule],
+  imports: [CommonModule, FormsModule, TranslocoModule, BookSelector, ChapterSelector, MatButtonModule, MatFormFieldModule, MatInputModule],
   templateUrl: './ingest-photo.html',
   styleUrl: './ingest-photo.css',
 })

@@ -8,10 +8,12 @@ import { dateString } from '../../utils/date-string';
 import { IconButtonComponent } from '../icon-button/icon-button';
 import { TranslocoModule } from '@ngneat/transloco';
 import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-import-export',
-  imports: [CommonModule, IconButtonComponent, TranslocoModule, MatButtonModule],
+  imports: [CommonModule, IconButtonComponent, TranslocoModule, MatButtonModule, MatFormFieldModule, MatInputModule],
   templateUrl: './import-export.html',
   styleUrl: './import-export.css',
 })
@@ -22,6 +24,7 @@ export class ImportExport {
   exportLibLinkId = '38398hfdhf393f98-sfh83';
   importModalId = '0390jafmvi-23n3n';
   jsonToImport: string | null = null;
+  importFileName = '';
   isImportOpen = false;
 
   exportLib(): void {
@@ -59,6 +62,7 @@ export class ImportExport {
 
   closeModal(): void {
     this.isImportOpen = false;
+    this.importFileName = '';
   }
 
   executeImport(): void {
@@ -82,6 +86,7 @@ export class ImportExport {
       throw new Error('Could not process selected file because the target is null');
     }
     const file = target.files[0];
+    this.importFileName = file.name;
 
     const fileReader = new FileReader();
     fileReader.onload = () => {

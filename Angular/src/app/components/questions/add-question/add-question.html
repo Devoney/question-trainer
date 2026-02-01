@@ -10,12 +10,10 @@
 		</div>
 		<div class="add-question-page text-left">
 			@if (chapterIsSelected) {
-				<div>
-					<label class="font-weight-bold">{{ 'questions.add.page' | transloco }}</label>
-					<div class="input-group add-question-page-input">
-						<input class="form-control" min="1" max="9999" type="number" [(ngModel)]="pageNr" />
-					</div>
-				</div>
+				<mat-form-field appearance="outline" class="add-question-page-field">
+					<mat-label>{{ 'questions.add.page' | transloco }}</mat-label>
+					<input matInput min="1" max="9999" type="number" [(ngModel)]="pageNr" />
+				</mat-form-field>
 			}
 		</div>
 	</div>

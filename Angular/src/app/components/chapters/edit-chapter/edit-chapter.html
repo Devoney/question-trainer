@@ -1,32 +1,36 @@
 <div>
 	<div class="edit-chapter-row">
 		<div class="edit-chapter-number">
-			<label class="font-weight-bold">{{ 'chapters.nrLabel' | transloco }}</label>
-			<input
-				class="form-control"
-				[class.is-invalid]="error.nr !== ''"
-				type="text"
-				[(ngModel)]="chapter.nr"
-				(ngModelChange)="numberChanged()"
-				(keydown.escape)="cancel()"
-				[title]="error.nr"
-				[attr.aria-label]="'chapters.nrAria' | transloco"
-			/>
+			<mat-form-field appearance="outline" class="edit-chapter-field">
+				<mat-label>{{ 'chapters.nrLabel' | transloco }}</mat-label>
+				<input
+					matInput
+					[class.is-invalid]="error.nr !== ''"
+					type="text"
+					[(ngModel)]="chapter.nr"
+					(ngModelChange)="numberChanged()"
+					(keydown.escape)="cancel()"
+					[title]="error.nr"
+					[attr.aria-label]="'chapters.nrAria' | transloco"
+				/>
+			</mat-form-field>
 		</div>
 		<div class="edit-chapter-title">
-			<label class="font-weight-bold">{{ 'chapters.titleLabel' | transloco }}</label>
 			<div class="input-group edit-chapter-input">
-				<input
-					class="form-control"
-					[class.is-invalid]="error.title !== ''"
-					type="text"
-					[(ngModel)]="chapter.title"
-					(ngModelChange)="titleChanged()"
-					(keydown.enter)="ok()"
-					(keydown.escape)="cancel()"
-					[title]="error.title"
-					[attr.aria-label]="'chapters.titleAria' | transloco"
-				/>
+				<mat-form-field appearance="outline" class="edit-chapter-field">
+					<mat-label>{{ 'chapters.titleLabel' | transloco }}</mat-label>
+					<input
+						matInput
+						[class.is-invalid]="error.title !== ''"
+						type="text"
+						[(ngModel)]="chapter.title"
+						(ngModelChange)="titleChanged()"
+						(keydown.enter)="ok()"
+						(keydown.escape)="cancel()"
+						[title]="error.title"
+						[attr.aria-label]="'chapters.titleAria' | transloco"
+					/>
+				</mat-form-field>
 				<div class="input-group-text input-group-button">
 					<button
 						mat-raised-button

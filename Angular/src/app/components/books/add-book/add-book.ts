@@ -4,10 +4,12 @@ import { FormsModule } from '@angular/forms';
 import _ from 'lodash';
 import { TranslocoModule } from '@ngneat/transloco';
 import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-add-book',
-  imports: [CommonModule, FormsModule, TranslocoModule, MatButtonModule],
+  imports: [CommonModule, FormsModule, TranslocoModule, MatButtonModule, MatFormFieldModule, MatInputModule],
   templateUrl: './add-book.html',
   styleUrl: './add-book.css',
 })

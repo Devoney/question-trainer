@@ -104,6 +104,7 @@
     "warning": "Dit overschrijft je huidige bibliotheek. Het is aan te raden eerst je huidige bibliotheek te exporteren.",
     "selectHint": "Selecteer de bibliotheek die je eerder hebt geëxporteerd",
     "okAria": "ok",
+    "browseButton": "Bladeren",
     "importButton": "Importeren"
   },
   "ingestPhoto": {
@@ -112,6 +113,8 @@
     "bookLabel": "Boek:",
     "chapterLabel": "Hoofdstuk:",
     "photoLabel": "Foto:",
+    "photoPlaceholder": "Selecteer een foto",
+    "browseButton": "Bladeren",
     "pageLabelStatic": "Paginanummer (optioneel):",
     "pagePlaceholder": "bijv. 12",
     "instructionsLabel": "Aanvullende instructies (optioneel):",

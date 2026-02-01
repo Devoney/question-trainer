@@ -7,10 +7,13 @@ import { catchError, finalize, take } from 'rxjs/operators';
 import { AnswerCheckerService } from '../../services/answer-checker.service';
 import { PhotoQaIngestionService } from '../../services/photo-qa-ingestion.service';
 import { OllamaModelsService } from '../../services/ollama-models.service';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 
 @Component({
   selector: 'app-settings',
-  imports: [CommonModule, FormsModule, TranslocoModule],
+  imports: [CommonModule, FormsModule, TranslocoModule, MatFormFieldModule, MatInputModule, MatSelectModule],
   templateUrl: './settings.html',
   styleUrl: './settings.css',
 })

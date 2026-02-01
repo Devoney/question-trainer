@@ -11,10 +11,12 @@ import { addChapter } from '../../../state/app.actions';
 import { selectBookSelected } from '../../../state/app.selectors';
 import { TranslocoModule } from '@ngneat/transloco';
 import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-add-chapter',
-  imports: [CommonModule, FormsModule, TranslocoModule, MatButtonModule],
+  imports: [CommonModule, FormsModule, TranslocoModule, MatButtonModule, MatFormFieldModule, MatInputModule],
   templateUrl: './add-chapter.html',
   styleUrl: './add-chapter.css',
 })

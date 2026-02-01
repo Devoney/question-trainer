@@ -1,17 +1,18 @@
 <div>
-	@if (showLabel) {
-		<label class="font-weight-bold">{{ 'chapters.selector.label' | transloco }}</label>
-	}
-	<select
-		class="form-control"
-		[disabled]="disabled"
-		[ngModel]="selectedChapterId"
-		(ngModelChange)="onChapterSelected($event)"
-	>
-		@for (chapter of chapters; track chapter.id) {
-			<option [value]="chapter.id">
-				{{ chapter.nr + ('chapters.selector.separator' | transloco) + chapter.title }}
-			</option>
+	<mat-form-field appearance="outline" class="selector-field">
+		@if (showLabel) {
+			<mat-label>{{ 'chapters.selector.label' | transloco }}</mat-label>
 		}
-	</select>
+		<mat-select
+			[disabled]="disabled"
+			[ngModel]="selectedChapterId"
+			(ngModelChange)="onChapterSelected($event)"
+		>
+			@for (chapter of chapters; track chapter.id) {
+				<mat-option [value]="chapter.id">
+					{{ chapter.nr + ('chapters.selector.separator' | transloco) + chapter.title }}
+				</mat-option>
+			}
+		</mat-select>
+	</mat-form-field>
 </div>

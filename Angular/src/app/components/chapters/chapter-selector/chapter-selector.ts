@@ -8,10 +8,12 @@ import { Chapter } from '../../../models/chapter';
 import { selectChapterSelected, selectChaptersSortedByTitle } from '../../../state/app.selectors';
 import { setSelectedChapter } from '../../../state/app.actions';
 import { TranslocoModule } from '@ngneat/transloco';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
 
 @Component({
   selector: 'app-chapter-selector',
-  imports: [CommonModule, FormsModule, TranslocoModule],
+  imports: [CommonModule, FormsModule, TranslocoModule, MatFormFieldModule, MatSelectModule],
   templateUrl: './chapter-selector.html',
   styleUrl: './chapter-selector.css',
 })
