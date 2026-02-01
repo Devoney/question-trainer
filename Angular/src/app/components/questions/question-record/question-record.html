@@ -6,7 +6,7 @@
 	<td class="text-left" [attr.aria-label]="'questions.record.answerAria' | transloco" [innerHTML]="answerStr()"></td>
 	<td [attr.aria-label]="'questions.record.pageAria' | transloco">{{ question.pageNr }}</td>
 	<td class="text-center">
-		<div class="table-actions">
+		<div class="d-inline-flex align-items-center justify-content-center gap-1">
 			<app-icon-button
 				icon="edit"
 				[label]="'questions.record.edit' | transloco"

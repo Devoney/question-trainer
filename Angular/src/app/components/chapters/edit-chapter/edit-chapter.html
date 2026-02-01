@@ -1,7 +1,7 @@
 <div>
-	<div class="edit-chapter-row">
-		<div class="edit-chapter-number">
-			<mat-form-field appearance="outline" class="edit-chapter-field">
+	<div class="row g-2">
+		<div class="col-3 col-md-2">
+			<mat-form-field appearance="outline" class="w-100">
 				<mat-label>{{ 'chapters.nrLabel' | transloco }}</mat-label>
 				<input
 					matInput
@@ -15,9 +15,9 @@
 				/>
 			</mat-form-field>
 		</div>
-		<div class="edit-chapter-title">
-			<div class="input-group edit-chapter-input">
-				<mat-form-field appearance="outline" class="edit-chapter-field">
+		<div class="col">
+			<div class="d-flex align-items-start gap-2 flex-nowrap w-100">
+				<mat-form-field appearance="outline" class="flex-grow-1">
 					<mat-label>{{ 'chapters.titleLabel' | transloco }}</mat-label>
 					<input
 						matInput
@@ -31,7 +31,7 @@
 						[attr.aria-label]="'chapters.titleAria' | transloco"
 					/>
 				</mat-form-field>
-				<div class="input-group-button">
+				<div class="input-group-button mt-2">
 					<button
 						mat-raised-button
 						color="primary"

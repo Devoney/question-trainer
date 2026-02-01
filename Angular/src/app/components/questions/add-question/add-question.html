@@ -1,24 +1,24 @@
 <div>
-	<div class="add-question-header">
-		<div class="add-question-selector text-left">
+	<div class="row g-3 align-items-end">
+		<div class="col-12 col-md-4 text-left">
 			<app-book-selector />
 		</div>
-		<div class="add-question-selector text-left">
+		<div class="col-12 col-md-4 text-left">
 			@if (bookIsSelected) {
 				<app-chapter-selector />
 			}
 		</div>
-		<div class="add-question-page text-left">
+		<div class="col-12 col-md-2 text-left">
 			@if (chapterIsSelected) {
-				<mat-form-field appearance="outline" class="add-question-page-field">
+				<mat-form-field appearance="outline" class="w-100">
 					<mat-label>{{ 'questions.add.page' | transloco }}</mat-label>
 					<input matInput min="1" max="9999" type="number" [(ngModel)]="pageNr" />
 				</mat-form-field>
 			}
 		</div>
 	</div>
-	<div class="ckeditorrow add-question-editor">
-		<label class="font-weight-bold">{{ 'questions.add.question' | transloco }}</label>
+	<div class="ckeditorrow mt-3">
+		<label class="fw-bold">{{ 'questions.add.question' | transloco }}</label>
 		<ckeditor
 			[disabled]="!chapterIsSelected"
 			[editor]="editor"
@@ -26,8 +26,8 @@
 			[config]="editorConfig"
 		></ckeditor>
 	</div>
-	<div class="ckeditorrow add-question-editor">
-		<label class="font-weight-bold">{{ 'questions.add.answer' | transloco }}</label>
+	<div class="ckeditorrow mt-3">
+		<label class="fw-bold">{{ 'questions.add.answer' | transloco }}</label>
 		<ckeditor
 			[disabled]="(!chapterIsSelected || !hasQuestion) && !hasAnswer"
 			[editor]="editor"
@@ -35,7 +35,7 @@
 			[config]="editorConfig"
 		></ckeditor>
 	</div>
-	<div class="button-row add-question-actions">
+	<div class="button-row mt-3">
 		<button
 			class="w-100 mb-3"
 			mat-raised-button

@@ -35,7 +35,7 @@
 					</p>
 					<p>{{ 'importExport.selectHint' | transloco }}</p>
 					<input #importFileInput type="file" (change)="processFile($event)" hidden />
-					<mat-form-field appearance="outline" class="import-export-field">
+					<mat-form-field appearance="outline" class="w-100">
 						<mat-label>{{ 'importExport.selectHint' | transloco }}</mat-label>
 						<input
 							matInput
@@ -50,7 +50,7 @@
 					</mat-form-field>
 				</div>
 				<div class="modal-footer">
-					<div class="import-export-footer">
+					<div class="d-flex justify-content-end w-100">
 						<button
 							mat-raised-button
 							color="primary"

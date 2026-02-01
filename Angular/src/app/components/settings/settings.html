@@ -1,8 +1,8 @@
-<div class="settings">
-  <h4 class="settings-title">{{ 'settings.title' | transloco }}</h4>
-  <p class="settings-description">{{ 'settings.description' | transloco }}</p>
+<div class="text-start">
+  <h4 class="mb-1">{{ 'settings.title' | transloco }}</h4>
+  <p class="mb-3 text-muted">{{ 'settings.description' | transloco }}</p>
 
-  <mat-form-field appearance="outline" class="settings-field">
+  <mat-form-field appearance="outline" class="w-100 mb-3">
     <mat-label>{{ 'settings.ollamaBaseUrlLabel' | transloco }}</mat-label>
     <input
       matInput
@@ -14,7 +14,7 @@
     <mat-hint>{{ 'settings.ollamaBaseUrlHelp' | transloco }}</mat-hint>
   </mat-form-field>
 
-  <mat-form-field appearance="outline" class="settings-field">
+  <mat-form-field appearance="outline" class="w-100 mb-3">
     <mat-label>{{ 'settings.ollamaOcrUrlLabel' | transloco }}</mat-label>
     <input
       matInput
@@ -26,7 +26,7 @@
     <mat-hint>{{ 'settings.ollamaOcrUrlHelp' | transloco }}</mat-hint>
   </mat-form-field>
 
-  <mat-form-field appearance="outline" class="settings-field">
+  <mat-form-field appearance="outline" class="w-100 mb-3">
     <mat-label>{{ 'settings.aiGradingModelLabel' | transloco }}</mat-label>
     <mat-select
       [disabled]="modelsLoading || !availableModels.length"
@@ -42,7 +42,7 @@
     </mat-select>
   </mat-form-field>
 
-  <mat-form-field appearance="outline" class="settings-field">
+  <mat-form-field appearance="outline" class="w-100 mb-3">
     <mat-label>{{ 'settings.ocrModelLabel' | transloco }}</mat-label>
     <mat-select
       [disabled]="modelsLoading || !availableModels.length"
@@ -58,7 +58,7 @@
     </mat-select>
   </mat-form-field>
 
-  <mat-form-field appearance="outline" class="settings-field">
+  <mat-form-field appearance="outline" class="w-100 mb-3">
     <mat-label>{{ 'settings.qaModelLabel' | transloco }}</mat-label>
     <mat-select
       [disabled]="modelsLoading || !availableModels.length"
@@ -76,7 +76,7 @@
 </div>
 
 @if (modelsLoading) {
-  <div class="settings-status">{{ 'settings.modelsLoading' | transloco }}</div>
+  <div class="mt-2 small text-muted">{{ 'settings.modelsLoading' | transloco }}</div>
 } @else if (modelsError) {
-  <div class="settings-status settings-status-error">{{ 'settings.modelsError' | transloco }}</div>
+  <div class="mt-2 small text-danger">{{ 'settings.modelsError' | transloco }}</div>
 }

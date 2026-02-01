@@ -1,13 +1,1 @@
 
-.add-book-input {
-	width: 100%;
-	display: flex;
-	align-items: center;
-	gap: 8px;
-	flex-wrap: nowrap;
-}
-
-.add-book-field {
-	flex: 1 1 auto;
-	min-width: 0;
-}
