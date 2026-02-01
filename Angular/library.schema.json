@@ -1,0 +1,122 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/question-trainer/library.schema.json",
+  "title": "Question Trainer Library",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "books",
+    "libraryName",
+    "questionList",
+    "questionTestStatistics",
+    "repeatWrongQuestions",
+    "version",
+    "viewMode"
+  ],
+  "properties": {
+    "books": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/book" }
+    },
+    "bookSelected": {
+      "anyOf": [
+        { "$ref": "#/$defs/book" },
+        { "type": "null" }
+      ]
+    },
+    "bookEdited": {
+      "anyOf": [
+        { "$ref": "#/$defs/book" },
+        { "type": "null" }
+      ]
+    },
+    "chapterEdited": {
+      "anyOf": [
+        { "$ref": "#/$defs/chapter" },
+        { "type": "null" }
+      ]
+    },
+    "chapterSelected": {
+      "anyOf": [
+        { "$ref": "#/$defs/chapter" },
+        { "type": "null" }
+      ]
+    },
+    "currentQuestion": {
+      "anyOf": [
+        { "$ref": "#/$defs/question" },
+        { "type": "null" }
+      ]
+    },
+    "libraryName": {
+      "type": "string",
+      "minLength": 1
+    },
+    "questionEdited": {
+      "anyOf": [
+        { "$ref": "#/$defs/question" },
+        { "type": "null" }
+      ]
+    },
+    "questionList": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/question" }
+    },
+    "questionTestStatistics": { "$ref": "#/$defs/questionTestStatistics" },
+    "repeatWrongQuestions": { "type": "boolean" },
+    "version": { "type": "string" },
+    "viewMode": {
+      "type": "string",
+      "enum": ["both", "library", "questions"]
+    }
+  },
+  "$defs": {
+    "book": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "title", "chapters"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "title": { "type": "string", "minLength": 1 },
+        "chapters": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/chapter" }
+        }
+      }
+    },
+    "chapter": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "nr", "title", "questions"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "nr": { "type": "string", "minLength": 1 },
+        "title": { "type": "string", "minLength": 1 },
+        "questions": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/question" }
+        }
+      }
+    },
+    "question": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "question", "answer", "pageNr"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "question": { "type": "string", "minLength": 1 },
+        "answer": { "type": "string", "minLength": 1 },
+        "pageNr": { "type": "string", "minLength": 1 }
+      }
+    },
+    "questionTestStatistics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["wrongCount", "correctCount"],
+      "properties": {
+        "wrongCount": { "type": "integer", "minimum": 0 },
+        "correctCount": { "type": "integer", "minimum": 0 }
+      }
+    }
+  }
+}
