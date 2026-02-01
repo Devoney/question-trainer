@@ -80,6 +80,9 @@
 				}
 			</button>
 		</div>
+		@if (errorDetails) {
+			<div class="error-details" role="status">{{ errorDetails }}</div>
+		}
 		@if (isLoading || streamingText) {
 			<div class="streaming-output" role="status">
 				<div class="streaming-label">

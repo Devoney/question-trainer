@@ -18,6 +18,7 @@
           <div class="language-switcher">
             <button
               mat-icon-button
+              class="language-button"
               [class.active]="activeLang === 'en'"
               (click)="setLang('en')"
               [attr.aria-label]="'common.langEnglish' | transloco"
@@ -26,6 +27,7 @@
             </button>
             <button
               mat-icon-button
+              class="language-button"
               [class.active]="activeLang === 'nl'"
               (click)="setLang('nl')"
               [attr.aria-label]="'common.langDutch' | transloco"

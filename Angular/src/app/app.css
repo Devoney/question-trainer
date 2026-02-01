@@ -95,6 +95,14 @@ main {
 	gap: 8px;
 }
 
-.language-switcher .btn.active {
+.language-button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	line-height: 1;
+	font-size: 1.1rem;
+}
+
+.language-button.active {
 	border: 2px solid #2c3e50;
 }

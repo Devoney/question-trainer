@@ -36,10 +36,12 @@ export class IngestPhoto {
   additionalInstructions = '';
   isLoading = false;
   errorKey: string | null = null;
+  errorDetails: string | null = null;
   generatedQuestions: IngestedQuestion[] = [];
   hasChapterSelected = false;
   streamingText = '';
   streamingStage: 'ocr' | 'qa' | null = null;
+  isCreatingQa = false;
   @ViewChild('streamingTextRef') streamingTextRef?: ElementRef<HTMLPreElement>;
 
   constructor() {
@@ -59,9 +61,11 @@ export class IngestPhoto {
 
     const file = target.files[0];
     this.errorKey = null;
+    this.errorDetails = null;
     this.generatedQuestions = [];
     this.streamingText = '';
     this.streamingStage = null;
+    this.isCreatingQa = false;
 
     if (!file.type.startsWith('image/')) {
       this.errorKey = 'ingestPhoto.errors.invalidFile';
@@ -93,9 +97,11 @@ export class IngestPhoto {
 
     this.isLoading = true;
     this.errorKey = null;
+    this.errorDetails = null;
     this.generatedQuestions = [];
     this.streamingText = '';
     this.streamingStage = 'ocr';
+    this.isCreatingQa = false;
     const pageNr = this.pageNr.trim();
     const instructions = this.additionalInstructions.trim();
 
@@ -104,6 +110,7 @@ export class IngestPhoto {
       .pipe(
         finalize(() => {
           this.isLoading = false;
+          this.changeDetectorRef.detectChanges();
         })
       )
       .subscribe({
@@ -116,23 +123,67 @@ export class IngestPhoto {
             return;
           }
 
+          if (event.stage === 'ocr') {
+            this.streamingStage = 'ocr';
+            this.streamingText = event.text;
+            this.isCreatingQa = true;
+            this.changeDetectorRef.detectChanges();
+            setTimeout(() => this.scrollStreamingToBottom());
+            return;
+          }
+
           const items = event.items ?? [];
           const normalized = items.map((item) => ({
             ...item,
             pageNr: pageNr || item.pageNr || undefined,
           }));
           this.generatedQuestions = normalized;
+          this.isCreatingQa = false;
           if (!this.generatedQuestions.length) {
             this.errorKey = 'ingestPhoto.errors.noQuestions';
           }
           this.changeDetectorRef.detectChanges();
         },
-        error: () => {
+        error: (error: unknown) => {
           this.errorKey = 'ingestPhoto.errors.parseFailed';
+          this.errorDetails = this.getErrorMessage(error);
           this.streamingStage = null;
+          this.isCreatingQa = false;
           this.changeDetectorRef.detectChanges();
         },
       });
+  }
+
+  private getErrorMessage(error: unknown): string {
+    if (!error) {
+      return 'Unknown error.';
+    }
+    if (typeof error === 'string') {
+      return error;
+    }
+    if (error instanceof Error) {
+      return error.message;
+    }
+    if (typeof error === 'object') {
+      const record = error as { message?: string; statusText?: string; status?: number; error?: unknown };
+      if (record.message) {
+        return record.message;
+      }
+      if (record.statusText) {
+        return record.statusText;
+      }
+      if (typeof record.status === 'number') {
+        return `Request failed with status ${record.status}.`;
+      }
+      if (typeof record.error === 'string') {
+        return record.error;
+      }
+    }
+    try {
+      return JSON.stringify(error);
+    } catch {
+      return 'Unknown error.';
+    }
   }
 
   private scrollStreamingToBottom(): void {
