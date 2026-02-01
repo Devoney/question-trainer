@@ -4,8 +4,10 @@
 	display: flex;
 	align-items: flex-end;
 	gap: 8px;
+	flex-wrap: nowrap;
 }
 
 .edit-book-field {
 	flex: 1 1 auto;
+	min-width: 0;
 }

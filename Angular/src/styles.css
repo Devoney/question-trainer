@@ -2,6 +2,8 @@
 @import '@angular/material/prebuilt-themes/indigo-pink.css';
 
 .input-group-button {
+	display: flex;
+	align-items: center;
 	padding: 0;
 	background: transparent;
 	border: 0;

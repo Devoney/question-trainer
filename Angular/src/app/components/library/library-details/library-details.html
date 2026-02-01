@@ -12,7 +12,9 @@
 					(keydown.escape)="cancel()"
 				/>
 			</mat-form-field>
-			<button mat-raised-button color="primary" (click)="ok()">{{ 'common.save' | transloco }}</button>
+			<div class="input-group-button">
+				<button mat-raised-button color="primary" (click)="ok()">{{ 'common.save' | transloco }}</button>
+			</div>
 		</div>
 	</div>
 	<div class="library-details-memory text-left">

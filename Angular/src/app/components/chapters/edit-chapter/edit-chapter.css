@@ -16,10 +16,16 @@
 .edit-chapter-input {
 	width: 100%;
 	display: flex;
-	align-items: flex-end;
+	align-items: flex-start;
 	gap: 8px;
+	flex-wrap: nowrap;
+}
+
+.edit-chapter-input .input-group-button {
+	margin-top: 6px;
 }
 
 .edit-chapter-field {
-	width: 100%;
+	flex: 1 1 auto;
+	min-width: 0;
 }
