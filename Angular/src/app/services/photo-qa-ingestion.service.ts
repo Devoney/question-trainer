@@ -10,6 +10,13 @@ export interface IngestedQuestion {
   pageNr?: string;
 }
 
+export interface IngestionStreamEvent {
+  type: 'chunk' | 'result';
+  stage: 'ocr' | 'qa';
+  text: string;
+  items?: IngestedQuestion[];
+}
+
 interface OllamaResponse {
   response?: string;
 }
@@ -60,6 +67,73 @@ export class PhotoQaIngestionService {
           .pipe(map((response) => this.parseResponse(response)));
       })
     );
+  }
+
+  ingestPhotoStream(
+    base64Image: string,
+    pageNr?: string,
+    additionalInstructions?: string
+  ): Observable<IngestionStreamEvent> {
+    if (this.useMockResponse) {
+      return this.http.get<OllamaResponse>(this.mockResponseUrl).pipe(
+        map((response) => {
+          const items = this.parseResponse(response);
+          return {
+            type: 'result',
+            stage: 'qa',
+            text: response?.response?.trim() ?? '',
+            items,
+          } as IngestionStreamEvent;
+        })
+      );
+    }
+
+    return new Observable<IngestionStreamEvent>((observer) => {
+      const controller = new AbortController();
+
+      const run = async (): Promise<void> => {
+        const ocrPayload = {
+          model: this.getOcrModel(),
+          prompt: this.buildOcrPrompt(),
+          images: [base64Image],
+          stream: true,
+        };
+
+        const ocrText = await this.streamOllamaRequest(
+          this.getOcrOllamaUrl(),
+          ocrPayload,
+          (chunk) => observer.next({ type: 'chunk', stage: 'ocr', text: chunk }),
+          controller.signal
+        );
+
+        if (!ocrText.trim()) {
+          throw new Error('Empty OCR response.');
+        }
+
+        const prompt = this.buildQaPrompt(ocrText, pageNr, additionalInstructions);
+        const qaPayload = {
+          model: this.getQaModel(),
+          prompt,
+          stream: false,
+        };
+
+        const qaResponse = await this.requestOllamaOnce(
+          this.getQaOllamaUrl(),
+          qaPayload,
+          controller.signal
+        );
+
+        const items = this.parseResponse(qaResponse);
+        observer.next({ type: 'result', stage: 'qa', text: qaResponse?.response ?? '', items });
+        observer.complete();
+      };
+
+      run().catch((error) => observer.error(error));
+
+      return () => {
+        controller.abort();
+      };
+    });
   }
 
   getQaOllamaUrl(): string {
@@ -197,6 +271,82 @@ export class PhotoQaIngestionService {
       throw new Error('Empty OCR response.');
     }
     return this.stripCodeFences(text);
+  }
+
+  private async streamOllamaRequest(
+    url: string,
+    payload: unknown,
+    onChunk: (chunk: string) => void,
+    signal: AbortSignal
+  ): Promise<string> {
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+      signal,
+    });
+
+    if (!response.ok || !response.body) {
+      throw new Error('Failed to reach Ollama endpoint.');
+    }
+
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder();
+    let buffer = '';
+    let fullText = '';
+
+    while (true) {
+      const { value, done } = await reader.read();
+      if (done) {
+        break;
+      }
+      buffer += decoder.decode(value, { stream: true });
+      const lines = buffer.split('\n');
+      buffer = lines.pop() ?? '';
+
+      for (const line of lines) {
+        const trimmed = line.trim();
+        if (!trimmed) {
+          continue;
+        }
+        const parsed = JSON.parse(trimmed) as OllamaResponse & { done?: boolean };
+        const chunk = parsed.response ?? '';
+        if (chunk) {
+          fullText += chunk;
+          onChunk(chunk);
+        }
+        if (parsed.done) {
+          break;
+        }
+      }
+    }
+
+    const leftover = buffer.trim();
+    if (leftover) {
+      const parsed = JSON.parse(leftover) as OllamaResponse & { done?: boolean };
+      const chunk = parsed.response ?? '';
+      if (chunk) {
+        fullText += chunk;
+        onChunk(chunk);
+      }
+    }
+
+    return fullText;
+  }
+
+  private async requestOllamaOnce(url: string, payload: unknown, signal: AbortSignal): Promise<OllamaResponse> {
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+      signal,
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to reach Ollama endpoint.');
+    }
+
+    return (await response.json()) as OllamaResponse;
   }
 
   private stripCodeFences(value: string): string {

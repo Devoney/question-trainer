@@ -79,6 +79,23 @@
 				}
 			</button>
 		</div>
+		@if (isLoading || streamingText) {
+			<div class="streaming-output" role="status">
+				<div class="streaming-label">
+					{{ 'ingestPhoto.streaming.label' | transloco }}
+					<span class="streaming-stage">
+						@if (streamingStage === 'ocr') {
+							{{ 'ingestPhoto.streaming.ocr' | transloco }}
+						} @else if (streamingStage === 'qa') {
+							{{ 'ingestPhoto.streaming.qa' | transloco }}
+						} @else {
+							{{ 'ingestPhoto.streaming.waiting' | transloco }}
+						}
+					</span>
+				</div>
+				<pre class="streaming-text" #streamingTextRef>{{ streamingText }}</pre>
+			</div>
+		}
 	</div>
 
 	@if (generatedQuestions.length) {

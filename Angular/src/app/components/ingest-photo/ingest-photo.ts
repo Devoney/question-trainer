@@ -1,9 +1,9 @@
-import { ChangeDetectorRef, Component, DestroyRef, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, DestroyRef, ElementRef, ViewChild, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { finalize, take } from 'rxjs/operators';
+import { finalize } from 'rxjs/operators';
 import { v4 as uuid } from 'uuid';
 import { AppState } from '../../state/app-state';
 import { selectBookSelected, selectChapterSelected } from '../../state/app.selectors';
@@ -11,7 +11,7 @@ import { addQuestion } from '../../state/app.actions';
 import { BookSelector } from '../books/book-selector/book-selector';
 import { ChapterSelector } from '../chapters/chapter-selector/chapter-selector';
 import { TranslocoModule } from '@ngneat/transloco';
-import { PhotoQaIngestionService, IngestedQuestion } from '../../services/photo-qa-ingestion.service';
+import { PhotoQaIngestionService, IngestedQuestion, IngestionStreamEvent } from '../../services/photo-qa-ingestion.service';
 
 @Component({
   selector: 'app-ingest-photo',
@@ -37,6 +37,9 @@ export class IngestPhoto {
   errorKey: string | null = null;
   generatedQuestions: IngestedQuestion[] = [];
   hasChapterSelected = false;
+  streamingText = '';
+  streamingStage: 'ocr' | 'qa' | null = null;
+  @ViewChild('streamingTextRef') streamingTextRef?: ElementRef<HTMLPreElement>;
 
   constructor() {
     this.store
@@ -56,6 +59,8 @@ export class IngestPhoto {
     const file = target.files[0];
     this.errorKey = null;
     this.generatedQuestions = [];
+    this.streamingText = '';
+    this.streamingStage = null;
 
     if (!file.type.startsWith('image/')) {
       this.errorKey = 'ingestPhoto.errors.invalidFile';
@@ -88,19 +93,29 @@ export class IngestPhoto {
     this.isLoading = true;
     this.errorKey = null;
     this.generatedQuestions = [];
+    this.streamingText = '';
+    this.streamingStage = 'ocr';
     const pageNr = this.pageNr.trim();
     const instructions = this.additionalInstructions.trim();
 
     this.ingestionService
-      .ingestPhoto(this.photoBase64, pageNr || undefined, instructions || undefined)
+      .ingestPhotoStream(this.photoBase64, pageNr || undefined, instructions || undefined)
       .pipe(
-        take(1),
         finalize(() => {
           this.isLoading = false;
         })
       )
       .subscribe({
-        next: (items) => {
+        next: (event: IngestionStreamEvent) => {
+          if (event.type === 'chunk') {
+            this.streamingStage = 'ocr';
+            this.streamingText += event.text;
+            this.changeDetectorRef.detectChanges();
+            setTimeout(() => this.scrollStreamingToBottom());
+            return;
+          }
+
+          const items = event.items ?? [];
           const normalized = items.map((item) => ({
             ...item,
             pageNr: pageNr || item.pageNr || undefined,
@@ -109,15 +124,22 @@ export class IngestPhoto {
           if (!this.generatedQuestions.length) {
             this.errorKey = 'ingestPhoto.errors.noQuestions';
           }
-          this.isLoading = false;
           this.changeDetectorRef.detectChanges();
         },
         error: () => {
           this.errorKey = 'ingestPhoto.errors.parseFailed';
-          this.isLoading = false;
+          this.streamingStage = null;
           this.changeDetectorRef.detectChanges();
         },
       });
+  }
+
+  private scrollStreamingToBottom(): void {
+    const element = this.streamingTextRef?.nativeElement;
+    if (!element) {
+      return;
+    }
+    element.scrollTop = element.scrollHeight;
   }
 
   removeGeneratedQuestion(index: number): void {

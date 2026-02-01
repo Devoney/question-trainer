@@ -124,6 +124,12 @@
     "itemLabel": "Item {{index}}",
     "pageLabel": "Page {{pageNr}}",
     "addButton": "Add to library",
+    "streaming": {
+      "label": "Streaming response:",
+      "ocr": "OCR text",
+      "qa": "Q&A generation",
+      "waiting": "Waiting for response"
+    },
     "errors": {
       "invalidFile": "Please select a JPG or PNG image.",
       "fileTooLarge": "The selected image is too large. Maximum size is 5 MB.",

@@ -124,6 +124,12 @@
     "itemLabel": "Item {{index}}",
     "pageLabel": "Pagina {{pageNr}}",
     "addButton": "Toevoegen aan bibliotheek",
+    "streaming": {
+      "label": "Streamende respons:",
+      "ocr": "OCR-tekst",
+      "qa": "Q&A-generatie",
+      "waiting": "Wachten op respons"
+    },
     "errors": {
       "invalidFile": "Selecteer een JPG- of PNG-afbeelding.",
       "fileTooLarge": "De geselecteerde afbeelding is te groot. Maximale grootte is 5 MB.",
