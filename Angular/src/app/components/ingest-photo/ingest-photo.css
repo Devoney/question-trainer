@@ -137,3 +137,9 @@
 	color: #6c757d;
 	margin-top: 0.25rem;
 }
+
+.small-button {
+	font-size: 0.75rem;
+	padding: 2px 8px;
+	min-height: 28px;
+}

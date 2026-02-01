@@ -1,15 +1,17 @@
 <div style="width: 70px;">
 	<button
+		mat-icon-button
+		class="add-remove-button"
 		[attr.aria-label]="'buttons.remove' | transloco"
-		class="btn btn-xs"
 		[title]="removeFromText"
 		(click)="click('remove')"
 	>
 		<fa-icon icon="minus" [style]="{ color: removeColor }"></fa-icon>
 	</button>
 	<button
+		mat-icon-button
+		class="add-remove-button"
 		[attr.aria-label]="'buttons.add' | transloco"
-		class="btn btn-xs"
 		[title]="addToText"
 		(click)="click('add')"
 	>

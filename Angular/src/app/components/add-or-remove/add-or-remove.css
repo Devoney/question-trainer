@@ -1,7 +1,10 @@
-.btn-group-xs > .btn,
-.btn-xs {
-	padding: 0.25rem 0.4rem;
+.add-remove-button {
+	width: 28px;
+	height: 28px;
+	line-height: 28px;
+	padding: 0;
+}
+
+.add-remove-button fa-icon {
 	font-size: 0.875rem;
-	line-height: 0.5;
-	border-radius: 0.2rem;
 }

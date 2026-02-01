@@ -8,10 +8,11 @@ import { ViewModeItem } from '../view-mode-item/view-mode-item';
 import { AppState } from '../../state/app-state';
 import { selectViewMode } from '../../state/app.selectors';
 import { setViewMode } from '../../state/app.actions';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-view-mode',
-  imports: [CommonModule, FontAwesomeModule, ViewModeItem, TranslocoModule],
+  imports: [CommonModule, FontAwesomeModule, ViewModeItem, TranslocoModule, MatButtonModule],
   templateUrl: './view-mode.html',
   styleUrl: './view-mode.css',
 })

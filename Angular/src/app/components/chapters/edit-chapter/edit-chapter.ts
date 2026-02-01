@@ -9,10 +9,11 @@ import { AppState } from '../../../state/app-state';
 import { editChapter, setEditedChapter } from '../../../state/app.actions';
 import { selectBookSelected, selectChapterEdited } from '../../../state/app.selectors';
 import { TranslocoModule } from '@ngneat/transloco';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-edit-chapter',
-  imports: [CommonModule, FormsModule, TranslocoModule],
+  imports: [CommonModule, FormsModule, TranslocoModule, MatButtonModule],
   templateUrl: './edit-chapter.html',
   styleUrl: './edit-chapter.css',
 })

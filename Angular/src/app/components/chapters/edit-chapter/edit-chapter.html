@@ -29,9 +29,8 @@
 				/>
 				<div class="input-group-append">
 					<button
-						class="btn input-group-append"
-						[class.btn-primary]="canExecute"
-						[class.btn-secondary]="!canExecute"
+						mat-raised-button
+						color="primary"
 						[disabled]="!canExecute"
 						(click)="ok()"
 					>

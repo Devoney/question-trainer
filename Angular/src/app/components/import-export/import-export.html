@@ -19,7 +19,13 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<h5 class="modal-title">{{ 'importExport.modalTitle' | transloco }}</h5>
-					<button type="button" class="close" [attr.aria-label]="'importExport.close' | transloco" (click)="closeModal()">
+					<button
+						mat-icon-button
+						type="button"
+						class="close"
+						[attr.aria-label]="'importExport.close' | transloco"
+						(click)="closeModal()"
+					>
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
@@ -33,8 +39,9 @@
 				<div class="modal-footer">
 					<div class="import-export-footer">
 						<button
+							mat-raised-button
+							color="primary"
 							type="button"
-							class="btn btn-primary"
 							[attr.aria-label]="'importExport.okAria' | transloco"
 							(click)="executeImport()"
 							[disabled]="jsonToImport == null"

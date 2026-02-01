@@ -16,6 +16,7 @@ import { ViewMode } from './components/view-mode/view-mode';
 import { AppState } from './state/app-state';
 import { selectViewMode, selectVersion } from './state/app.selectors';
 import { Observable } from 'rxjs';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-root',
@@ -24,6 +25,7 @@ import { Observable } from 'rxjs';
     CommonModule,
     FontAwesomeModule,
     TranslocoModule,
+    MatButtonModule,
     ImportExport,
     Library,
     QuestionList,

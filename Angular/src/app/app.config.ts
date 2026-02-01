@@ -9,6 +9,7 @@ import { provideEffects } from '@ngrx/effects';
 import { appReducer } from './state/app.reducer';
 import { AppEffects } from './state/app.effects';
 import { TranslocoHttpLoader } from './transloco-loader';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -17,6 +18,7 @@ export const appConfig: ApplicationConfig = {
     provideStore({ app: appReducer }),
     provideEffects(AppEffects),
     provideHttpClient(),
+    provideAnimations(),
     provideTransloco({
       config: translocoConfig({
         availableLangs: ['en', 'nl'],

@@ -10,17 +10,34 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<h5 class="modal-title">{{ title }}</h5>
-				<button type="button" class="close" [attr.aria-label]="'modal.close' | transloco" (click)="cancel()">
+				<button
+					mat-icon-button
+					type="button"
+					class="close"
+					[attr.aria-label]="'modal.close' | transloco"
+					(click)="cancel()"
+				>
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
 			<div class="modal-body">{{ text }}</div>
 			<div class="modal-footer">
 				<div class="question-modal-footer">
-					<button type="button" [attr.aria-label]="'modal.okAria' | transloco" class="btn btn-secondary" (click)="ok()">
+					<button
+						mat-stroked-button
+						color="primary"
+						type="button"
+						[attr.aria-label]="'modal.okAria' | transloco"
+						(click)="ok()"
+					>
 						{{ okText }}
 					</button>
-					<button type="button" class="btn btn-secondary" [attr.aria-label]="'modal.cancelAria' | transloco" (click)="cancel()">
+					<button
+						mat-stroked-button
+						type="button"
+						[attr.aria-label]="'modal.cancelAria' | transloco"
+						(click)="cancel()"
+					>
 						{{ cancelText }}
 					</button>
 				</div>

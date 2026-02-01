@@ -7,10 +7,11 @@ import { AppState } from '../../../state/app-state';
 import { selectQuestionList } from '../../../state/app.selectors';
 import { clearQuestionList } from '../../../state/app.actions';
 import { TranslocoModule } from '@ngneat/transloco';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-clear-button',
-  imports: [CommonModule, TranslocoModule],
+  imports: [CommonModule, TranslocoModule, MatButtonModule],
   templateUrl: './clear-button.html',
   styleUrl: './clear-button.css',
 })

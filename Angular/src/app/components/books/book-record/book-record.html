@@ -16,18 +16,20 @@
 		<span [attr.aria-label]="'books.record.questionsAria' | transloco">{{ nrOfQuestions }}</span>
 	</td>
 	<td class="text-center table-col-delete">
-		<app-icon-button
-			icon="edit"
-			[label]="'books.record.edit' | transloco"
-			[argument]="book"
-			(buttonClick)="edit(book)"
-			[disabled]="bookInEditMode"
-		/>
-		<app-icon-button
-			icon="trash-alt"
-			[label]="'books.record.trash' | transloco"
-			[argument]="book"
-			(buttonClick)="trash(book)"
-			[disabled]="bookInEditMode"
-		/>
+		<div class="table-actions">
+			<app-icon-button
+				icon="edit"
+				[label]="'books.record.edit' | transloco"
+				[argument]="book"
+				(buttonClick)="edit(book)"
+				[disabled]="bookInEditMode"
+			/>
+			<app-icon-button
+				icon="trash-alt"
+				[label]="'books.record.trash' | transloco"
+				[argument]="book"
+				(buttonClick)="trash(book)"
+				[disabled]="bookInEditMode"
+			/>
+		</div>
 	</td>

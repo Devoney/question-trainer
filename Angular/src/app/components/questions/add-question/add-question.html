@@ -39,9 +39,8 @@
 	</div>
 	<div class="button-row add-question-actions">
 		<button
-			class="btn"
-			[class.btn-primary]="canSave"
-			[class.btn-secondary]="!canSave"
+			mat-raised-button
+			color="primary"
 			(click)="addOrEdit()"
 			[disabled]="!chapterIsSelected"
 		>

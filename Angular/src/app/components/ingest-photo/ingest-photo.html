@@ -65,7 +65,8 @@
 		}
 		<div class="actions">
 			<button
-				class="btn btn-primary"
+				mat-raised-button
+				color="primary"
 				type="button"
 				(click)="generateQuestions()"
 				[disabled]="!photoBase64 || isLoading || !hasChapterSelected"
@@ -111,7 +112,9 @@
 								{{ 'ingestPhoto.itemLabel' | transloco:{ index: $index + 1 } }}
 							</span>
 							<button
-								class="btn btn-sm btn-outline-danger"
+								mat-stroked-button
+								color="warn"
+								class="small-button"
 								type="button"
 								[disabled]="isLoading"
 								(click)="removeGeneratedQuestion($index)"
@@ -132,7 +135,7 @@
 				}
 			</ul>
 			<div class="actions">
-				<button class="btn btn-success" type="button" (click)="addToLibrary()">
+				<button mat-raised-button color="accent" type="button" (click)="addToLibrary()">
 					{{ 'ingestPhoto.addButton' | transloco }}
 				</button>
 			</div>

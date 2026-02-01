@@ -7,18 +7,20 @@
 		{{ nrOfQuestions }}
 	</td>
 	<td class="text-center">
-		<app-icon-button
-			icon="edit"
-			[label]="'chapters.record.edit' | transloco"
-			[argument]="chapter"
-			(buttonClick)="edit(chapter)"
-			[disabled]="chapterInEditMode"
-		/>
-		<app-icon-button
-			icon="trash-alt"
-			[label]="'chapters.record.trash' | transloco"
-			[argument]="chapter"
-			(buttonClick)="trash(chapter)"
-			[disabled]="chapterInEditMode"
-		/>
+		<div class="table-actions">
+			<app-icon-button
+				icon="edit"
+				[label]="'chapters.record.edit' | transloco"
+				[argument]="chapter"
+				(buttonClick)="edit(chapter)"
+				[disabled]="chapterInEditMode"
+			/>
+			<app-icon-button
+				icon="trash-alt"
+				[label]="'chapters.record.trash' | transloco"
+				[argument]="chapter"
+				(buttonClick)="trash(chapter)"
+				[disabled]="chapterInEditMode"
+			/>
+		</div>
 	</td>

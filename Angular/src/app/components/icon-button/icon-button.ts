@@ -1,9 +1,10 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-icon-button',
-  imports: [FontAwesomeModule],
+  imports: [FontAwesomeModule, MatButtonModule],
   templateUrl: './icon-button.html',
   styleUrl: './icon-button.css',
 })
@@ -19,12 +20,11 @@ export class IconButtonComponent {
   @Output() buttonClick = new EventEmitter<unknown>();
 
   cssClass(): string {
-    let cls = 'btn ';
-    cls += `btn-${this.size} `;
+    const classes = [`icon-button`, `icon-button-${this.size}`];
     if (this.outline) {
-      cls += 'btn-outline-secondary ';
+      classes.push('icon-button-outline');
     }
-    return cls.trim();
+    return classes.join(' ');
   }
 
   click(): void {

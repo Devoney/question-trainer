@@ -1,18 +1,33 @@
-.btn-xs {
+.icon-button {
+	margin-right: 4px;
+}
+
+:host {
+	display: inline-flex;
+}
+
+.icon-button-xs {
 	padding: 0.25rem 0.4rem;
 	font-size: 0.875rem;
 	line-height: 0.5;
 	border-radius: 0.2rem;
+	width: 28px;
+	height: 28px;
+	min-width: 28px;
 }
 
-.btn-m {
+.icon-button-m {
 	font-size: 1.25rem;
 	border-radius: 0.4rem;
 }
 
-.btn-l {
+.icon-button-l {
 	padding: 0;
 	font-size: 2rem;
 	line-height: 2;
 	border-radius: 1rem;
+}
+
+.icon-button-outline {
+	border: 1px solid #c0c0c0;
 }

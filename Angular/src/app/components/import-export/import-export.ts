@@ -7,10 +7,11 @@ import { selectAppState } from '../../state/app.selectors';
 import { dateString } from '../../utils/date-string';
 import { IconButtonComponent } from '../icon-button/icon-button';
 import { TranslocoModule } from '@ngneat/transloco';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-import-export',
-  imports: [CommonModule, IconButtonComponent, TranslocoModule],
+  imports: [CommonModule, IconButtonComponent, TranslocoModule, MatButtonModule],
   templateUrl: './import-export.html',
   styleUrl: './import-export.css',
 })

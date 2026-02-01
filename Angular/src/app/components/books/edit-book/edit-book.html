@@ -17,9 +17,8 @@
 		/>
 		<div class="input-group-append">
 			<button
-				class="btn input-group-append"
-				[class.btn-primary]="!invalidTitle"
-				[class.btn-secondary]="invalidTitle"
+				mat-raised-button
+				color="primary"
 				[disabled]="invalidTitle"
 				id="btn-ok-book"
 				(click)="ok()"

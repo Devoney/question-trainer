@@ -15,10 +15,11 @@ import { selectCurrentQuestion, selectQuestionList, selectQuestionStatistics, se
 import { AnswerCheckerService } from '../../../services/answer-checker.service';
 import { take } from 'rxjs/operators';
 import { TranslocoModule } from '@ngneat/transloco';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-question-trainer',
-  imports: [CommonModule, FormsModule, CKEditorModule, IconButtonComponent, TranslocoModule],
+  imports: [CommonModule, FormsModule, CKEditorModule, IconButtonComponent, TranslocoModule, MatButtonModule],
   templateUrl: './question-trainer.html',
   styleUrl: './question-trainer.css',
 })

@@ -8,10 +8,11 @@ import { AppState } from '../../../state/app-state';
 import { selectLibraryName } from '../../../state/app.selectors';
 import { setLibraryName } from '../../../state/app.actions';
 import { TranslocoModule } from '@ngneat/transloco';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-library-details',
-  imports: [CommonModule, FormsModule, MemoryUsage, TranslocoModule],
+  imports: [CommonModule, FormsModule, MemoryUsage, TranslocoModule, MatButtonModule],
   templateUrl: './library-details.html',
   styleUrl: './library-details.css',
 })

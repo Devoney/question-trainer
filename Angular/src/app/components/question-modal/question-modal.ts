@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 import { MessageBusService } from '../../services/message-bus.service';
 import { QuestionModalArgs } from '../../types/question-modal-args';
 import { TranslocoModule } from '@ngneat/transloco';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-question-modal',
-  imports: [CommonModule, TranslocoModule],
+  imports: [CommonModule, TranslocoModule, MatButtonModule],
   templateUrl: './question-modal.html',
   styleUrl: './question-modal.css',
 })

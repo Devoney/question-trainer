@@ -14,10 +14,11 @@ import { Question } from '../../../models/question';
 import { addQuestion, editQuestion, setEditedQuestion } from '../../../state/app.actions';
 import { selectBookSelected, selectChapterSelected, selectQuestionEdited } from '../../../state/app.selectors';
 import { TranslocoModule } from '@ngneat/transloco';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-add-question',
-  imports: [CommonModule, FormsModule, CKEditorModule, BookSelector, ChapterSelector, TranslocoModule],
+  imports: [CommonModule, FormsModule, CKEditorModule, BookSelector, ChapterSelector, TranslocoModule, MatButtonModule],
   templateUrl: './add-question.html',
   styleUrl: './add-question.css',
 })

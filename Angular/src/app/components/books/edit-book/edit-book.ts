@@ -1,4 +1,4 @@
-import { Component, DestroyRef, ElementRef, OnInit, ViewChild, afterNextRender, inject } from '@angular/core';
+import { Component, DestroyRef, ElementRef, Injector, OnInit, ViewChild, afterNextRender, inject, runInInjectionContext } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Store } from '@ngrx/store';
@@ -9,16 +9,18 @@ import { Book } from '../../../models/book';
 import { editBookTitle, setEditedBook } from '../../../state/app.actions';
 import { selectBookEdited, selectBooks } from '../../../state/app.selectors';
 import { TranslocoModule } from '@ngneat/transloco';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-edit-book',
-  imports: [CommonModule, FormsModule, TranslocoModule],
+  imports: [CommonModule, FormsModule, TranslocoModule, MatButtonModule],
   templateUrl: './edit-book.html',
   styleUrl: './edit-book.css',
 })
 export class EditBook implements OnInit {
   private readonly store = inject<Store<{ app: AppState }>>(Store);
   private readonly destroyRef = inject(DestroyRef);
+  private readonly injector = inject(Injector);
   @ViewChild('bookTitleText') bookTitleText?: ElementRef<HTMLInputElement>;
 
   buttonText = 'Save';
@@ -102,8 +104,10 @@ export class EditBook implements OnInit {
   }
 
   private setFocus(): void {
-    afterNextRender(() => {
-      this.bookTitleText?.nativeElement.focus();
+    runInInjectionContext(this.injector, () => {
+      afterNextRender(() => {
+        this.bookTitleText?.nativeElement.focus();
+      });
     });
   }
 }

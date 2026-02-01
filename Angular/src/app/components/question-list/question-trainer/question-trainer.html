@@ -14,10 +14,9 @@
 			<div class="trainer-header-title h5">{{ 'trainer.title' | transloco }}</div>
 			<div class="trainer-header-right">
 				<button
+					mat-raised-button
+					color="primary"
 					[attr.aria-label]="'trainer.startAria' | transloco"
-					class="btn"
-					[class.btn-primary]="canStart"
-					[class.btn-secondary]="!canStart"
 					(click)="start()"
 					[disabled]="!canStart"
 				>
@@ -87,7 +86,7 @@
 				@if (useAiGrading && hasQuestion) {
 					<div class="ai-check-container">
 						@if (!aiNeedsContinue) {
-							<button class="btn btn-secondary" [disabled]="!canCheckAnswer" (click)="checkAnswerWithAi()">
+							<button mat-stroked-button color="primary" [disabled]="!canCheckAnswer" (click)="checkAnswerWithAi()">
 								{{ 'trainer.checkAnswer' | transloco }}
 							</button>
 						}
@@ -116,8 +115,9 @@
 			@if (!useAiGrading) {
 				<div class="trainer-footer-left">
 					<button
+						mat-raised-button
+						color="warn"
 						[attr.aria-label]="'trainer.wrongAria' | transloco"
-						class="btn btn-danger"
 						[disabled]="!hasQuestion || !showAnswer"
 						(click)="answerIsWrong()"
 					>
@@ -132,8 +132,9 @@
 			@if (!useAiGrading) {
 				<div class="trainer-footer-right">
 					<button
+						mat-raised-button
+						color="accent"
 						[attr.aria-label]="'trainer.correctAria' | transloco"
-						class="btn btn-success"
 						[disabled]="!hasQuestion || !showAnswer"
 						(click)="answerIsCorrect()"
 					>
@@ -147,8 +148,9 @@
 			@if (useAiGrading && aiNeedsContinue && aiWasCorrect === false) {
 				<div class="trainer-footer-right">
 					<button
+						mat-raised-button
+						color="primary"
 						[attr.aria-label]="'trainer.continueAria' | transloco"
-						class="btn btn-primary"
 						(click)="continueAfterAiCheck()"
 					>
 						{{ 'trainer.continue' | transloco }}

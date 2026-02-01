@@ -1,5 +1,6 @@
 <button
-	class="btn btn-secondary"
+	mat-stroked-button
+	color="primary"
 	(click)="clear()"
 	[disabled]="listHasNoQuestions$ | async"
 	[attr.aria-label]="'questionList.clearAria' | transloco"
