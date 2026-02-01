@@ -138,7 +138,7 @@
     },
     "ocrPrompt": "Haal alle leesbare tekst uit de afbeelding. Geef alleen platte tekst terug, geen markdown of JSON.",
     "prompt": {
-      "intro": "Je haalt studievragen uit een foto van een lesboek.",
+      "intro": "Op basis van een foto van een studieboek moet je een lijst van vragen en de daarbij horende antwoorden opstellen. Je analyseert dus de tekst en formuleert vragen met bijpassend antwoord. Wees gedetailleerd. Ieder feit of concept dat in de tekst wordt genoemd, moet worden omgezet in een vraag en antwoord. Zorg ervoor dat de vragen duidelijk en beknopt zijn, en dat de antwoorden volledig en nauwkeurig de informatie uit de tekst weergeven.",
       "format": "Geef alleen JSON terug als een array met objecten met de sleutels: question, answer, pageNr (optioneel).",
       "empty": "Als je geen vraag en antwoord paren kunt bepalen op basis van de gegeven tekst, geef een lege array [] terug.",
       "language": "Schrijf de vraag en het antwoord in {{language}}.",
@@ -162,7 +162,10 @@
     "ocrModelLabel": "OCR-model",
     "ocrModelPlaceholder": "bijv. qwen3-vl:2b",
     "qaModelLabel": "Q&A-model",
-    "qaModelPlaceholder": "bijv. qwen3-vl:2b"
+    "qaModelPlaceholder": "bijv. qwen3-vl:2b",
+    "modelsLoading": "Beschikbare modellen laden...",
+    "modelsError": "Kon modellen niet laden van de Ollama-server.",
+    "modelsEmpty": "Geen modellen beschikbaar"
   },
   "viewMode": {
     "label": "Weergavemodus",

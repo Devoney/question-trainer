@@ -138,7 +138,7 @@
     },
     "ocrPrompt": "Extract all readable text from the image. Return plain text only, no markdown or JSON.",
     "prompt": {
-      "intro": "You are extracting study questions from a textbook photo.",
+      "intro": "Based on a photo of a study book, you must create a list of questions and the corresponding answers. Analyze the text and formulate questions with matching answers. Be detailed. Every fact or concept mentioned in the text must be converted into a question and answer. Ensure the questions are clear and concise, and that the answers fully and accurately reflect the information from the text.",
       "format": "Return JSON only as an array of objects with keys: question, answer, pageNr (optional).",
       "empty": "If you cannot create question and answer pairs from the text, return an empty array [].",
       "language": "Write the question and answer in {{language}}.",
@@ -162,7 +162,10 @@
     "ocrModelLabel": "OCR model",
     "ocrModelPlaceholder": "e.g. qwen3-vl:2b",
     "qaModelLabel": "Q&A model",
-    "qaModelPlaceholder": "e.g. qwen3-vl:2b"
+    "qaModelPlaceholder": "e.g. qwen3-vl:2b",
+    "modelsLoading": "Loading available models...",
+    "modelsError": "Could not load models from the Ollama server.",
+    "modelsEmpty": "No models available"
   },
   "viewMode": {
     "label": "View mode",

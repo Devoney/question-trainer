@@ -29,9 +29,26 @@
   border: 1px solid #ccc;
 }
 
+.settings-label select {
+  font-weight: 400;
+  padding: 6px 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
 .settings-help {
   display: block;
   margin-top: 4px;
   font-size: 0.8rem;
   color: #666;
+}
+
+.settings-status {
+  margin-top: 8px;
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.settings-status-error {
+  color: #b00020;
 }

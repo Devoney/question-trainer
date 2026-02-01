@@ -31,36 +31,60 @@
   <div class="settings-section">
     <label class="settings-label">
       <span>{{ 'settings.aiGradingModelLabel' | transloco }}</span>
-      <input
-        type="text"
-        [placeholder]="'settings.aiGradingModelPlaceholder' | transloco"
-        [value]="aiGradingModel"
-        (input)="updateAiGradingModel($event)"
-      />
+      <select
+        [disabled]="modelsLoading || !availableModels.length"
+        [(ngModel)]="aiGradingModel"
+        (ngModelChange)="updateAiGradingModel($event)"
+      >
+        @if (!availableModels.length) {
+          <option value="">{{ 'settings.modelsEmpty' | transloco }}</option>
+        }
+        @for (model of availableModels; track model) {
+          <option [value]="model">{{ model }}</option>
+        }
+      </select>
     </label>
   </div>
 
   <div class="settings-section">
     <label class="settings-label">
       <span>{{ 'settings.ocrModelLabel' | transloco }}</span>
-      <input
-        type="text"
-        [placeholder]="'settings.ocrModelPlaceholder' | transloco"
-        [value]="ocrModel"
-        (input)="updateOcrModel($event)"
-      />
+      <select
+        [disabled]="modelsLoading || !availableModels.length"
+        [(ngModel)]="ocrModel"
+        (ngModelChange)="updateOcrModel($event)"
+      >
+        @if (!availableModels.length) {
+          <option value="">{{ 'settings.modelsEmpty' | transloco }}</option>
+        }
+        @for (model of availableModels; track model) {
+          <option [value]="model">{{ model }}</option>
+        }
+      </select>
     </label>
   </div>
 
   <div class="settings-section">
     <label class="settings-label">
       <span>{{ 'settings.qaModelLabel' | transloco }}</span>
-      <input
-        type="text"
-        [placeholder]="'settings.qaModelPlaceholder' | transloco"
-        [value]="qaModel"
-        (input)="updateQaModel($event)"
-      />
+      <select
+        [disabled]="modelsLoading || !availableModels.length"
+        [(ngModel)]="qaModel"
+        (ngModelChange)="updateQaModel($event)"
+      >
+        @if (!availableModels.length) {
+          <option value="">{{ 'settings.modelsEmpty' | transloco }}</option>
+        }
+        @for (model of availableModels; track model) {
+          <option [value]="model">{{ model }}</option>
+        }
+      </select>
     </label>
   </div>
 </div>
+
+@if (modelsLoading) {
+  <div class="settings-status">{{ 'settings.modelsLoading' | transloco }}</div>
+} @else if (modelsError) {
+  <div class="settings-status settings-status-error">{{ 'settings.modelsError' | transloco }}</div>
+}
