@@ -73,6 +73,7 @@
       "chapters": "Hoofdstukken",
       "questions": "Vragen",
       "ingest": "Foto toevoegen",
+      "settings": "Instellingen",
       "help": "Help"
     },
     "help": {
@@ -129,15 +130,33 @@
       "parseFailed": "Het AI-antwoord kon niet worden verwerkt. Probeer het opnieuw.",
       "noQuestions": "Er zijn geen vragen gevonden in de foto."
     },
+    "ocrPrompt": "Haal alle leesbare tekst uit de afbeelding. Geef alleen platte tekst terug, geen markdown of JSON.",
     "prompt": {
       "intro": "Je haalt studievragen uit een foto van een lesboek.",
       "format": "Geef alleen JSON terug als een array met objecten met de sleutels: question, answer, pageNr (optioneel).",
-      "empty": "Als je geen Q&A kunt vinden, geef een lege array [] terug.",
+      "empty": "Als je geen vraag en antwoord paren kunt bepalen op basis van de gegeven tekst, geef een lege array [] terug.",
       "language": "Schrijf de vraag en het antwoord in {{language}}.",
       "pageNr": "Door de gebruiker opgegeven paginanummer: {{pageNr}}.",
+      "ocrText": "OCR-tekst:\n{{text}}",
       "additionalInstructions": "Aanvullende instructies: {{instructions}}",
       "pageNotProvided": "niet opgegeven"
     }
+  },
+  "settings": {
+    "title": "Instellingen",
+    "description": "Configureer de Ollama-endpoint en modelnamen voor beoordeling en foto-inname.",
+    "ollamaBaseUrlLabel": "Ollama-basis-URL",
+    "ollamaBaseUrlPlaceholder": "http://localhost:11434/api/generate",
+    "ollamaBaseUrlHelp": "Gebruikt voor AI-beoordeling en Q&A, tenzij overschreven.",
+    "ollamaOcrUrlLabel": "OCR-endpoint-URL",
+    "ollamaOcrUrlPlaceholder": "http://localhost:11434/api/generate",
+    "ollamaOcrUrlHelp": "Laat leeg om de basis-URL te gebruiken.",
+    "aiGradingModelLabel": "AI-beoordelingsmodel",
+    "aiGradingModelPlaceholder": "bijv. gpt-oss:20b",
+    "ocrModelLabel": "OCR-model",
+    "ocrModelPlaceholder": "bijv. qwen3-vl:2b",
+    "qaModelLabel": "Q&A-model",
+    "qaModelPlaceholder": "bijv. qwen3-vl:2b"
   },
   "viewMode": {
     "label": "Weergavemodus",

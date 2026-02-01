@@ -73,6 +73,7 @@
       "chapters": "Chapters",
       "questions": "Questions",
       "ingest": "Ingest photo",
+      "settings": "Settings",
       "help": "Help"
     },
     "help": {
@@ -129,15 +130,33 @@
       "parseFailed": "The AI response could not be parsed. Please try again.",
       "noQuestions": "No questions were found in the photo."
     },
+    "ocrPrompt": "Extract all readable text from the image. Return plain text only, no markdown or JSON.",
     "prompt": {
       "intro": "You are extracting study questions from a textbook photo.",
       "format": "Return JSON only as an array of objects with keys: question, answer, pageNr (optional).",
-      "empty": "If you cannot extract any Q&A, return an empty array [].",
+      "empty": "If you cannot create question and answer pairs from the text, return an empty array [].",
       "language": "Write the question and answer in {{language}}.",
       "pageNr": "User provided page number: {{pageNr}}.",
+      "ocrText": "OCR text:\n{{text}}",
       "additionalInstructions": "Additional instructions: {{instructions}}",
       "pageNotProvided": "not provided"
     }
+  },
+  "settings": {
+    "title": "Settings",
+    "description": "Configure the Ollama endpoint and model names for grading and photo ingestion.",
+    "ollamaBaseUrlLabel": "Ollama base URL",
+    "ollamaBaseUrlPlaceholder": "http://localhost:11434/api/generate",
+    "ollamaBaseUrlHelp": "Used for AI grading and Q&A generation unless overridden.",
+    "ollamaOcrUrlLabel": "OCR endpoint URL",
+    "ollamaOcrUrlPlaceholder": "http://localhost:11434/api/generate",
+    "ollamaOcrUrlHelp": "Leave empty to use the base URL.",
+    "aiGradingModelLabel": "AI grading model",
+    "aiGradingModelPlaceholder": "e.g. gpt-oss:20b",
+    "ocrModelLabel": "OCR model",
+    "ocrModelPlaceholder": "e.g. qwen3-vl:2b",
+    "qaModelLabel": "Q&A model",
+    "qaModelPlaceholder": "e.g. qwen3-vl:2b"
   },
   "viewMode": {
     "label": "View mode",

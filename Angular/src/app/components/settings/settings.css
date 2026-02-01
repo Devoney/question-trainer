@@ -1,0 +1,37 @@
+.settings {
+  text-align: left;
+}
+
+.settings-title {
+  margin-bottom: 6px;
+}
+
+.settings-description {
+  margin-bottom: 16px;
+  color: #666;
+}
+
+.settings-section {
+  margin-bottom: 14px;
+}
+
+.settings-label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-weight: 600;
+}
+
+.settings-label input {
+  font-weight: 400;
+  padding: 6px 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.settings-help {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.8rem;
+  color: #666;
+}

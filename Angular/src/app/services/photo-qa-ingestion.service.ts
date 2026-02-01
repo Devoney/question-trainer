@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { TranslocoService } from '@ngneat/transloco';
-import { map } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 export interface IngestedQuestion {
@@ -18,10 +18,14 @@ interface OllamaResponse {
 export class PhotoQaIngestionService {
   private readonly http = inject(HttpClient);
   private readonly transloco = inject(TranslocoService);
-  private readonly endpointStorageKey = 'aiEndpointUrl';
+  private readonly qaEndpointStorageKey = 'aiEndpointUrl';
+  private readonly ocrEndpointStorageKey = 'aiOcrEndpointUrl';
+  private readonly qaModelStorageKey = 'aiQaModelName';
+  private readonly ocrModelStorageKey = 'aiOcrModelName';
   private readonly defaultOllamaUrl = 'http://localhost:11434/api/generate';
   private readonly mockResponseUrl = '/ingest-book-example-response.json';
-  private readonly model = 'qwen3-vl:2b'; // 'llava:13b';
+  private readonly defaultQaModel = 'qwen3-vl:2b'; // 'llava:13b';
+  private readonly defaultOcrModel = 'qwen3-vl:2b';
   private readonly useMockResponse = false; // Set to true to use mock response for local testing.
 
   ingestPhoto(
@@ -29,30 +33,112 @@ export class PhotoQaIngestionService {
     pageNr?: string,
     additionalInstructions?: string
   ): Observable<IngestedQuestion[]> {
-    const prompt = this.buildPrompt(pageNr, additionalInstructions);
-    const payload = {
-      model: this.model,
-      prompt,
-      images: [base64Image],
-      stream: false,
-    };
-
     if (this.useMockResponse) {
       return this.http
         .get<OllamaResponse>(this.mockResponseUrl)
         .pipe(map((response) => this.parseResponse(response)));
     }
 
-    return this.http
-      .post<OllamaResponse>(this.getOllamaUrl(), payload)
-      .pipe(map((response) => this.parseResponse(response)));
+    const ocrPayload = {
+      model: this.getOcrModel(),
+      prompt: this.buildOcrPrompt(),
+      images: [base64Image],
+      stream: false,
+    };
+
+    return this.http.post<OllamaResponse>(this.getOcrOllamaUrl(), ocrPayload).pipe(
+      map((response) => this.extractOcrText(response)),
+      switchMap((ocrText) => {
+        const prompt = this.buildQaPrompt(ocrText, pageNr, additionalInstructions);
+        const qaPayload = {
+          model: this.getQaModel(),
+          prompt,
+          stream: false,
+        };
+        return this.http
+          .post<OllamaResponse>(this.getQaOllamaUrl(), qaPayload)
+          .pipe(map((response) => this.parseResponse(response)));
+      })
+    );
   }
 
-  private getOllamaUrl(): string {
-    return localStorage.getItem(this.endpointStorageKey) ?? this.defaultOllamaUrl;
+  getQaOllamaUrl(): string {
+    return localStorage.getItem(this.qaEndpointStorageKey) ?? this.defaultOllamaUrl;
   }
 
-  private buildPrompt(pageNr?: string, additionalInstructions?: string): string {
+  getOcrOllamaUrl(): string {
+    const stored = localStorage.getItem(this.ocrEndpointStorageKey) ?? '';
+    if (stored.trim()) {
+      return stored;
+    }
+    return this.getQaOllamaUrl();
+  }
+
+  getStoredOcrOllamaUrl(): string {
+    return localStorage.getItem(this.ocrEndpointStorageKey) ?? '';
+  }
+
+  getQaModel(): string {
+    return localStorage.getItem(this.qaModelStorageKey) ?? this.defaultQaModel;
+  }
+
+  getOcrModel(): string {
+    return localStorage.getItem(this.ocrModelStorageKey) ?? this.defaultOcrModel;
+  }
+
+  getDefaultOllamaUrl(): string {
+    return this.defaultOllamaUrl;
+  }
+
+  getDefaultQaModel(): string {
+    return this.defaultQaModel;
+  }
+
+  getDefaultOcrModel(): string {
+    return this.defaultOcrModel;
+  }
+
+  setQaOllamaUrl(url: string): void {
+    const value = url.trim();
+    if (value) {
+      localStorage.setItem(this.qaEndpointStorageKey, value);
+      return;
+    }
+    localStorage.removeItem(this.qaEndpointStorageKey);
+  }
+
+  setOcrOllamaUrl(url: string): void {
+    const value = url.trim();
+    if (value) {
+      localStorage.setItem(this.ocrEndpointStorageKey, value);
+      return;
+    }
+    localStorage.removeItem(this.ocrEndpointStorageKey);
+  }
+
+  setQaModel(model: string): void {
+    const value = model.trim();
+    if (value) {
+      localStorage.setItem(this.qaModelStorageKey, value);
+      return;
+    }
+    localStorage.removeItem(this.qaModelStorageKey);
+  }
+
+  setOcrModel(model: string): void {
+    const value = model.trim();
+    if (value) {
+      localStorage.setItem(this.ocrModelStorageKey, value);
+      return;
+    }
+    localStorage.removeItem(this.ocrModelStorageKey);
+  }
+
+  private buildOcrPrompt(): string {
+    return this.transloco.translate('ingestPhoto.ocrPrompt');
+  }
+
+  private buildQaPrompt(ocrText: string, pageNr?: string, additionalInstructions?: string): string {
     const language = this.getUserLanguageLabel();
     const pageNrLabel = pageNr?.trim() ? pageNr.trim() : this.transloco.translate('ingestPhoto.prompt.pageNotProvided');
     const instructions = additionalInstructions?.trim();
@@ -62,6 +148,9 @@ export class PhotoQaIngestionService {
       this.transloco.translate('ingestPhoto.prompt.empty'),
       this.transloco.translate('ingestPhoto.prompt.language', { language }),
       this.transloco.translate('ingestPhoto.prompt.pageNr', { pageNr: pageNrLabel }),
+      this.transloco.translate('ingestPhoto.prompt.ocrText', {
+        text: ocrText,
+      }),
     ];
 
     if (instructions) {
@@ -100,6 +189,14 @@ export class PhotoQaIngestionService {
     return items
       .map((item) => this.normalizeItem(item))
       .filter((item): item is IngestedQuestion => !!item);
+  }
+
+  private extractOcrText(response: OllamaResponse): string {
+    const text = response?.response?.trim() ?? '';
+    if (!text) {
+      throw new Error('Empty OCR response.');
+    }
+    return this.stripCodeFences(text);
   }
 
   private stripCodeFences(value: string): string {

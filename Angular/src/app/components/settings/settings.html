@@ -1,0 +1,66 @@
+<div class="settings">
+  <h4 class="settings-title">{{ 'settings.title' | transloco }}</h4>
+  <p class="settings-description">{{ 'settings.description' | transloco }}</p>
+
+  <div class="settings-section">
+    <label class="settings-label">
+      <span>{{ 'settings.ollamaBaseUrlLabel' | transloco }}</span>
+      <input
+        type="text"
+        [placeholder]="'settings.ollamaBaseUrlPlaceholder' | transloco"
+        [value]="baseEndpoint"
+        (input)="updateBaseEndpoint($event)"
+      />
+    </label>
+    <small class="settings-help">{{ 'settings.ollamaBaseUrlHelp' | transloco }}</small>
+  </div>
+
+  <div class="settings-section">
+    <label class="settings-label">
+      <span>{{ 'settings.ollamaOcrUrlLabel' | transloco }}</span>
+      <input
+        type="text"
+        [placeholder]="'settings.ollamaOcrUrlPlaceholder' | transloco"
+        [value]="ocrEndpoint"
+        (input)="updateOcrEndpoint($event)"
+      />
+    </label>
+    <small class="settings-help">{{ 'settings.ollamaOcrUrlHelp' | transloco }}</small>
+  </div>
+
+  <div class="settings-section">
+    <label class="settings-label">
+      <span>{{ 'settings.aiGradingModelLabel' | transloco }}</span>
+      <input
+        type="text"
+        [placeholder]="'settings.aiGradingModelPlaceholder' | transloco"
+        [value]="aiGradingModel"
+        (input)="updateAiGradingModel($event)"
+      />
+    </label>
+  </div>
+
+  <div class="settings-section">
+    <label class="settings-label">
+      <span>{{ 'settings.ocrModelLabel' | transloco }}</span>
+      <input
+        type="text"
+        [placeholder]="'settings.ocrModelPlaceholder' | transloco"
+        [value]="ocrModel"
+        (input)="updateOcrModel($event)"
+      />
+    </label>
+  </div>
+
+  <div class="settings-section">
+    <label class="settings-label">
+      <span>{{ 'settings.qaModelLabel' | transloco }}</span>
+      <input
+        type="text"
+        [placeholder]="'settings.qaModelPlaceholder' | transloco"
+        [value]="qaModel"
+        (input)="updateQaModel($event)"
+      />
+    </label>
+  </div>
+</div>

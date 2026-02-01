@@ -39,7 +39,6 @@ export class QuestionTrainer implements OnInit {
   aiFeedback = '';
   aiError = '';
   aiWasCorrect: boolean | null = null;
-  aiEndpoint = '';
 
   private currentQuestion?: Question;
   private questionList: Question[] = [];
@@ -51,7 +50,6 @@ export class QuestionTrainer implements OnInit {
   ngOnInit(): void {
     const storedAiMode = localStorage.getItem('useAiGrading');
     this.useAiGrading = storedAiMode === 'true';
-    this.aiEndpoint = this.answerChecker.getOllamaUrl();
     this.store
       .select(selectCurrentQuestion)
       .pipe(takeUntilDestroyed(this.destroyRef))
@@ -161,14 +159,6 @@ export class QuestionTrainer implements OnInit {
       this.aiError = '';
       this.aiFeedback = '';
     }
-  }
-
-  updateAiEndpoint(event: Event): void {
-    const target = event.target as HTMLInputElement | null;
-    const value = target?.value?.trim() ?? '';
-    const endpoint = value || this.answerChecker.getDefaultOllamaUrl();
-    this.aiEndpoint = endpoint;
-    this.answerChecker.setOllamaUrl(endpoint);
   }
 
   checkAnswerWithAi(): void {

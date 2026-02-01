@@ -7,6 +7,7 @@ import { BookManager } from '../books/book-manager/book-manager';
 import { ChapterManager } from '../chapters/chapter-manager/chapter-manager';
 import { QuestionManager } from '../questions/question-manager/question-manager';
 import { IngestPhoto } from '../ingest-photo/ingest-photo';
+import { Settings } from '../settings/settings';
 import { TranslocoModule } from '@ngneat/transloco';
 
 @Component({
@@ -20,6 +21,7 @@ import { TranslocoModule } from '@ngneat/transloco';
     ChapterManager,
     QuestionManager,
     IngestPhoto,
+    Settings,
     TranslocoModule,
   ],
   templateUrl: './library.html',

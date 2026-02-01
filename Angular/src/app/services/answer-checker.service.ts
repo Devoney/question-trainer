@@ -19,13 +19,14 @@ export class AnswerCheckerService {
   private readonly transloco = inject(TranslocoService);
   private readonly endpointStorageKey = 'aiEndpointUrl';
   private readonly defaultOllamaUrl = 'http://localhost:11434/api/generate';
-  private readonly model = 'gpt-oss:20b';
+  private readonly modelStorageKey = 'aiAnswerModelName';
+  private readonly defaultModel = 'gpt-oss:20b';
 
   checkAnswer(question: string, expectedAnswer: string, userAnswer: string): Observable<AiCheckResult> {
     const prompt = this.buildPrompt(question, expectedAnswer, userAnswer);
     const ollamaUrl = this.getOllamaUrl();
     const payload = {
-      model: this.model,
+      model: this.getModel(),
       prompt,
       stream: false,
     };
@@ -43,8 +44,20 @@ export class AnswerCheckerService {
     return this.defaultOllamaUrl;
   }
 
+  getModel(): string {
+    return localStorage.getItem(this.modelStorageKey) ?? this.defaultModel;
+  }
+
+  getDefaultModel(): string {
+    return this.defaultModel;
+  }
+
   setOllamaUrl(url: string): void {
     localStorage.setItem(this.endpointStorageKey, url);
+  }
+
+  setModel(model: string): void {
+    localStorage.setItem(this.modelStorageKey, model);
   }
 
   private buildPrompt(question: string, expectedAnswer: string, userAnswer: string): string {

@@ -36,20 +36,6 @@
 					{{ 'trainer.ai.toggle' | transloco }}
 				</label>
 			</div>
-			@if (useAiGrading) {
-				<div class="ai-endpoint">
-					<label class="ai-endpoint-label">
-						<span>{{ 'trainer.ai.endpointLabel' | transloco }}</span>
-						<input
-							type="text"
-							[placeholder]="'trainer.ai.endpointPlaceholder' | transloco"
-							[value]="aiEndpoint"
-							(input)="updateAiEndpoint($event)"
-							[attr.title]="'trainer.ai.endpointHelp' | transloco"
-						/>
-					</label>
-				</div>
-			}
 		</div>
 	</div>
 	<div class="card-body text-left">
