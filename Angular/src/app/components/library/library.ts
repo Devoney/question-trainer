@@ -6,11 +6,22 @@ import { LibraryDetails } from './library-details/library-details';
 import { BookManager } from '../books/book-manager/book-manager';
 import { ChapterManager } from '../chapters/chapter-manager/chapter-manager';
 import { QuestionManager } from '../questions/question-manager/question-manager';
+import { IngestPhoto } from '../ingest-photo/ingest-photo';
 import { TranslocoModule } from '@ngneat/transloco';
 
 @Component({
   selector: 'app-library',
-  imports: [CommonModule, Tabs, TabPage, LibraryDetails, BookManager, ChapterManager, QuestionManager, TranslocoModule],
+  imports: [
+    CommonModule,
+    Tabs,
+    TabPage,
+    LibraryDetails,
+    BookManager,
+    ChapterManager,
+    QuestionManager,
+    IngestPhoto,
+    TranslocoModule,
+  ],
   templateUrl: './library.html',
   styleUrl: './library.css',
 })

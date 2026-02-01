@@ -1,6 +1,13 @@
 <div>
-	<label class="font-weight-bold">{{ 'chapters.selector.label' | transloco }}</label>
-	<select class="form-control" [ngModel]="selectedChapterId" (ngModelChange)="onChapterSelected($event)">
+	@if (showLabel) {
+		<label class="font-weight-bold">{{ 'chapters.selector.label' | transloco }}</label>
+	}
+	<select
+		class="form-control"
+		[disabled]="disabled"
+		[ngModel]="selectedChapterId"
+		(ngModelChange)="onChapterSelected($event)"
+	>
 		@for (chapter of chapters; track chapter.id) {
 			<option [value]="chapter.id">
 				{{ chapter.nr + ('chapters.selector.separator' | transloco) + chapter.title }}

@@ -1,3 +1,13 @@
+:host {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+main {
+	flex: 1 0 auto;
+}
+
 #app {
 	font-family: "Avenir", Helvetica, Arial, sans-serif;
 	-webkit-font-smoothing: antialiased;
@@ -26,13 +36,13 @@
 }
 
 .footer {
-	position: fixed;
-	left: 0;
-	bottom: 0;
+	position: static;
 	width: 100%;
 	background-color: #cccccc;
 	color: white;
 	text-align: center;
+	padding: 12px 0;
+	margin-top: auto;
 }
 
 .question-list {

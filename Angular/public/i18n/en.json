@@ -72,6 +72,7 @@
       "books": "Books",
       "chapters": "Chapters",
       "questions": "Questions",
+      "ingest": "Ingest photo",
       "help": "Help"
     },
     "help": {
@@ -103,6 +104,40 @@
     "selectHint": "Select the library you have exported earlier",
     "okAria": "ok",
     "importButton": "Import"
+  },
+  "ingestPhoto": {
+    "title": "Ingest photo",
+    "description": "Upload a textbook photo to generate Q&A. Review and remove items before adding.",
+    "bookLabel": "Book:",
+    "chapterLabel": "Chapter:",
+    "photoLabel": "Photo:",
+    "pageLabelStatic": "Page number (optional):",
+    "pagePlaceholder": "e.g. 12",
+    "instructionsLabel": "Additional instructions (optional):",
+    "instructionsPlaceholder": "e.g. Focus on keyword definitions",
+    "previewAlt": "Selected photo preview",
+    "selectionHint": "Select a book and chapter before generating Q&A.",
+    "loading": "Generating...",
+    "generateButton": "Generate Q&A",
+    "previewNotice": "Preview only. Nothing is added to the library until you confirm.",
+    "itemLabel": "Item {{index}}",
+    "pageLabel": "Page {{pageNr}}",
+    "addButton": "Add to library",
+    "errors": {
+      "invalidFile": "Please select a JPG or PNG image.",
+      "fileTooLarge": "The selected image is too large. Maximum size is 5 MB.",
+      "parseFailed": "The AI response could not be parsed. Please try again.",
+      "noQuestions": "No questions were found in the photo."
+    },
+    "prompt": {
+      "intro": "You are extracting study questions from a textbook photo.",
+      "format": "Return JSON only as an array of objects with keys: question, answer, pageNr (optional).",
+      "empty": "If you cannot extract any Q&A, return an empty array [].",
+      "language": "Write the question and answer in {{language}}.",
+      "pageNr": "User provided page number: {{pageNr}}.",
+      "additionalInstructions": "Additional instructions: {{instructions}}",
+      "pageNotProvided": "not provided"
+    }
   },
   "viewMode": {
     "label": "View mode",

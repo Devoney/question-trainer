@@ -1,0 +1,124 @@
+<div class="ingest-photo">
+	<h4>{{ 'ingestPhoto.title' | transloco }}</h4>
+	<p class="ingest-photo-description">{{ 'ingestPhoto.description' | transloco }}</p>
+
+	<div class="ingest-photo-form">
+		<div class="form-group">
+			<label class="form-label">{{ 'ingestPhoto.bookLabel' | transloco }}</label>
+			<div class="form-input">
+				<app-book-selector [showLabel]="false" [disabled]="isLoading" />
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="form-label">{{ 'ingestPhoto.chapterLabel' | transloco }}</label>
+			<div class="form-input">
+				<app-chapter-selector [showLabel]="false" [disabled]="isLoading" />
+			</div>
+		</div>
+		@if (!hasChapterSelected) {
+			<div class="selection-hint">{{ 'ingestPhoto.selectionHint' | transloco }}</div>
+		}
+		<div class="form-group">
+			<label class="form-label">{{ 'ingestPhoto.photoLabel' | transloco }}</label>
+			<div class="form-input">
+				<input
+					class="form-control"
+					type="file"
+					accept="image/*"
+					[disabled]="isLoading"
+					(change)="onFileSelected($event)"
+				/>
+				@if (fileName) {
+					<div class="file-name">{{ fileName }}</div>
+				}
+				@if (photoPreviewUrl) {
+					<div class="photo-preview">
+						<img [src]="photoPreviewUrl" [alt]="'ingestPhoto.previewAlt' | transloco" />
+					</div>
+				}
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="form-label">{{ 'ingestPhoto.pageLabelStatic' | transloco }}</label>
+			<div class="form-input">
+				<input
+					class="form-control"
+					type="text"
+					[disabled]="isLoading"
+					[(ngModel)]="pageNr"
+					[placeholder]="'ingestPhoto.pagePlaceholder' | transloco"
+				/>
+			</div>
+		</div>
+		<div class="form-row-full">
+			<label class="form-label">{{ 'ingestPhoto.instructionsLabel' | transloco }}</label>
+			<textarea
+				class="form-control"
+				rows="2"
+				[disabled]="isLoading"
+				[(ngModel)]="additionalInstructions"
+				[placeholder]="'ingestPhoto.instructionsPlaceholder' | transloco"
+			></textarea>
+		</div>
+		@if (errorKey) {
+			<div class="alert alert-danger" role="alert">{{ errorKey | transloco }}</div>
+		}
+		<div class="actions">
+			<button
+				class="btn btn-primary"
+				type="button"
+				(click)="generateQuestions()"
+				[disabled]="!photoBase64 || isLoading || !hasChapterSelected"
+			>
+				@if (isLoading) {
+					<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+					<span class="visually-hidden">Loading</span>
+					{{ 'ingestPhoto.loading' | transloco }}
+				} @else {
+					{{ 'ingestPhoto.generateButton' | transloco }}
+				}
+			</button>
+		</div>
+	</div>
+
+	@if (generatedQuestions.length) {
+		<div class="ingest-photo-preview">
+			<div class="alert alert-info" role="status">
+				{{ 'ingestPhoto.previewNotice' | transloco }}
+			</div>
+			<ul class="list-group">
+				@for (item of generatedQuestions; track $index) {
+					<li class="list-group-item">
+						<div class="qa-header">
+							<span class="qa-title">
+								{{ 'ingestPhoto.itemLabel' | transloco:{ index: $index + 1 } }}
+							</span>
+							<button
+								class="btn btn-sm btn-outline-danger"
+								type="button"
+								[disabled]="isLoading"
+								(click)="removeGeneratedQuestion($index)"
+							>
+								{{ 'buttons.remove' | transloco }}
+							</button>
+						</div>
+						<div class="qa-body">
+							<div class="qa-question" [innerHTML]="item.question"></div>
+							<div class="qa-answer" [innerHTML]="item.answer"></div>
+							@if (item.pageNr) {
+								<div class="qa-page">
+									{{ 'ingestPhoto.pageLabel' | transloco:{ pageNr: item.pageNr } }}
+								</div>
+							}
+						</div>
+					</li>
+				}
+			</ul>
+			<div class="actions">
+				<button class="btn btn-success" type="button" (click)="addToLibrary()">
+					{{ 'ingestPhoto.addButton' | transloco }}
+				</button>
+			</div>
+		</div>
+	}
+</div>

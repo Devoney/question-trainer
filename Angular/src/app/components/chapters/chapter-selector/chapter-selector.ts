@@ -1,4 +1,4 @@
-import { Component, DestroyRef, OnInit, inject } from '@angular/core';
+import { Component, DestroyRef, Input, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Store } from '@ngrx/store';
@@ -18,6 +18,8 @@ import { TranslocoModule } from '@ngneat/transloco';
 export class ChapterSelector implements OnInit {
   private readonly store = inject<Store<{ app: AppState }>>(Store);
   private readonly destroyRef = inject(DestroyRef);
+  @Input() showLabel = true;
+  @Input() disabled = false;
   chapters: Chapter[] = [];
   selectedChapterId = '';
 

@@ -72,6 +72,7 @@
       "books": "Boeken",
       "chapters": "Hoofdstukken",
       "questions": "Vragen",
+      "ingest": "Foto toevoegen",
       "help": "Help"
     },
     "help": {
@@ -103,6 +104,40 @@
     "selectHint": "Selecteer de bibliotheek die je eerder hebt geëxporteerd",
     "okAria": "ok",
     "importButton": "Importeren"
+  },
+  "ingestPhoto": {
+    "title": "Foto toevoegen",
+    "description": "Upload een foto van een lesboek om Q&A te genereren. Bekijk en verwijder items voordat je ze toevoegt.",
+    "bookLabel": "Boek:",
+    "chapterLabel": "Hoofdstuk:",
+    "photoLabel": "Foto:",
+    "pageLabelStatic": "Paginanummer (optioneel):",
+    "pagePlaceholder": "bijv. 12",
+    "instructionsLabel": "Aanvullende instructies (optioneel):",
+    "instructionsPlaceholder": "bijv. Focus op kernbegrippen",
+    "previewAlt": "Voorbeeld van geselecteerde foto",
+    "selectionHint": "Selecteer eerst een boek en hoofdstuk om Q&A te genereren.",
+    "loading": "Genereren...",
+    "generateButton": "Q&A genereren",
+    "previewNotice": "Alleen preview. Er wordt niets toegevoegd totdat je bevestigt.",
+    "itemLabel": "Item {{index}}",
+    "pageLabel": "Pagina {{pageNr}}",
+    "addButton": "Toevoegen aan bibliotheek",
+    "errors": {
+      "invalidFile": "Selecteer een JPG- of PNG-afbeelding.",
+      "fileTooLarge": "De geselecteerde afbeelding is te groot. Maximale grootte is 5 MB.",
+      "parseFailed": "Het AI-antwoord kon niet worden verwerkt. Probeer het opnieuw.",
+      "noQuestions": "Er zijn geen vragen gevonden in de foto."
+    },
+    "prompt": {
+      "intro": "Je haalt studievragen uit een foto van een lesboek.",
+      "format": "Geef alleen JSON terug als een array met objecten met de sleutels: question, answer, pageNr (optioneel).",
+      "empty": "Als je geen Q&A kunt vinden, geef een lege array [] terug.",
+      "language": "Schrijf de vraag en het antwoord in {{language}}.",
+      "pageNr": "Door de gebruiker opgegeven paginanummer: {{pageNr}}.",
+      "additionalInstructions": "Aanvullende instructies: {{instructions}}",
+      "pageNotProvided": "niet opgegeven"
+    }
   },
   "viewMode": {
     "label": "Weergavemodus",
